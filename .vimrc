@@ -1,4 +1,5 @@
-syntax enable " Turn on syntax highlighting
+" Turn on syntax highlighting
+syntax enable
 
 set relativenumber " Turn on relative line numbering
 
@@ -14,10 +15,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
 Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
+Plug 'valloric/youcompleteme'
 call plug#end()
 
 " If the plugged directory hasn't been created, install all plugins
@@ -30,3 +32,22 @@ au VimEnter * RainbowParenthesesActivate
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" Key mappings
+
+" Map leader key to be the space bar
+let mapleader = "\<Space>"
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
