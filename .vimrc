@@ -1,8 +1,7 @@
-" Turn on syntax highlighting
+" Turn on syntax highlightingg
 syntax enable
 
 set relativenumber " Turn on relative line numbering
-
 " Install vim-plug if it is missing
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -19,19 +18,13 @@ Plug '/usr/local/opt/fzf'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
-Plug 'valloric/youcompleteme'
+Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
-
-" Activate Rainbow Parens
-au VimEnter * RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 " Key mappings
 
@@ -51,3 +44,16 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
+
+" Map fzf commands
+imap <c-k> :Ag
+
+colorscheme candycode
+
+" Activate Rainbow Parens
+au VimEnter * RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
