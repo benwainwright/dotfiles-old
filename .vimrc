@@ -1,3 +1,8 @@
+" Indenting
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
 " Turn on syntax highlightingg
 syntax enable
 
@@ -10,7 +15,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " Declare plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged') 
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/fzf.vim'
@@ -19,12 +24,16 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-cucumber'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
+
+colorscheme CandyPaper
 
 " Key mappings
 
@@ -46,9 +55,8 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
 
 " Map fzf commands
-imap <c-k> :Ag
-
-colorscheme candycode
+nmap <leader>k :Ag
+nmap <leader>f :Files
 
 " Activate Rainbow Parens
 au VimEnter * RainbowParenthesesActivate
