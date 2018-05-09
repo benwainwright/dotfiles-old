@@ -6,6 +6,9 @@ set shiftwidth=2
 " Highlight search hits
 set hlsearch
 
+" Search as chars are added to search
+set incsearch
+
 " Turn on syntax highlightingg
 syntax enable
 
@@ -19,8 +22,11 @@ set showcmd
 
 set ruler
 
+" Actual confirm box rather than dialog box on errors (such as if you quit
+" without write)
 set confirm
 
+set cursorline
 
 " attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
