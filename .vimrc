@@ -3,8 +3,29 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+" Highlight search hits
+set hlsearch
+
 " Turn on syntax highlightingg
 syntax enable
+
+"set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+
+set wildmenu
+
+set showcmd
+
+set ruler
+
+set confirm
+
+
+" attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" " and for plugins that are filetype specific.
+" filetype indent plugin on
 
 set relativenumber " Turn on relative line numbering
 " Install vim-plug if it is missing
@@ -26,6 +47,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'airblade/vim-rooter'
 call plug#end()
 
 " If the plugged directory hasn't been created, install all plugins
