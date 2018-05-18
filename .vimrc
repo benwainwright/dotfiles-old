@@ -9,6 +9,8 @@ set hlsearch
 " Search as chars are added to search
 set incsearch
 
+set laststatus=2
+
 " Turn on syntax highlightingg
 syntax enable
 
@@ -41,6 +43,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
+
 " Declare plugins
 call plug#begin('~/.vim/plugged') 
 Plug 'kien/rainbow_parentheses.vim'
@@ -54,7 +58,20 @@ Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-rooter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-commentary'
+Plug 'altercation/vim-colors-solarized'
+Plug 'easymotion/vim-easymotion'
+Plug 'aklt/plantuml-syntax'
+Plug 'Shougo/deoplete.nvim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'scrooloose/nerdtree'
+Plug 'ternjs/tern_for_vim'
+Plug 'vim-scripts/AutoComplPop'
 call plug#end()
+
+let g:syntastic_javascript_checkers=['eslint']
 
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
@@ -62,6 +79,7 @@ if empty(glob('~/.vim/plugged'))
 endif
 
 colorscheme CandyPaper
+
 
 " Key mappings
 
@@ -79,12 +97,17 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
 
 " Map fzf commands
 nmap <leader>k :Ag
 nmap <leader>f :Files
+
+nmap<C-s> :NERDTreeToggle<CR>
 
 " Activate Rainbow Parens
 au VimEnter * RainbowParenthesesActivate
