@@ -1,5 +1,8 @@
 set encoding=UTF-8
 
+" Store swap files here
+set directory^=$HOME/.vim/tmp//
+
 " Indenting
 set expandtab
 set tabstop=2
@@ -77,6 +80,7 @@ Plug 'junkblocker/patchreview-vim'
 Plug 'codegram/vim-codereview'
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
+Plug 'gioele/vim-autoswap'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
@@ -89,8 +93,8 @@ if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
 
-colorscheme palenight
-let g:lightline = { 'colorscheme' : 'palenight' }
+colorscheme base16-atelierseaside
+set background=dark
 
 " Key mappings
 
