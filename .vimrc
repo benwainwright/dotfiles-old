@@ -1,3 +1,5 @@
+set encoding=UTF-8
+
 " Indenting
 set expandtab
 set tabstop=2
@@ -29,7 +31,6 @@ set ruler
 set confirm
 
 set cursorline
-
 " attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " " and for plugins that are filetype specific.
@@ -43,16 +44,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0 
 
 " Declare plugins
 call plug#begin('~/.vim/plugged') 
+Plug 'vim-scripts/git-log'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'itchyny/lightline.vim'
-Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
@@ -69,22 +70,40 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'scrooloose/nerdtree'
 Plug 'ternjs/tern_for_vim'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'jacoborus/tender.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junkblocker/patchreview-vim'
+Plug 'codegram/vim-codereview'
+Plug 'janko-m/vim-test'
+Plug 'w0rp/ale'
 call plug#end()
 
-let g:syntastic_javascript_checkers=['eslint']
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_javascript_eslint_use_global = 1
+" let g:syntastic_style_error_symbol = ''
+" let g:syntastic_javascript_checkers=['eslint']
 
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
 
-colorscheme CandyPaper
-
+colorscheme palenight
+let g:lightline = { 'colorscheme' : 'palenight' }
 
 " Key mappings
 
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
+
+" Tern mappings
+nmap <leader>td :TernDef<CR>
+nmap <leader>tdp :TernDefPreview<CR>
+nmap <leader>tds :TernDefSplit<CR>
+nmap <leader>tdt :TernDefTab<CR>
+nmap <leader>tr :TernRefs<CR>
+nmap <leader>tt :TernType<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -97,6 +116,12 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
+nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+gonsole.log(document.cookie);
+
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 
@@ -107,12 +132,20 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-
 nmap <leader>k :Ag
 nmap <leader>f :Files
 
-nmap<C-s> :NERDTreeToggle<CR>
+map<C-s> :NERDTreeToggle<CR>
 
-" Activate Rainbow Parens
-au VimEnter * RainbowParenthesesActivate
+au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+let g:GITLOG_default_mode = 2
+map <silent> <f7> :call GITLOG_ToggleWindows()<cr>
+map <silent> <f5> :call GITLOG_FlipWindows()<cr>
 
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = ''
+
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
