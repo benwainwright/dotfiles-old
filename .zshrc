@@ -141,4 +141,5 @@ zplugin creinstall %HOME/my_completions  # Handle completions without loading an
 zplugin ice as"program" pick"bin/git-dsf"
 zplugin light zdharma/zsh-diff-so-fancy
 zplugin load psprint/zsh-editing-workbench
+zplugin load molovo/tipz
 
