@@ -56,7 +56,6 @@ Plug 'vim-scripts/git-log'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
-Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
@@ -81,6 +80,8 @@ Plug 'codegram/vim-codereview'
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 Plug 'gioele/vim-autoswap'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
@@ -100,6 +101,35 @@ set background=dark
 
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 " Tern mappings
 nmap <leader>td :TernDef<CR>
