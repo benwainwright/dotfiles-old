@@ -136,8 +136,6 @@ zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
 
 # This one to be ran just once, in interactive session
 
-zplugin creinstall %HOME/my_completions  # Handle completions without loading any plugin, see "clist" command
-
 zplugin ice as"program" pick"bin/git-dsf"
 zplugin light zdharma/zsh-diff-so-fancy
 zplugin load psprint/zsh-editing-workbench
