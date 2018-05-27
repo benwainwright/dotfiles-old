@@ -142,4 +142,5 @@ zplugin ice as"program" pick"bin/git-dsf"
 zplugin light zdharma/zsh-diff-so-fancy
 zplugin load psprint/zsh-editing-workbench
 zplugin load molovo/tipz
+zplugin load lukechilds/zsh-better-npm-completion
 
