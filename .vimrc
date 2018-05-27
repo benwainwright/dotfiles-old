@@ -39,7 +39,14 @@ set cursorline
 " " and for plugins that are filetype specific.
 " filetype indent plugin on
 
-set relativenumber " Turn on relative line numbering
+set number relativenumber " Turn on relative line numbering
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " Install vim-plug if it is missing
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -82,13 +89,11 @@ Plug 'w0rp/ale'
 Plug 'gioele/vim-autoswap'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'neomake/neomake'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_javascript_eslint_use_global = 1
-" let g:syntastic_style_error_symbol = ''
-" let g:syntastic_javascript_checkers=['eslint']
-
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
   PlugInstall
@@ -121,6 +126,8 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+let test#strategy = "vimux"
 
 " airline symbols
 let g:airline_left_sep = ''
