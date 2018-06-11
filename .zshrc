@@ -141,4 +141,5 @@ zplugin light zdharma/zsh-diff-so-fancy
 zplugin load psprint/zsh-editing-workbench
 zplugin load molovo/tipz
 zplugin load lukechilds/zsh-better-npm-completion
+zplugin load srijanshetty/gulp-autocompletion-zsh
 

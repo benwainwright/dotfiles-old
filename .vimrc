@@ -1,3 +1,5 @@
+set clipboard=unnamed
+
 set encoding=UTF-8
 
 " Store swap files here
@@ -89,7 +91,8 @@ Plug 'w0rp/ale'
 Plug 'gioele/vim-autoswap'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'neomake/neomake'
+Plug 'tpope/vim-dispatch'
+Plug 'junegunn/gv.vim'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
@@ -144,6 +147,7 @@ nmap <leader>tdp :TernDefPreview<CR>
 nmap <leader>tds :TernDefSplit<CR>
 nmap <leader>tdt :TernDefTab<CR>
 nmap <leader>tr :TernRefs<CR>
+nmap <leader>trn :TernRename<CR>
 nmap <leader>tt :TernType<CR>
 
 " Mapping selecting mappings
