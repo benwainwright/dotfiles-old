@@ -27,6 +27,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
+(setq exec-path (append exec-path '("~/.emacs.d/tern/bin/")))
 
 ;; Load package management and install missing packages
 (require 'package)
@@ -44,6 +45,8 @@
 	helm
 	helm-ag
 	js2-mode
+	js2-refactor
+	xref-js2
 	monokai-theme
 	dracula-theme
 	linum-relative

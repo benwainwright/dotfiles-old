@@ -22,9 +22,16 @@
 (scroll-bar-mode -1)
 (setq ns-use-srgb-colorspace nil)
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+(setq exec-path (append exec-path '("~/.emacs.d/tern/bin/")))
+
 ;; Load package management and install missing packages
 (require 'package)
-
+(defvar package-list)
 (setq package-list
       '(
 	json-mode
@@ -38,6 +45,8 @@
 	helm
 	helm-ag
 	js2-mode
+	js2-refactor
+	xref-js2
 	monokai-theme
 	dracula-theme
 	linum-relative
@@ -47,6 +56,9 @@
 	projectile
 	helm-projectile
 	flycheck
+	company
+	company-tern
+	general
 	))
 (setq package-archives '(("melpa"        . "http://melpa.org/packages/")
 			 ("MELPA stable" . "https://stable.melpa.org/packages/")
@@ -95,11 +107,14 @@
 
 (load-theme 'dracula t)
 
-;; Allow hash to be entered  
-(defun insert-pound ()  
-  "Inserts a pound into the buffer"  
-  (insert "#"))  
-(global-set-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))  
+;; Allow hash to be entered
+(defun insert-pound ()
+  "Insert a pound into the buffer."
+  (insert "#"))
+(global-set-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
+
+(defvar company-backends)
+(setq company-backends '(company-tern))
 
 ;; Keyboard mappings
 (global-unset-key (kbd "C-n"))
@@ -108,18 +123,6 @@
 (global-set-key (kbd "C-p") 'previous-buffer)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (editorconfig editorconfig-emacs feature-mode ag helm-ag magit exec-path-from-shell use-package rainbow-delimiters powerline nimbus-theme monokai-theme moe-theme linum-relative js2-mode helm-projectile flycheck evil dracula-theme cyberpunk-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-hook 'javascript-mode (lambda () (tern-mode t)))
