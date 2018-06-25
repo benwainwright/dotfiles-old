@@ -123,10 +123,10 @@
   :config
   (powerline-default-theme))
 
-(use-package monokai-theme
+(use-package apropospriate-theme
   :ensure t
   :config
-  (load-theme 'monokai t))
+  (load-theme 'apropospriate-dark t))
 
 (use-package flycheck
   :ensure t
