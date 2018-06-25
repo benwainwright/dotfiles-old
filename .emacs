@@ -61,7 +61,6 @@
     (set-char-table-range composition-function-table (car char-regexp)
 			  `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(setq ns-use-srgb-colorspace nil)
 ;; Load package management and install missing packages
 (require 'package)
 (defvar package-list)
@@ -84,7 +83,6 @@
 	projectile
 	helm-projectile
 	general
-	evil-magit
 	git-gutter))
 
 (setq package-archives '(("melpa"        . "http://melpa.org/packages/")
@@ -108,7 +106,9 @@
   :init
   (setq evil-want-C-u-scroll t)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (use-package evil-magit
+    :ensure t))
 
 (use-package helm-config)
 
@@ -154,6 +154,9 @@
 (with-eval-after-load 'evil-maps
   (define-key evil-normal-state-map (kbd "C-n") nil)
   (define-key evil-normal-state-map (kbd "C-p") nil))
+
+(setq display-line-numbers-type 'relative)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (global-set-key (kbd "C-n") 'next-buffer)
 (global-set-key (kbd "C-p") 'previous-buffer)
