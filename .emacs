@@ -16,7 +16,11 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(setq initial-scratch-message "")
+(setq inhibit-startup-message t)
+(setq visible-bell t)
 (setq custom-file "~/.emacs.d/custom.el")
+ 
 
 (load custom-file)
 (global-hl-line-mode +1)
@@ -68,63 +72,7 @@
       '(
 	json-mode
 	feature-mode
-	magit
-	use-package
-	ag
-	helm
-	helm-ag
-	js2-mode
-	js2-refactor
-	xref-js2
-	linum-relative
-	org
-	powerline
-	rainbow-delimiters
-	projectile
-	helm-projectile
-	general
-	git-gutter))
-
-(setq package-archives '(("melpa"        . "http://melpa.org/packages/")
-			 ("MELPA stable" . "https://stable.melpa.org/packages/")
-			 ("gnu"          . "http://elpa.gnu.org/packages/")
-			 ("marmalade"    . "http://marmalade-repo.org/packages/")))
-
-(setq helm-split-window-in-side-p t)
-
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
-
-(global-git-gutter-mode +1)
-
-(use-package evil
-  :init
-  (setq evil-want-C-u-scroll t)
-  :config
-  (evil-mode 1)
-  (use-package evil-magit
-    :ensure t))
-
-(use-package helm-config)
-
-(use-package powerline
-  :ensure t
-  :config
-  (powerline-default-theme))
-
-(use-package monokai-theme
-  :ensure t
-  :config
-  (load-theme 'monokai t))
-
-(use-package flycheck
-  :ensure t
-  :config
+	  :config
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
