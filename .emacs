@@ -4,6 +4,8 @@
 	(font . "Fira Code-13")
 	(height . 60)
 	(background-mode . 'dark)
+	(ns-transparent-titlebar . t)
+	(ns-appearance . dark)
 	))
 
 (setq default-frame-alist
@@ -12,6 +14,9 @@
 	(width . 106)
 	(height . 60)
 	(background-mode . 'dark)
+	(ns-transparent-titlebar . t)
+	(ns-appearance . dark)
+
 	))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -81,7 +86,6 @@
 	xref-js2
 	linum-relative
 	org
-	powerline
 	rainbow-delimiters
 	projectile
 	helm-projectile
@@ -105,6 +109,20 @@
 
 (global-git-gutter-mode +1)
 
+(use-package plantuml-mode
+  :ensure t)
+
+(use-package org
+  :ensure t)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(use-package projectile
+  :ensure t)
+
 (use-package magit
   :ensure t)
 
@@ -123,10 +141,13 @@
   :config
   (powerline-default-theme))
 
-(use-package apropospriate-theme
+(use-package material-theme
   :ensure t
   :config
-  (load-theme 'apropospriate-dark t))
+  (load-theme 'material t))
+
+(use-package web-mode
+  :ensure t)
 
 (use-package flycheck
   :ensure t
