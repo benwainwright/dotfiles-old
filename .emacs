@@ -18,6 +18,9 @@
 	(ns-appearance . dark)
 
 	))
+
+(setq backup-directory-alist `(("." . "~/.emacssaves")))
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -25,7 +28,7 @@
 (setq inhibit-startup-message t)
 (setq visible-bell t)
 (setq custom-file "~/.emacs.d/custom.el")
- 
+
 
 (load custom-file)
 (global-hl-line-mode +1)
@@ -74,30 +77,29 @@
 (require 'package)
 (defvar package-list)
 (setq package-list
-      '(
-	json-mode
-	feature-mode
-	use-package
-	ag
-	helm
-	helm-ag
-	js2-mode
-	js2-refactor
-	xref-js2
-	linum-relative
-	org
-	rainbow-delimiters
-	projectile
-	helm-projectile
-	general
-	git-gutter))
+  '(
+     json-mode
+     feature-mode
+     use-package
+     ag
+     helm
+     helm-ag
+     js2-mode
+     js2-refactor
+     xref-js2
+     linum-relative
+     org
+     rainbow-delimiters
+     helm-projectile
+ 	   general
+ 	   git-gutter))
 
-(setq package-archives '(("melpa"        . "http://melpa.org/packages/")
-			 ("MELPA stable" . "https://stable.melpa.org/packages/")
-			 ("gnu"          . "http://elpa.gnu.org/packages/")
-			 ("marmalade"    . "http://marmalade-repo.org/packages/")))
+ (setq package-archives '(("melpa"        . "http://melpa.org/packages/")
+ 			 ("MELPA stable" . "https://stable.melpa.org/packages/")
+ 			 ("gnu"          . "http://elpa.gnu.org/packages/")
+ 			 ("marmalade"    . "http://marmalade-repo.org/packages/")))
 
-(setq helm-split-window-in-side-p t)
+ (setq helm-split-window-in-side-p t)
 
 (package-initialize)
 (unless package-archive-contents
@@ -121,18 +123,25 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package projectile
-  :ensure t)
+	     :ensure t)
+
+(use-package helm-projectile
+	    :ensure t)
 
 (use-package magit
   :ensure t)
 
 (use-package evil
+  :ensure t
   :init
   (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
   (use-package evil-magit
     :ensure t))
+
+(use-package groovy-mode
+  :ensure t)
 
 (use-package helm-config)
 
@@ -148,6 +157,12 @@
 
 (use-package web-mode
   :ensure t)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+             (when (memq window-system '(mac ns x))
+               (exec-path-from-shell-initialize)))
 
 (use-package flycheck
   :ensure t
