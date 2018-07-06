@@ -73,40 +73,49 @@
     (set-char-table-range composition-function-table (car char-regexp)
 			  `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-;; Load package management and install missing packages
 (require 'package)
-(defvar package-list)
-(setq package-list
-  '(
-     json-mode
-     feature-mode
-     use-package
-     ag
-     helm
-     helm-ag
-     xref-js2
-     linum-relative
-     rainbow-delimiters
-     helm-projectile
- 	   general
- 	   git-gutter))
-
- (setq package-archives '(("melpa"        . "http://melpa.org/packages/")
- 			 ("MELPA stable" . "https://stable.melpa.org/packages/")
- 			 ("gnu"          . "http://elpa.gnu.org/packages/")
- 			 ("marmalade"    . "http://marmalade-repo.org/packages/")))
-
- (setq helm-split-window-in-side-p t)
 
 (package-initialize)
+
 (unless package-archive-contents
   (package-refresh-contents))
 
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 (global-git-gutter-mode +1)
+
+(use-package general
+  :ensure t)
+
+(use-package git-gutter
+  :ensure t)
+
+(use-package linum-relative
+  :ensure t)
+
+(use-package xref-js2
+  :ensure t)
+
+(use-package feature-mode
+  :ensure t)
+
+(use-package ag
+  :ensure t)
+
+(use-package helm
+  :ensure t
+  :config
+  (defvar helm-split-window-inside-p)
+  (setq helm-split-window-inside-p t)
+  (use-package helm-ag
+    :ensure t))
+
+(use-package rainbow-delimiters
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
 
 (use-package plantuml-mode
   :ensure t)
