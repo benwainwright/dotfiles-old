@@ -84,11 +84,8 @@
      ag
      helm
      helm-ag
-     js2-mode
-     js2-refactor
      xref-js2
      linum-relative
-     org
      rainbow-delimiters
      helm-projectile
  	   general
@@ -129,6 +126,12 @@
 	    :ensure t)
 
 (use-package magit
+  :ensure t)
+
+(use-package js2-mode
+  :ensure t)
+
+(use-package js2-refactor
   :ensure t)
 
 (use-package evil
