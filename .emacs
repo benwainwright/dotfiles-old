@@ -19,6 +19,8 @@
 
 	))
 
+(setq ns-use-srgb-colorspace nil)
+
 (setq backup-directory-alist `(("." . "~/.emacssaves")))
 
 (menu-bar-mode -1)
@@ -28,7 +30,6 @@
 (setq inhibit-startup-message t)
 (setq visible-bell t)
 (setq custom-file "~/.emacs.d/custom.el")
-
 
 (load custom-file)
 (global-hl-line-mode +1)
@@ -85,6 +86,12 @@
 
 (global-git-gutter-mode +1)
 
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'git-gutter-mode)
+  )
+
 (use-package general
   :ensure t)
 
@@ -98,9 +105,6 @@
   :ensure t)
 
 (use-package feature-mode
-  :ensure t)
-
-(use-package ag
   :ensure t)
 
 (use-package helm
@@ -173,8 +177,8 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
-             (when (memq window-system '(mac ns x))
-               (exec-path-from-shell-initialize)))
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 (use-package flycheck
   :ensure t
@@ -196,7 +200,6 @@
     :config
     (defvar company-backends)
     (setq company-backends '(company-tern))))
-
 
 ;; Allow hash to be entered
 (defun insert-pound ()
