@@ -171,6 +171,9 @@
   :config
   (load-theme 'material t))
 
+(use-package discover
+  :ensure t)
+
 (use-package web-mode
   :ensure t)
 
