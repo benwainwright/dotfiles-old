@@ -78,6 +78,12 @@
 
 (package-initialize)
 
+(setq package-archives
+  '(("melpa"        . "http://melpa.org/packages/")
+		("MELPA stable" . "https://stable.melpa.org/packages/")
+		("gnu"          . "http://elpa.gnu.org/packages/")
+		("marmalade"    . "http://marmalade-repo.org/packages/")))
+
 (unless package-archive-contents
   (package-refresh-contents))
 
