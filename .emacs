@@ -19,8 +19,6 @@
 
 	))
 
-(setq ns-use-srgb-colorspace nil)
-
 (setq backup-directory-alist `(("." . "~/.emacssaves")))
 
 (menu-bar-mode -1)
@@ -104,6 +102,9 @@
 (use-package git-gutter
   :ensure t)
 
+(use-package ag
+  :ensure t)
+
 (use-package linum-relative
   :ensure t)
 
@@ -111,6 +112,9 @@
   :ensure t)
 
 (use-package feature-mode
+  :ensure t)
+
+(use-package markdown-mode
   :ensure t)
 
 (use-package helm
@@ -142,7 +146,9 @@
 	     :ensure t)
 
 (use-package helm-projectile
-	    :ensure t)
+	:ensure t
+  :init
+  (setq helm-projectile-fuzzy-match nil))
 
 (use-package magit
   :ensure t)
@@ -185,36 +191,8 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+  :confiset-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
 
-(use-package flycheck
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  :init
-  (add-hook 'after-init-hook #'global-flycheck-mode))
-
-(use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
-
-(use-package company
-  :ensure t
-  :config
-  (use-package company-tern
-    :ensure
-    :config
-    (defvar company-backends)
-    (setq company-backends '(company-tern))))
-
-;; Allow hash to be entered
-(defun insert-pound ()
-  "Insert a pound into the buffer."
-  (insert "#"))
-(global-set-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
 
 ;; Keyboard mappings
 (with-eval-after-load 'evil-maps
@@ -223,6 +201,9 @@
 
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
 
 (global-set-key (kbd "C-n") 'next-buffer)
 (global-set-key (kbd "C-p") 'previous-buffer)
