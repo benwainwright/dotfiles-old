@@ -77,10 +77,10 @@
 (package-initialize)
 
 (setq package-archives
-  '(("melpa"        . "http://melpa.org/packages/")
-		("MELPA stable" . "https://stable.melpa.org/packages/")
-		("gnu"          . "http://elpa.gnu.org/packages/")
-		("marmalade"    . "http://marmalade-repo.org/packages/")))
+      '(("melpa"        . "http://melpa.org/packages/")
+	("MELPA stable" . "https://stable.melpa.org/packages/")
+	("gnu"          . "http://elpa.gnu.org/packages/")
+	("marmalade"    . "http://marmalade-repo.org/packages/")))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -143,10 +143,10 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package projectile
-	     :ensure t)
+  :ensure t)
 
 (use-package helm-projectile
-	:ensure t
+  :ensure t
   :init
   (setq helm-projectile-fuzzy-match nil))
 
@@ -191,8 +191,36 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :confiset-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
+  :config
+  (when (memq window-system '(mac ns x))	
+    (exec-path-from-shell-initialize)))
 
+(use-package flycheck	
+  :ensure t	
+  :config	
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))	
+  :init	
+  (add-hook 'after-init-hook #'global-flycheck-mode))	
+
+(use-package editorconfig	
+  :ensure t	
+  :config	
+  (editorconfig-mode 1))	
+
+(use-package company	
+  :ensure t	
+  :config	
+  (use-package company-tern	
+    :ensure	
+    :config	
+    (defvar company-backends)	
+    (setq company-backends '(company-tern))))	
+
+;; Allow hash to be entered	
+(defun insert-pound ()	
+  "Insert a pound into the buffer."	
+  (insert "#"))	
+(global-set-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
 
 ;; Keyboard mappings
 (with-eval-after-load 'evil-maps
