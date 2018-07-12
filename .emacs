@@ -237,7 +237,7 @@
 (global-set-key (kbd "C-p") 'previous-buffer)
 (global-set-key (kbd "s-f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "s-p") 'helm-projectile-switch-project)
-(global-set-key (kbd "s-g") 'helm-projectile-grep)
+(global-set-key (kbd "s-g") 'helm-projectile-ag)
 (global-set-key (kbd "s-c") 'projectile-compile-project)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
