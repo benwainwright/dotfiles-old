@@ -69,7 +69,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-rooter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
@@ -93,17 +92,21 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'junegunn/gv.vim'
+Plug 'arkwright/vim-whiplash'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_javascript_eslint_use_global = 1
+let g:airline#extensions#ale#enabled = 1
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
 
-colorscheme base16-atelierseaside
+colorscheme Gruvbox
 set background=dark
+
+let g:WhiplashProjectsDir = "~/workspace/"
 
 " Key mappings
 
@@ -175,7 +178,7 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-
 
 " Map fzf commands
 nmap <leader>k :Ag
-nmap <leader>f :Files
+nmap <leader>f :GitFiles
 
 map<C-s> :NERDTreeToggle<CR>
 
