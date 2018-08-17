@@ -104,6 +104,7 @@ call plug#end()
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_javascript_eslint_use_global = 1
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 " If the plugged directory hasn't been created, install all plugins
 if empty(glob('~/.vim/plugged'))
   PlugInstall
