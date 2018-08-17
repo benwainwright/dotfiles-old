@@ -99,6 +99,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'junegunn/gv.vim'
 Plug 'arkwright/vim-whiplash'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
@@ -109,6 +111,10 @@ let g:airline#extensions#tabline#enabled = 1
 if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 colorscheme Gruvbox
 set background=dark
@@ -184,6 +190,10 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-
 " Map fzf commands
 nmap <leader>k :Ag
 nmap <leader>f :GitFiles
+nmap <leader>g :GitFiles?
+nmap <leader>b :Buffers
+nmap <leader>c :Commits
+nmap <leader>C :BCommits
 
 map<C-s> :NERDTreeToggle<CR>
 
