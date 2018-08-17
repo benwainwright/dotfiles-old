@@ -19,6 +19,9 @@ set hlsearch
 " Search as chars are added to search
 set incsearch
 
+set ignorecase
+set smartcase
+
 set laststatus=2
 
 " Turn on syntax highlightingg
