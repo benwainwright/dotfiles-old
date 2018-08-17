@@ -1,6 +1,9 @@
+" Allows the system keyboard to interact with yank etc
 set clipboard=unnamed
 
 set encoding=UTF-8
+
+set hidden
 
 " Store swap files here
 set directory^=$HOME/.vim/tmp//
@@ -105,8 +108,6 @@ endif
 
 colorscheme Gruvbox
 set background=dark
-
-let g:WhiplashProjectsDir = "~/workspace/"
 
 " Key mappings
 
