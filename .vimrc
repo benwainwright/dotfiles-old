@@ -74,6 +74,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -82,6 +83,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 Plug 'aklt/plantuml-syntax'
 Plug 'Shougo/deoplete.nvim'
+Plug 'carlitux/deoplete-ternjs'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'scrooloose/nerdtree'
 Plug 'ternjs/tern_for_vim'
@@ -189,13 +191,18 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-
 
 " Map fzf commands
 nmap <leader>k :Ag
+nmap <leader>K :Ag!
 nmap <leader>f :GitFiles
+nmap <leader>F :GitFiles!
 nmap <leader>g :GitFiles?
 nmap <leader>b :Buffers
 nmap <leader>c :Commits
 nmap <leader>C :BCommits
+nmap <leader>s :Gstatus
 
 map<C-s> :NERDTreeToggle<CR>
+
+map<C-w> :Gblame<CR>
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
