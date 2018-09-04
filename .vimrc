@@ -92,7 +92,8 @@ Plug 'jacoborus/tender.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junkblocker/patchreview-vim'
-Plug 'codegram/vim-codereview'
+" This is not the original plugin but a fork that adds Github enterprise support
+Plug 'jamietanna/vim-codereview' 
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 Plug 'gioele/vim-autoswap'
@@ -103,6 +104,8 @@ Plug 'junegunn/gv.vim'
 Plug 'arkwright/vim-whiplash'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 let g:ale_linters = {'javascript': ['eslint']}
@@ -181,7 +184,7 @@ nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
 nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
-nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+gonsole.log(document.cookie);
+nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 
 nnoremap <C-n> :bprevious<CR>
 nnoremap <C-p> :bnext<CR>
