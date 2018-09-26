@@ -92,6 +92,8 @@ Plug 'jacoborus/tender.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junkblocker/patchreview-vim'
+" This is not the original plugin but a fork that adds Github enterprise support
+Plug 'jamietanna/vim-codereview' 
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 Plug 'gioele/vim-autoswap'
@@ -103,6 +105,7 @@ Plug 'arkwright/vim-whiplash'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'ruanyl/vim-gh-line'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
 
@@ -121,37 +124,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 colorscheme Gruvbox
 set background=dark
-let g:airline_section_b = '%{fugitive#head()}'
 
- " Ripped from https://github.com/junegunn/fzf.vim/issues/603#issuecomment-374669057
-function! s:open_branch_fzf(line)
-  let l:parser = split(a:line)
-  let l:branch = l:parser[0]
-  if l:branch ==? '*'
-    let l:branch = l:parser[1]
-  endif
-  execute '!git checkout ' . l:branch
-endfunction
-
-function! s:open_files_in_dir(dir)
-  execute 'cd ' . a:dir
-  GitFiles
-endfunction
-
-nnoremap <leader>cd :call fzf#run({
-			\ 'sink': function('s:open_files_in_dir'),
-			\ 'source': 'ls',
-			\ 'dir': '~/workspace/',
-			\ 'down': '40%'})<CR>
-
-command! -bang -nargs=0 GCheckout
-  \ call fzf#vim#grep(
-  \   'git branch -v', 0,
-  \   {
-  \     'sink': function('s:open_branch_fzf')
-  \   },
-  \   <bang>0
-  \ )
+" Key mappings
 
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
@@ -229,9 +203,6 @@ nmap <leader>b :Buffers
 nmap <leader>c :Commits
 nmap <leader>C :BCommits
 nmap <leader>s :Gstatus
-nmap <leader>S :Gcommit
-
-
 
 map<C-s> :NERDTreeToggle<CR>
 

@@ -183,6 +183,17 @@
   :config
   (load-theme 'material t))
 
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 (use-package discover
   :ensure t)
 
@@ -192,34 +203,95 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
-  (when (memq window-system '(mac ns x))	
+  (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-(use-package flycheck	
-  :ensure t	
-  :config	
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))	
-  :init	
-  (add-hook 'after-init-hook #'global-flycheck-mode))	
+(use-package flycheck
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  :init
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(use-package editorconfig	
-  :ensure t	
-  :config	
-  (editorconfig-mode 1))	
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
-(use-package company	
-  :ensure t	
-  :config	
-  (use-package company-tern	
-    :ensure	
-    :config	
-    (defvar company-backends)	
-    (setq company-backends '(company-tern))))	
+(use-package company
+  :ensure t
+  :config
+  (use-package company-tern
+    :ensure
+    :config
+    (defvar company-backends)
+    (setq company-backends '(company-tern))))
 
-;; Allow hash to be entered	
-(defun insert-pound ()	
-  "Insert a pound into the buffer."	
-  (insert "#"))	
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs              (if (executable-find "python") 3 0)
+          treemacs-deferred-git-apply-delay   0.5
+          treemacs-file-event-delay           5000
+          treemacs-follow-after-init          t
+          treemacs-follow-recenter-distance   0.1
+          treemacs-goto-tag-strategy          'refetch-index
+          treemacs-indentation                2
+          treemacs-indentation-string         " "
+          treemacs-is-never-other-window      nil
+          treemacs-no-png-images              nil
+          treemacs-project-follow-cleanup     nil
+          treemacs-persist-file               (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-recenter-after-file-follow nil
+          treemacs-recenter-after-tag-follow  nil
+          treemacs-show-hidden-files          t
+          treemacs-silent-filewatch           nil
+          treemacs-silent-refresh             nil
+          treemacs-sorting                    'alphabetic-desc
+          treemacs-space-between-root-nodes   t
+          treemacs-tag-follow-cleanup         t
+          treemacs-tag-follow-delay           1.5
+          treemacs-width                      35)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode t)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null (executable-find "python3"))))
+      (`(t . t)
+       (treemacs-git-mode 'extended))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-evil
+  :after treemacs evil
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+;; Allow hash to be entered
+(defun insert-pound ()
+  "Insert a pound into the buffer."
+  (insert "#"))
 (global-set-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
 
 ;; Keyboard mappings
