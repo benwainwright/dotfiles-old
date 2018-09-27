@@ -1,59 +1,5 @@
-" Allows the system keyboard to interact with yank etc
-set clipboard=unnamed
-
-set encoding=UTF-8
-
-set hidden
-
-" Store swap files here
-set directory^=$HOME/.vim/tmp//
-
-" Indenting
-set expandtab
-set tabstop=2
-set shiftwidth=2
-
-" Highlight search hits
-set hlsearch
-
-" Search as chars are added to search
-set incsearch
-
-set ignorecase
-set smartcase
-
-set laststatus=2
-
-" Turn on syntax highlightingg
-syntax enable
-
-"set 'nocompatible' to ward off unexpected things that your distro might
-" have made, as well as sanely reset options when re-sourcing .vimrc
-set nocompatible
-
-set wildmenu
-
-set showcmd
-
-set ruler
-
-" Actual confirm box rather than dialog box on errors (such as if you quit
-" without write)
-set confirm
-
-set cursorline
-" attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" " and for plugins that are filetype specific.
-" filetype indent plugin on
-
-set number relativenumber " Turn on relative line numbering
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" Plugins
+"==============
 
 " Install vim-plug if it is missing
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -62,10 +8,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0 
-
-" Declare plugins
 call plug#begin('~/.vim/plugged') 
 Plug 'vim-scripts/git-log'
 Plug 'kien/rainbow_parentheses.vim'
@@ -104,7 +46,65 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'tpope/vim-unimpaired'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 call plug#end()
+
+" Core VIM settings
+"==============
+set clipboard=unnamed           " Allows the vim unknown buffer to work with the system clipboard
+set encoding=UTF-8              " Set character encoding used inside VIM
+set hidden                      " Change buffer without saving
+
+set tabstop=2                   " Number of spaces that a tab counts for
+set expandtab                   " Use appropriate number of spaces to insert a tab
+set shiftwidth=2                " Number of spaces used for indentenation
+set shiftround                  " << >> snap to multiples of shiftwidth
+
+set hlsearch                    " highlight search hits
+set incsearch                   " Update search matches as characters are added to search
+set ignorecase                  " Ignore case in search patterns
+set smartcase                   " If search pattern contains uppercase chars, ignorecase is turned off
+
+set nocompatible                " set 'nocompatible' to ward off unexpected things that your 
+                                " distro might have made, as well as sanely reset options when 
+                                " re-sourcing .vimrc
+                                
+set wildmode=longest,list,full  " Completion mode - see :help wildmode for more
+                                " info on specific settings
+set wildmenu                    " Enhanced command line completion mode
+set showcmd                     " Show last command at the bottom of the screen
+set laststatus=2                " Always show statusline
+set ruler                       " Show line and column number
+set number relativenumber       " Turn on relative line numbering
+set cursorline                  " Highlight current line
+set splitright                  " vertical split opens on the right
+
+set directory^=$HOME/.vim/tmp/  " Where to store temporary files
+set autoread                    " If file changes on disk and buffer hasn't
+                                " changed, autoread from disk
+
+
+" When entering a buffer, turn on relative number, turn it off when leaving
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+set confirm                     " Actual confirm box rather than dialog box on errors (such as if
+                                " you quit without write
+
+
+syntax enable                   " Enable syntax highlighting
+filetype indent plugin on       " attempt to determine the type of a file based on its name and possibly its
+                                " contents. Use this to allow intelligent auto-indenting for each filetype,
+                                " and for plugins that are filetype specific.
+
+
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0 
 
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_javascript_eslint_use_global = 1
