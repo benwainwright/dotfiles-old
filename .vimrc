@@ -83,8 +83,14 @@ set splitright                  " vertical split opens on the right
 set directory^=$HOME/.vim/tmp/  " Where to store temporary files
 set autoread                    " If file changes on disk and buffer hasn't
                                 " changed, autoread from disk
-set undofile                    " Store undo data between sessions
-set undodir=~/.vim/undo         " Location of undo data
+if has("persistent_undo")
+  set undofile                  " Store undo data between sessions
+  set undodir=~/.vim/undo       " Location of undo data
+endif
+
+set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
+                                " dividers
+
 
 " When entering a buffer, turn on relative number, turn it off when leaving
 augroup numbertoggle
