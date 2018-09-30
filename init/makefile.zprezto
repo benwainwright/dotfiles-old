@@ -1,0 +1,11 @@
+.PHONY: all
+
+targets=$(foreach target, $(subst conf/zprezto/runcoms/,,$(wildcard conf/zprezto/runcoms/*)), ../.$(target))
+targets:=$(filter-out ../.README.md,$(targets))
+
+all: $(targets)
+
+../.%: $(*)
+	ln -sf "$(PWD)/conf/zprezto/runcoms/$(*)" "$(HOME)/.$(*)"
+	
+
