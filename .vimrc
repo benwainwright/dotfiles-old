@@ -239,8 +239,8 @@ noremap<C-s> :NERDTreeToggle<CR>
 
 noremap<C-w> :Gblame<CR>
 
-nnoremap - ddp
-nnoremap _ ddkP
+nnoremap <leader>- ddp
+nnoremap <leader>_ ddkP
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
