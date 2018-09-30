@@ -1,3 +1,3 @@
 [submodule "zprezto"]
-	path = zprezto
+	path = conf/zprezto
 	url = git://github.com/sorin-ionescu/prezto.git
