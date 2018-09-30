@@ -96,13 +96,10 @@ augroup END
 set confirm                     " Actual confirm box rather than dialog box on errors (such as if
                                 " you quit without write
 
-
 syntax enable                   " Enable syntax highlighting
 filetype indent plugin on       " attempt to determine the type of a file based on its name and possibly its
                                 " contents. Use this to allow intelligent auto-indenting for each filetype,
                                 " and for plugins that are filetype specific.
-
-
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0 
