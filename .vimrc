@@ -153,6 +153,7 @@ command! -bang -nargs=0 GCheckout
 
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
+let maplocalleader = "\\"
 
 let g:airline_powerline_fonts = 1
 
