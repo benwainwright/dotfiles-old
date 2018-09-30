@@ -5,6 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Vi mode
+bindkey -v
+
 alias v='/usr/local/bin/vim'
 alias gdt='git difftool'
 alias cat='bat'
@@ -12,6 +15,9 @@ alias top='sudo htop'
 alias ping='prettyping --nolegend'
 alias jticket='echo $(jira list | fzf) | cut -d ":" -f 1'
 alias jsprint='echo $(jira sprint | fzf) | cut -d ":" -f 1'
+alias branch='git branch -a | awk '\''{n = split($1, a, "/"); print a[n]}'\'' | sort -u | fzf'
+alias vbranch='g branch -av | awk '\''{n = split($1, a, "/")} !seen[a[n]]++ { print; }'\'' | fzf | awk '\''{n = split($1, a, "/"); print a[n]}'\'
+alias git=hub
 
 #checks if network location is set to BBC On Network
 function is_internal_network {
@@ -31,6 +37,13 @@ else
     echo "NOT on the BBC network, skipping HTTP proxy env variables"
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export HOMEBREW_GITHUB_API_TOKEN=e87f605d23e1bc532b453da0136bf3552f042e87
+
+#export NVM_DIR="$HOME/.nvm"
+#. "/usr/local/opt/nvm/nvm.sh"
+
 #
 # General
 #
@@ -38,7 +51,8 @@ fi
 # Set case-sensitivity for completion, history lookup, etc.
 # zstyle ':prezto:*:*' case-sensitive 'yes'
 
-# Color output (auto set to 'no' on dumb terminals).
+# Color output  export NVM_DIR="$HOME/.nvm"
+#  . "/usr/local/opt/nvm/nvm.sh" (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from

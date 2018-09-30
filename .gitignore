@@ -1,5 +1,6 @@
 .vim/plugged
 *~
 \#*\#
-.vim/tmp
-.vim/undo
+vim/tmp
+vim/undo
+vim/plugged

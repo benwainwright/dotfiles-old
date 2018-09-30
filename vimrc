@@ -48,6 +48,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'tpope/vim-unimpaired'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'dbakker/vim-projectroot'
 call plug#end()
 
 " Core VIM settings
@@ -141,6 +142,39 @@ function! s:open_files_in_dir(dir)
   execute 'cd ' . a:dir
   GitFiles
 endfunction
+
+function! s:replace_buffer_with_command_output(...)
+  if a:0 == 2
+    echom a:1
+    let l:output = system(a:1, a:2)
+  else
+    let l:output = system(a:1)
+  endif
+  if v:shell_error == 0
+    let l:line_number = line('.')
+    execute '1,$d'
+    put=l:output
+    normal! ggdd
+    execute l:line_number
+  else
+    echoerr l:output
+  endif
+endfunction
+
+function! s:format_buffer_with_node_local(name, args)
+  let l:modules_dir = 'node_modules'
+  let l:root = projectroot#guess('.')
+  if finddir(l:modules_dir, l:root) == l:modules_dir
+    let l:path = l:modules_dir . "/.bin/" . a:name
+    if findfile(l:path, l:root) == l:path
+      let l:line_ending = {"unix": "\n", "dos": "\r\n", "mac": "\r"}[&fileformat]
+      let l:buffertext  = join(getline(1, '$'), line_ending).line_ending
+      call s:replace_buffer_with_command_output(l:root . "/" . l:path . " " . a:args, l:buffertext)
+    endif
+  endif
+endfunction
+
+autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint", "--stdin --parser babylon --stdin-filepath ". @%)
 
 nnoremap <leader>cd :call fzf#run({
 			\ 'sink': function('s:open_files_in_dir'),
