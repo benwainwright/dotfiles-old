@@ -1,0 +1,44 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[user]
+	name = Ben Wainwright
+	email = ben.wainwright@bbc.co.uk
+
+[diff]
+	tool = Kaleidoscope
+
+[difftool]
+	prompt = false
+
+[alias]
+	d = difftool
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+
+[merge]
+	tool = Kaleidoscope
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[mergetool]
+	prompt = false
+
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+
+[push]
+	default = simple
+
+[credential]
+	helper = osxkeychain
+  
+[core]
+	editor = vim
