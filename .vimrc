@@ -188,31 +188,34 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" Insert mode mappings
+inoremap <c-u> <esc>gUawi
+
 " Tern mappings
-nmap <leader>td :TernDef<CR>
-nmap <leader>tdp :TernDefPreview<CR>
-nmap <leader>tds :TernDefSplit<CR>
-nmap <leader>tdt :TernDefTab<CR>
-nmap <leader>tr :TernRefs<CR>
-nmap <leader>trn :TernRename<CR>
-nmap <leader>tt :TernType<CR>
+nnoremap <leader>td :TernDef<CR>
+nnoremap <leader>tdp :TernDefPreview<CR>
+nnoremap <leader>tds :TernDefSplit<CR>
+nnoremap <leader>tdt :TernDefTab<CR>
+nnoremap <leader>tr :TernRefs<CR>
+nnoremap <leader>trn :TernRename<CR>
+nnoremap <leader>tt :TernType<CR>
 
 " Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+nnoremap <leader><tab> <plug>(fzf-maps-n)
+xnoremap <leader><tab> <plug>(fzf-maps-x)
+onoremap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+inoremap <c-x><c-k> <plug>(fzf-complete-word)
+inoremap <c-x><c-f> <plug>(fzf-complete-path)
+inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
+inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
-nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
-nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
-nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
-nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
-nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
+nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 
 nnoremap <C-n> :bprevious<CR>
 nnoremap <C-p> :bnext<CR>
@@ -221,25 +224,25 @@ nnoremap <C-p> :bnext<CR>
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
 
 " Map fzf commands
-nmap <leader>k :Ag
-nmap <leader>K :Ag!
-nmap <leader>f :GitFiles
-nmap <leader>F :GitFiles!
-nmap <leader>g :GitFiles?
-nmap <leader>b :Buffers
-nmap <leader>c :Commits
-nmap <leader>C :BCommits
-nmap <leader>s :Gstatus
-nmap <leader>S :Gcommit
+nnoremap <leader>k :Ag
+nnoremap <leader>K :Ag!
+nnoremap <leader>f :GitFiles
+nnoremap <leader>F :GitFiles!
+nnoremap <leader>g :GitFiles?
+nnoremap <leader>b :Buffers
+nnoremap <leader>c :Commits
+nnoremap <leader>C :BCommits
+nnoremap <leader>s :Gstatus
+nnoremap <leader>S :Gcommit
 
 
 
-map<C-s> :NERDTreeToggle<CR>
+noremap<C-s> :NERDTreeToggle<CR>
 
-map<C-w> :Gblame<CR>
+noremap<C-w> :Gblame<CR>
 
-nmap - ddp
-nmap _ ddkP
+nnoremap - ddp
+nnoremap _ ddkP
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -247,8 +250,8 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 let g:GITLOG_default_mode = 2
-map <silent> <f7> :call GITLOG_ToggleWindows()<cr>
-map <silent> <f5> :call GITLOG_FlipWindows()<cr>
+noremap <silent> <f7> :call GITLOG_ToggleWindows()<cr>
+noremap <silent> <f5> :call GITLOG_FlipWindows()<cr>
 
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = ''
