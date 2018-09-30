@@ -84,6 +84,8 @@ set directory^=$HOME/.vim/tmp/  " Where to store temporary files
 set autoread                    " If file changes on disk and buffer hasn't
                                 " changed, autoread from disk
 
+set undofile                    " Store undo data between sessions
+set undodir=~/.vim/undo         " Location of undo data
 
 " When entering a buffer, turn on relative number, turn it off when leaving
 augroup numbertoggle
