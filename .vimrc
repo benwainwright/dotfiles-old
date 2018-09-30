@@ -239,6 +239,9 @@ map<C-s> :NERDTreeToggle<CR>
 
 map<C-w> :Gblame<CR>
 
+nmap - ddp
+nmap _ ddkP
+
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
