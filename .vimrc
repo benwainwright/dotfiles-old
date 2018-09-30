@@ -186,6 +186,11 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+
+" Normal mode mappings
+nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+autocmd! bufwritepost ~/.vimrc source ~/.vimrc
+
 " Insert mode mappings
 inoremap <c-u> <esc>gUawi
 
