@@ -244,6 +244,10 @@ nnoremap <leader>C :BCommits
 nnoremap <leader>s :Gstatus
 nnoremap <leader>S :Gcommit
 
+" Operator pending mappings
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+
 
 
 noremap<C-s> :NERDTreeToggle<CR>
