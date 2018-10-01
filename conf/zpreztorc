@@ -41,8 +41,17 @@ fi
 
 export HOMEBREW_GITHUB_API_TOKEN=e87f605d23e1bc532b453da0136bf3552f042e87
 
-#export NVM_DIR="$HOME/.nvm"
-#. "/usr/local/opt/nvm/nvm.sh"
+nvm() {
+  # Borrowed from https://medium.com/@dannysmith/little-thing-2-speeding-up-zsh-f1860390f92
+  echo "NVM not yet loaded! Loading now..."
+  unset -f nvm
+  export NVM_DIR="$HOME/.nvm"
+  export NVM_PREFIX=$(brew --prefix nvm)
+  if [ -s "$NVM_PREFIX/nvm.sh" ]; then
+    source "$NVM_PREFIX/nvm.sh"
+  fi
+  nvm "$@"
+}
 
 #
 # General
