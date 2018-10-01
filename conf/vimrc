@@ -191,6 +191,18 @@ command! -bang -nargs=0 GCheckout
   \   <bang>0
   \ )
 
+function! s:checkout_pr(pr)
+  let l:hashNumber = split(a:pr)[0]
+  let l:number = l:hashNumber[1:strlen(a:pr)]
+  execute '!hub pr checkout ' . l:number
+endfunction
+
+command! -bang -nargs=0 CheckoutPR
+  \ call fzf#run({
+  \ 'source' : "hub pr list | awk '{$1=$1}1'",
+  \ 'sink' : function('s:checkout_pr'),
+  \ 'down' : '15%'})
+
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
