@@ -11,7 +11,7 @@ source_shellfiles() {
     source "$file"
   done
 }
-
 source_shellfiles
 
+# Adds fzf shell bindings, such as Ctrl-R replacement
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
