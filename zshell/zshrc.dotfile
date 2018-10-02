@@ -1,8 +1,8 @@
 source_shellfiles() {
-  readonly shellfiles=$(find $DOTFILES_DIR -type f \( -name "*.zsh" -o -name "*.dotdir" \) -mindepth 2 -maxdepth 2)
+  readonly shellfiles=($(find $DOTFILES_DIR -type f \( -name "*.zsh" -o -name "*.dotdir" \) -mindepth 2 -maxdepth 2))
 
-  for shellfile in $shellfiles; do
-    source "$shellfile"
+  for file in $shellfiles; do
+    source "$file"
   done
 }
 
