@@ -1,0 +1,33 @@
+endpoint: https://jira.dev.bbc.co.uk
+unixproxy: /usr/local/var/client-cert-proxy.sock
+user: ben.wainwright@bbc.co.uk
+project: ORBITEN
+custom-commands:
+  - name: readyfordev
+    short: r4d
+    help: transition a ticket to ready for dev
+    script: |
+      {{jira}} transition {{args.ISSUE}} "Ready for Dev"
+    args:
+      - name: ISSUE
+        required: true
+  - name: devwip
+    short: dw
+    help: transition a ticket to dev wip 
+    script: |
+      {{jira}} transition "Dev - WIP" {{args.ISSUE}}
+    args:
+      - name: ISSUE
+        required: true
+  - name: sprint
+    help: display issues for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --query "sprint in openSprints() and type != epic and resolution = unresolved and project=$JIRA_PROJECT ORDER BY rank asc, created"
+      else
+          # otherwise list issues for all project
+          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
+      fi 
+
+
