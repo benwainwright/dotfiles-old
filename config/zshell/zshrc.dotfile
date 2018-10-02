@@ -1,5 +1,14 @@
 # Source all .zsh files found within dotfiles subdirectories
 source_shellfiles() {
+  readonly prefiles=($( \
+    find $DOTFILES_DIR/config/zshell/source-first \
+    -type f \
+    -name "*.zsh" \
+    -maxdepth 1))
+  for file in $prefiles; do
+    source "$file"
+  done
+
   readonly shellfiles=($( \
     find $DOTFILES_DIR/config \
     -type f \
@@ -61,8 +70,9 @@ setopt hist_ignore_space
 autoload -U colors
 colors
 
-
 # Evaluate colors in prompt skin
 setopt PROMPT_SUBST
 
+# Setup ZShell syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
