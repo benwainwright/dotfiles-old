@@ -11,11 +11,13 @@ source_shellfiles() {
     source "$file"
   done
 }
-
 source_shellfiles
 
 # Adds fzf shell bindings, such as Ctrl-R replacement
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setup fasd aliases
+eval "$(fasd --init auto)"
 
 HISTFILE=~/.zsh_history
 
