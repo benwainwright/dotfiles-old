@@ -13,3 +13,5 @@ source_shellfiles() {
 }
 
 source_shellfiles
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
