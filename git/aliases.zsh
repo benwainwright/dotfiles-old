@@ -1,4 +1,5 @@
 alias g='git'
+alias gp='git push'
 alias gdt='git difftool'
 alias gia='git add'
 alias branch='git branch -a | awk '\''{n = split($1, a, "/"); print a[n]}'\'' | sort -u | fzf'
