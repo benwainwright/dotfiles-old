@@ -1,7 +1,7 @@
 # Source all .zsh files found within dotfiles subdirectories
 source_shellfiles() {
   readonly shellfiles=($( \
-    find $DOTFILES_DIR \
+    find $DOTFILES_DIR/config \
     -type f \
     -name "*.zsh" \
     -mindepth 2 -maxdepth 2 \
