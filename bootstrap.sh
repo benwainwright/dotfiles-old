@@ -14,19 +14,23 @@ parse_args() {
     done
 }
 
+symlink() {
+  local command
+  command="ln -s"
+  if $force; then
+    command+="f"
+    echo "Symlinking '$1' to '$2'"
+  fi
+  $command "$1" "$2"
+}
+
 symlink_dotfiles() {
   readonly dotfiles=$(find . -name "*.dotfile" -mindepth 2 | sed "s|^\\./||")
 
   for dotfile in $dotfiles; do
     local link_name
-    local command
-
     link_name=."$(echo "$dotfile" | xargs basename | cut -d. -f1)"
-    command="ln -s"
-    if $force; then
-      command+="f"
-    fi
-    $command "$PWD/$dotfile" "$HOME/$link_name"
+    symlink "$PWD/$dotfile" "$HOME/$link_name"
   done
 }
 
