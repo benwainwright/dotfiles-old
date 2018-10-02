@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-set -x
-
 force=false
 
 parse_args() {
@@ -25,7 +23,7 @@ symlink() {
 }
 
 symlink_dotfiles() {
-  readonly dotfiles=$(find . -name "*.dotfile" -mindepth 2 | sed "s|^\\./||")
+  readonly dotfiles=$(find . \( -name "*.dotfile" -o -name "*.dotdir" \) -mindepth 2 | sed "s|^\\./||")
 
   for dotfile in $dotfiles; do
     local link_name

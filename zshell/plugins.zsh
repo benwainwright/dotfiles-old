@@ -1,0 +1,1 @@
+zplug aperezdc/zsh-fzy
