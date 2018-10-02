@@ -37,4 +37,3 @@ symlink_dotfiles() {
 
 parse_args "$@"
 symlink_dotfiles
-
