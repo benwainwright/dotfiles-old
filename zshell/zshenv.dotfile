@@ -1,1 +1,1 @@
-export DOTFILES_DIR=$(dirname $PWD)
+export DOTFILES_DIR=$(echo ${(%):-%N} | xargs readlink | xargs dirname | xargs dirname)
