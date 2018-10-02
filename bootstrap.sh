@@ -24,12 +24,9 @@ symlink() {
 
 symlink_dotfiles() {
   readonly dotfiles=$(   \
-    find ./config \(     \
-    -name "*.dotfile" -o \
-    -name "*.dotdir"     \
-                  \)     \
-    -mindepth 2          \
-    -maxdepth 2 | sed "s|^\\./||")
+    find ./config \( -name "*.dotfile" -o -name "*.dotdir" \) \
+       -mindepth 2          \
+       -maxdepth 2 | sed "s|^\\./||")
 
   for dotfile in $dotfiles; do
     local link_name
