@@ -17,8 +17,8 @@ symlink() {
   command="ln -s"
   if $force; then
     command+="f"
-    echo "Symlinking '$1' to '$2'"
   fi
+  echo "Symlinking '$1' to '$2'"
   $command "$1" "$2"
 }
 
