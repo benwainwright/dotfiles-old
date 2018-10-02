@@ -27,7 +27,7 @@ symlink_dotfiles() {
 
   for dotfile in $dotfiles; do
     local link_name
-    link_name=."$(echo "$dotfile" | xargs basename | cut -d. -f1)"
+    link_name=."$(echo "$dotfile" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
     symlink "$PWD/$dotfile" "$HOME/$link_name"
   done
 }
