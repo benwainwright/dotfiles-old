@@ -12,8 +12,8 @@ fi
 #######################################################
 
 source_shellfiles() {
-  readonly prefiles=($( \
-    find $DOTFILES_DIR/config/zshell/source-first \
+  readonly initfiles=($( \
+    find $DOTFILES_DIR/config/zshell/init \
     -type f \
     -name "*.zsh" \
     -maxdepth 1))
