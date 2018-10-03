@@ -8,7 +8,7 @@ Files are organised loosely into a tool based folders within the `config` direct
 Source files follow the normal zsh loading path. My zshrc then sources files in the following order:
 
 - `~/.env.private.zsh` if it exists
-- Any '.zsh' files in `dotfiles/config/zshell/init`
-- Any '.zsh' files found in any of the `dotfiles/config` subdirectories
+- Any `.zsh` files in `dotfiles/config/zshell/init`
+- Any `.zsh` files found in any of the `dotfiles/config` subdirectories
 
 This approach avoids a huge list of aliases and functions and allows me to organise aliases, functions and shell variables around the associated tool. For example, all aliases related to git can be found in `dotfiles/config/git/aliases.zsh`
