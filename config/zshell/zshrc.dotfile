@@ -1,4 +1,6 @@
-# Source all .zsh files found within dotfiles subdirectories
+#######################################################
+# Auto-sourcing                                       #
+#######################################################
 source_shellfiles() {
   readonly prefiles=($( \
     find $DOTFILES_DIR/config/zshell/source-first \
@@ -22,12 +24,19 @@ source_shellfiles() {
 }
 source_shellfiles
 
+#####################################################
+# Configure shell integrations                      #
+# ###################################################
+
 # Adds fzf shell bindings, such as Ctrl-R replacement
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Setup fasd aliases
 eval "$(fasd --init auto)"
 
+#####################################################
+# Zshell configuration                              #
+#####################################################
 HISTFILE=~/.zsh_history
 
 # Allow changing directories without `cd`
