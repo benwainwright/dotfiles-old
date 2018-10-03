@@ -1,6 +1,16 @@
+######################################################
+# Auto-start TMUX                                    #
+######################################################
+
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
+
 #######################################################
 # Auto-sourcing                                       #
 #######################################################
+
 source_shellfiles() {
   readonly prefiles=($( \
     find $DOTFILES_DIR/config/zshell/source-first \
@@ -37,6 +47,7 @@ eval "$(fasd --init auto)"
 #####################################################
 # Zshell configuration                              #
 #####################################################
+
 HISTFILE=~/.zsh_history
 
 # Allow changing directories without `cd`
