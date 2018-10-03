@@ -5,7 +5,7 @@ Since other people are doing it, I thought I'd organise and share mine as well. 
 Files are organised loosely into a tool based folders within the `config` directory. When you run `./bootstrap.sh` any `.dotfile` or `.dotdir` within these directories will be symlinked into the home directory.
 
 ## Shell Sourcing
-Source files follow the normal zsh loading path. My zshrc then sources files in the following order:
+Sourced files follow the normal zsh loading path initially. My zshrc then sources files in the following order:
 
 - `~/.env.private.zsh` if it exists
 - Any `.zsh` files in `dotfiles/config/zshell/init`
