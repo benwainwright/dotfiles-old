@@ -12,6 +12,11 @@ fi
 #######################################################
 
 source_shellfiles() {
+
+  if [ -f "~/.env.private.zsh" ]; then
+    source "~/.env.private.zsh"
+  fi
+
   readonly initfiles=($DOTFILES_DIR/config/zshell/init/*)
 
   for file in $initfiles; do
