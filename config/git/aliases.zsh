@@ -1,4 +1,5 @@
 alias g='git'
+alias gs='git stash'
 alias gp='git push'
 alias gdt='git difftool'
 alias gia='git add'
