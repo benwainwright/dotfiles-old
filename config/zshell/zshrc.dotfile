@@ -12,21 +12,13 @@ fi
 #######################################################
 
 source_shellfiles() {
-  readonly initfiles=($( \
-    find $DOTFILES_DIR/config/zshell/init \
-    -type f \
-    -name "*.zsh" \
-    -maxdepth 1))
-  for file in $prefiles; do
+  readonly initfiles=($DOTFILES_DIR/config/zshell/init/*)
+
+  for file in $initfiles; do
     source "$file"
   done
 
-  readonly shellfiles=($( \
-    find $DOTFILES_DIR/config \
-    -type f \
-    -name "*.zsh" \
-    -mindepth 2 -maxdepth 2 \
-    ))
+  readonly shellfiles=($DOTFILES_DIR/config/*/*.zsh)
 
   for file in $shellfiles; do
     source "$file"
