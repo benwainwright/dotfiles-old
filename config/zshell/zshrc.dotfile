@@ -13,8 +13,8 @@ fi
 
 source_shellfiles() {
 
-  if [ -f "~/.env.private.zsh" ]; then
-    source "~/.env.private.zsh"
+  if [ -f "$HOME/.env.private.zsh" ]; then
+    source "$HOME/.env.private.zsh"
   fi
 
   readonly initfiles=($DOTFILES_DIR/config/zshell/init/*)
