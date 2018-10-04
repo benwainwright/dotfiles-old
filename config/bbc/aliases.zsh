@@ -1,0 +1,1 @@
+sshc='ssh-cosmos'
