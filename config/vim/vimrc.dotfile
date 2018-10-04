@@ -157,11 +157,6 @@ function! s:open_branch_fzf(line)
   execute '!git checkout ' . l:branch
 endfunction
 
-function! s:open_files_in_dir(dir)
-  execute 'cd ' . a:dir
-  GitFiles
-endfunction
-
 function! s:replace_buffer_with_command_output(...)
   if a:0 == 2
     echom a:1
@@ -194,6 +189,21 @@ function! s:format_buffer_with_node_local(name, args)
 endfunction
 
 autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint", "--stdin --parser babylon --stdin-filepath ". @%)
+
+function! EditJiraTicket(line)
+  let l:ticket = split(a:line, ":")[0]
+  execute '!jira edit ' . l:ticket
+endfunction
+
+nnoremap <leader>ji :call fzf#run({
+      \ 'sink': function('EditJiraTicket'),
+      \ 'down' : '40%',
+      \ 'source': 'jira list'})<CR>
+
+function! s:open_files_in_dir(dir)
+  execute 'cd ' . a:dir
+  GitFiles
+endfunction
 
 nnoremap <leader>cd :call fzf#run({
 			\ 'sink': function('s:open_files_in_dir'),
