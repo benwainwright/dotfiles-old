@@ -3,6 +3,15 @@ unixproxy: /usr/local/var/client-cert-proxy.sock
 user: ben.wainwright@bbc.co.uk
 project: ORBITEN
 custom-commands:
+  - name: search
+    short: s
+    help: Search JIRA for a given string
+    script: |
+      {{ jira }} list --query "text ~ \"{{args.TEXT}}\""
+    args:
+      - name: TEXT
+        required: true
+
   - name: readyfordev
     short: r4d
     help: transition a ticket to ready for dev
