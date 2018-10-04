@@ -1,1 +1,1 @@
-sshc='ssh-cosmos'
+alias sshc='ssh-cosmos'
