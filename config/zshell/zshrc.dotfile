@@ -10,6 +10,7 @@ fi
 #######################################################
 # Load Antigen bundles                                #
 #######################################################
+
 source "$ZSH_DIR/antigen/antigen-cache.zsh"
 source "$ZSH_DIR/antigen/antigen.zsh"
 if [ -f $ZDOTCACHE ] ; then
@@ -17,10 +18,10 @@ if [ -f $ZDOTCACHE ] ; then
 else
   source "$ZSH_DIR/antigen/bundles.zsh"
 fi
+
 #######################################################
 # Auto-sourcing                                       #
 #######################################################
-
 
 source_shellfiles() {
   local private_env_file="$HOME/.env.private.zsh"
