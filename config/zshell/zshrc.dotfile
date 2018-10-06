@@ -34,14 +34,14 @@ source_shellfiles() {
   setopt null_glob
   setopt +o nomatch
 
-  readonly initfiles=($DOTFILES_DIR/config/zshell/init/*.zsh)
+  readonly initfiles=($DOTFILES_DIR/config/zshell/init/*.{zsh,sh})
 
   for init_file in $initfiles; do
     [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $init_file"
     source "$init_file"
   done
 
-  readonly shellfiles=($DOTFILES_DIR/config/*/*.zsh)
+  readonly shellfiles=($DOTFILES_DIR/config/*/*.{zsh,sh})
 
   for shell_file in $shellfiles; do
     [  ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $shell_file"
