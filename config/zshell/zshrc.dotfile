@@ -13,20 +13,25 @@ fi
 
 source_shellfiles() {
 
-  if [ -f "$HOME/.env.private.zsh" ]; then
-    source "$HOME/.env.private.zsh"
+  local private_env_file="$HOME/.env.private.zsh"
+
+  if [ -f "$private_env_file" ]; then
+    [ ! -z "$DEBUG_SOURCING" ] && echo "Sourcing $private_env_file"
+    source "$private_env_file"
   fi
 
   readonly initfiles=($DOTFILES_DIR/config/zshell/init/*)
 
-  for file in $initfiles; do
-    source "$file"
+  for init_file in $initfiles; do
+    [ ! -z "$DEBUG_SOURCING" ] && echo "Sourcing $init_file"
+    source "$init_file"
   done
 
   readonly shellfiles=($DOTFILES_DIR/config/*/*.zsh)
 
-  for file in $shellfiles; do
-    source "$file"
+  for shell_file in $shellfiles; do
+    [  ! -z "$DEBUG_SOURCING" ] && echo "Sourcing $shell_file"
+    source "$shell_file"
   done
 }
 source_shellfiles
