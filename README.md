@@ -12,3 +12,6 @@ Sourced files follow the normal zsh loading path initially. My zshrc then source
 - Any `.zsh` files found in any of the `dotfiles/config` subdirectories
 
 This approach avoids a huge list of aliases and functions and allows me to organise aliases, functions and shell variables around the associated tool. For example, all aliases related to git can be found in `dotfiles/config/git/aliases.zsh`
+
+# Credit
+I've gotten a lot of stuff from [Kieran's dotfiles](https://github.com/kieran-bamforth/dotfiles), along with some influences from [Holman does dotfiles](https://github.com/holman/dotfiles)
