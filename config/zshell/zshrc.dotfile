@@ -41,9 +41,16 @@ source_shellfiles() {
     source "$init_file"
   done
 
+  readonly envfiles=($DOTFILES_DIR/config/*/env.{zsh,sh})
+
+  for env_file in $envfiles; do
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $env_file"
+    source "$env_file"
+  done
+
   readonly shellfiles=($DOTFILES_DIR/config/*/*.{zsh,sh})
 
-  for shell_file in $shellfiles; do
+  for shell_file in ${${shellfiles:#*/env.zsh}:#*/env.sh}; do
     [  ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $shell_file"
     source "$shell_file"
   done
