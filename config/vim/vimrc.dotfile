@@ -193,8 +193,7 @@ autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint"
 function! EditJiraTicket(line)
   let l:ticket = split(a:line, ":")[0]
   execute '!jira edit ' . l:ticket
-endfunction
-
+endfunction 
 nnoremap <leader>ji :call fzf#run({
       \ 'sink': function('EditJiraTicket'),
       \ 'down' : '40%',
@@ -295,9 +294,9 @@ nnoremap <C-p> :bnext<CR>
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
 
 " Map fzf commands
-nnoremap <leader>k :Ag
+nnoremap <C-g> :Ag
 nnoremap <leader>K :Ag!
-nnoremap <leader>f :GitFiles
+nnoremap <C-f> :GitFiles
 nnoremap <leader>F :GitFiles!
 nnoremap <leader>g :GitFiles?
 nnoremap <leader>b :Buffers
