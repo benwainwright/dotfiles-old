@@ -1,4 +1,6 @@
 alias g='git'
+alias gf='git fetch'
+alias gfa='git fetch --all'
 alias gs='git stash'
 alias gsa='git stash apply'
 alias gp='git push'
