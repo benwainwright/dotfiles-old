@@ -15,3 +15,7 @@ bbc-repo() {
   fi
   cd "$dir"
 }
+
+clean-bbc-repo() {
+  remove-inactive-repos "$BBC_WORKSPACE"
+}

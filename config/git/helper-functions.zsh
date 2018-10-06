@@ -8,10 +8,8 @@ commit-push() {
   git commit $message && git push
 }
 
-# Removes folders from my BBC workspace where the most recent commit
-# was more than a month ago
 remove-inactive-repos() {
-  local repos=($(find $BBC_WORKSPACE -type d -mindepth 1 -maxdepth 1))
+  local repos=($(find "$1" -type d -mindepth 1 -maxdepth 1))
   local timestamp status
   for repo in "${repos[@]}"; do
     remove-repo-if-inactive "$repo"
