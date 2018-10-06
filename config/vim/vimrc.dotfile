@@ -48,6 +48,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'dbakker/vim-projectroot'
+Plug 'rizzatti/dash.vim'
+Plug 'godlygeek/csapprox'
 call plug#end()
 
 " Core VIM settings
