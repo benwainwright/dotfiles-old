@@ -17,5 +17,5 @@ bbc-repo() {
 }
 
 clean-bbc-repo() {
-  remove-inactive-repos "$BBC_WORKSPACE"
+  git-remove-inactive-repos "$BBC_WORKSPACE"
 }
