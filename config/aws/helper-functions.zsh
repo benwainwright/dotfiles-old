@@ -4,7 +4,7 @@ aws_cli_profile_set() {
 
 aws-switch-profile-fzf() {
   local profiles=$(cat ~/.aws/config | grep profile | sed 's/\[profile \(.*\)\]/\1/g')
-  export AWS_DEFAULT_PROFILE=$(echo $profiles | fzf --height=20%)
+  export AWS_DEFAULT_PROFILE=$(echo $profiles | fzf --height=20% --prompt="profile: ")
 }
 
 ecr-login() {
