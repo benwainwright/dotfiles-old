@@ -106,7 +106,7 @@ let maplocalleader = "\\"
 function! OpenLinePr()
   let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
   let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
-  let l:response = system(l:hash_cmd)
+let l:response = system(l:hash_cmd)
   if v:shell_error == 0
     let l:repo_url = system('hub browse -u | cut -d/ -f1-5 | tr -d "\n"')
     let l:pr_search_url = l:repo_url . "/pulls\\?q=" . l:response
@@ -200,13 +200,13 @@ nnoremap <leader>ji :call fzf#run({
       \ 'down' : '40%',
       \ 'source': 'jira list'})<CR>
 
-function! s:open_files_in_dir(dir)
+function! Open_files_in_dir(dir)
   execute 'cd ' . a:dir
   GitFiles
 endfunction
 
 nnoremap <leader>cd :call fzf#run({
-			\ 'sink': function('s:open_files_in_dir'),
+			\ 'sink': function('Open_files_in_dir'),
 			\ 'source': 'ls',
 			\ 'dir': '~/workspace/',
 			\ 'down': '40%'})<CR>
@@ -312,9 +312,9 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 
 
 
-noremap<C-s> :NERDTreeToggle<CR>
+noremap <C-t> :NERDTreeToggle<cr>
 
-noremap<C-w> :Gblame<CR>
+noremap <C-w> :Gblame<CR>
 
 nnoremap <leader>- ddp
 nnoremap <leader>_ ddkP
