@@ -8,31 +8,47 @@ then
 fi
 
 #######################################################
+# Load Antigen bundles                                #
+#######################################################
+source "$ZSH_DIR/antigen/antigen-cache.zsh"
+source "$ZSH_DIR/antigen/antigen.zsh"
+if [ -f $ZDOTCACHE ] ; then
+  source "$ZDOTCACHE"
+else
+  source "$ZSH_DIR/antigen/bundles.zsh"
+fi
+#######################################################
 # Auto-sourcing                                       #
 #######################################################
 
-source_shellfiles() {
 
+source_shellfiles() {
   local private_env_file="$HOME/.env.private.zsh"
 
   if [ -f "$private_env_file" ]; then
-    [ ! -z "$DEBUG_SOURCING" ] && echo "Sourcing $private_env_file"
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $private_env_file"
     source "$private_env_file"
   fi
 
-  readonly initfiles=($DOTFILES_DIR/config/zshell/init/*)
+  setopt null_glob
+  setopt +o nomatch
+
+  readonly initfiles=($DOTFILES_DIR/config/zshell/init/*.zsh)
 
   for init_file in $initfiles; do
-    [ ! -z "$DEBUG_SOURCING" ] && echo "Sourcing $init_file"
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $init_file"
     source "$init_file"
   done
 
   readonly shellfiles=($DOTFILES_DIR/config/*/*.zsh)
 
   for shell_file in $shellfiles; do
-    [  ! -z "$DEBUG_SOURCING" ] && echo "Sourcing $shell_file"
+    [  ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $shell_file"
     source "$shell_file"
   done
+
+  setopt -o nomatch
+  unsetopt null_glob
 }
 source_shellfiles
 
