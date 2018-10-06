@@ -23,3 +23,5 @@ export COSMOS_CERT=/etc/pki/tls/cert.pem
 export COSMOS_CERT_KEY=/etc/pki/tls/private/client.key
 
 export JENKINS_URL=https://jenkins.cd.test.tools.bbc.co.uk
+
+export CHRONOS=kieran-bamforth,andrewscfc,lalkhum,cefn,saralk

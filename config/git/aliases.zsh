@@ -15,5 +15,4 @@ alias branch='git branch -a | awk '\''{n = split($1, a, "/"); print a[n]}'\'' | 
 alias vbranch='g branch -av | awk '\''{n = split($1, a, "/")} !seen[a[n]]++ { print; }'\'' | fzf | awk '\''{n = split($1, a, "/"); print a[n]}'\'
 alias git='hub'
 alias gfm='git pull'
-
-
+alias gpr='git pull-request'
