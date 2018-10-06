@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-commit-push() {
+git-commit-push() {
   local message
   if [ $# -eq 1 ]; then
     message="-m \"$1\""
