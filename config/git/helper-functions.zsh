@@ -8,7 +8,7 @@ commit-push() {
   git commit $message && git push
 }
 
-remove-inactive-repos() {
+git-remove-inactive-repos() {
   local repos=($(find "$1" -type d -mindepth 1 -maxdepth 1))
   local timestamp status
   for repo in "${repos[@]}"; do
