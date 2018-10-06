@@ -76,6 +76,8 @@ eval "$(fasd --init auto)"
 
 HISTFILE=~/.zsh_history
 
+zstyle ':completion:*' menu select
+
 # Allow changing directories without `cd`
 setopt autocd
 
