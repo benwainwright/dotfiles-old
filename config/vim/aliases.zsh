@@ -1,1 +1,2 @@
-alias v='/usr/local/bin/vim'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias v='vim'
