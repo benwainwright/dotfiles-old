@@ -1,1 +1,1 @@
-alias j='fasd_cd -i'
+alias j='fasd_cd -id'
