@@ -3,13 +3,13 @@
 force=false
 
 parse_args() {
-    while (( "$#" )); do
-      case "$1" in
-        --force)
-          force=true
-          shift
-      esac
-    done
+  while (( "$#" )); do
+    case "$1" in
+      --force)
+        force=true
+        shift
+    esac
+  done
 }
 
 symlink() {
@@ -25,8 +25,8 @@ symlink() {
 symlink_dotfiles() {
   readonly dotfiles=$(   \
     find ./config \( -name "*.dotfile" -o -name "*.dotdir" \) \
-       -mindepth 2          \
-       -maxdepth 2 | sed "s|^\\./||")
+    -mindepth 2 \
+    -maxdepth 2 | sed "s|^\\./||")
 
   for dotfile in $dotfiles; do
     local link_name
