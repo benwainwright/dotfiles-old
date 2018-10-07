@@ -359,9 +359,14 @@ let g:gitgutter_sign_added = ''
 let g:gitgutter_sign_modified = ''
 let g:gitgutter_sign_removed = ''
 
+" Don't spellcheck URLS
+syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
+" Don't spell check initialisms
+ syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+
 augroup vimrc
   autocmd!
-" Set spelling / linebreak for text files.
+" Set spelling / line break for text files.
   autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
   autocmd FileType gitcommit,markdown,conf setlocal linebreak
   autocmd FileType gitcommit,markdown,conf setlocal textwidth=80 colorcolumn=80
