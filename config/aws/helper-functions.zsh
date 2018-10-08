@@ -7,6 +7,16 @@ aws-switch-profile-fzf() {
   export AWS_DEFAULT_PROFILE=$(echo $profiles | fzf --height=20% --prompt="profile: ")
 }
 
+aws() {
+  if [ -z $AWS_DEFAULT_PROFILE ] || [ "$1" = "--switch" ]; then
+    aws-switch-profile-fzf
+    if [ "$1" = "--switch" ]; then
+      shift
+    fi
+  fi
+  command aws "$@"
+}
+
 ecr-login() {
   if [ -z $AWS_DEFAULT_PROFILE ] || [ "$1" = "--switch" ]; then
     aws-switch-profile-fzf
