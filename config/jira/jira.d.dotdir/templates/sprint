@@ -1,2 +1,29 @@
-{{ range .issues }}{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }}
-{{ end }}
+========= Ready for Amigo =========={{ range .issues }}{{ if .fields.status.name | eq "Open" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+========== Ready for Dev ==========={{ range .issues }}{{ if .fields.status.name | eq "Ready for Dev" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+============ Dev - WIP ============={{ range .issues }}{{ if .fields.status.name | eq "Dev - WIP" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+============ In Review ============={{ range .issues }}{{ if .fields.status.name | eq "In Review" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+========= Ready to Deploy =========={{ range .issues }}{{ if .fields.status.name | eq "Ready to Deploy" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+============= On Int ==============={{ range .issues }}{{ if .fields.status.name | eq "On Int" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+========== Ready for Test =========={{ range .issues }}{{ if .fields.status.name | eq "Ready for Test" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+============ Test - WIP ============{{ range .issues }}{{ if .fields.status.name | eq "Test - WIP" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+======== Ready for Release ========={{ range .issues }}{{ if .fields.status.name | eq "Ready for Release" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
+
+=============== Done ==============={{ range .issues }}{{ if .fields.status.name | eq "Done" }}
+{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }} {{ end }}{{ end }}
