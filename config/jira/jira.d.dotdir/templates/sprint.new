@@ -1,0 +1,6 @@
+{{ $issues := .issues }}{{ range $index, $element := .issues }}{{ if $index | ne 0 }}{{ $lastIndex := (sub $index 1) }}{{ $lastelement := (index $issues $lastIndex) }}{{ if $lastelement.fields.status.name | ne .fields.status.name }}
+======= {{ .fields.status.name }} ========
+{{ end }}{{ else }}
+===== {{ .fields.status.name }} =======
+{{ end }}{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }}
+{{ end }}
