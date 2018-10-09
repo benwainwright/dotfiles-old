@@ -4,6 +4,15 @@ jira_transition_ticket_fzf() {
   jira transition --noedit "$state" "$ticket"
 }
 
+jira_browse() {
+  jira browse ORBITEN-$1
+}
+
+jira_take() {
+  jira take ORBITEN-$1
+}
+
+
 # Yes this function is kind of horrible 
 # but it does the job, for now
 jira_print_board() {
@@ -18,7 +27,6 @@ jira_print_board() {
   local ready_for_test=()
   local test_wip=()
   local ready_for_release=()
-  local done=()
   local closed_wont_do=()
   local ticket_status
 
@@ -26,6 +34,9 @@ jira_print_board() {
     ticket_status=$(echo $raw_ticket | cut -d ";" -f 2)
     ticket=$(echo $raw_ticket | cut -d ";" -f 1)
     case "$ticket_status" in
+      "Open")
+        open+=("$ticket")
+        ;;
       "Ready for Dev")
         ready_for_dev+=("$ticket")
         ;;
@@ -50,53 +61,34 @@ jira_print_board() {
       "Ready for Release")
         ready_for_release+=("$ticket")
         ;;
-      "Done")
-        done+=("$ticket")
-        ;;
       "Closed - Won't do")
         closed_wont_do+=("$ticket")
         ;;
     esac
   done
-
-  if [ "${#ready_for_dev}" -ne 0 ]; then
-    printf "\n%s\n" "====== Ready for Dev ======"
-    printf "%s\n" "$ready_for_dev"
-  fi
-  if [ "${#dev_wip}" -ne 0 ]; then
-    printf "\n%s\n" "====== Dev - WIP ======"
-    printf "%s\n" "$dev_wip"
-  fi
-  if [ "${#in_review}" -ne 0 ]; then
-    printf "\n%s\n" "====== In Review ======"
-    printf "%s\n" "$in_review"
-  fi
-  if [ "${#ready_to_deploy}" -ne 0 ]; then
-    printf "\n%s\n" "====== Ready to deploy ======"
-    printf "%s\n" "$ready_to_deploy"
-  fi
-  if [ "${#on_int}" -ne 0 ]; then
-    printf "\n%s\n" "====== On Int ======"
-    printf "%s\n" "$on_int"
-  fi
-  if [ "${#ready_for_test}" -ne 0 ]; then
-    printf "\n%s\n" "====== Ready for Test ======"
-    printf "%s\n" "$ready_for_test"
-  fi
-  if [ "${#test_wip}" -ne 0 ]; then
-    printf "\n%s\n" "====== Test - WIP ======"
-    printf "%s\n" "$test_wip"
-  fi
-  if [ "${#ready_for_release}" -ne 0 ]; then
-    printf "\n%s\n" "====== Ready for release ======"
-    printf "%s\n" "$ready_for_release"
-  fi
-  if [ "${#done}" -ne 0 ]; then
-    printf "\n%s\n" "====== Done ======"
-    printf "%s\n" "$done"
-  fi
-  if [ "${#closed_wont_do}" -ne 0 ]; then
-    # printf "\n%s\n" "====== Closed won't do ======"
-    # printf "%s\n" "$closed_wont_do"
-  fi
+ 
+  jira_print_status_tickets "Open" "${open[@]}"
+  jira_print_status_tickets "Ready for Dev" "${ready_for_dev[@]}"
+  jira_print_status_tickets "Dev - WIP" "${dev_wip[@]}"
+  jira_print_status_tickets "In Review" "${in_review[@]}"
+  jira_print_status_tickets "Ready to deploy" "${ready_to_deploy[@]}"
+  jira_print_status_tickets "On Int" "${on_int[@]}"
+  jira_print_status_tickets "Ready for Test" "${ready_for_test[@]}"
+  jira_print_status_tickets "Test - WIP" "${test_wip[@]}"
+  jira_print_status_tickets "Ready for release" "${ready_for_release[@]}"
+  # jira_print_status_tickets "Closed won't do" "${closed_wont_do[@]}"
  }
+
+jira_print_status_tickets() {
+  local name="$1"
+  shift
+  local status_array="$@"
+  if [ "${#status_array}" -ne 0 ]; then
+    printf "\n%s\n" "====== $name ======"
+    printf "%s\n" "$status_array"
+  else
+    printf "\n%s\n" "====== $name ======"
+    printf "%s\n" "(empty)"
+  fi
+}
+

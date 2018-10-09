@@ -44,6 +44,7 @@ Plug 'honza/vim-snippets'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'tpope/vim-unimpaired'
 Plug 'prabirshrestha/async.vim'
+Plug 'benmills/vimux'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'dbakker/vim-projectroot'
 Plug 'rizzatti/dash.vim'
@@ -92,6 +93,13 @@ endif
 set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
                                 " dividers
 
+nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>T :TestFile<CR>
+
+" Test strategy is Dispatch.
+let test#ruby#use_binstubs = 0
+let test#strategy = "dispatch"
+let g:test#runner_commands = ['cucumber']
 
 " When entering a buffer, turn on relative number, turn it off when leaving
 augroup numbertoggle
@@ -276,7 +284,6 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
-let test#strategy = "vimux"
 
 " airline symbols
 let g:airline_left_sep = ''
@@ -306,6 +313,9 @@ inoremap <c-x><c-f> <plug>(fzf-complete-path)
 inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
 inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
+let test#enabled_runners = ["ruby#cucumber"]
+let test#strategy = "vimux"
+let test#ruby#cucumber#file_patterh= '\v.*\.*\.feature'
 nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
 nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
