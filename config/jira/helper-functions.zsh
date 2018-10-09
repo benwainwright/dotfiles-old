@@ -96,7 +96,7 @@ jira_print_board() {
     printf "%s\n" "$done"
   fi
   if [ "${#closed_wont_do}" -ne 0 ]; then
-    printf "\n%s\n" "====== Closed won't do ======"
-    printf "%s\n" "$closed_wont_do"
+    # printf "\n%s\n" "====== Closed won't do ======"
+    # printf "%s\n" "$closed_wont_do"
   fi
  }
