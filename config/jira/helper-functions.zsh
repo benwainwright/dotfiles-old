@@ -17,7 +17,7 @@ jira_print_board() {
   local on_int=()
   local ready_for_test=()
   local test_wip=()
-  local ready_for_release()
+  local ready_for_release=()
   local done=()
   local closed_wont_do=()
   local ticket_status
