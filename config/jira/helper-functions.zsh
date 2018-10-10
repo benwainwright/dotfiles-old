@@ -84,11 +84,14 @@ jira_print_status_tickets() {
   shift
   local status_array="$@"
   if [ "${#status_array}" -ne 0 ]; then
+    tput setaf 2
     printf "\n%s\n" "====== $name ======"
+    tput sgr0
     printf "%s\n" "$status_array"
   else
-    printf "\n%s\n" "====== $name ======"
-    printf "%s\n" "(empty)"
+    tput setaf 4
+    printf "\n%s\n" "$name is empty"
+    tput sgr0
   fi
 }
 
