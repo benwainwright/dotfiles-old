@@ -6,4 +6,6 @@ github
 fzf
 autoload
 Chronos
-Unreliablity
+Unreliability
+Rubocop
+config
