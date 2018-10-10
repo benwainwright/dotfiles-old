@@ -317,9 +317,6 @@ inoremap <c-x><c-f> <plug>(fzf-complete-path)
 inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
 inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
-let test#enabled_runners = ["ruby#cucumber"]
-let test#strategy = "vimux"
-let test#ruby#cucumber#file_patterh= '\v.*\.*\.feature'
 nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
 nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
