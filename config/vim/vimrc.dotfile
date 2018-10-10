@@ -60,6 +60,8 @@ set clipboard=unnamed           " Allows the vim unknown buffer to work with the
 set encoding=UTF-8              " Set character encoding used inside VIM
 set hidden                      " Change buffer without saving
 
+set exrc
+
 set tabstop=2                   " Number of spaces that a tab counts for
 set expandtab                   " Use appropriate number of spaces to insert a tab
 set shiftwidth=2                " Number of spaces used for indentenation
@@ -383,3 +385,5 @@ augroup vimrc
   autocmd FileType gitcommit,markdown,conf setlocal linebreak
   autocmd FileType gitcommit,markdown,conf setlocal textwidth=80 colorcolumn=80
 augroup end
+
+set secure
