@@ -339,7 +339,7 @@ nnoremap <leader>b :Buffers
 nnoremap <leader>c :Commits
 nnoremap <leader>C :BCommits
 nnoremap <leader>s :Gstatus
-nnoremap <leader>S :Gcommit
+nnoremap <leader>cm :Gcommit
 
 " Operator pending mappings
 onoremap in( :<c-u>normal! f(vi(<cr>
