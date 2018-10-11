@@ -81,6 +81,9 @@ zstyle ':completion:*' menu select
 # Allow changing directories without `cd`
 setopt autocd
 
+export SAVEHIST=10000
+export HISTSIZE=10000
+
 # Dont overwrite history
 setopt append_history
 
