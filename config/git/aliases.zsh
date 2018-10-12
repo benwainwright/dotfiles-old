@@ -1,4 +1,6 @@
 alias g='git'
+alias gr='git rebase'
+alias gri='git rebase -i'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gs='git stash'
