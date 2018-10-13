@@ -200,13 +200,10 @@ function! s:open_branch_fzf(line)
   execute '!git checkout ' . l:branch
 endfunction
 
-function! s:replace_buffer_with_command_output(...)
-  if a:0 == 2
-    echom a:1
-    let l:output = system(a:1, a:2)
-  else
-    let l:output = system(a:1)
-  endif
+function! s:process_buffer(command)
+  let l:line_ending = {"unix": "\n", "dos": "\r\n", "mac": "\r"}[&fileformat]
+  let l:buffertext  = join(getline(1, '$'), line_ending).line_ending
+  let l:output = system(a:command, l:buffertext)
   if v:shell_error == 0
     let l:line_number = line('.')
     execute '1,$d'
@@ -224,14 +221,14 @@ function! s:format_buffer_with_node_local(name, args)
   if finddir(l:modules_dir, l:root) == l:modules_dir
     let l:path = l:modules_dir . "/.bin/" . a:name
     if findfile(l:path, l:root) == l:path
-      let l:line_ending = {"unix": "\n", "dos": "\r\n", "mac": "\r"}[&fileformat]
-      let l:buffertext  = join(getline(1, '$'), line_ending).line_ending
-      call s:replace_buffer_with_command_output(l:root . "/" . l:path . " " . a:args, l:buffertext)
+        call s:process_buffer(l:root . "/" . l:path . " " . a:args)
     endif
   endif
 endfunction
 
 autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint", "--stdin --parser babylon --stdin-filepath ". @%)
+
+autocmd! BufWritePre *.go call s:process_buffer("gofmt")
 
 function! EditJiraTicket(line)
   let l:ticket = split(a:line, ":")[0]
