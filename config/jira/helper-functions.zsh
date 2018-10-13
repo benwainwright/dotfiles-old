@@ -28,6 +28,7 @@ jira_print_board() {
   local test_wip=()
   local ready_for_release=()
   local closed_wont_do=()
+  local done=()
 local ticket_status ticket_priority
 
   local statuses=(\
@@ -70,6 +71,9 @@ local ticket_status ticket_priority
       "Closed - Won't do")
         closed_wont_do+=("$ticket;$ticket_priority")
         ;;
+      "Done")
+        done+=("$ticket;$ticket_priority")
+        ;;
     esac
   done
  
@@ -82,6 +86,7 @@ local ticket_status ticket_priority
   jira_print_status_tickets "Ready for Test" "${ready_for_test[@]}" 
   jira_print_status_tickets "Test - WIP"  "${test_wip[@]}" 
   jira_print_status_tickets "Ready for release"  "${ready_for_release[@]}" 
+  # jira_print_status_tickets "Done"  "${done[@]}" 
   # jira_print_status_tickets "Closed won't do" "${closed_wont_do[@]}"
  }
 
