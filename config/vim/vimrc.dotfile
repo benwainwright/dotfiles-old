@@ -30,7 +30,10 @@ Plug 'vim-scripts/AutoComplPop'
 Plug 'jacoborus/tender.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kchmck/vim-coffee-script'
+Plug 'larsbs/vimterial_dark'
 Plug 'junkblocker/patchreview-vim'
+Plug 'srcery-colors/srcery-vim'
 " Plug 'janko-m/vim-test'
 " Forked below until he fixes the stupidity with the features directory
 Plug 'benwainwright/vim-test'
@@ -180,7 +183,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsListSnippets="<c-l>"
 
-colorscheme monokai
+colorscheme vimterial_dark
 set background=dark
 let g:airline_section_b = '%{fugitive#head()}'
 
