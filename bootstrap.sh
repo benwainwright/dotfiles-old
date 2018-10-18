@@ -16,22 +16,19 @@ symlink() {
   local command
   command="ln -s"
   if $force; then
-    command+="f"
+    command+="fn"
   fi
   echo "Symlinking '$1' to '$2'"
   $command "$1" "$2"
 }
 
 symlink_dotfiles() {
-  readonly dotfiles=$(   \
-    find ./config \( -name "*.dotfile" -o -name "*.dotdir" \) \
-    -mindepth 2 \
-    -maxdepth 2 | sed "s|^\\./||")
-
-  for dotfile in $dotfiles; do
+  readonly dots=(./config/**/*.{dotfile,dotdir})
+  for dot in "${dots[@]}"; do
+    dot=$(echo $dot | sed "s|^\\./||")
     local link_name
-    link_name=."$(echo "$dotfile" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
-    symlink "$PWD/$dotfile" "$HOME/$link_name"
+    link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
+    symlink "$PWD/$dot" "$HOME/$link_name"
   done
 }
 
