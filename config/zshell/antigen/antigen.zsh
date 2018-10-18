@@ -788,7 +788,11 @@ antigen-apply () {
   # the one that actually initializes completions.
   TRACE "Gonna create compdump file @ apply" COMPDUMP
   autoload -Uz compinit
-  compinit -d "$ANTIGEN_COMPDUMP"
+  if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' "$ANTIGEN_COMPDUMP") ]; then
+    compinit -d "$ANTIGEN_COMPDUMP"
+  else
+    compinit -C -d "$ANTIGEN_COMPDUMP"
+  fi
 
   # Apply all `compinit`s that have been deferred.
   local cdef
