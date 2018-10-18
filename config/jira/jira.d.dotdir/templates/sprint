@@ -1,2 +1,2 @@
-{{ range .issues }}{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }}{{ if .fields.assignee }} // {{ .fields.assignee.displayName }}{{ end }};{{ .fields.status.name }};{{ .fields.priority.name }}
+{{ range .issues }}{{ .key | append ":" | printf "%-12s"}} {{ .fields.summary }}{{ if .fields.assignee }} // {{ .fields.assignee.displayName }}{{ end }}{{ if .fields.components }} // {{ range .fields.components }}{{ .name }}{{ end }}{{ end }};{{ .fields.status.name }};{{ .fields.priority.name }}
 {{ end }}

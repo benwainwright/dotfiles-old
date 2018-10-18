@@ -33,7 +33,7 @@ custom-commands:
     script: |-
       if [ -n "$JIRA_PROJECT" ]; then
           # if `project: ...` configured just list the issues for current project
-          {{jira}} list --template sprint --query "sprint in openSprints() and type != epic and project=$JIRA_PROJECT ORDER BY status asc"
+          {{jira}} list --template sprint --query "sprint in openSprints() and type != epic and project=$JIRA_PROJECT ORDER BY status asc" --queryfields=components,status,assignee,key,summary,priority
       else
           # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
