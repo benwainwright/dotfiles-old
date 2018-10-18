@@ -34,6 +34,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'larsbs/vimterial_dark'
 Plug 'junkblocker/patchreview-vim'
 Plug 'srcery-colors/srcery-vim'
+Plug 'edkolev/tmuxline.vim'
 " Plug 'janko-m/vim-test'
 " Forked below until he fixes the stupidity with the features directory
 Plug 'benwainwright/vim-test'
