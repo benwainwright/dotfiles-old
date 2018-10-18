@@ -23,10 +23,10 @@ bind-key -T copy-mode-vi C-k select-pane -U
 bind-key -T copy-mode-vi C-l select-pane -R
 bind-key -T copy-mode-vi C-\ select-pane -l
 
-bind-key j split-window -v
-bind-key k split-window -vb
-bind-key h split-window -hb
-bind-key l split-window -h
+bind-key j split-window -v -c "#{pane_current_path}"
+bind-key k split-window -vb -c "#{pane_current_path}"
+bind-key h split-window -hb -c "#{pane_current_path}"
+bind-key l split-window -h -c "#{pane_current_path}"
 
 set -g mouse on
 
