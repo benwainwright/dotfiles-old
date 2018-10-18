@@ -11,13 +11,8 @@ fi
 # Load Antigen bundles                                #
 #######################################################
 
-source "$ZSH_DIR/antigen/antigen-cache.zsh"
 source "$ZSH_DIR/antigen/antigen.zsh"
-if [ -f $ZDOTCACHE ] ; then
-  source "$ZDOTCACHE"
-else
-  source "$ZSH_DIR/antigen/bundles.zsh"
-fi
+source "$ZSH_DIR/antigen/bundles.zsh"
 
 #######################################################
 # Auto-sourcing                                       #
