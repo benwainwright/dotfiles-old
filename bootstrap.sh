@@ -24,8 +24,7 @@ symlink() {
 
 symlink_dotfiles() {
   readonly dots=(./config/**/*.{dotfile,dotdir})
-  for dot in "${dots[@]}"; do
-    dot=$(echo $dot | sed "s|^\\./||")
+  for dot in "${dots[@]/.\//}"; do
     local link_name
     link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
     symlink "$PWD/$dot" "$HOME/$link_name"
