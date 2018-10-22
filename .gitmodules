@@ -1,0 +1,3 @@
+[submodule "install/pm"]
+	path = install/pm
+	url = https://github.com/Angelmmiguel/pm
