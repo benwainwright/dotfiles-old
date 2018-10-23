@@ -252,6 +252,13 @@ nnoremap <leader>cd :call fzf#run({
 			\ 'dir': '~/workspace/',
 			\ 'down': '40%'})<CR>
 
+nnoremap <leader>cp :call fzf#run({
+			\ 'sink': function('Open_files_in_dir'),
+			\ 'source': 'pml',
+			\ 'down': '40%'})<CR>
+
+nnoremap <leader>gco :GCheckout<CR>
+
 command! -bang -nargs=0 GCheckout
   \ call fzf#vim#grep(
   \   'git branch -v', 0,
@@ -266,6 +273,8 @@ function! s:checkout_pr(pr)
   let l:number = l:hashNumber[1:strlen(a:pr)]
   execute '!hub pr checkout ' . l:number
 endfunction
+
+nnoremap <leader>gpco :CheckoutPR<CR>
 
 command! -bang -nargs=0 CheckoutPR
   \ call fzf#run({
@@ -338,6 +347,7 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-
 nnoremap <C-g> :Ag
 nnoremap <leader>K :Ag!
 nnoremap <C-f> :GitFiles
+nnoremap <C-F> :Files
 nnoremap <leader>F :GitFiles!
 nnoremap <leader>g :GitFiles?
 nnoremap <leader>b :Buffers
