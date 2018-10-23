@@ -55,6 +55,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'dbakker/vim-projectroot'
 Plug 'rizzatti/dash.vim'
 Plug 'godlygeek/csapprox'
+Plug 'gabrielelana/vim-markdown'
 Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
