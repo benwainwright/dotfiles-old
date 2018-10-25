@@ -1,7 +1,21 @@
+export COSMOS_LOGIN_CACHE=~/.cosmos-logins
+
+# Since the Cosmos CLI is so damn slow, this funcion requests a login
+# and caches the IP in ~/.cosmos-logins until the login is 1 hour old
+# (I got 1 hour from https://confluence.dev.bbc.co.uk/display/MyBBC/Cosmos+Production+SSH+access)
 ssh-cosmos-ip() {
   local component="$1"
   local environment="$2"
-  echo $(cosmos login "$component" "$environment" | tail -n 1 | rev | cut -d " " -f 1 | rev)
+  local keyname="$component-$environment"
+  local cachefile=$COSMOS_LOGIN_CACHE/$keyname
+  if [[ ! -d $COSMOS_LOGIN_CACHE ]]; then
+    mkdir $COSMOS_LOGIN_CACHE
+  fi
+  if [[ -f $cachefile ]] && [[ ! -z $(find $cachefile -mmin -60) ]]; then
+    cat $cachefile
+  else
+    echo $(cosmos login "$component" "$environment" | tail -n 1 | rev | cut -d " " -f 1 | rev | tee $cachefile)
+  fi
 }
 
 ssh-cosmos() {
