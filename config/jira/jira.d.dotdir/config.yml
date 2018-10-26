@@ -12,22 +12,88 @@ custom-commands:
       - name: TEXT
         required: true
 
-  - name: readyfordev
+  - name: readyForDev
     short: r4d
     help: transition a ticket to ready for dev
     script: |
-      {{jira}} transition {{args.ISSUE}} "Ready for Dev"
+      {{jira}} transition "Ready for Dev" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
     args:
       - name: ISSUE
         required: true
-  - name: devwip
+
+  - name: devWip
     short: dw
-    help: transition a ticket to dev wip 
+    help: transition a ticket to dev wip
     script: |
-      {{jira}} transition "Dev - WIP" {{args.ISSUE}}
+      {{jira}} transition "Dev - WIP" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
     args:
       - name: ISSUE
         required: true
+
+  - name: inReview
+    short: ir
+    help: transition a ticket to in review
+    script: |
+      {{jira}} transition "Dev - WIP" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
+
+  - name: readyToDeploy
+    short: r2d
+    help: transition a ticket to ready to deploy
+    script: |
+      {{jira}} transition "In Review" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
+  - name: onInt
+    short: oi
+    help: transition a ticket to on int
+    script: |
+      {{jira}} transition "On Int" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
+  - name: readyForTest
+    short: r4t
+    help: transition a ticket to ready for test
+    script: |
+      {{jira}} transition "Ready for Test" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
+  - name: testWip
+    short: r4t
+    help: transition a ticket to ready for test
+    script: |
+      {{jira}} transition "Test - WIP" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
+  - name: Ready for release
+    short: r4r
+    help: transition a ticket to ready for release
+    script: |
+      {{jira}} transition "Ready for release" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
+  - name: Done
+    short: d
+    help: transition a ticket to done 
+    script: |
+      {{jira}} transition "Done" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+    args:
+      - name: ISSUE
+        required: true
+
   - name: sprint
     help: display issues for active sprint
     script: |-
