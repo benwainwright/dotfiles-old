@@ -14,7 +14,10 @@ ssh-cosmos-ip() {
   if [[ -f $cachefile ]] && [[ ! -z $(find $cachefile -mmin -60) ]]; then
     cat $cachefile
   else
-    echo $(cosmos login "$component" "$environment" | tail -n 1 | rev | cut -d " " -f 1 | rev | tee $cachefile)
+    local ip=$(cosmos login "$component" "$environment" | tail -n 1 | rev | cut -d " " -f 1 | rev)
+    if [[ $? -eq 0 ]]; then
+      echo $ip | tee $cachefile
+    fi
   fi
 }
 
