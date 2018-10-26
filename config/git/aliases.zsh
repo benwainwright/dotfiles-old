@@ -25,3 +25,4 @@ alias vbranch='g branch -av | awk '\''{n = split($1, a, "/")} !seen[a[n]]++ { pr
 alias git='hub'
 alias gfm='git pull'
 alias gpr='git pull-request'
+alias pr='[ ! -z $(git rev-parse --show-cdup) ] && cd $(git rev-parse --show-cdup || pwd)'
