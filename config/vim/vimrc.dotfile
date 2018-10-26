@@ -186,7 +186,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsListSnippets="<c-l>"
 
-colorscheme vimterial_dark
+colorscheme Monokai
 set background=dark
 let g:airline_section_b = '%{fugitive#head()}'
 
