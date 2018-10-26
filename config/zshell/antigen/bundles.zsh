@@ -5,7 +5,7 @@ antigen bundle aws/aws-cli --loc=bin/aws_zsh_completer.sh
 antigen bundle molovo/tipz
 antigen bundle greymd/docker-zsh-completion
 
-antigen theme blinks
+antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 
 antigen apply
 
