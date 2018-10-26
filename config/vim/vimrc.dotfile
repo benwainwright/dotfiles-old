@@ -105,9 +105,7 @@ nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 
 " Test strategy is Dispatch.
-let test#ruby#use_binstubs = 0
 let test#strategy = "dispatch"
-let g:test#runner_commands = ['cucumber']
 
 " When entering a buffer, turn on relative number, turn it off when leaving
 augroup numbertoggle
