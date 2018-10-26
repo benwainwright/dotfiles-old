@@ -34,14 +34,13 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'larsbs/vimterial_dark'
 Plug 'junkblocker/patchreview-vim'
 Plug 'srcery-colors/srcery-vim'
-Plug 'edkolev/tmuxline.vim'
 " Plug 'janko-m/vim-test'
 " Forked below until he fixes the stupidity with the features directory
 Plug 'benwainwright/vim-test'
 Plug 'w0rp/ale'
 Plug 'gioele/vim-autoswap'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'vim-airline/vim-airline'
+Plug 'powerline/powerline'
 Plug 'tpope/vim-dispatch'
 Plug 'junegunn/gv.vim'
 Plug 'arkwright/vim-whiplash'
@@ -145,6 +144,7 @@ filetype indent plugin on       " attempt to determine the type of a file based 
                                 " contents. Use this to allow intelligent auto-indenting for each filetype,
                                 " and for plugins that are filetype specific.
 
+set rtp+=$HOME/.vim/plugged/powerline/powerline/bindings/vim
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0 
 
@@ -281,37 +281,6 @@ command! -bang -nargs=0 CheckoutPR
   \ 'source' : "hub pr list | awk '{$1=$1}1'",
   \ 'sink' : function('s:checkout_pr'),
   \ 'down' : '15%'})
-
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
 
 " Normal mode mappings
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
