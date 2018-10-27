@@ -105,7 +105,7 @@ nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 
 " Test strategy is Dispatch.
-let test#strategy = "dispatch"
+let test#strategy = "vimux"
 
 " When entering a buffer, turn on relative number, turn it off when leaving
 augroup numbertoggle
