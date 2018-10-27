@@ -30,6 +30,6 @@ bind-key l split-window -h -c "#{pane_current_path}"
 
 set -g mouse on
 set-option -g history-limit 4000
-run shell "powerline-daemon -q"
+run-shell "powerline-daemon -q"
 source /Users/wainwb01/.vim/plugged/powerline/powerline/bindings/tmux/powerline.conf
 
