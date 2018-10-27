@@ -64,6 +64,8 @@ source_shellfiles() {
 }
 source_shellfiles
 
+source /usr/local/opt/asdf/asdf.sh
+
 #####################################################
 # Configure shell integrations                      #
 # ###################################################
