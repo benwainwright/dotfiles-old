@@ -6,3 +6,6 @@ alias cat='bat'
 alias c='bat'
 alias ping='prettyping'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias lop='listening-on-port'
+alias path='echo -e ${PATH//:/\\n}'
+
