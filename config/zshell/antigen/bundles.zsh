@@ -7,5 +7,8 @@ antigen bundle greymd/docker-zsh-completion
 
 antigen theme sindresorhus/pure
 
+antigen use oh-my-zsh
+antigen bundle fancy-ctrl-z
+
 antigen apply
 
