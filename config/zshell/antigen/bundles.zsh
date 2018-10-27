@@ -9,6 +9,10 @@ antigen theme sindresorhus/pure
 
 antigen use oh-my-zsh
 antigen bundle fancy-ctrl-z
+antigen bundle aws
+antigen bundle brew
+antigen bundle dircycle
+antigen bundle zsh-navigation-tools
 
 antigen apply
 
