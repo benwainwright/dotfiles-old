@@ -357,21 +357,12 @@ syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
 " Don't spell check initialisms
  syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
 
-function! s:getDirOf(file)
-  let l:filepath = findfile(a:file, "**")
-  let l:parts = split(l:filepath, "/")
-  let l:dirparts = l:parts[0:-2]
-  let l:dir=join(l:dirparts, "/")
-  return l:dir
-endfunction
-
 augroup vimrc
   autocmd!
 " Set spelling / line break for text files.
   autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
   autocmd FileType gitcommit,markdown,conf setlocal linebreak
   autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
-  autocmd FileType cucumber let test#project_root=s:getDirOf('Gemfile')
 augroup end
 
 set secure
