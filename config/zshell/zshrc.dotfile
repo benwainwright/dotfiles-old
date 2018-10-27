@@ -14,6 +14,9 @@ fi
 source "$ZSH_DIR/antigen/antigen.zsh"
 source "$ZSH_DIR/antigen/bundles.zsh"
 
+autoload -U promptinit; promptinit
+prompt pure
+
 #######################################################
 # Auto-sourcing                                       #
 #######################################################
