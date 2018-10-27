@@ -101,7 +101,7 @@ endif
 set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
                                 " dividers
 
-nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 
 " Test strategy is Dispatch.
