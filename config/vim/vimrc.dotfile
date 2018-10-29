@@ -10,7 +10,7 @@ endif
 
 call plug#begin('~/.vim/plugged') 
 Plug 'vim-scripts/git-log'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'airblade/vim-gitgutter'
