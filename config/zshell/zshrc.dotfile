@@ -28,6 +28,22 @@ fi
 source "$ZSH_DIR/load-plugins.sh"
 
 #######################################################
+# Setup prompt                                        #
+#######################################################
+
+export SPACESHIP_PROMPT_ORDER=( \
+  time \
+  user \
+  dir \
+  host \
+  git \
+  package \
+  node \
+  line_sep \
+  exit_code \
+  char \
+  )
+#######################################################
 # Auto-sourcing                                       #
 #######################################################
 
