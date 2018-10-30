@@ -14,14 +14,18 @@ then
 fi
 
 #######################################################
-# Load Antigen bundles                                #
+# Load plugins                                        #
 #######################################################
 
-source "$ZSH_DIR/antigen/antigen.zsh"
-source "$ZSH_DIR/antigen/bundles.zsh"
+autoload -Uz compinit
+compinit
 
-autoload -U promptinit; promptinit
-prompt pure
+if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
+  echo "load-plugins.sh not found. Installing with antibody"
+  antibody bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
+fi
+
+source "$ZSH_DIR/load-plugins.sh"
 
 #######################################################
 # Auto-sourcing                                       #

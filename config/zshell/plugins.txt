@@ -1,0 +1,13 @@
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+aws/aws-cli
+molovo/tipz
+greymd/docker-zsh-completion
+denysdovhan/spaceship-prompt
+
+robbyrussell/oh-my-zsh path:plugins/fancy-ctrl-z
+robbyrussell/oh-my-zsh path:plugins/aws
+robbyrussell/oh-my-zsh path:plugins/brew
+robbyrussell/oh-my-zsh path:plugins/dircycle
+robbyrussell/oh-my-zsh path:plugins/zsh-navigation-tools
