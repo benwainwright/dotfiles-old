@@ -76,8 +76,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-Plug 'junegunn/fzf'
-
 call plug#end()
 " Required for operations modifying multiple buffers like rename.
 let g:deoplete#enable_at_startup = 1
