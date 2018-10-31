@@ -75,9 +75,6 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 set hidden
 
-let g:LanguageClient_windowLogMessageLevel = 'log'
-let g:LanguageClient_loggingFile = $HOME . '/lang-client.log'
-
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['node', $HOME . '/.vim/plugged/javascript-typescript-langserver/lib/language-server-stdio'],
     \ }
