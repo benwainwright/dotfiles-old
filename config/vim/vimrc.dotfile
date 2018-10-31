@@ -50,13 +50,45 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'tpope/vim-unimpaired'
 Plug 'prabirshrestha/async.vim'
 Plug 'benmills/vimux'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'dbakker/vim-projectroot'
 Plug 'rizzatti/dash.vim'
 Plug 'godlygeek/csapprox'
 Plug 'gabrielelana/vim-markdown'
-Plug 'Valloric/YouCompleteMe'
+Plug 'moll/vim-node'
+
+" Not actually a vim plugin, but needed for the language client
+Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm run build' }
+
+" Only the develop branch has node support currently
+Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+Plug 'junegunn/fzf'
+
 call plug#end()
+" Required for operations modifying multiple buffers like rename.
+let g:deoplete#enable_at_startup = 1
+set hidden
+
+let g:LanguageClient_windowLogMessageLevel = 'log'
+let g:LanguageClient_loggingFile = $HOME . '/lang-client.log'
+
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['node', $HOME . '/.vim/plugged/javascript-typescript-langserver/lib/language-server-stdio'],
+    \ }
 
 " Core VIM settings
 "==============
