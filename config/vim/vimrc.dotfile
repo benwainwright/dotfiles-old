@@ -9,7 +9,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged') 
-Plug 'vim-scripts/git-log'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
@@ -19,16 +18,12 @@ Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
-Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 Plug 'aklt/plantuml-syntax'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/AutoComplPop'
-Plug 'jacoborus/tender.vim'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kchmck/vim-coffee-script'
 Plug 'larsbs/vimterial_dark'
@@ -47,7 +42,6 @@ Plug 'arkwright/vim-whiplash'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'tpope/vim-unimpaired'
 Plug 'prabirshrestha/async.vim'
 Plug 'benmills/vimux'
 Plug 'dbakker/vim-projectroot'
@@ -149,7 +143,6 @@ endfunc
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
-
 nnoremap <leader>nn :call NumberToggle()<CR>
 
 function! OpenLinePr()
@@ -165,7 +158,6 @@ function! OpenLinePr()
     echoerr l:response
   endif
 endfunction
-
 nnoremap <Leader>pr :call OpenLinePr()<cr>
 
 set confirm                     " Actual confirm box rather than dialog box on errors (such as if
