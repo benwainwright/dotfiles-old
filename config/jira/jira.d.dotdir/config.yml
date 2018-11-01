@@ -34,7 +34,7 @@ custom-commands:
     short: ir
     help: transition a ticket to in review
     script: |
-      {{jira}} transition "Dev - WIP" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+      {{jira}} transition "In Review" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
     args:
       - name: ISSUE
         required: true
@@ -44,7 +44,7 @@ custom-commands:
     short: r2d
     help: transition a ticket to ready to deploy
     script: |
-      {{jira}} transition "In Review" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
+      {{jira}} transition "Ready to deploy" "$JIRA_PROJECT"-{{args.ISSUE}} --noedit
     args:
       - name: ISSUE
         required: true
