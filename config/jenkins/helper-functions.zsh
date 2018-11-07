@@ -28,22 +28,31 @@ jenkins_request() {
     return 1
   fi
 
-  curl --fail \
-       --silent \
-       --globoff \
-       --request "$method" \
-       --cert "$DEV_CERT_LOCATION" \
-       --key "$DEV_KEY_LOCATION" \
-       --user "$JENKINS_USER:$JENKINS_TOKEN" \
-       "$JENKINS_URL/$api_request" \
+  curl \
+    --fail \
+    --silent \
+    --show-error \
+    --globoff \
+    --request "$method" \
+    --cert "$DEV_CERT_LOCATION" \
+    --key "$DEV_KEY_LOCATION" \
+    --user "$JENKINS_USER:$JENKINS_TOKEN" \
+    "$JENKINS_URL/$api_request"
 }
 
-build_jenkins_job() {
+jenkins_build_path() {
+  local build_path=$1
+  local build_number=$2
+  echo "job/${${build_path}//\///job/}/$build_number"
+}
+
+
+jenkins_build() {
   local job_name="$1"
   jenkins_request POST job/$job_name/build
 }
 
-get_jenkins_jobs() {
+jenkins_jobs() {
   local request
   if [[ -z "$1" ]]; then
     request="api/json"
@@ -55,27 +64,55 @@ get_jenkins_jobs() {
   fi
 }
 
-get_jenkins_job_build_history() {
-  local request="job/${${1}//\///job/}/api/json?tree=builds[displayName,timestamp,result]"
-  jenkins_request GET "$request" | jq -r '.builds[] | [.displayName, (.timestamp |.  / 1000 | strftime("%l:%M%p %Y-%m-%d")), .result ] | @csv' | tr -d '"' | tr ',' ' '
-}
-
-get_pipeline_status() {
-  local build_number=$2
-  local request="job/${${1}//\///job/}/$build_number/wfapi/"
+jenkins_job_build_history() {
+  local request output
+  request="$(jenkins_build_path $1 $2)/api/json?tree=builds[displayName,timestamp,result]"
   IFS=$'\n'
-  local output=($(jenkins_request GET "$request" | jq -r '.stages[] | [.status, .name] | @tsv'))
+  output=($(jenkins_request GET "$request" | jq -r '.builds[] | [.displayName, (.timestamp |.  / 1000 | strftime("%l:%M%p %Y-%m-%d")), .result ] | @csv' | tr -d '"' | tr ',' ' '))
   for line in "${output[@]}"; do
-    if [[ $line =~ "FAILED" ]]; then
+    if [[ $line =~ "FAILURE" ]]; then
       printf "\e[31m%s\e[39m\n" "$line"
     elif [[ $line =~ "SUCCESS" ]]; then
       printf "\e[32m%s\e[39m\n" "$line"
-    elif [[ $line =~ "PAUSED" ]]; then
-      printf "\e[34m%s\e[39m\n" "$line"
-    elif [[ $line =~ "UNSTABLE" ]]; then
-      printf "\e[33m%s\e[39m\n" "$line"
     else
       printf "%s\n" "$line"
     fi
   done
+}
+
+jenkins_pipeline_status() {
+  local build_number request
+  build_number=$2
+  request="$(jenkins_build_path $1 $2)/wfapi/"
+  if [[ $? -eq 0 ]]; then
+    IFS=$'\n'
+    local output=($(jenkins_request GET "$request" | jq -r '.stages[] | [.status, .name] | @tsv'))
+    for line in "${output[@]}"; do
+      if [[ $line =~ "FAILED" ]]; then
+        printf "\e[31m%s\e[39m\n" "$line"
+      elif [[ $line =~ "SUCCESS" ]]; then
+        printf "\e[32m%s\e[39m\n" "$line"
+      elif [[ $line =~ "PAUSED" ]]; then
+        printf "\e[34m%s\e[39m\n" "$line"
+      elif [[ $line =~ "UNSTABLE" ]]; then
+        printf "\e[33m%s\e[39m\n" "$line"
+      else
+        printf "%s\n" "$line"
+      fi
+    done
+  fi
+}
+
+jenkins_build_log() {
+  local request="$(jenkins_build_path $1 $2)/consoleText"
+  jenkins_request GET "$request"
+}
+
+jenkins_build_info() {
+  local output request
+  request="$(jenkins_build_path $1 $2)/api/json/"
+  output=$(jenkins_request GET "$request")
+  if [[ $? -eq 0 ]]; then
+    echo $output | jq -r '.actions[] | select(."_class" == "hudson.model.CauseAction") | .causes[].shortDescription'
+  fi
 }
