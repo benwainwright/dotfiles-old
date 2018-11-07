@@ -5,27 +5,27 @@ jenkins_request() {
 
   if [[ -z "$JENKINS_URL" ]]; then
     echo "JENKINS_URL not set..."
-    return
+    return 1
   fi
 
   if [[ -z "$JENKINS_USER" ]]; then
     echo "JENKINS_USER not set..."
-    return
+    return 1
   fi
   
   if [[ -z "$JENKINS_TOKEN" ]]; then
     echo "JENKINS_TOKEN not set..."
-    return
+    return 1
   fi
 
   if [[ -z "$DEV_CERT_LOCATION" ]]; then
     echo "DEV_CERT_LOCATION not set..."
-    return
+    return 1
   fi
 
   if [[ -z "$DEV_KEY_LOCATION" ]]; then
     echo "DEV_KEY_LOCATION not set..."
-    return
+    return 1
   fi
 
   curl --fail \
