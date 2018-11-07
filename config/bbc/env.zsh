@@ -22,7 +22,7 @@ export DEV_P12_LOCATION=$HOME/workspace/dev.bbc.co.uk.p12
 export COSMOS_CERT=/etc/pki/tls/cert.pem
 export COSMOS_CERT_KEY=/etc/pki/tls/private/client.key
 
-export JENKINS_URL=https://jenkins.cd.test.tools.bbc.co.uk
+export JENKINS_URL=https://jenkins.cd.tools.bbc.co.uk
 
 export CHRONOS=kieran-bamforth,andrewscfc,lalkhum,cefn,saralk
 export BBC_WORKSPACE=$HOME/workspace
