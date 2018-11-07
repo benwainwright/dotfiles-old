@@ -46,6 +46,25 @@ jenkins_build_path() {
   echo "job/${${build_path}//\///job/}/$build_number"
 }
 
+colored_output() {
+  local output
+  output=("$@")
+  for line in "${output[@]}"; do
+    if [[ $line =~ "FAILED" ]] || [[ $line =~ "FAILURE" ]]; then
+      printf "\e[31m%s\e[39m\n" "$line"
+    elif [[ $line =~ "SUCCESS" ]]; then
+      printf "\e[32m%s\e[39m\n" "$line"
+    elif [[ $line =~ "PAUSED" ]]; then
+      printf "\e[34m%s\e[39m\n" "$line"
+    elif [[ $line =~ "UNSTABLE" ]]; then
+      printf "\e[33m%s\e[39m\n" "$line"
+    elif [[ $line =~ "IN_PROGRESS" ]]; then
+      printf "\e[35m%s\e[39m\n" "$line"
+    else
+      printf "%s\n" "$line"
+    fi
+  done
+}
 
 jenkins_build() {
   local job_name="$1"
@@ -65,19 +84,24 @@ jenkins_jobs() {
 }
 
 jenkins_job_build_history() {
-  local request output
+  local request output filter
   request="$(jenkins_build_path $1 $2)/api/json?tree=builds[displayName,timestamp,result]"
   IFS=$'\n'
-  output=($(jenkins_request GET "$request" | jq -r '.builds[] | [.displayName, (.timestamp |.  / 1000 | strftime("%l:%M%p %Y-%m-%d")), .result ] | @csv' | tr -d '"' | tr ',' ' '))
-  for line in "${output[@]}"; do
-    if [[ $line =~ "FAILURE" ]]; then
-      printf "\e[31m%s\e[39m\n" "$line"
-    elif [[ $line =~ "SUCCESS" ]]; then
-      printf "\e[32m%s\e[39m\n" "$line"
-    else
-      printf "%s\n" "$line"
-    fi
-  done
+  filter='.builds[] |
+    [
+      .displayName,
+      (.timestamp |. / 1000 | strftime("%l:%M%p %Y-%m-%d")),
+      .result
+    ] |
+    @csv'
+
+  output=($(jenkins_request GET "$request" \
+    | jq -r $filter \
+    | tr -d '"' \
+    | tr ',' ' ' \
+    | column -t -s $'\t'))
+  
+  colored_output "${output[@]}"
 }
 
 jenkins_pipeline_status() {
@@ -85,21 +109,14 @@ jenkins_pipeline_status() {
   build_number=$2
   request="$(jenkins_build_path $1 $2)/wfapi/"
   if [[ $? -eq 0 ]]; then
+
     IFS=$'\n'
-    local output=($(jenkins_request GET "$request" | jq -r '.stages[] | [.status, .name] | @tsv'))
-    for line in "${output[@]}"; do
-      if [[ $line =~ "FAILED" ]]; then
-        printf "\e[31m%s\e[39m\n" "$line"
-      elif [[ $line =~ "SUCCESS" ]]; then
-        printf "\e[32m%s\e[39m\n" "$line"
-      elif [[ $line =~ "PAUSED" ]]; then
-        printf "\e[34m%s\e[39m\n" "$line"
-      elif [[ $line =~ "UNSTABLE" ]]; then
-        printf "\e[33m%s\e[39m\n" "$line"
-      else
-        printf "%s\n" "$line"
-      fi
-    done
+    local output=($(jenkins_request GET "$request" \
+      | jq -r '.stages[] | [.name, .status] | @tsv' \
+      | column -t -s $'\t' \
+      | sed 's/^/ /'))
+
+    colored_output "${output[@]}"
   fi
 }
 
@@ -108,11 +125,32 @@ jenkins_build_log() {
   jenkins_request GET "$request"
 }
 
-jenkins_build_info() {
+jenkins_build_metadata() {
   local output request
   request="$(jenkins_build_path $1 $2)/api/json/"
-  output=$(jenkins_request GET "$request")
+  output="$(jenkins_request GET "$request")"
   if [[ $? -eq 0 ]]; then
-    echo $output | jq -r '.actions[] | select(."_class" == "hudson.model.CauseAction") | .causes[].shortDescription'
+    filter='
+    [ "Display name", .fullDisplayName ],
+    [ "Id", .id],
+    [ "Started by", (.actions[] | select(."_class" == "hudson.model.CauseAction") | .causes[].userName) ],
+    [ "In progress", .building ],
+    [ "Started", (.timestamp |. / 1000 | strftime("%I:%M%p %Y-%m-%d"))],
+    [ "Result", .result ] | @tsv'
+
+    IFS=$'\n'
+    newOutput=($(echo "$output" \
+      | tr -cd "[:print:]" \
+      | jq -r $filter \
+      | column -t -s $'\t' \
+      | sed 's/^/ /'))
+
+    colored_output "${newOutput[@]}"
   fi
+}
+
+jenkins_build_info() {
+  jenkins_build_metadata "$1" "$2"
+  echo "\n Pipeline Status"
+  jenkins_pipeline_status "$1" "$2"
 }
