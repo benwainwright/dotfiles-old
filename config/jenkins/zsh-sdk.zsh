@@ -174,20 +174,20 @@ _jenkins_build_metadata() {
     [ "Display name", .fullDisplayName ],
     [ "Id", .id],
     [ "Started by", (.actions[] | select(."_class" == "hudson.model.CauseAction") | .causes[].userName) ],
-      [ "In progress", .building ],
-      [ "Started", (.timestamp |. / 1000 | strftime("%I:%M%p %Y-%m-%d"))],
-      [ "Result", .result ] | @tsv'
+    [ "In progress", .building ],
+    [ "Started", (.timestamp |. / 1000 | strftime("%I:%M%p %Y-%m-%d"))],
+    [ "Result", .result ] | @tsv'
 
-      IFS=$'\n'
-      newOutput=($(echo "$output" \
-        | tr -cd "[:print:]" \
-        | jq -r $filter \
-        | column -t -s $'\t' \
-        | sed 's/^/ /'))
+    IFS=$'\n'
+    newOutput=($(echo "$output" \
+      | tr -cd "[:print:]" \
+      | jq -r $filter \
+      | column -t -s $'\t' \
+      | sed 's/^/ /'))
 
-      _colored_output "${newOutput[@]}"
-    fi
-  }
+    _colored_output "${newOutput[@]}"
+  fi
+}
 
 _jenkins_build_info() {
   local build_path build_number
