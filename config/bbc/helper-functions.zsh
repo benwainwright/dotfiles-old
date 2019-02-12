@@ -49,7 +49,7 @@ orbit-redis() {
 bbc-repo() {
   local dir="$BBC_WORKSPACE/$1"
   if [ ! -d "$dir" ]; then
-    if hub clone "bbc/$1" $dir; then
+    if hub clone "https://github.com/bbc/$1.git" $dir; then
       cd "$dir"
     fi
   fi

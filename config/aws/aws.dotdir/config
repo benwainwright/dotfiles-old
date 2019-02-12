@@ -6,7 +6,7 @@ credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 536795411033
 region = eu-west-1
 
 [profile nav-prod]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 573733708860
+credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 737337088607
 region = eu-west-1
 
 [profile homepage-dev]

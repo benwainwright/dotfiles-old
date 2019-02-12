@@ -1,3 +1,4 @@
+export PATH=/usr/local/bin:$PATH
 export DOTFILES_DIR=$(echo ${(%):-%N} | xargs readlink | xargs dirname | xargs dirname | xargs dirname)
 export ZSH_DIR="$DOTFILES_DIR/config/zshell"
 export PROMPT_LEAN_TMUX=""

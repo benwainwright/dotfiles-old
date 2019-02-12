@@ -16,18 +16,20 @@ set_bbc_network() {
 
 disable_reith_proxy() {
   echo "Disabling BBC corporate network"
-  if [ ! -z "$http_proxy" ]  || \
-     [ ! -z "$HTTP_PROXY" ]  || \
+  if [ ! -z "$http_proxy" ] || \
+     [ ! -z "$HTTP_PROXY" ] || \
      [ ! -z "$https_proxy" ] || \
      [ ! -z "$HTTPS_PROXY" ] || \
-     [ ! -z "$FTP_PROXY" ]   || \
-     [ ! -z "$ftp_proxy" ]   || \
+     [ ! -z "$FTP_PROXY" ] || \
+     [ ! -z "$ftp_proxy" ] || \
+     [ ! -z "$npm_config_proxy" ] || \
+     [ ! -z "$npm_config_https_proxy" ] || \
      [ ! -z "$ALL_PROXY" ]; then
     unset http_proxy HTTP_PROXY https_proxy \
       HTTPS_PROXY FTP_PROXY ftp_proxy \
-      ALL_PROXY
+      ALL_PROXY npm_config_proxy \
+      npm_config_https_proxy
   fi
-  unalias npm 2> /dev/null
   if command -v hub > /dev/null; then
     unalias hub 2> /dev/null
   else
@@ -38,8 +40,10 @@ disable_reith_proxy() {
 
 configure_reith_proxy() {
   echo "Configuring BBC corporate network"
-  export http_proxy="www-cache.reith.bbc.co.uk:80"
-  export https_proxy="www-cache.reith.bbc.co.uk:80"
+  export http_proxy_port=80
+  export http_proxy_url="www-cache.reith.bbc.co.uk"
+  export http_proxy="$http_proxy_url:$http_proxy_port"
+  export https_proxy="$http_proxy"
   export ftp_proxy="ftp-gw.reith.bbc.co.uk:21"
   export socks_proxy="socks-gw.reith.bbc.co.uk:1080"
   export HTTP_PROXY="$http_proxy"
@@ -47,13 +51,19 @@ configure_reith_proxy() {
   export FTP_PROXY="$ftp_proxy"
   export ALL_PROXY="$http_proxy"
   export NO_PROXY="localhost,127.0.0.1"
-  alias npm="npm --proxy \"$HTTP_PROXY\" --https-proxy \"$HTTPS_PROXY\""
+  export npm_config_proxy="http://$HTTP_PROXY"
+  export npm_config_https_proxy="http://$HTTPS_PROXY"
   if command -v hub > /dev/null; then
     alias hub="hub -c http.proxy=\"$HTTP_PROXY\""
   else
     alias git="git -c http.proxy=\"$HTTP_PROXY\""
   fi
   sed -i ".bak" "s/\#\{1,1\}\(ProxyCommand nc\)\(.*$\)/\1\2/g" ~/.ssh/config
+  export JAVA_OPTS="$JAVA_OPTS
+    -Dhttp.proxyHost=$http_proxy_url -Dhttp.proxyPort=$http_proxy_port
+    -Dhttps.proxyHost=$http_proxy_url -Dhttps.proxyPort=$http_proxy_port
+    -Dhttp.nonProxyHosts=127.0.0.1|localhost|.local|.sandbox.bbc.co.uk|sandbox.bbc.co.uk|.sandbox.dev.bbc.co.uk|sandbox.dev.bbc.co.uk
+    -Dhttps.nonProxyHosts=127.0.0.1|localhost|.local|.sandbox.bbc.co.uk|sandbox.bbc.co.uk|.sandbox.dev.bbc.co.uk|sandbox.dev.bbc.co.uk"
 }
 
 configure_and_switch_reith_proxy

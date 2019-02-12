@@ -86,8 +86,10 @@ local ticket_status ticket_priority
   jira_print_status_tickets "Ready for Test" "${ready_for_test[@]}" 
   jira_print_status_tickets "Test - WIP"  "${test_wip[@]}" 
   jira_print_status_tickets "Ready for release"  "${ready_for_release[@]}" 
-  # jira_print_status_tickets "Done"  "${done[@]}" 
-  # jira_print_status_tickets "Closed won't do" "${closed_wont_do[@]}"
+  if [ "$1" = "--done" ]; then
+    jira_print_status_tickets "Done"  "${done[@]}" 
+    jira_print_status_tickets "Closed won't do" "${closed_wont_do[@]}"
+  fi
  }
 
 jira_print_status_tickets() {

@@ -13,6 +13,12 @@ then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
 
+######################################################
+# Add binaries to path                               #
+######################################################
+
+PATH=$DOTFILES_DIR/bin:$PATH
+
 #######################################################
 # Setup prompt                                        #
 #######################################################
@@ -29,6 +35,20 @@ export SPACESHIP_PROMPT_ORDER=( \
   exit_code \
   char \
   )
+#######################################################
+# Load #
+#######################################################
+
+function add_completion_dirs_to_fpath() {
+  readonly completions=($DOTFILES_DIR/config/*/completions/_*.zsh)
+
+  for completion_file in $completions; do
+    completion_dir=$(dirname $completion_file)
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N) (completions): Adding $completion_dir to fpath" 
+    fpath=($completion_dir $fpath)
+  done
+}
+add_completion_dirs_to_fpath
 
 #######################################################
 # Load plugins                                        #
@@ -49,7 +69,8 @@ source "$ZSH_DIR/load-plugins.sh"
 #######################################################
 
 source_shellfiles() {
-  local private_env_file="$HOME/.env.private.zsh"
+  local private_env_file
+  private_env_file="$HOME/.env.private.zsh"
 
   if [ -f "$private_env_file" ]; then
     [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $private_env_file"
@@ -62,21 +83,21 @@ source_shellfiles() {
   readonly initfiles=($DOTFILES_DIR/config/zshell/init/*.{zsh,sh})
 
   for init_file in $initfiles; do
-    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $init_file"
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N) (init): Sourcing $init_file"
     source "$init_file"
   done
 
   readonly envfiles=($DOTFILES_DIR/config/*/env.{zsh,sh})
 
   for env_file in $envfiles; do
-    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $env_file"
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N) (env): Sourcing $env_file"
     source "$env_file"
   done
 
   readonly shellfiles=($DOTFILES_DIR/config/*/*.{zsh,sh})
 
-  for shell_file in ${${shellfiles:#*/env.zsh}:#*/env.sh}; do
-    [  ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N): Sourcing $shell_file"
+  for shell_file in ${${shellfiles:#*/env.zsh}}; do
+    [  ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N) (shell): Sourcing $shell_file"
     source "$shell_file"
   done
 

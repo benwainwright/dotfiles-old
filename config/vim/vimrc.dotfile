@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
+Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-cucumber'
@@ -49,6 +50,8 @@ Plug 'rizzatti/dash.vim'
 Plug 'godlygeek/csapprox'
 Plug 'gabrielelana/vim-markdown'
 Plug 'moll/vim-node'
+Plug 'wellle/tmux-complete.vim'
+Plug 'thalesmello/webcomplete.vim'
 
 " Not actually a vim plugin, but needed for the language client
 Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm run build' }
@@ -71,13 +74,16 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 
 call plug#end()
+
 " Required for operations modifying multiple buffers like rename.
 let g:deoplete#enable_at_startup = 1
 set hidden
 
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['node', $HOME . '/.vim/plugged/javascript-typescript-langserver/lib/language-server-stdio'],
+    \ 'python': ['pyls']
     \ }
+
 
 " Core VIM settings
 "==============
@@ -122,9 +128,6 @@ endif
 set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
                                 " dividers
 
-nnoremap <leader>tn :TestNearest<CR>
-nnoremap <leader>T :TestFile<CR>
-
 " Test strategy is Dispatch.
 let test#strategy = "vimux"
 
@@ -141,6 +144,10 @@ endfunc
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 nnoremap <leader>nn :call NumberToggle()<CR>
+nnoremap <leader>tn :TestNearest<CR>
+nnoremap <leader>T :TestFile<CR>
+nnoremap <leader>lc :call LanguageClient_contextMenu()<cr>
+
 
 function! OpenLinePr()
   let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
@@ -179,29 +186,6 @@ if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
 
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-autocmd! BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -212,9 +196,9 @@ set background=dark
 set foldcolumn=1
 highlight FoldColumn ctermbg=237
 highlight ALEWarningSign ctermbg=237 ctermfg=yellow
+highlight ALEWarning ctermbg=yellow ctermfg=black
 highlight ALEErrorSign ctermbg=237 ctermfg=red
-
-let g:airline_section_b = '%{fugitive#head()}'
+highlight ALEError ctermbg=red ctermfg=black
 
 " Ripped from https://github.com/junegunn/fzf.vim/issues/603#issuecomment-374669057
 function! s:open_branch_fzf(line)
@@ -252,7 +236,7 @@ function! s:format_buffer_with_node_local(name, args)
   endif
 endfunction
 
-autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint", "--stdin --parser babylon --stdin-filepath ". @%)
+" autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint", "--stdin --parser babylon --stdin-filepath ". @%)
 
 autocmd! BufWritePre *.go call s:process_buffer("gofmt")
 
@@ -357,7 +341,7 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 
 noremap <C-t> :NERDTreeToggle<cr>
 
-noremap <C-w> :Gblame<CR>
+noremap <C-b> :Gblame<CR>
 
 nnoremap <leader>- ddp
 nnoremap <leader>_ ddkP

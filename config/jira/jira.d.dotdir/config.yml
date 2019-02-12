@@ -76,7 +76,7 @@ custom-commands:
       - name: ISSUE
         required: true
 
-  - name: Ready for release
+  - name: readyForRelease 
     short: r4r
     help: transition a ticket to ready for release
     script: |

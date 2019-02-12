@@ -1,3 +1,6 @@
+#Host * !*,??-*-?
+#  ProxyCommand nc -x "socks-gw.reith.bbc.co.uk:1085" -X 5 %h %p
+
 Host github.com 
 	AddKeysToAgent yes
 	UseKeychain yes
