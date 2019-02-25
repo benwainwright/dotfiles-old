@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+git-browse-pull() {
+  git browse -- "pull/$1"
+}
+
 git-commit-push() {
   local message
   if [ $# -eq 1 ]; then
