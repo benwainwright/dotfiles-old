@@ -288,7 +288,7 @@ command! -bang -nargs=0 CheckoutPR
   \ call fzf#run({
   \ 'source' : "hub pr list | awk '{$1=$1}1'",
   \ 'sink' : function('s:checkout_pr'),
-  \ 'down' : '15%'})
+  \ 'down' : '30%'})
 
 " Normal mode mappings
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
