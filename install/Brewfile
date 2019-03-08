@@ -52,6 +52,8 @@ brew "diff-so-fancy"
 # Library and command-line tool for SSH
 brew "fabric"
 # CLI tool for quick access to files and directories
+brew "fasd"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line outline and bitmap font editor/converter
 brew "fontforge"
@@ -202,8 +204,11 @@ cask "hammerspoon"
 cask "imageoptim"
 cask "iterm2"
 cask "ksdiff"
+cask "macvim"
 cask "microsoft-office"
+cask "mjolnir"
 cask "mysqlworkbench"
+cask "oni"
 cask "phantomjs"
 cask "qlcolorcode"
 cask "qlimagesize"
@@ -213,9 +218,19 @@ cask "quicklook-json"
 cask "rowanj-gitx"
 cask "slack"
 cask "spotify"
+cask "suspicious-package"
+cask "td-agent"
+cask "time-out"
+cask "tripmode"
+cask "upterm"
+cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"
+mas "Agenda", id: 1287445660
 mas "Microsoft Outlook", id: 985367838
+mas "MindNode", id: 1289197285
 mas "Things3", id: 904280696
+mas "TickTick", id: 966085870
+mas "Todoist", id: 585829637
 mas "Typist", id: 415166115
 mas "Xcode", id: 497799835
