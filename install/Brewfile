@@ -1,5 +1,4 @@
 tap "bbc/cd-utils"
-tap "d12frosted/emacs-plus"
 tap "getantibody/tap"
 tap "grammarly/tap"
 tap "heroku/brew"
@@ -10,9 +9,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "kieran-bamforth/repo"
-tap "mscharley/homebrew"
 tap "ouchxp/nodenv"
-tap "railwaycat/emacsmacport"
 tap "wagoodman/dive"
 cask "java"
 cask "osxfuse"
@@ -30,8 +27,6 @@ brew "ansible"
 brew "ant"
 # Record and share terminal sessions
 brew "asciinema"
-# Shell extension to jump to frequently used directories
-brew "autojump"
 # Integrated shell for working with the AWS CLI
 brew "aws-shell"
 # Official Amazon AWS command-line interface
@@ -57,8 +52,6 @@ brew "diff-so-fancy"
 # Library and command-line tool for SSH
 brew "fabric"
 # CLI tool for quick access to files and directories
-brew "fasd"
-# Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line outline and bitmap font editor/converter
 brew "fontforge"
@@ -66,8 +59,6 @@ brew "fontforge"
 brew "fswatch"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Fast, simple fuzzy text selector with an advanced scoring algorithm
-brew "fzy"
 # GNU awk utility
 brew "gawk"
 # Git extension for versioning large files
@@ -78,10 +69,6 @@ brew "gnupg"
 brew "go"
 # Simple jira command-line client in Go
 brew "go-jira"
-# Google Search and News from the command-line
-brew "googler"
-# Open-source build automation tool based on the Groovy and Kotlin DSL
-brew "gradle"
 # Image processing tools collection
 brew "graphicsmagick"
 # Graph visualization software from AT&T and Bell Labs
@@ -110,24 +97,14 @@ brew "makefile2graph"
 brew "mas"
 # Java-based project management
 brew "maven"
-# SMTP client that can be used as an SMTP plugin for Mutt
-brew "msmtp"
-# Mongrel of mail user agents (part elm, pine, mush, mh, etc.)
-brew "mutt"
 # CLI for MySQL with auto-completion and syntax highlighting
 brew "mycli"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
 # Install NodeJS versions
 brew "node-build"
 # Manage multiple NodeJS versions
 brew "nodenv"
-# Manage multiple Node.js versions
-brew "nvm"
-# Synchronizes emails between two repositories
-brew "offlineimap"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Python dependency management tool
@@ -164,8 +141,6 @@ brew "sbt"
 brew "shellcheck"
 # netcat on steroids
 brew "socat"
-# Launcher to analyze a project with SonarQube
-brew "sonar-scanner"
 # File system client based on SSH File Transfer Protocol
 brew "sshfs"
 # Version control system designed to be a better CVS
@@ -194,8 +169,6 @@ brew "watch"
 brew "wget"
 # JavaScript package manager
 brew "yarn"
-# The next-generation plugin manager for zsh
-brew "zplug"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -203,8 +176,6 @@ brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 brew "bbc/cd-utils/wormhole-ecr-credential-helper"
-# GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus"
 # The fastest shell plugin manager
 brew "getantibody/tap/antibody"
 # Rocker breaks the limits of Dockerfile.
@@ -213,10 +184,6 @@ brew "grammarly/tap/rocker"
 brew "heroku/brew/heroku"
 # Proxies requests, providing client side certificates
 brew "kieran-bamforth/repo/client-cert-proxy"
-# Powerful, lightweight programming language
-brew "kieran-bamforth/repo/lua"
-# A cross-platform, GPU-accelerated terminal emulator
-brew "mscharley/homebrew/alacritty"
 # Pick a node version from .nvmrc
 brew "ouchxp/nodenv/nodenv-nvmrc"
 # 
@@ -225,25 +192,18 @@ cask "1password"
 cask "1password-cli"
 cask "alfred2"
 cask "anki"
-cask "appzapper"
-cask "boom"
-cask "crunch"
 cask "dash2"
 cask "docker"
 cask "dropbox"
 cask "font-fira-code"
-cask "gas-mask"
 cask "google-chrome"
 cask "google-drive-file-stream"
 cask "hammerspoon"
 cask "imageoptim"
 cask "iterm2"
 cask "ksdiff"
-cask "macvim"
 cask "microsoft-office"
-cask "mjolnir"
 cask "mysqlworkbench"
-cask "oni"
 cask "phantomjs"
 cask "qlcolorcode"
 cask "qlimagesize"
@@ -253,19 +213,9 @@ cask "quicklook-json"
 cask "rowanj-gitx"
 cask "slack"
 cask "spotify"
-cask "suspicious-package"
-cask "td-agent"
-cask "time-out"
-cask "tripmode"
-cask "upterm"
-cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"
-mas "Agenda", id: 1287445660
 mas "Microsoft Outlook", id: 985367838
-mas "MindNode", id: 1289197285
 mas "Things3", id: 904280696
-mas "TickTick", id: 966085870
-mas "Todoist", id: 585829637
 mas "Typist", id: 415166115
 mas "Xcode", id: 497799835
