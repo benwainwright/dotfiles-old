@@ -35,7 +35,7 @@ disable_reith_proxy() {
   else
     unalias git 2> /dev/null
   fi
-  sed -i ".bak" "s/\(ProxyCommand nc\)\(.*$\)/#\1\2/g" ~/.ssh/config
+  sed -i ".bak" "s/\(  ProxyCommand nc\)\(.*$\)/#\1\2/g" ~/.ssh/config
 }
 
 configure_reith_proxy() {
@@ -58,7 +58,7 @@ configure_reith_proxy() {
   else
     alias git="git -c http.proxy=\"$HTTP_PROXY\""
   fi
-  sed -i ".bak" "s/\#\{1,1\}\(ProxyCommand nc\)\(.*$\)/\1\2/g" ~/.ssh/config
+  sed -i ".bak" "s/\#\{1,1\}\(  ProxyCommand nc\)\(.*$\)/\1\2/g" ~/.ssh/config
   export JAVA_OPTS="$JAVA_OPTS
     -Dhttp.proxyHost=$http_proxy_url -Dhttp.proxyPort=$http_proxy_port
     -Dhttps.proxyHost=$http_proxy_url -Dhttps.proxyPort=$http_proxy_port
