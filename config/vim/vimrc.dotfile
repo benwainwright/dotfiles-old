@@ -48,19 +48,6 @@ Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm
 Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 call plug#end()
 
 " Required for operations modifying multiple buffers like rename.
@@ -171,11 +158,6 @@ let g:airline#extensions#tabline#enabled = 1
 if empty(glob('~/.vim/plugged'))
   PlugInstall
 endif
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsListSnippets="<c-l>"
 
 colorscheme Monokai
 set background=dark
