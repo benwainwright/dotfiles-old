@@ -24,7 +24,6 @@ reith() {
 }
 
 configure_shell_for_no_reith() {
-  echo "Removing shell proxy configuration"
   if [ ! -z "$http_proxy" ] || \
      [ ! -z "$HTTP_PROXY" ] || \
      [ ! -z "$https_proxy" ] || \
