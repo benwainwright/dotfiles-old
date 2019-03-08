@@ -13,10 +13,8 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'easymotion/vim-easymotion'
 Plug 'aklt/plantuml-syntax'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kchmck/vim-coffee-script'
@@ -38,7 +36,6 @@ Plug 'prabirshrestha/async.vim'
 Plug 'benmills/vimux'
 Plug 'dbakker/vim-projectroot'
 Plug 'rizzatti/dash.vim'
-Plug 'godlygeek/csapprox'
 Plug 'gabrielelana/vim-markdown'
 Plug 'moll/vim-node'
 Plug 'wellle/tmux-complete.vim'
@@ -328,7 +325,7 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 
 
 
-noremap <C-t> :NERDTreeToggle<cr>
+noremap <C-t> :Vexplore<cr>
 
 noremap <C-b> :Gblame<CR>
 
