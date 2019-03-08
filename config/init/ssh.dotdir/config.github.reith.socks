@@ -1,0 +1,11 @@
+# The ProxyCommand below should always be in the exact same format
+# either two spaces before the command, or a hash (comment) followed 
+# by two spaces before the command.
+#
+# This is because the function which switches beteween the Reith Proxy
+# and normal internet uses a 'sed' invokation that expects this exact
+# format
+Host * !*,??-*-?
+  ProxyCommand nc -x "socks-gw.reith.bbc.co.uk:1085" -X 5 %h %p
+
+
