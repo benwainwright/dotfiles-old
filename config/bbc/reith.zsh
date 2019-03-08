@@ -1,21 +1,30 @@
-configure_and_switch_reith_proxy() {
-  if [ "BBC On Network" = "$(networksetup -getcurrentlocation)" ]; then
-    set_bbc_network on
+REITH_ON="BBC On Network"
+REITH_OFF="BBC Off Network"
+
+detect_and_configure_reith_proxy_if_present() {
+  if [ "$REITH_ON" = "$(networksetup -getcurrentlocation)" ]; then
+    configure_shell_for_reith
   else 
-    set_bbc_network off
+    configure_shell_for_no_reith
   fi
 }
 
-set_bbc_network() {
-  if [ "$1" = "on" ];then
-    configure_reith_proxy
+reith() {
+  if [ "$1" = "on" ]; then
+    echo "Switching location to '$REITH_ON' and disabling wifi"
+    networksetup -switchtolocation "$REITH_ON" > /dev/null
+    networksetup -setairportpower en0 off
+    configure_shell_for_reith
   elif [ "$1" = "off" ]; then
-    disable_reith_proxy
+    echo "Switching location to '$REITH_OFF' and enabling wifi"
+    networksetup -switchtolocation "$REITH_OFF" > /dev/null
+    networksetup -setairportpower en0 on
+    configure_shell_for_no_reith
   fi
 }
 
-disable_reith_proxy() {
-  echo "Disabling BBC corporate network"
+configure_shell_for_no_reith() {
+  echo "Removing shell proxy configuration"
   if [ ! -z "$http_proxy" ] || \
      [ ! -z "$HTTP_PROXY" ] || \
      [ ! -z "$https_proxy" ] || \
@@ -38,8 +47,8 @@ disable_reith_proxy() {
   sed -i ".bak" "s/\(  ProxyCommand nc\)\(.*$\)/#\1\2/g" ~/.ssh/config
 }
 
-configure_reith_proxy() {
-  echo "Configuring BBC corporate network"
+configure_shell_for_reith() {
+  echo "Configuring shell proxy settings"
   export http_proxy_port=80
   export http_proxy_url="www-cache.reith.bbc.co.uk"
   export http_proxy="$http_proxy_url:$http_proxy_port"
@@ -66,4 +75,4 @@ configure_reith_proxy() {
     -Dhttps.nonProxyHosts=127.0.0.1|localhost|.local|.sandbox.bbc.co.uk|sandbox.bbc.co.uk|.sandbox.dev.bbc.co.uk|sandbox.dev.bbc.co.uk"
 }
 
-configure_and_switch_reith_proxy
+detect_and_configure_reith_proxy_if_present
