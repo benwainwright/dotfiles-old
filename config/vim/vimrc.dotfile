@@ -139,7 +139,6 @@ nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>lc :call LanguageClient_contextMenu()<cr>
 
-
 function! OpenLinePr()
   let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
   let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
