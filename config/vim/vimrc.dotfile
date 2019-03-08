@@ -335,8 +335,9 @@ augroup vimrc
   autocmd!
 " Set spelling / line break for text files.
   autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
-  autocmd FileType gitcommit,markdown,conf setlocal linebreak
+  autocmd FileType markdown,conf setlocal linebreak
   autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
+  autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
 augroup end
 
 set secure
