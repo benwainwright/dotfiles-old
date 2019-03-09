@@ -47,9 +47,14 @@ orbit-redis() {
 }
 
 bbc-repo() {
-  local dir="$BBC_WORKSPACE/$1"
+  local repo
+  repo="$1"
+  if [ -z "$repo" ]; then
+    repo=$(tree "$BBC_WORKSPACE" -di -L 1 | sed '$d' | sed '$d' | tail +2 | fzf --print-query | tail -n 1)
+  fi
+  local dir="$BBC_WORKSPACE/$repo"
   if [ ! -d "$dir" ]; then
-    if hub clone "https://github.com/bbc/$1.git" $dir; then
+    if hub clone "https://github.com/bbc/$repo.git" $dir; then
       cd "$dir"
     fi
   fi
