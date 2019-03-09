@@ -1,7 +1,65 @@
 #!/usr/bin/env zsh
 
-git-browse-pull() {
-  git browse -- "pull/$1"
+git-search-prs() {
+  echo $(git pr list | \
+   sed "s/^[ \t]*//" | \
+    fzf --height=20% | \
+    parse-number-from-hub-list)
+}
+
+parse-number-from-hub-list() {
+  cut -d" " -f1 | tr -dc "0-9"
+}
+
+git-show-issue-from-list() {
+  local number
+  number=$(echo "$1" | parse-number-from-hub-list)
+  hub issue show "$number"
+}
+
+git-search-issues() {
+  echo $(git issue | \
+ sed "s/^[ \t]*//" | \
+ fzf --height=40%  \
+     --preview='hub issue show $(echo '{}' | cut -d" " -f1 | tr -dc "0-9")' |
+ parse-number-from-hub-list )
+}
+
+git-browse-pr() {
+  local number
+  number="$1"
+  if [ -z "$number" ]; then
+    number=$(git-search-prs)
+  fi
+
+  if [ ! -z "$number" ]; then
+    git browse -- "pull/$number"
+  fi
+}
+
+git-browse-issue() {
+  local number
+  number="$1"
+  if [ -z "$number" ]; then
+    number=$(git-search-issues)
+  fi
+
+  if [ ! -z "$number" ]; then
+    git browse -- "issues/$number"
+  fi
+}
+
+
+git-checkout-pull() {
+  local number
+  number="$1"
+  if [ -z "$number" ]; then
+    number=$(git-search-prs)
+  fi
+
+  if [ ! -z "$number" ]; then
+    hub pr checkout "$number"
+  fi
 }
 
 git-commit-push() {
