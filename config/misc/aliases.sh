@@ -16,5 +16,5 @@ alias ping='prettyping'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias lop='listening-on-port'
 alias path='echo -e ${PATH//:/\\n}'
-alias r='source ~/.zshrc'
+alias r='echo "Reloading shell" && source ~/.zshrc'
 
