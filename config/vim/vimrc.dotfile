@@ -3,7 +3,9 @@
 
 call plug#begin('~/.vim/plugged') 
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf.vim'
+Plug 'jparise/vim-graphql'
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
@@ -13,7 +15,6 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'aklt/plantuml-syntax'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'ryanoasis/vim-devicons'
@@ -36,7 +37,7 @@ Plug 'prabirshrestha/async.vim'
 Plug 'benmills/vimux'
 Plug 'dbakker/vim-projectroot'
 Plug 'rizzatti/dash.vim'
-Plug 'gabrielelana/vim-markdown'
+Plug 'tpope/vim-markdown'
 Plug 'moll/vim-node'
 Plug 'wellle/tmux-complete.vim'
 Plug 'thalesmello/webcomplete.vim'
@@ -88,7 +89,7 @@ set wildmenu                    " Enhanced command line completion mode
 set showcmd                     " Show last command at the bottom of the screen
 set laststatus=2                " Always show statusline
 set ruler                       " Show line and column number
-set number relativenumber       " Turn on relative line numbering
+set number                      " Turn on line numbering
 set cursorline                  " Highlight current line
 set splitright                  " vertical split opens on the right
 
@@ -145,13 +146,31 @@ syntax enable                   " Enable syntax highlighting
 filetype indent plugin on       " attempt to determine the type of a file based on its name and possibly its
                                 " contents. Use this to allow intelligent auto-indenting for each filetype,
                                 " and for plugins that are filetype specific.
+let g:NetrwIsOpen=0
+
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i 
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0 
 
 let g:ale_sign_column_always = 1
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
 let g:ale_javascript_eslint_use_global = 1
+let g:ale_echo_msg_format = '%s (%linter%)'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 " If the plugged directory hasn't been created, install all plugins
@@ -307,7 +326,7 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 
 
 
-noremap <C-t> :Vexplore<cr>
+noremap <C-t> :call ToggleNetrw()<cr>
 
 noremap <C-b> :Gblame<CR>
 
@@ -338,6 +357,7 @@ augroup vimrc
   autocmd FileType markdown,conf setlocal linebreak
   autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
   autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
+  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 augroup end
 
 set secure
