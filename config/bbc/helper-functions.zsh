@@ -46,6 +46,16 @@ orbit-redis() {
   make-orbit-redis-tunnel "$environment" && redis-cli
 }
 
+create-bbc-repo() {
+  local repo dir
+  repo="$1"
+  dir="$BBC_WORKSPACE/$repo"
+  mkdir "$dir"
+  cd "$dir"
+  git init
+  hub create "bbc/$repo";
+}
+
 bbc-repo() {
   local repo
   repo="$1"
@@ -54,8 +64,12 @@ bbc-repo() {
   fi
   local dir="$BBC_WORKSPACE/$repo"
   if [ ! -d "$dir" ]; then
-    if hub clone "https://github.com/bbc/$repo.git" $dir; then
-      cd "$dir"
+    if ! git clone "https://github.com/bbc/$repo.git" "$dir"; then
+      read "?Do you want to create bbc/$repo? " choice
+      case "$choice" in 
+        n|N ) return;;
+        y|Y ) create-bbc-repo "$repo" return;;
+      esac
     fi
   fi
   cd "$dir"
