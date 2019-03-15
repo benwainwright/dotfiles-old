@@ -38,12 +38,16 @@ Plug 'benmills/vimux'
 Plug 'dbakker/vim-projectroot'
 Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-markdown'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'moll/vim-node'
 Plug 'wellle/tmux-complete.vim'
 Plug 'thalesmello/webcomplete.vim'
-
-" Not actually a vim plugin, but needed for the language client
-Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm run build' }
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh'
+  \ }
 
 " Only the develop branch has node support currently
 Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }
@@ -56,8 +60,9 @@ let g:deoplete#enable_at_startup = 1
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['node', $HOME . '/.vim/plugged/javascript-typescript-langserver/lib/language-server-stdio'],
-    \ 'python': ['pyls']
+    \ 'javascript': ['tcp://127.0.0.1:2089'],
+    \ 'typescript': ['tcp://127.0.0.1:2089'],
+    \ 'python' : ['tcp://127.0.0.1:2090']
     \ }
 
 
@@ -171,6 +176,7 @@ let g:ale_sign_column_always = 1
 let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_echo_msg_format = '%s (%linter%)'
+let g:ale_sh_shellcheck_options = '-e SC1090'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 " If the plugged directory hasn't been created, install all plugins

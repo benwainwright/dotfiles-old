@@ -170,6 +170,8 @@ colors
 # Evaluate colors in prompt skin
 setopt PROMPT_SUBST
 
+export PATH="/usr/local/sbin:$PATH"
+
 ######################################################
 # End profiling                                      #
 ######################################################
