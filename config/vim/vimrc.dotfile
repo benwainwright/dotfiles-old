@@ -2,6 +2,15 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['tcp://127.0.0.1:2089'],
+    \ 'typescript': ['tcp://127.0.0.1:2089'],
+    \ 'python' : ['tcp://127.0.0.1:2090'],
+    \ 'sh' : ['bash-language-server', 'start']
+    \ }
+
+let g:LanguageClientFiletypes = keys(g:LanguageClient_serverCommands)
+
 set runtimepath+=/Users/wainwb01/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#begin('/Users/wainwb01/.vim/dein')
@@ -53,7 +62,7 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('autozimu/LanguageClient-neovim', {
 			  \ 'ref': 'next',
 			  \ 'build': 'bash install.sh',
-			  \ 'on_ft': ['javascript', 'typescript','python', 'sh']
+			  \ 'on_ft': g:LanguageClientFiletypes
 			  \ })
   call dein#add('wellle/tmux-complete.vim')
   call dein#add('rizzatti/dash.vim')
@@ -68,13 +77,6 @@ endif
 
 let g:signify_vcs_list = [ 'git' ]
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['tcp://127.0.0.1:2089'],
-    \ 'typescript': ['tcp://127.0.0.1:2089'],
-    \ 'python' : ['tcp://127.0.0.1:2090'],
-    \ 'sh' : ['bash-language-server', 'start']
-    \ }
 
 " Required:
 syntax enable
