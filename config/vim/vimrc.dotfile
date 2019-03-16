@@ -37,15 +37,12 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('elzr/vim-json')
 
   " NCM2
-  call dein#add('ncm2/ncm2')
-        " \ 'lazy': 1,
-        " \ 'on_event' : 'InsertEnter'
-        " \ })
+  call dein#add('ncm2/ncm2', {
+         \ 'lazy': 1,
+         \ 'on_event' : 'InsertEnter'
+         \ })
 
   call dein#add('roxma/nvim-yarp')
-        " \ 'lazy': 1,
-        " \ 'on_event' : 'InsertEnter'
-        " \ })
   call dein#add('roxma/vim-hug-neovim-rpc')
 
   call dein#add('ncm2/ncm2-path', {
@@ -63,6 +60,11 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
         " \ 'lazy': 1,
         " \ 'on_event' : 'InsertEnter'
         " \ })
+
+  call dein#add('filipekiss/ncm2-look.vim', {
+        \ 'lazy': 1,
+        \ 'on_ft': [ 'gitcommit', 'markdown' ]
+        \ })
 
   call dein#add('moll/vim-node', {
         \ 'lazy': 1,
@@ -382,7 +384,8 @@ augroup vimrc
   autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
   autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-  autocmd BufEnter * call ncm2#enable_for_buffer()
+  autocmd InsertEnter * call ncm2#enable_for_buffer()
+  autocmd FileType gitcommit,markdown let b:ncm2_look_enabled = 1
 augroup END
 
 " Operator pending mappings
