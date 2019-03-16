@@ -111,6 +111,8 @@ set hidden                      " Change buffer without saving
 
 set exrc
 
+set lazyredraw
+
 set tabstop=2                   " Number of spaces that a tab counts for
 set expandtab                   " Use appropriate number of spaces to insert a tab
 set shiftwidth=2                " Number of spaces used for indentenation
