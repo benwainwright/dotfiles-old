@@ -42,6 +42,12 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
         \ 'on_event' : 'InsertEnter'
         \ })
 
+  call dein#add('roxma/vim-hug-neovim-rpc')
+call dein#add('roxma/nvim-yarp', {
+        \ 'lazy': 1,
+        \ 'on_event' : 'InsertEnter'
+        \ })
+
   call dein#add('ncm2/ncm2-path', {
         \ 'lazy': 1,
         \ 'on_event' : 'InsertEnter'
@@ -52,17 +58,12 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
         \ 'on_event' : 'InsertEnter'
         \ })
 
-  call dein#add('ncm2/ncm2-github', {
-        \ 'lazy': 1,
-        \ 'on_event' : 'InsertEnter'
-        \ })
+  
+  " call dein#add('ncm2/ncm2-github', {
+  "       \ 'lazy': 1,
+  "       \ 'on_event' : 'InsertEnter'
+  "       \ })
 
-  call dein#add('roxma/nvim-yarp', {
-        \ 'lazy': 1,
-        \ 'on_event' : 'InsertEnter'
-        \ })
-
-  call dein#add('roxma/vim-hug-neovim-rpc')
 
   call dein#add('moll/vim-node', {
         \ 'lazy': 1,
@@ -73,14 +74,16 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-commentary')
   call dein#add('ryanoasis/vim-devicons')
-
+  call dein#add('rafi/awesome-vim-colorschemes')
 
   call dein#add('christoomey/vim-tmux-navigator')
+  
   call dein#add('autozimu/LanguageClient-neovim', {
 			  \ 'ref': 'next',
 			  \ 'build': 'bash install.sh',
 			  \ 'on_ft': g:LanguageClientFiletypes
 			  \ })
+
   call dein#add('wellle/tmux-complete.vim')
   call dein#add('rizzatti/dash.vim')
   call dein#add('mhinz/vim-signify')
@@ -105,8 +108,6 @@ endif
 " Core VIM settings
 "==============
 
-colorscheme torte
-set background=dark
 set clipboard=unnamed           " Allows the vim unknown buffer to work with the system clipboard
 set encoding=UTF-8              " Set character encoding used inside VIM
 set hidden                      " Change buffer without saving
@@ -147,9 +148,16 @@ endif
 
 set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
                                 " dividers
+                                "
+set completeopt+=menuone,noinsert,preview,noselect
+
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+
 
 " Test strategy is Dispatch.
 let test#strategy = "vimux"
+let g:jsx_ext_required = 1
 
 " When entering a buffer, turn on relative number, turn it off when leaving
 function! NumberToggle()
@@ -160,9 +168,42 @@ function! NumberToggle()
     endif
 endfunc
 
+" Automatically handle paste mode
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
+
+
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
@@ -342,6 +383,7 @@ augroup vimrc
   autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
   autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+  autocmd BufEnter * call ncm2#enable_for_buffer()
 augroup END
 
 " Operator pending mappings
@@ -363,3 +405,10 @@ let g:gitgutter_sign_removed = ''
 syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
 " Don't spell check initialisms
 syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+colorscheme anderson
+set background=dark
+highlight ALEWarningSign ctermbg=234 ctermfg=yellow
+highlight ALEWarning ctermbg=yellow ctermfg=black
+highlight ALEErrorSign ctermbg=237 ctermfg=red
+highlight ALEError ctermbg=red ctermfg=black
+highlight CursorLine ctermbg=236
