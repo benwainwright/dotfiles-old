@@ -10,41 +10,295 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('/Users/wainwb01/.vim/dein/repos/github.com/Shougo/dein.vim')
 
   " My plugins start here
-  call dein#add('junegunn/rainbow_parentheses.vim',
-			  \{'on_ft': ['javascript', 'typescript']})
+  call dein#add('junegunn/rainbow_parentheses.vim', {
+        \ 'lazy': 1,
+			  \ 'on_ft': ['javascript', 'typescript']
+			  \ })
 
+  " Filetype plugins
   call dein#add('leafgarland/typescript-vim')
-  call dein#add('junegunn/fzf.vim')
-  call dein#add('/usr/local/opt/fzf')
-  call dein#add('jparise/vim-graphql')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('tpope/vim-commentary')
+  call dein#add('vim-ruby/vim-ruby')
   call dein#add('mustache/vim-mustache-handlebars')
-  call dein#add('Shougo/deoplete.nvim',
-			  \{'on_event': 'InsertEnter'})
+  call dein#add('jparise/vim-graphql')
+  call dein#add('tpope/vim-cucumber')
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('tpope/vim-markdown')
+  call dein#add('ekalinin/Dockerfile.vim')
+
+  " Deoplete
+  call dein#add('shougo/deoplete.nvim', {
+        \ 'lazy': 1,
+        \ 'on_event': 'InsertEnter'
+        \ })
 
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
+  call dein#add('fszymanski/deoplete-emoji', {
+        \ 'lazy': 1,
+        \ 'on_ft': ['gitcommit', 'markdown']
+        \ })
 
+  call dein#add('moll/vim-node', {
+        \ 'lazy': 1,
+        \ 'on_ft': ['javascript', 'typescript']
+        \ })
+  call dein#add('junegunn/fzf.vim')
+  call dein#add('/usr/local/opt/fzf')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('ryanoasis/vim-devicons')
+
+
+  call dein#add('christoomey/vim-tmux-navigator')
+  call dein#add('autozimu/LanguageClient-neovim', {
+			  \ 'ref': 'next',
+			  \ 'build': 'bash install.sh',
+			  \ 'on_ft': ['javascript', 'typescript','python', 'sh']
+			  \ })
+  call dein#add('wellle/tmux-complete.vim')
+  call dein#add('rizzatti/dash.vim')
+  call dein#add('mhinz/vim-signify')
+  call dein#add('scrooloose/nerdtree', {
+        \ 'on_cmd': 'NERDTreeToggle'
+        \})
+	call dein#add('w0rp/ale')
   call dein#end()
   call dein#save_state()
 endif
 
+let g:signify_vcs_list = [ 'git' ]
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['tcp://127.0.0.1:2089'],
+    \ 'typescript': ['tcp://127.0.0.1:2089'],
+    \ 'python' : ['tcp://127.0.0.1:2090'],
+    \ 'sh' : ['bash-language-server', 'start']
+    \ }
 
 " Required:
-filetype plugin indent on
 syntax enable
 
 if dein#check_install()
   call dein#install()
 endif
 
+" Core VIM settings
+"==============
+
+colorscheme torte
+set background=dark
+set foldcolumn=1
+set clipboard=unnamed           " Allows the vim unknown buffer to work with the system clipboard
+set encoding=UTF-8              " Set character encoding used inside VIM
+set hidden                      " Change buffer without saving
+
+set exrc
+
+set tabstop=2                   " Number of spaces that a tab counts for
+set expandtab                   " Use appropriate number of spaces to insert a tab
+set shiftwidth=2                " Number of spaces used for indentenation
+set shiftround                  " << >> snap to multiples of shiftwidth
+
+set hlsearch                    " highlight search hits
+set incsearch                   " Update search matches as characters are added to search
+set ignorecase                  " Ignore case in search patterns
+set smartcase                   " If search pattern contains uppercase chars, ignorecase is turned off
+
+set nocompatible                " set 'nocompatible' to ward off unexpected things that your 
+                                " distro might have made, as well as sanely reset options when 
+                                " re-sourcing .vimrc
+                               
+set wildmode=longest,list,full  " Completion mode - see :help wildmode for more
+                                " info on specific settings
+set wildmenu                    " Enhanced command line completion mode
+set showcmd                     " Show last command at the bottom of the screen
+set laststatus=2                " Always show statusline
+set ruler                       " Show line and column number
+set number                      " Turn on line numbering
+set cursorline                  " Highlight current line
+set splitright                  " vertical split opens on the right
+
+set directory^=$HOME/.vim/tmp/  " Where to store temporary files
+set autoread                    " If file changes on disk and buffer hasn't
+                                " changed, autoread from disk
+if has("persistent_undo")
+  set undofile                  " Store undo data between sessions
+  set undodir=~/.vim/undo       " Location of undo data
+endif
+
+set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
+                                " dividers
+
+" Test strategy is Dispatch.
+let test#strategy = "vimux"
+
+" When entering a buffer, turn on relative number, turn it off when leaving
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
+nnoremap <leader>nn :call NumberToggle()<CR>
+nnoremap <leader>tn :TestNearest<CR>
+nnoremap <leader>T :TestFile<CR>
+nnoremap <leader>lc :call LanguageClient_contextMenu()<cr>
+
+function! OpenLinePr()
+  let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
+  let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
+  let l:response = system(l:hash_cmd)
+  if v:shell_error == 0
+    let l:repo_url = system('hub browse -u | cut -d/ -f1-5 | tr -d "\n"')
+    let l:pr_search_url = l:repo_url . "/pulls\\?q=" . l:response
+    let l:command = 'silent !open ' . l:pr_search_url . " | :redraw!"
+    execute l:command
+  else
+    echoerr l:response
+  endif
+endfunction
+nnoremap <Leader>pr :call OpenLinePr()<cr>
+
+set confirm                     " Actual confirm box rather than dialog box on errors (such as if
+                                " you quit without write
+
+syntax enable                   " Enable syntax highlighting
+filetype indent plugin on       " attempt to determine the type of a file based on its name and possibly its
+                                " contents. Use this to allow intelligent auto-indenting for each filetype,
+                                " and for plugins that are filetype specific.
+let g:NetrwIsOpen=0
+
+"let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_echo_msg_format = '%s (%linter%)'
+let g:ale_sh_shellcheck_options = '-e SC1090'
 " Mappings
+" Ripped from https://github.com/junegunn/fzf.vim/issues/603#issuecomment-374669057
+function! s:open_branch_fzf(line)
+  let l:parser = split(a:line)
+  let l:branch = l:parser[0]
+  if l:branch ==? '*'
+    let l:branch = l:parser[1]
+  endif
+  execute '!git checkout ' . l:branch
+endfunction
+
+function! s:process_buffer(command)
+  let l:line_ending = {"unix": "\n", "dos": "\r\n", "mac": "\r"}[&fileformat]
+  let l:buffertext  = join(getline(1, '$'), line_ending).line_ending
+  let l:output = system(a:command, l:buffertext)
+  if v:shell_error == 0
+    let l:line_number = line('.')
+    execute '1,$d'
+    put=l:output
+    normal! ggdd
+    execute l:line_number
+  else
+    echoerr l:output
+  endif
+endfunction
+
+function! s:format_buffer_with_node_local(name, args)
+  let l:modules_dir = 'node_modules'
+  let l:root = projectroot#guess('.')
+  if finddir(l:modules_dir, l:root) == l:modules_dir
+    let l:path = l:modules_dir . "/.bin/" . a:name
+    if findfile(l:path, l:root) == l:path
+        call s:process_buffer(l:root . "/" . l:path . " " . a:args)
+    endif
+  endif
+endfunction
+
+" autocmd! BufWritePre *.js call s:format_buffer_with_node_local("prettier-eslint", "--stdin --parser babylon --stdin-filepath ". @%)
+
+function! EditJiraTicket(line)
+  let l:ticket = split(a:line, ":")[0]
+  execute '!jira edit ' . l:ticket
+endfunction 
+nnoremap <leader>ji :call fzf#run({
+      \ 'sink': function('EditJiraTicket'),
+      \ 'down' : '40%',
+      \ 'source': 'jira list'})<CR>
+
+function! Open_files_in_dir(dir)
+  execute 'cd ' . a:dir
+  GitFiles
+endfunction
+
+nnoremap <leader>cd :call fzf#run({
+            \ 'sink': function('Open_files_in_dir'),
+            \ 'source': 'ls',
+            \ 'dir': '~/workspace/',
+            \ 'down': '40%'})<CR>
+
+nnoremap <leader>cp :call fzf#run({
+            \ 'sink': function('Open_files_in_dir'),
+            \ 'source': 'pml',
+            \ 'down': '40%'})<CR>
+
+nnoremap <leader>gco :GCheckout<CR>
+
+command! -bang -nargs=0 GCheckout
+  \ call fzf#vim#grep(
+  \   'git branch -v', 0,
+  \   {
+  \     'sink': function('s:open_branch_fzf')
+  \   },
+  \   <bang>0
+  \ )
+
+function! s:checkout_pr(pr)
+  let l:hashNumber = split(a:pr)[0]
+  let l:number = l:hashNumber[1:strlen(a:pr)]
+  execute '!hub pr checkout ' . l:number
+endfunction
+
+nnoremap <leader>gpco :CheckoutPR<CR>
+
+command! -bang -nargs=0 CheckoutPR
+  \ call fzf#run({
+  \ 'source' : "hub pr list | awk '{$1=$1}1'",
+  \ 'sink' : function('s:checkout_pr'),
+  \ 'down' : '30%'})
+
+" Normal mode mappings
+nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+autocmd! bufwritepost ~/.vimrc source ~/.vimrc
+
+" Insert mode mappings
+inoremap <c-u> <esc>gUawi
+
+" Mapping selecting mappings
+nnoremap <leader><tab> <plug>(fzf-maps-n)
+xnoremap <leader><tab> <plug>(fzf-maps-x)
+onoremap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+inoremap <c-x><c-k> <plug>(fzf-complete-word)
+inoremap <c-x><c-f> <plug>(fzf-complete-path)
+inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
+inoremap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
+nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+
+nnoremap <C-n> :bprevious<CR>
+nnoremap <C-p> :bnext<CR>
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-surround'
+
+autocmd! BufWritePre *.go call s:process_buffer("gofmt")
 nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
 nnoremap <C-f> :GitFiles<CR>
@@ -56,6 +310,37 @@ nnoremap <leader>c :Commits<CR>
 nnoremap <leader>C :BCommits<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>cm :Gcommit<CR>
+noremap <C-t> :NERDTreeToggle<CR>
 
+nnoremap <silent> K :Dash<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
+augroup vimrc
+	autocmd!
+  autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
+  autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
+  autocmd FileType markdown,conf setlocal linebreak
+  autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
+  autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
+  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+augroup END
 
+" Operator pending mappings
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<c
+
+let g:GITLOG_default_mode = 2
+noremap <silent> <f7> :call GITLOG_ToggleWindows()<cr>
+noremap <silent> <f5> :call GITLOG_FlipWindows()<cr>
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = ''
+
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+
+" Don't spellcheck URLS
+syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
+" Don't spell check initialisms
+syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
