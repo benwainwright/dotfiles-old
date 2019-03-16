@@ -88,7 +88,6 @@ endif
 
 colorscheme torte
 set background=dark
-set foldcolumn=1
 set clipboard=unnamed           " Allows the vim unknown buffer to work with the system clipboard
 set encoding=UTF-8              " Set character encoding used inside VIM
 set hidden                      " Change buffer without saving
@@ -175,6 +174,7 @@ filetype indent plugin on       " attempt to determine the type of a file based 
                                 " and for plugins that are filetype specific.
 let g:NetrwIsOpen=0
 
+let g:ale_sign_column_always = 1
 "let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_echo_msg_format = '%s (%linter%)'
