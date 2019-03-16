@@ -66,10 +66,6 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
         \ 'on_ft': [ 'gitcommit', 'markdown' ]
         \ })
 
-  call dein#add('moll/vim-node', {
-        \ 'lazy': 1,
-        \ 'on_ft': ['javascript', 'typescript']
-        \ })
   call dein#add('junegunn/fzf.vim')
   call dein#add('/usr/local/opt/fzf')
   call dein#add('tpope/vim-fugitive')
@@ -381,7 +377,7 @@ augroup vimrc
   autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
   autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
   autocmd FileType markdown,conf setlocal linebreak
-  autocmd FileType markdown,conf setlocal textwidth=80 colorcolumn=80
+  autocmd FileType markdown,conf setlocal textwidth=80
   autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
   autocmd InsertEnter * call ncm2#enable_for_buffer()
