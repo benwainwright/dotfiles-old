@@ -37,16 +37,16 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('elzr/vim-json')
 
   " NCM2
-  call dein#add('ncm2/ncm2', {
-        \ 'lazy': 1,
-        \ 'on_event' : 'InsertEnter'
-        \ })
+  call dein#add('ncm2/ncm2')
+        " \ 'lazy': 1,
+        " \ 'on_event' : 'InsertEnter'
+        " \ })
 
+  call dein#add('roxma/nvim-yarp')
+        " \ 'lazy': 1,
+        " \ 'on_event' : 'InsertEnter'
+        " \ })
   call dein#add('roxma/vim-hug-neovim-rpc')
-call dein#add('roxma/nvim-yarp', {
-        \ 'lazy': 1,
-        \ 'on_event' : 'InsertEnter'
-        \ })
 
   call dein#add('ncm2/ncm2-path', {
         \ 'lazy': 1,
@@ -59,11 +59,10 @@ call dein#add('roxma/nvim-yarp', {
         \ })
 
   
-  " call dein#add('ncm2/ncm2-github', {
-  "       \ 'lazy': 1,
-  "       \ 'on_event' : 'InsertEnter'
-  "       \ })
-
+  call dein#add('ncm2/ncm2-github')
+        " \ 'lazy': 1,
+        " \ 'on_event' : 'InsertEnter'
+        " \ })
 
   call dein#add('moll/vim-node', {
         \ 'lazy': 1,
