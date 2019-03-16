@@ -33,19 +33,36 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('kchmck/vim-coffee-script')
   call dein#add('tpope/vim-markdown')
   call dein#add('ekalinin/Dockerfile.vim')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('elzr/vim-json')
 
-  " Deoplete
-  call dein#add('shougo/deoplete.nvim', {
+  " NCM2
+  call dein#add('ncm2/ncm2', {
         \ 'lazy': 1,
-        \ 'on_event': 'InsertEnter'
+        \ 'on_event' : 'InsertEnter'
         \ })
 
-  call dein#add('roxma/nvim-yarp')
+  call dein#add('ncm2/ncm2-path', {
+        \ 'lazy': 1,
+        \ 'on_event' : 'InsertEnter'
+        \ })
+
+  call dein#add('ncm2/ncm2-bufword', {
+        \ 'lazy': 1,
+        \ 'on_event' : 'InsertEnter'
+        \ })
+
+  call dein#add('ncm2/ncm2-github', {
+        \ 'lazy': 1,
+        \ 'on_event' : 'InsertEnter'
+        \ })
+
+  call dein#add('roxma/nvim-yarp', {
+        \ 'lazy': 1,
+        \ 'on_event' : 'InsertEnter'
+        \ })
+
   call dein#add('roxma/vim-hug-neovim-rpc')
-  call dein#add('fszymanski/deoplete-emoji', {
-        \ 'lazy': 1,
-        \ 'on_ft': ['gitcommit', 'markdown']
-        \ })
 
   call dein#add('moll/vim-node', {
         \ 'lazy': 1,
