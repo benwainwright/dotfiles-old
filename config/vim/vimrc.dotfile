@@ -360,6 +360,8 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})lug 'tpope/vim-
 autocmd! BufWritePre *.go call s:process_buffer("gofmt")
 nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
+nnoremap ; :Buffers<CR>
+nnoremap <leader>r :Tags<CR>
 nnoremap <C-f> :GitFiles<CR>
 nnoremap <C-F> :Files<CR>
 nnoremap <leader>F :GitFiles!<CR>
