@@ -137,7 +137,7 @@
   "Reload all projects from defined locations into projectile"
   (interactive)
   (setq projectile-known-projects ())
-  (add-to-list 'projectile-known-projects "~/workspace")
+  (add-to-list 'projectile-known-projects "~/dotfiles")
   (add-projects-in-path-to-projectile-known-projects "~/workspace")
   (add-projects-in-path-to-projectile-known-projects "~/repos"))
 
