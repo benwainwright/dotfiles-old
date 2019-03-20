@@ -34,9 +34,6 @@
 (global-hl-line-mode +1)
 
 (global-font-lock-mode 1)
-(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
-(autoload 'tern-mode "tern.el" nil t)
-(setq exec-path (append exec-path '("~/.emacs.d/tern/bin/")))
 
 (defvar org-agenda-files)
 (setq org-agenda-files (list "~/org/work.org"))
@@ -332,5 +329,3 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(add-hook 'javascript-mode (lambda () (tern-mode t)))
