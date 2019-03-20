@@ -1,3 +1,4 @@
+;-*- mode: Lisp; -*-
 (setq initial-frame-alist
       '((tool-bar-lines . 0)
 	(width . 106)
@@ -32,6 +33,7 @@
 (load custom-file)
 (global-hl-line-mode +1)
 
+(global-font-lock-mode 1)
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
 (setq exec-path (append exec-path '("~/.emacs.d/tern/bin/")))
@@ -78,17 +80,17 @@
 
 (setq package-archives
       '(("melpa"        . "http://melpa.org/packages/")
-	("MELPA stable" . "https://stable.melpa.org/packages/")
-	("gnu"          . "http://elpa.gnu.org/packages/")
-	("marmalade"    . "http://marmalade-repo.org/packages/")))
+        ("MELPA stable" . "https://stable.melpa.org/packages/")
+        ("gnu"          . "http://elpa.gnu.org/packages/")
+        ("marmalade"    . "http://marmalade-repo.org/packages/")))
+
+(global-git-gutter-mode +1)
 
 (unless package-archive-contents
   (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-
-(global-git-gutter-mode +1)
 
 (use-package diminish
   :ensure t
@@ -126,18 +128,6 @@
     :ensure t))
 
 (use-package rainbow-delimiters
-  :ensure t)
-
-(use-package json-mode
-  :ensure t)
-
-(use-package plantuml-mode
-  :ensure t)
-
-(use-package org
-  :ensure t)
-
-(use-package rainbow-delimiters
   :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
@@ -156,9 +146,6 @@
 (use-package js2-mode
   :ensure t)
 
-(use-package js2-refactor
-  :ensure t)
-
 (use-package evil
   :ensure t
   :init
@@ -169,10 +156,9 @@
     :ensure t))
 
 (use-package groovy-mode
-  :ensure t)
+    :ensure t)
 
 (use-package helm-config)
-
 (use-package powerline
   :ensure t
   :config
@@ -219,13 +205,26 @@
   (editorconfig-mode 1))
 
 (use-package company
+  :ensure t)
+
+(use-package f
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
+
+(use-package plantuml-mode
+  :ensure t)
+
+(use-package org
+  :ensure t)
+
+(use-package evil-leader
   :ensure t
   :config
-  (use-package company-tern
-    :ensure
-    :config
-    (defvar company-backends)
-    (setq company-backends '(company-tern))))
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key "s" 'magit-status))
 
 (use-package treemacs
   :ensure t
