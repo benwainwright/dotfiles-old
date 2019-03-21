@@ -81,7 +81,6 @@
         ("gnu"          . "http://elpa.gnu.org/packages/")
         ("marmalade"    . "http://marmalade-repo.org/packages/")))
 
-(global-git-gutter-mode +1)
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -99,7 +98,9 @@
   :ensure t)
 
 (use-package git-gutter
-  :ensure t)
+  :ensure t
+  :config
+  (global-git-gutter-mode +1))
 
 (use-package ag
   :ensure t)
@@ -244,12 +245,20 @@
 (use-package org
   :ensure t)
 
+(setq init-file-path load-file-name)
+
+(defun reload-init-file ()
+  (interactive)
+  (load-file init-file-path))
+
 (use-package evil-leader
   :ensure t
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key "s" 'magit-status))
+  (evil-leader/set-key "s" 'magit-status)
+  (evil-leader/set-key "r" 'reload-init-file)
+  )
 
 (use-package treemacs
   :ensure t
