@@ -64,7 +64,7 @@
 
 
 (defun refresh-projectile-projects()
-  "Reload all projects from defined locations into projectile"
+  "Reload all projects from defined locations into projectile."
   (interactive)
   (setq projectile-known-projects ())
   (add-to-list 'projectile-known-projects "~/dotfiles")
@@ -89,7 +89,17 @@
   (setq helm-projectile-fuzzy-match nil))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (remove-hook 'server-switch-hook 'magit-commit-diff))
+
+(use-package magit-popup
+  :ensure t
+  :after magit)
+
+(use-package forge
+  :ensure t
+  :after magit)
 
 (use-package js2-mode
   :ensure t)
@@ -106,11 +116,15 @@
   (unbind-key "C-p" evil-motion-state-map)
   (unbind-key "C-n" evil-normal-state-map)
   (unbind-key "C-n" evil-motion-state-map)
- )
+  (bind-key ";" 'helm-buffers-list evil-motion-state-map)
+  (bind-key ";" 'helm-buffers-list evil-normal-state-map))
+
+(use-package browse-at-remote
+  :ensure t)
 
 (use-package evil-magit
   :ensure t
-  :after evil)
+  :after (evil magit magit-popup))
 
 (use-package evil-org
   :ensure t
@@ -137,7 +151,6 @@
   :config
   (load-theme 'material t))
 
-
 (use-package discover
   :ensure t)
 
@@ -150,6 +163,11 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package eglot
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'eglot-ensure))
+
 (use-package flycheck
   :ensure t
   :config
@@ -158,9 +176,7 @@
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
+  :ensure t)
 
 (use-package company
   :ensure t
@@ -187,6 +203,7 @@
 
 (use-package evil-leader
   :ensure t
+  :after evil
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
@@ -248,9 +265,9 @@
         ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-evil
-  :after treemacs evil
+  :after (treemacs evil)
   :ensure t)
 
 (use-package treemacs-projectile
-  :after treemacs projectile
+  :after (treemacs projectile)
   :ensure t)
