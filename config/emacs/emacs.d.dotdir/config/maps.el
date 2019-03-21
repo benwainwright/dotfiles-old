@@ -8,3 +8,5 @@
 (global-set-key (kbd "s-c") 'projectile-compile-project)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-n") 'flymake-goto-next-error)
+(global-set-key (kbd "M-p") 'flymake-goto-prev-error)
