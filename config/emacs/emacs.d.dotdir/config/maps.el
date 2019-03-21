@@ -1,0 +1,10 @@
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
+
+(global-set-key (kbd "C-n") 'next-buffer)
+(global-set-key (kbd "C-p") 'previous-buffer)
+(global-set-key (kbd "s-p") 'helm-projectile-switch-project)
+(global-set-key (kbd "s-g") 'helm-projectile-ag)
+(global-set-key (kbd "s-c") 'projectile-compile-project)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
