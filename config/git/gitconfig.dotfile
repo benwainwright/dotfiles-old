@@ -52,3 +52,5 @@
 [commit]
 	template = /Users/wainwb01/.stCommitMsg
 
+[github]
+	user = benwainwright
