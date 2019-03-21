@@ -146,6 +146,7 @@
 
 (use-package projectile
   :ensure t
+  :bind ("C-f" . helm-projectile-find-file)
   :config
   (refresh-projectile-projects))
 
@@ -166,8 +167,28 @@
   (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
-  (use-package evil-magit
-    :ensure t))
+  (unbind-key "C-f" evil-normal-state-map)
+  (unbind-key "C-f" evil-motion-state-map)
+  (unbind-key "C-p" evil-normal-state-map)
+  (unbind-key "C-p" evil-motion-state-map)
+  (unbind-key "C-n" evil-normal-state-map)
+  (unbind-key "C-n" evil-motion-state-map)
+ )
+
+(use-package evil-magit
+  :ensure t
+  :after evil)
+
+(use-package evil-org
+  :ensure t
+  :after (org evil)
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 (use-package groovy-mode
     :ensure t)
@@ -183,16 +204,6 @@
   :config
   (load-theme 'material t))
 
-(use-package evil-org
-  :ensure t
-  :after org
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
 
 (use-package discover
   :ensure t)
@@ -307,11 +318,6 @@
   (insert "#"))
 (global-set-key (kbd "M-3") '(lambda()(interactive)(insert-pound)))
 
-;; Keyboard mappings
-(with-eval-after-load 'evil-maps
-  (define-key evil-normal-state-map (kbd "C-n") nil)
-  (define-key evil-normal-state-map (kbd "C-p") nil))
-
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
@@ -320,7 +326,6 @@
 
 (global-set-key (kbd "C-n") 'next-buffer)
 (global-set-key (kbd "C-p") 'previous-buffer)
-(global-set-key (kbd "s-f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "s-p") 'helm-projectile-switch-project)
 (global-set-key (kbd "s-g") 'helm-projectile-ag)
 (global-set-key (kbd "s-c") 'projectile-compile-project)
