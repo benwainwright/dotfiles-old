@@ -15,6 +15,11 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package diminish
   :ensure t
   :config
