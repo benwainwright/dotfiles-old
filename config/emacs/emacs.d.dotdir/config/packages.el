@@ -92,6 +92,16 @@
   (dolist (entry (directory-files path t))
     (add-to-list 'projectile-known-projects entry)))
 
+;; (use-package excorporate
+;;   :ensure t
+;;   :config
+;;   (setq excorporate-configuration
+;; 	'("ben.wainwright@bbc.co.uk" . "https://oa.myconnect.bbc.co.uk/ews/exchange.asmx")
+;; 	org-agenda-include-diary t)
+;;   (excorporate)
+;;   (excorporate-diary-enable)
+;;   )
+
 (use-package projectile
   :ensure t
   :bind ("C-f" . helm-projectile-find-file)
