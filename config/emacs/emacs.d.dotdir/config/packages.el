@@ -29,6 +29,9 @@
 (use-package general
   :ensure t)
 
+(use-package lua-mode
+  :ensure t)
+
 (use-package git-gutter
   :ensure t
   :config
