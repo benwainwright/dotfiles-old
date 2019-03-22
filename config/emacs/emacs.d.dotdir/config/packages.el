@@ -146,9 +146,6 @@
   (bind-key ";" 'helm-buffers-list evil-motion-state-map)
   (bind-key ";" 'helm-buffers-list evil-normal-state-map))
 
-(use-package browse-at-remote
-  :ensure t)
-
 (use-package evil-magit
   :ensure t
   :after (evil magit magit-popup))
@@ -228,15 +225,19 @@
   (interactive)
   (load-file init-file-path))
 
+(use-package browse-at-remote
+  :ensure t)
+
 (use-package evil-leader
   :ensure t
-  :after evil
+  :after (evil browse-at-remote)
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key "s" 'magit-status)
   (evil-leader/set-key "r" 'reload-init-file)
-  )
+  (evil-leader/set-key "b" 'browse-at-remote)
+  (evil-leader/set-key "c" 'browse-at-remote))
 
 (use-package treemacs
   :ensure t
