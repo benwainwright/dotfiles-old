@@ -4,3 +4,4 @@ elpa
 network-security.data
 transient
 .cache
+forge-database.sqlite
