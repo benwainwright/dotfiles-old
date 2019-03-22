@@ -60,6 +60,18 @@
   (use-package helm-ag
     :ensure t))
 
+(use-package multi-term
+  :ensure t
+  :config
+  (setq multi-term-program "/usr/local/bin/zsh")
+  (add-hook 'term-mode-hook
+	    (lambda ()
+	      (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+	      (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+  (add-hook 'term-mode-hook
+	    (lambda ()
+	      (define-key term-raw-map (kbd "C-y") 'term-paste))))
+
 (use-package rainbow-delimiters
   :ensure t
   :config
