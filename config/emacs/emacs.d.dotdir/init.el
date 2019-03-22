@@ -4,5 +4,6 @@
 (load "visual")
 (load "settings")
 (load "packages")
+(load "global-hooks")
 (load "mac")
 (load "maps")

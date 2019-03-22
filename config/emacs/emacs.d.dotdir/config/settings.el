@@ -4,7 +4,6 @@
 
 (global-hl-line-mode +1)
 (global-font-lock-mode 1)
-(global-display-line-numbers-mode)
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
