@@ -1,6 +1,4 @@
-.gitignore
 .git
-jsconfig.json
 node_modules
 .DS_Store*
 .classpath
@@ -8,6 +6,6 @@ node_modules
 .tern-project
 npm-debug.log
 venv
-#*
+\#*
 *~
 .#*
