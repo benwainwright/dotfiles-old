@@ -1,0 +1,17 @@
+skinparam {
+  shadowing false	
+  padding 3
+  nodesep 50
+  handwritten true
+  monochrome true
+}
+
+skinparam class {
+   FontSize 20
+}
+
+skinparam classattribute {
+   FontSize 18
+}
+
+hide empty members
