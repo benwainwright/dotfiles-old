@@ -1,3 +1,4 @@
+;;; packages.el --- package declaration and configuration
 (require 'package)
 
 (package-initialize)
@@ -32,6 +33,9 @@
 (use-package lua-mode
   :ensure t)
 
+(use-package plantuml-mode
+  :ensure t)
+
 (use-package git-gutter
   :ensure t
   :config
@@ -52,13 +56,16 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package helm
+(use-package ivy
+  :ensure t)
+
+(use-package counsel
   :ensure t
-  :config
-  (defvar helm-split-window-inside-p)
-  (setq helm-split-window-inside-p t)
-  (use-package helm-ag
-    :ensure t))
+  :after ivy)
+
+(use-package counsel-projectile
+  :ensure t
+  :after counsel)
 
 (use-package multi-term
   :ensure t
@@ -104,14 +111,9 @@
 
 (use-package projectile
   :ensure t
-  :bind ("C-f" . helm-projectile-find-file)
+  :bind ("C-f" . counsel-projectile-find-file)
   :config
   (refresh-projectile-projects))
-
-(use-package helm-projectile
-  :ensure t
-  :init
-  (setq helm-projectile-fuzzy-match nil))
 
 (use-package magit
   :ensure t
@@ -143,8 +145,8 @@
   (unbind-key "C-p" evil-motion-state-map)
   (unbind-key "C-n" evil-normal-state-map)
   (unbind-key "C-n" evil-motion-state-map)
-  (bind-key ";" 'helm-buffers-list evil-motion-state-map)
-  (bind-key ";" 'helm-buffers-list evil-normal-state-map))
+  (bind-key ";" 'counsel-switch-buffer evil-motion-state-map)
+  (bind-key ";" 'counsel-switch-buffer evil-normal-state-map))
 
 (use-package evil-magit
   :ensure t
@@ -164,7 +166,6 @@
 (use-package groovy-mode
     :ensure t)
 
-(use-package helm-config)
 (use-package powerline
   :ensure t
   :config
@@ -218,12 +219,6 @@
 
 (use-package org
   :ensure t)
-
-(setq init-file-path load-file-name)
-
-(defun reload-init-file ()
-  (interactive)
-  (load-file init-file-path))
 
 (use-package browse-at-remote
   :ensure t)
