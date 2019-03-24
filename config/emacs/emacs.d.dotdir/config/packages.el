@@ -21,6 +21,9 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package dockerfile-mode
+  :ensure t)
+
 (use-package diminish
   :ensure t
   :config
@@ -89,6 +92,7 @@
   "Reload all projects from defined locations into projectile."
   (interactive)
   (setq projectile-known-projects ())
+  (add-to-list 'projectile-known-projects "~/org")
   (add-to-list 'projectile-known-projects "~/dotfiles")
   (add-projects-in-path-to-projectile-known-projects "~/workspace")
   (add-projects-in-path-to-projectile-known-projects "~/repos"))

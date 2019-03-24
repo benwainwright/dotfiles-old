@@ -11,7 +11,6 @@
 
 (setq backup-directory-alist `(("." . "~/.emacssaves")))
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-(defvar org-agenda-files)
-(setq org-agenda-files (list "~/org/work.org"))
 (setq display-line-numbers-type 'relative)
+(load custom-file)
+
