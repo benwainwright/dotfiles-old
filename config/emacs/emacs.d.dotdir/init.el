@@ -1,5 +1,6 @@
 ;-*- mode: Lisp; -*-
 (add-to-list 'load-path "~/.emacs.d/config")
+(add-to-list 'load-path "~/.emacs.d/emacs-personal-packages")
 
 ; Putting this right at the start so that no matter how badly
 ; I screw things up I can always reload easily
@@ -15,3 +16,4 @@
 (load "global-hooks")
 (load "mac")
 (load "maps")
+(load "cosmos")
