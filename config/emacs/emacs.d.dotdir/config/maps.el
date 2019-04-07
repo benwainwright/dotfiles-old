@@ -57,6 +57,9 @@
 (define-key leader-map "els" 'eval-last-sexp)
 (define-key leader-map "ee" 'eval-expression)
 
+;; Dash
+(define-key leader-map "dap" 'dash-at-point)
+
 
 
 (define-key leader-map "r" 'reload-init-file)
