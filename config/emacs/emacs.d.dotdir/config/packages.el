@@ -265,6 +265,10 @@
 (use-package org
   :ensure t)
 
+(use-package org-bullets
+  :after org
+  :ensure t)
+
 (use-package browse-at-remote
   :ensure t)
 
