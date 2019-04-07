@@ -20,6 +20,9 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package dashboard
+  :ensure t)
+
 (use-package request
   :ensure t)
 
