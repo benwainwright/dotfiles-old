@@ -24,6 +24,12 @@
 (unbind-key "<SPC>" evil-motion-state-map)
 (define-key evil-normal-state-map (kbd "SPC") leader-map)
 
+;; Shortcuts
+(define-key leader-map "c" 'magit-branch-checkout)
+(define-key leader-map "s" 'magit-status)
+(define-key leader-map "p" 'magit-pull)
+(define-key leader-map "r" 'reload-init-file)
+
 ;; Git and Github related
 (define-key leader-map "gcp" 'forge-checkout-pullreq)
 (define-key leader-map "gbr" 'browse-at-remote)
@@ -40,9 +46,6 @@
 (define-key leader-map "hp" 'git-gutter:previous-hunk)
 (define-key leader-map "hn" 'git-gutter:next-hunk)
 (define-key leader-map "hd" 'git-gutter:popup-hunk)
-(define-key leader-map "c" 'magit-branch-checkout)
-(define-key leader-map "s" 'magit-status)
-(define-key leader-map "p" 'magit-pull)
 
 ;; Help
 (define-key leader-map "dk" 'describe-key)
@@ -62,7 +65,3 @@
 
 ;; Dash
 (define-key leader-map "dap" 'dash-at-point)
-
-
-
-(define-key leader-map "r" 'reload-init-file)
