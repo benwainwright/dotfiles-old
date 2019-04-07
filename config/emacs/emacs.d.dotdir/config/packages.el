@@ -36,6 +36,9 @@
 
   )
 
+(use-package browse-kill-ring
+  :ensure t)
+
 (use-package smartparens
   :ensure t)
 
