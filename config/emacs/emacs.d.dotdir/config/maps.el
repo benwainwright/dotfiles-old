@@ -36,7 +36,10 @@
 (define-key leader-map "gri" 'magit-rebase-interactive)
 (define-key leader-map "gcl" 'magit-clone)
 (define-key leader-map "gfa" 'magit-fetch-all)
-
+(define-key leader-map "hs" 'git-gutter:stage-hunk)
+(define-key leader-map "hp" 'git-gutter:previous-hunk)
+(define-key leader-map "hn" 'git-gutter:next-hunk)
+(define-key leader-map "hd" 'git-gutter:popup-hunk)
 (define-key leader-map "c" 'magit-branch-checkout)
 (define-key leader-map "s" 'magit-status)
 (define-key leader-map "p" 'magit-pull)
