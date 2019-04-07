@@ -317,12 +317,6 @@
   :after quelpa
   :ensure t)
 
-;; (use-package realgud-node-inspect
-;;   :after realgud
-;;   :quelpa (realgud-node-inspect
-;;             :fetcher github
-;;             :repo "realgud/realgud-node-inspect"))
-
 (use-package realgud
   :ensure t)
 
