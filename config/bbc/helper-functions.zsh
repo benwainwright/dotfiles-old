@@ -166,17 +166,19 @@ ssh-cosmos() {
     cachedLogin=$(cat $cacheFile)
     loginStatus=$(echo "$cachedLogin" | jq --raw-output ".status")
     if [ "$loginStatus" = "current" ]; then
+      printf "Cached login found :-)\n"
       expiresAt=$(echo "$cachedLogin" | jq --raw-output .expires_at)
       expiresAtSeconds=$(python -c "import dateutil.parser; print(dateutil.parser.parse('$expiresAt').strftime('%s'))")
       if [ "$expiresAtSeconds" -gt $(date +%s) ]; then
-        printf "Cached login found\n"
         login="$cachedLogin"
+      else
+        printf "Expired :-(\n"
       fi
     fi
   fi
 
   if [ -z "$login" ]; then
-    printf "No in date logins found; creating one using API...\n"
+    printf "Cached login data was not found :-( creating a new one using the Cosmos API\n"
     login=$(cosmos-create-login "$service" "$environment" | tee "$cacheFile")
   fi
 
