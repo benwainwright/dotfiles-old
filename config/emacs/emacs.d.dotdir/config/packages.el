@@ -33,8 +33,18 @@
 
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
   (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-
   )
+
+(use-package dash-at-point
+  :ensure t
+  :config
+  (add-to-list 'dash-at-point-mode-alist '(typescript-mode . "typescript"))
+  )
+
+(use-package drag-stuff
+  :ensure t
+  :config
+  (drag-stuff-define-keys))
 
 (use-package browse-kill-ring
   :ensure t)
