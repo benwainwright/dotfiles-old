@@ -67,11 +67,6 @@
 (use-package plantuml-mode
   :ensure t)
 
-(use-package git-gutter
-  :ensure t
-  :config
-  (global-git-gutter-mode +1))
-
 (use-package ag
   :ensure t)
 
@@ -380,3 +375,18 @@
 (use-package treemacs-projectile
   :after (treemacs projectile)
   :ensure t)
+
+(use-package git-gutter
+  :ensure t
+  :config
+  (setq git-gutter:window-width 4)
+  (set-face-background 'git-gutter:deleted (face-attribute 'default :background))
+  (set-face-foreground 'git-gutter:deleted "red")
+  (setq git-gutter:deleted-sign "  ")
+  (set-face-background 'git-gutter:added (face-attribute 'default :background))
+  (set-face-foreground 'git-gutter:added "green")
+  (setq git-gutter:added-sign "  ")
+  (set-face-background 'git-gutter:modified (face-attribute 'default :background))
+  (set-face-foreground 'git-gutter:modified "yellow")
+  (setq git-gutter:modified-sign "  ")
+  (global-git-gutter-mode t))
