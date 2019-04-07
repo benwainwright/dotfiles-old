@@ -250,6 +250,22 @@
 (use-package quelpa
   :ensure t)
 
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
+(require 'quelpa-use-package)
+
+(use-package quelpa-use-package
+  :after quelpa
+  :ensure t)
+
+;; (use-package realgud-node-inspect
+;;   :after realgud
+;;   :quelpa (realgud-node-inspect
+;;             :fetcher github
+;;             :repo "realgud/realgud-node-inspect"))
+
 (use-package realgud
   :ensure t)
 
