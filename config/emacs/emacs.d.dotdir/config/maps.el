@@ -64,5 +64,10 @@
 (define-key leader-map "els" 'eval-last-sexp)
 (define-key leader-map "ee" 'eval-expression)
 
+;; Flycheck
+(define-key leader-map "fl" 'flycheck-list-errors)
+(define-key leader-map "fn" 'flycheck-next-error)
+(define-key leader-map "fn" 'flycheck-prev-error)
+
 ;; Dash
 (define-key leader-map "dap" 'dash-at-point)
