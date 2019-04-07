@@ -26,18 +26,20 @@
 
 ;; Git and Github related
 (define-key leader-map "gcp" 'forge-checkout-pullreq)
-(define-key leader-map "gcb" 'magit-branch-checkout)
 (define-key leader-map "gbr" 'browse-at-remote)
 (define-key leader-map "gbc" 'browse-at-remote)
 (define-key leader-map "gib" 'forge-browse-issue)
 (define-key leader-map "gic" 'forge-create-issue)
-(define-key leader-map "gprc" 'forge-create-pullreq)
-(define-key leader-map "gprb" 'forge-browse-pullreq)
-(define-key leader-map "gs" 'magit-status)
-(define-key leader-map "gp" 'magit-pull)
+(define-key leader-map "gpc" 'forge-create-pullreq)
+(define-key leader-map "gpb" 'forge-browse-pullreq)
 (define-key leader-map "grl" 'magit-reflog-current)
 (define-key leader-map "gri" 'magit-rebase-interactive)
 (define-key leader-map "gcl" 'magit-clone)
+(define-key leader-map "gfa" 'magit-fetch-all)
+
+(define-key leader-map "c" 'magit-branch-checkout)
+(define-key leader-map "s" 'magit-status)
+(define-key leader-map "p" 'magit-pull)
 
 ;; Help
 (define-key leader-map "dk" 'describe-key)
