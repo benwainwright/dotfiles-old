@@ -433,3 +433,7 @@
   (set-face-foreground 'git-gutter:modified "yellow")
   (setq git-gutter:modified-sign "  ")
   (global-git-gutter-mode t))
+
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:

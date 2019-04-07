@@ -72,3 +72,7 @@
 
 ;; Dash
 (define-key leader-map "dap" 'dash-at-point)
+
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:

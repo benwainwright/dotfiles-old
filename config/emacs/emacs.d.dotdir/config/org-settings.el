@@ -61,3 +61,7 @@
 
 (defvar org-agenda-start-on-weekday)
 (setq org-agenda-start-on-weekday nil)
+
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:

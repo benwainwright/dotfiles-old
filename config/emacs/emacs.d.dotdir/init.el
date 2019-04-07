@@ -17,3 +17,7 @@
 (load "mac")
 (load "maps")
 (load "cosmos")
+
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:

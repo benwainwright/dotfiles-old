@@ -15,3 +15,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (setq display-line-numbers-type 'relative)
 (load custom-file)
+
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:
