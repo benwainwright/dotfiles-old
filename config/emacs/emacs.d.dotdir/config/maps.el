@@ -26,7 +26,6 @@
 
 ;; Shortcuts
 (define-key leader-map "c" 'magit-branch-checkout)
-(define-key leader-map "s" 'magit-status)
 (define-key leader-map "p" 'magit-pull)
 (define-key leader-map "r" 'reload-init-file)
 
@@ -43,6 +42,7 @@
 (define-key leader-map "gcl" 'magit-clone)
 (define-key leader-map "gfa" 'magit-fetch-all)
 (define-key leader-map "gcm" 'magit-commit)
+(define-key leader-map "gs" 'magit-status)
 (define-key leader-map "gl" 'magit-log-current)
 (define-key leader-map "hs" 'git-gutter:stage-hunk)
 (define-key leader-map "hp" 'git-gutter:previous-hunk)
@@ -69,6 +69,10 @@
 (define-key leader-map "fl" 'flycheck-list-errors)
 (define-key leader-map "fn" 'flycheck-next-error)
 (define-key leader-map "fn" 'flycheck-prev-error)
+
+;; Flyspell
+(define-key leader-map "sc" 'flyspell-correct-word-before-point)
+(define-key leader-map "sn" 'flyspell-goto-next-error)
 
 ;; Dash
 (define-key leader-map "dap" 'dash-at-point)
