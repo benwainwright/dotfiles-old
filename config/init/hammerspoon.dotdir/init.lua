@@ -13,13 +13,18 @@ local spectacleshift = {"cmd", "alt", "shift"}
 
 hotkey.bind(spectacle, 'M', function() application.launchOrFocus('Spotify') end)
 hotkey.bind(spectacle, 'S', function() application.launchOrFocus('Slack') end)
-hotkey.bind(spectacle, 'T', function() application.launchOrFocus('Microsoft Outlook') end)
 hotkey.bind(spectacle, 'I', function() application.launchOrFocus('iTerm') end)
 hotkey.bind(spectacle, 'B', function() application.launchOrFocus('Google Chrome') end)
+hotkey.bind(spectacle, 'C', function() application.launchOrFocus('Calendar') end)
 hotkey.bind(spectacle, 'E', function() application.launchOrFocus('Emacs') end)
-hotkey.bind(spectacle, 'O', function() application.launchOrFocus('Microsoft Outlook') end)
+hotkey.bind(spectacle, 'A', function() application.launchOrFocus('Airmail 3') end)
 hotkey.bind(spectacle, 'D', function() application.launchOrFocus('Dash') end)
 hotkey.bind(spectacle, 'F', function() application.launchOrFocus('Finder') end)
+hotkey.bind(mash, 'h', function() window.focusedWindow():moveOneScreenWest() end)
+hotkey.bind(mash, 'l', function() window.focusedWindow():moveOneScreenEast() end)
+hotkey.bind(mash, 'j', function() window.focusedWindow():moveOneScreenSouth() end)
+hotkey.bind(mash, 'k', function() window.focusedWindow():moveOneScreenNorth() end)
+
 
 
 function moveTo(win, x, y, h, w)
