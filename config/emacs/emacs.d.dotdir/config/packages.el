@@ -239,6 +239,49 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
+    (vector #b00000000
+      #b00000000
+      #b00000000
+      #b00000000
+      #b00000000
+      #b00111000
+      #b01111100
+      #b11111110
+      #b11111110
+      #b01111100
+      #b00111000
+      #b00000000
+      #b00000000
+      #b00000000
+      #b00000000
+      #b00000000
+      #b00000000))
+
+  (flycheck-define-error-level 'error
+    :severity 100
+    :compilation-level 2
+    :overlay-category 'flycheck-error-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-error
+    :error-list-face 'flycheck-error-list-error)
+
+  (flycheck-define-error-level 'warning
+    :severity 50
+    :compilation-level 1
+    :overlay-category 'flycheck-warning-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-warning
+    :error-list-face 'flycheck-warning-list-warning)
+
+  (flycheck-define-error-level 'info
+    :severity 0
+    :compilation-level 1
+    :overlay-category 'flycheck-info-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-info
+    :error-list-face 'flycheck-warning-list-info)
+
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
