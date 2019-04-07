@@ -34,12 +34,10 @@
   :config
   (require 'eshell)
   (add-hook 'eshell-before-prompt-hook
-    (lambda ()
-      (setq xterm-color-preserve-properties t)))
-
+	    (lambda ()
+	      (setq xterm-color-preserve-properties t)))
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-  (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-  )
+  (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
 
 (use-package dash-at-point
   :ensure t
@@ -205,7 +203,7 @@
   :after (helm evil))
 
 (use-package groovy-mode
-    :ensure t)
+  :ensure t)
 
 (use-package telephone-line
   :ensure t
@@ -247,22 +245,22 @@
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
     (vector #b00000000
-      #b00000000
-      #b00000000
-      #b00000000
-      #b00000000
-      #b00111000
-      #b01111100
-      #b11111110
-      #b11111110
-      #b01111100
-      #b00111000
-      #b00000000
-      #b00000000
-      #b00000000
-      #b00000000
-      #b00000000
-      #b00000000))
+	    #b00000000
+	    #b00000000
+	    #b00000000
+	    #b00000000
+	    #b00111000
+	    #b01111100
+	    #b11111110
+	    #b11111110
+	    #b01111100
+	    #b00111000
+	    #b00000000
+	    #b00000000
+	    #b00000000
+	    #b00000000
+	    #b00000000
+	    #b00000000))
 
   (flycheck-define-error-level 'error
     :severity 100
