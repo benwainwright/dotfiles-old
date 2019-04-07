@@ -23,6 +23,9 @@
 (use-package dashboard
   :ensure t)
 
+(use-package format-all
+  :ensure t)
+
 (use-package request
   :ensure t)
 
