@@ -29,8 +29,10 @@
 (define-key leader-map "gcb" 'magit-branch-checkout)
 (define-key leader-map "gbr" 'browse-at-remote)
 (define-key leader-map "gbc" 'browse-at-remote)
-(define-key leader-map "gbi" 'forge-browse-issue)
-(define-key leader-map "gbp" 'forge-browse-pullreq)
+(define-key leader-map "gib" 'forge-browse-issue)
+(define-key leader-map "gic" 'forge-create-issue)
+(define-key leader-map "gprc" 'forge-create-pullreq)
+(define-key leader-map "gprb" 'forge-browse-pullreq)
 (define-key leader-map "gs" 'magit-status)
 (define-key leader-map "gp" 'magit-pull)
 (define-key leader-map "grl" 'magit-reflog-current)
@@ -45,6 +47,13 @@
 (define-key leader-map "db" 'describe-bindings)
 (define-key leader-map "dm" 'describe-mode)
 (define-key leader-map "ds" 'describe-syntax)
+
+;; Evaluate Elisp
+(define-key leader-map "ed" 'eval-defun)
+(define-key leader-map "er" 'eval-region)
+(define-key leader-map "eb" 'eval-buffer)
+(define-key leader-map "els" 'eval-last-sexp)
+(define-key leader-map "ee" 'eval-expression)
 
 
 
