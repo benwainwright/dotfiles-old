@@ -29,6 +29,11 @@
 (use-package request
   :ensure t)
 
+(use-package ace-popup-menu
+  :ensure t
+  :config
+  (ace-popup-menu-mode 1))
+
 (use-package xterm-color
   :ensure t
   :config
