@@ -353,20 +353,6 @@
 (use-package browse-at-remote
   :ensure t)
 
-;; (use-package evil-leader
-;;   :ensure t
-;;   :after (evil browse-at-remote)
-;;   :config
-;;   (global-evil-leader-mode)
-;;   (evil-leader/set-leader "<SPC>")
-;;   (evil-leader/set-key
-;;     "s" 'magit-status
-;;     "r" 'reload-init-file
-;;     "b" 'browse-at-remote
-;;     "gcop" 'forge-checkout-pullreq
-;;     "c" 'browse-at-remote)
-
-
 (use-package treemacs
   :ensure t
   :defer t
