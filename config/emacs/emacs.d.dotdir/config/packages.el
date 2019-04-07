@@ -253,6 +253,11 @@
 (use-package realgud
   :ensure t)
 
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
 (use-package f
   :ensure t)
 
