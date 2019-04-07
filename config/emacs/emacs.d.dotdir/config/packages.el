@@ -160,9 +160,9 @@
   (unbind-key "C-p" evil-motion-state-map)
   (unbind-key "C-n" evil-normal-state-map)
   (unbind-key "C-n" evil-motion-state-map)
-  (unbind-key 'C-t' evil-normal-state-map)
+  (unbind-key "C-t" evil-normal-state-map)
   (unbind-key "C-t" evil-motion-state-map)
-  (bind-key ';' 'helm-buffers-list evil-motion-state-map)
+  (bind-key ";" 'helm-buffers-list evil-motion-state-map)
   (bind-key ";" 'helm-buffers-list evil-normal-state-map))
 
 (use-package evil-surround
