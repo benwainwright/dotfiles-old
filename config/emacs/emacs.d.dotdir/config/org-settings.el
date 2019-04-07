@@ -30,10 +30,6 @@
 (defvar org-deadline-warning-days)
 (setq org-deadline-warning-days 7)
 
-;;show me tasks scheduled or due in next fortnight
-(defvar org-agenda-span)
-(setq org-agenda-span (quote fortnight))
-
 ;;don't show tasks that are scheduled or have deadlines in the
 ;;normal todo list
 (defvar org-agenda-todo-ignore-deadlines)
@@ -45,16 +41,23 @@
 ;;sort tasks in order of when they are due and then by priority
 (defvar org-agenda-sorting-strategy)
 (setq org-agenda-sorting-strategy
-  (quote
-   ((agenda deadline-up priority-down)
-    (todo priority-down category-keep)
-    (tags priority-down category-keep)
-    (search category-keep))))
+      (quote
+       ((agenda deadline-up priority-down)
+	(todo priority-down category-keep)
+	(tags priority-down category-keep)
+	(search category-keep))))
 
 (defvar org-priority-faces)
 (setq org-priority-faces
       '((65 :foreground "red" :background "yellow")
 	(66 :foreground "black" :background "yellow")
 	(67 . "blue")))
+      
+(defvar org-agenda-start-day)
+(setq org-agenda-start-day "-1d")
 
+(defvar org-agenda-span)
+(setq org-agenda-span 7)
 
+(defvar org-agenda-start-on-weekday)
+(setq org-agenda-start-on-weekday nil)

@@ -1,4 +1,4 @@
-;;; packages.el --- package declaration and configuration
+;; packages.el --- package declaration and configuration
 (require 'package)
 
 (package-initialize)
@@ -15,20 +15,40 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-
 (use-package exec-path-from-shell
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package request
+  :ensure t)
+
+(use-package xterm-color
+  :ensure t
+  :config
+  (require 'eshell)
+  (add-hook 'eshell-before-prompt-hook
+    (lambda ()
+      (setq xterm-color-preserve-properties t)))
+
+  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+  (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+
+  )
+
+(use-package smartparens
+  :ensure t)
+
 (use-package dockerfile-mode
+  :ensure t)
+
+(use-package docker-compose-mode
   :ensure t)
 
 (use-package diminish
   :ensure t
   :config
-  (diminish 'git-gutter-mode)
-  )
+  (diminish 'git-gutter-mode))
 
 (use-package general
   :ensure t)
@@ -50,6 +70,9 @@
 (use-package linum-relative
   :ensure t)
 
+(use-package typescript-mode
+  :ensure t)
+
 (use-package xref-js2
   :ensure t)
 
@@ -59,16 +82,11 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package ivy
+(use-package helm
+  :config
+  (require 'helm-config)
+  (helm-mode)
   :ensure t)
-
-(use-package counsel
-  :ensure t
-  :after ivy)
-
-(use-package counsel-projectile
-  :ensure t
-  :after counsel)
 
 (use-package multi-term
   :ensure t
@@ -115,27 +133,22 @@
 
 (use-package projectile
   :ensure t
-  :bind ("C-f" . counsel-projectile-find-file)
+  :bind ("C-f" . helm-projectile-find-file)
   :config
   (refresh-projectile-projects))
+
+(use-package helm-projectile
+  :ensure t
+  :after helm)
 
 (use-package magit
   :ensure t
   :config
+  (magit-save-repository-buffers 'dontask)
   (remove-hook 'server-switch-hook 'magit-commit-diff)
-  (setq vc-handled-backends nil)
-  )
-
-(use-package magit-popup
   :ensure t
-  :after magit)
-
-(use-package forge
-  :ensure t
-  :after magit)
-
-(use-package js2-mode
-  :ensure t)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode)))
 
 (use-package evil
   :ensure t
@@ -149,8 +162,14 @@
   (unbind-key "C-p" evil-motion-state-map)
   (unbind-key "C-n" evil-normal-state-map)
   (unbind-key "C-n" evil-motion-state-map)
-  (bind-key ";" 'counsel-switch-buffer evil-motion-state-map)
-  (bind-key ";" 'counsel-switch-buffer evil-normal-state-map))
+  (unbind-key "C-t" evil-normal-state-map)
+  (unbind-key "C-t" evil-motion-state-map)
+  (bind-key ";" 'helm-buffers-list evil-motion-state-map)
+  (bind-key ";" 'helm-buffers-list evil-normal-state-map))
+
+(use-package evil-surround
+  :ensure t
+  :after evil)
 
 (use-package evil-magit
   :ensure t
@@ -170,15 +189,15 @@
 (use-package groovy-mode
     :ensure t)
 
-(use-package powerline
+(use-package telephone-line
   :ensure t
   :config
-  (powerline-default-theme))
+  (telephone-line-mode 1))
 
-(use-package material-theme
+(use-package monokai-theme
   :ensure t
   :config
-  (load-theme 'material t))
+  (load-theme 'monokai t))
 
 (use-package discover
   :ensure t)
@@ -194,8 +213,15 @@
 
 (use-package eglot
   :ensure t
+  :after projectile
   :config
-  (add-hook 'python-mode-hook 'eglot-ensure))
+  (defun me:project-finder (dir)
+    (if (fboundp 'projectile-project-root)
+	(let ((root (projectile-project-root dir)))
+          (and root (cons 'transient root)))))
+  (add-to-list 'project-find-functions #'me:project-finder)
+  (add-hook 'python-mode-hook 'eglot-ensure)
+  (add-hook 'typescript-mode-hook 'eglot-ensure))
 
 (use-package flycheck
   :ensure t
@@ -205,7 +231,9 @@
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package editorconfig
-  :ensure t)
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
 (use-package company
   :ensure t
@@ -227,16 +255,19 @@
 (use-package browse-at-remote
   :ensure t)
 
-(use-package evil-leader
-  :ensure t
-  :after (evil browse-at-remote)
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key "s" 'magit-status)
-  (evil-leader/set-key "r" 'reload-init-file)
-  (evil-leader/set-key "b" 'browse-at-remote)
-  (evil-leader/set-key "c" 'browse-at-remote))
+;; (use-package evil-leader
+;;   :ensure t
+;;   :after (evil browse-at-remote)
+;;   :config
+;;   (global-evil-leader-mode)
+;;   (evil-leader/set-leader "<SPC>")
+;;   (evil-leader/set-key
+;;     "s" 'magit-status
+;;     "r" 'reload-init-file
+;;     "b" 'browse-at-remote
+;;     "gcop" 'forge-checkout-pullreq
+;;     "c" 'browse-at-remote)
+
 
 (use-package treemacs
   :ensure t

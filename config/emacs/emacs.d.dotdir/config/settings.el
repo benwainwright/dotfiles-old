@@ -4,13 +4,14 @@
 
 (global-hl-line-mode +1)
 (global-font-lock-mode 1)
+(setq ns-use-srgb-colorspace nil)
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
 (setq visible-bell t)
+(setq undo-tree-auto-save-history t)
 
 (setq backup-directory-alist `(("." . "~/.emacssaves")))
 (setq custom-file "~/.emacs.d/custom.el")
 (setq display-line-numbers-type 'relative)
 (load custom-file)
-
