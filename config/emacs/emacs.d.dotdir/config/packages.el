@@ -58,11 +58,6 @@
 (use-package docker-compose-mode
   :ensure t)
 
-(use-package diminish
-  :ensure t
-  :config
-  (diminish 'git-gutter-mode))
-
 (use-package general
   :ensure t)
 
