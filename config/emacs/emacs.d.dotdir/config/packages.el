@@ -265,6 +265,9 @@
 (use-package org
   :ensure t)
 
+(use-package restclient
+  :ensure t)
+
 (use-package org-bullets
   :after org
   :ensure t)
