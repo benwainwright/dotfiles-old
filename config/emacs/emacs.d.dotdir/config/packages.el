@@ -82,11 +82,6 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package helm
-  :config
-  (require 'helm-config)
-  (helm-mode)
-  :ensure t)
 
 (use-package multi-term
   :ensure t
@@ -186,6 +181,18 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
+(use-package helm
+  :config
+  (require 'helm-config)
+  (helm-mode)
+  :ensure t)
+
+(use-package helm-swoop
+  :ensure t
+  :config
+  (bind-key "/" 'helm-swoop-from-evil-search evil-motion-state-map)
+  :after (helm evil))
+
 (use-package groovy-mode
     :ensure t)
 
@@ -239,6 +246,12 @@
   :ensure t
   :config
   (global-company-mode))
+
+(use-package quelpa
+  :ensure t)
+
+(use-package realgud
+  :ensure t)
 
 (use-package f
   :ensure t)
