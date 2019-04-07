@@ -5,3 +5,7 @@ network-security.data
 transient
 .cache
 forge-database.sqlite
+eshell
+tramp
+projectile-bookmarks.eld
+quelpa
