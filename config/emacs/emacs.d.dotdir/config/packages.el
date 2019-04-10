@@ -29,6 +29,9 @@
 (use-package helm-system-packages
   :ensure t)
 
+(use-package symon
+  :ensure t)
+
 (use-package format-all
   :ensure t)
 
