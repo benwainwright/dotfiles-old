@@ -1,10 +1,10 @@
 # Imports proxy settings for reith
 Include config.reith.socks
 
-Host github.com 
-	AddKeysToAgent yes
-	UseKeychain yes
-	Identityfile ~/.ssh/id_rsa.github
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  Identityfile ~/.ssh/id_rsa.github
 
 Host ?.access.*.cloud.bbc.co.uk
   AddKeysToAgent yes
