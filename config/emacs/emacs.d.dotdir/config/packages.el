@@ -121,37 +121,28 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-
-(defun refresh-projectile-projects()
-  "Reload all projects from defined locations into projectile."
-  (interactive)
-  (setq projectile-known-projects ())
-  (add-to-list 'projectile-known-projects "~/org")
-  (add-to-list 'projectile-known-projects "~/dotfiles")
-  (add-projects-in-path-to-projectile-known-projects "~/workspace")
-  (add-projects-in-path-to-projectile-known-projects "~/repos"))
-
-(defun add-projects-in-path-to-projectile-known-projects(path)
-  "Load all top level directories from 'path' into projectile as known projects"
-  (interactive "sPath: ")
-  (dolist (entry (directory-files path t))
-    (add-to-list 'projectile-known-projects entry)))
-
-;; (use-package excorporate
-;;   :ensure t
-;;   :config
-;;   (setq excorporate-configuration
-;; 	'("ben.wainwright@bbc.co.uk" . "https://oa.myconnect.bbc.co.uk/ews/exchange.asmx")
-;; 	org-agenda-include-diary t)
-;;   (excorporate)
-;;   (excorporate-diary-enable)
-;;   )
+(use-package f
+  :ensure t)
 
 (use-package projectile
   :ensure t
   :bind ("C-f" . helm-projectile-find-file)
+  :after f
   :config
-  (refresh-projectile-projects))
+  (require 'filenotify)
+  (defun set-projectile-workspaces (&rest workspaces)
+    (dolist (workspace workspaces)
+      (projectile-discover-projects-in-directory workspace)
+      (file-notify-add-watch workspace
+        '(change attribute-change)
+        (lambda (event)
+          (projectile-discover-projects-in-directory
+            (f-dirname (car (cdr (cdr event)))))))))
+
+  (set-projectile-workspaces "~/workspace" "~/repos")
+  (add-to-list 'projectile-known-projects "~/Dropbox (BBC)/org")
+  (add-to-list 'projectile-known-projects "~/dotfiles"))
+
 
 (use-package helm-projectile
   :ensure t

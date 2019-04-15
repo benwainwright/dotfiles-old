@@ -182,7 +182,8 @@ ssh-cosmos() {
     login=$(cosmos-create-login "$service" "$environment" | tee "$cacheFile")
   fi
 
-  ip=$(echo "$login" | jq ".instance_private_ip")
+  ip=$(echo "$login" | jq --raw-output ".instance_private_ip")
+  echo "Connecting to $ip in $region via ssh..."
   ssh "$ip,$region"
 }
 
