@@ -91,7 +91,12 @@ configure_shell_for_reith() {
   else
     alias git="git -c http.proxy=\"$HTTP_PROXY\""
   fi
-  sed -i ".bak" "s/^\#\{1,1\}\(  ProxyCommand nc\)\(.*$\)/\1\2/g" ~/.ssh/config.github.reith.socks
+
+  if [ -f ~/.ssh/config.reith.socks ]; then
+     sed -i ".bak" 's/^\([ \t]*\#[ \t]*\)*\(ProxyCommand\)\(.*$\)/  \2\3/g' \
+         ~/.ssh/config.reith.socks
+  fi
+
   export JAVA_OPTS="$JAVA_OPTS
     -Dhttp.proxyHost=$http_proxy_url -Dhttp.proxyPort=$http_proxy_port
     -Dhttps.proxyHost=$http_proxy_url -Dhttps.proxyPort=$http_proxy_port
