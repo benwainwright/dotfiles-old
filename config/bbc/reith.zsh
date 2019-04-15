@@ -1,14 +1,26 @@
+# Ben's amazing Reith management script
+#
+# This script does the following:
+
 REITH_ON="BBC On Network"
 REITH_OFF="BBC Off Network"
 
+# Query MacOSX `networksetup` and:
+# - Run configure_shell_for_reith when on Reith and
+# - Run configure_shell_for_no-reith when off Reith
 detect_and_configure_reith_proxy_if_present() {
   if [ "$REITH_ON" = "$(networksetup -getcurrentlocation)" ]; then
     configure_shell_for_reith
-  else 
+  else
     configure_shell_for_no_reith
   fi
 }
 
+# reith on  - Enable "BBC On Network" location, turn off
+#             wifi and configure my shell for reith
+# reith off - Enable "BBC Off Network"  location, turn on
+#             wifi and configure my shell for not being on
+#             reith
 reith() {
   if [ "$1" = "on" ]; then
     echo "Switching location to '$REITH_ON' and disabling wifi"
@@ -20,9 +32,13 @@ reith() {
     networksetup -switchtolocation "$REITH_OFF" > /dev/null
     networksetup -setairportpower en0 on
     configure_shell_for_no_reith
+  else
+    echo "usage: reith <on/off>"
   fi
 }
 
+# unset all proxy configuration environment variables
+# unalias hub if present or git if not
 configure_shell_for_no_reith() {
   if [ ! -z "$http_proxy" ] || \
      [ ! -z "$HTTP_PROXY" ] || \
@@ -43,9 +59,18 @@ configure_shell_for_no_reith() {
   else
     unalias git 2> /dev/null
   fi
-  sed -i ".bak" "s/^\(  ProxyCommand nc\)\(.*$\)/#\1\2/g" ~/.ssh/config.github.reith.socks
+  sed -i ".bak" "s/^\([ \t]*ProxyCommand\)\(.*$\)/#\1\2/g" \
+      ~/.ssh/config.reith.socks
 }
 
+# configure_shell_for_reith - Export proxy configuration environment
+#                             variables to work with the BBC Reith network
+#                           - If 'hub' is present alias it to pass in proxy
+#                           - config via the command line.
+#                           - If it isn't, do the same for git instead.
+#                           - If ~/.ssh/config.reith.socks is present, edit
+#                           - it in place, uncommenting any commented out
+#                           - ProxyCommand instructions
 configure_shell_for_reith() {
   echo "Configuring shell proxy settings"
   export http_proxy_port=80
