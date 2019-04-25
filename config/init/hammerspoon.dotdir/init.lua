@@ -72,7 +72,8 @@ end)
 hotkey.bind(spectacleshift, "L", function()
     moveTo(window.focusedWindow(), 0.5, 0, 0.5, 1)
     moveNamedAppTo('iTerm2', 0, 0, 0.5, 1)
-end) 
+end)
+
 -- Full screen.
 hotkey.bind(spectacle, "F", function()
     local win = window.focusedWindow():maximize()
