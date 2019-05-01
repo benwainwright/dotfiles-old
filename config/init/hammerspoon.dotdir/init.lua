@@ -27,7 +27,6 @@ hotkey.bind(mash, 'j', function() window.focusedWindow():moveOneScreenSouth() en
 hotkey.bind(mash, 'k', function() window.focusedWindow():moveOneScreenNorth() end)
 
 
-
 function moveTo(win, x, y, h, w)
   local rect = geometry.rect(x, y, h, w)
   win:moveToUnit(rect)
