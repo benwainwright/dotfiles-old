@@ -24,6 +24,13 @@
 (use-package yasnippet
   :ensure t)
 
+;; (use-package jenkins
+;;   :ensure t
+;;   :config
+;;   (setq jenkins-api-token (1pass-password-for "Webcore Jenkins"))
+;;   (setq jenkins-url "https://jenkins.webcore.tools.bbc.co.uk")
+;;   (setq jenkins-username "ben.wainwright@bbc.co.uk"))
+
 (use-package yasnippet-snippets
   :ensure t)
 
