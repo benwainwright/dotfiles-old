@@ -137,7 +137,6 @@ set showcmd                     " Show last command at the bottom of the screen
 set laststatus=2                " Always show statusline
 set ruler                       " Show line and column number
 set number                      " Turn on line numbering
-set cursorline                  " Highlight current line
 set splitright                  " vertical split opens on the right
 
 set directory^=$HOME/.vim/tmp/  " Where to store temporary files
@@ -265,9 +264,26 @@ syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell;
 
 " Colors
 colorscheme monokai
-highlight GitGutterAdd  ctermfg=10  ctermbg=237
-highlight gitGutterDelete ctermfg=9 ctermbg=237
-highlight gitGutterChange ctermfg=11 ctermbg=237
+set background=dark
+
+highlight GitGutterAdd  
+      \ ctermfg=green  
+      \ ctermbg=237 
+      \ guibg=#3C3D37
+      \ guifg=green
+
+highlight GitGutterDelete 
+      \ ctermfg=red
+      \ ctermbg=237
+      \ guibg=#3C3D37
+      \ guifg=red
+
+highlight GitGutterChange 
+      \ ctermfg=yellow
+      \ ctermbg=237
+      \ guibg=#3C3D37
+      \ guifg=yellow
+
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 highlight ALEWarningSign ctermfg=yellow
