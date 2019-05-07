@@ -28,6 +28,7 @@ if dein#load_state('/Users/wainwb01/.vim/dein')
   call dein#add('prabirshrestha/asyncomplete-buffer.vim')
   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
   call dein#add('rafi/awesome-vim-colorschemes')
+  call dein#add('prabirshrestha/asyncomplete-emoji.vim')
   "call dein#add('mhinz/vim-signify')
   " Personal plugins
   call dein#add('benwainwright/fzf-switch-project')
