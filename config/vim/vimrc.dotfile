@@ -2,6 +2,15 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
 
 set runtimepath+=/Users/wainwb01/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('/Users/wainwb01/.vim/dein')
