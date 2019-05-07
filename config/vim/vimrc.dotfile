@@ -89,7 +89,7 @@ endif
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name': 'buffer',
     \ 'whitelist': ['*'],
-    \ 'blacklist': ['javascript', 'typescript', 'python'],
+    \ 'blacklist': ['javascript', 'javascript.jsx', 'typescript', 'python'],
     \ 'completor': function('asyncomplete#sources#buffer#completor'),
     \ }))
 
