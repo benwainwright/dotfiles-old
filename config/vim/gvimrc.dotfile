@@ -1,0 +1,5 @@
+set guifont=FuraCode\ Nerd\ Font\ Mono:h18
+set macligatures
+set cursorline
+set guioptions-=mT
+set guioptions+=ci
