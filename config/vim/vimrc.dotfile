@@ -60,8 +60,23 @@ tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
 tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
 tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
 tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
-nnoremap <silent> <c-x> :terminal<cr>
-tnoremap <silent> <c-x> <c-w>:q<cr>
+
+nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
+tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
+
+function Toggle_terminal()
+  if !exists('g:toggledTerminalBuffer') 
+        \ || !bufexists(g:toggledTerminalBuffer)
+        \ || g:toggledTerminalBuffer == 0
+    let g:toggledTerminalBuffer = term_start($SHELL)
+  elseif bufwinnr(g:toggledTerminalBuffer) > 0
+    let l:win = bufwinnr(g:toggledTerminalBuffer)
+    execute "close " . l:win
+  else
+    execute "sbuffer" . g:toggledTerminalBuffer
+  endif
+endfunction
+
 
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
@@ -286,7 +301,12 @@ highlight GitGutterChange
       \ guibg=#3C3D37
       \ guifg=yellow
 
-highlight ALEWarningSign ctermfg=yellow
+highlight ALEWarningSign 
+      \ ctermfg=yellow
+      \ ctermbg=237
+      \ guibg=#3C3D37
+      \ guifg=yellow
+
 highlight ALEWarning ctermbg=yellow ctermfg=black
 highlight ALEError ctermbg=red ctermfg=white
 highlight CursorLine ctermbg=236
@@ -294,20 +314,49 @@ highlight CursorLine ctermbg=236
 highlight LspHintText
       \ guibg=#3C3D37
 
+let g:lsp_signs_hint = { 'text':  '💡' }
+
 highlight LspHint
       \  gui=undercurl
 
 highlight ALEErrorSign 
       \ ctermfg=red
+      \ ctermbg=237
       \ guibg=#3C3D37
       \ guifg=red
+
+let g:ale_sign_error = '✖'
 
 highlight ALEError
       \ gui=undercurl
       \ guisp=red
 
+highlight ALEWarningSign
+      \ ctermfg=yellow
+      \ ctermbg=237
+      \ guifg=yellow
+      \ guibg=#3C3D37
+
+let g:ale_sign_warning = '⚠'
+
 highlight LspErrorText
       \ guibg=#3C3D37
+      \ guifg=32
+
+let g:lsp_signs_error = { 'text':'✖' }
+
+highlight LspWarningText
+      \ ctermfg=yellow
+      \ ctermbg=237
+      \ guifg=yellow
+      \ guibg=#3C3D37
+
+let g:lsp_signs_warning = { 'text': '⚠' }
+let g:lsp_signs_information = { 'text': 'ℹ'}
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_modified_removed = ''
 
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
