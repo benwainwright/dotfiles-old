@@ -1,28 +1,36 @@
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)
 
-(global-set-key (kbd "C-n") 'next-buffer)
-(global-set-key (kbd "C-p") 'previous-buffer)
-(global-set-key (kbd "s-p") 'helm-projectile-switch-project)
-(global-set-key (kbd "s-g") 'helm-projectile-rg)
-(global-set-key (kbd "s-c") 'projectile-compile-project)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-file)
-(global-set-key (kbd "M-n") 'flycheck-next-error)
-(global-set-key (kbd "M-p") 'flycheck-previous-error)
-(global-set-key (kbd "C-j") 'windmove-down)
-(global-set-key (kbd "C-k") 'windmove-up)
-(global-set-key (kbd "C-h") 'windmove-left)
-(global-set-key (kbd "C-l") 'windmove-right)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-a") 'org-agenda)
-(global-set-key (kbd "C-t") 'treemacs)
+(define-minor-mode my-global-keymaps-mode
+  "Personal global keybindings"
+  :keymap (make-sparse-keymap)
+  :init-value t)
+
+(define-key my-global-keymaps-mode-map (kbd "C-n") 'next-buffer)
+(define-key my-global-keymaps-mode-map (kbd "C-p") 'previous-buffer)
+(define-key my-global-keymaps-mode-map (kbd "s-p") 'helm-projectile-switch-project)
+(define-key my-global-keymaps-mode-map (kbd "s-g") 'helm-projectile-rg)
+(define-key my-global-keymaps-mode-map (kbd "s-c") 'projectile-compile-project)
+(define-key my-global-keymaps-mode-map (kbd "M-x") 'helm-M-x)
+(define-key my-global-keymaps-mode-map (kbd "C-x C-f") 'helm-find-files)
+(define-key my-global-keymaps-mode-map (kbd "M-n") 'flycheck-next-error)
+(define-key my-global-keymaps-mode-map (kbd "M-p") 'flycheck-previous-error)
+(define-key my-global-keymaps-mode-map (kbd "C-j") 'windmove-down)
+(define-key my-global-keymaps-mode-map (kbd "C-k") 'windmove-up)
+(define-key my-global-keymaps-mode-map (kbd "C-h") 'windmove-left)
+(define-key my-global-keymaps-mode-map (kbd "C-l") 'windmove-right)
+(define-key my-global-keymaps-mode-map (kbd "C-c c") 'org-capture)
+(define-key my-global-keymaps-mode-map (kbd "C-a") 'org-agenda)
+(define-key my-global-keymaps-mode-map (kbd "C-t") 'treemacs)
+
+(my-global-keymaps-mode)
 
 (defvar leader-map (make-sparse-keymap)
   "Keymap for \"leader\" shortcuts.")
 
-(unbind-key "<SPC>" evil-motion-state-map)
+; (unbind-key "<SPC>" evil-motion-state-map)
 (define-key evil-normal-state-map (kbd "SPC") leader-map)
+(define-key evil-visual-state-map (kbd "SPC") leader-map)
 
 ;; Shortcuts
 (define-key leader-map "c" 'magit-branch-checkout)

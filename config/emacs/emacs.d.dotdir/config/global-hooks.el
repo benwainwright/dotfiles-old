@@ -3,6 +3,7 @@
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (add-hook 'prog-mode-hook 'prettify-symbols-mode)
+(add-hook 'js2-mode-hook 'yas-minor-mode)
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)

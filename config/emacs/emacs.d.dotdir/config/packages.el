@@ -154,7 +154,6 @@
   (add-to-list 'projectile-known-projects "~/Dropbox (BBC)/org")
   (add-to-list 'projectile-known-projects "~/dotfiles"))
 
-
 (use-package helm-projectile
   :ensure t
   :after helm)
@@ -162,7 +161,7 @@
 (use-package magit
   :ensure t
   :config
-  (magit-save-repository-buffers 'dontask)
+  (setq magit-save-repository-buffers 'dontask)
   (remove-hook 'server-switch-hook 'magit-commit-diff)
   :ensure t
   :config
@@ -215,21 +214,15 @@
 (use-package helm-swoop
   :ensure t
   :config
-  (bind-key "/" 'helm-swoop-from-evil-search evil-motion-state-map)
   :after (helm evil))
 
 (use-package groovy-mode
   :ensure t)
 
-(use-package telephone-line
-  :ensure t
-  :config
-  (telephone-line-mode 1))
-
-(use-package monokai-theme
-  :ensure t
-  :config
-  (load-theme 'monokai t))
+;; (use-package monokai-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'monokai t))
 
 (use-package discover
   :ensure t)
@@ -247,13 +240,19 @@
   :ensure t
   :after projectile
   :config
+  (setq eglot-sync-connect 0)
   (defun me:project-finder (dir)
     (if (fboundp 'projectile-project-root)
 	(let ((root (projectile-project-root dir)))
           (and root (cons 'transient root)))))
   (add-to-list 'project-find-functions #'me:project-finder)
+  (add-hook 'js2-mode-hook 'eglot-ensure)
   (add-hook 'python-mode-hook 'eglot-ensure)
-  (add-hook 'typescript-mode-hook 'eglot-ensure))
+  (add-hook 'typescript-mode-hook 'eglot-ensure)
+  (add-hook 'eglot--managed-mode-hook
+    (lambda ()
+      (remove-hook 'flymake-diagnostic-functions 'eglot-flymake-backend t)
+      (flymake-mode -1))))
 
 (use-package flycheck
   :ensure t
@@ -301,6 +300,7 @@
     :fringe-bitmap 'flycheck-fringe-bitmap-ball
     :fringe-face 'flycheck-fringe-info
     :error-list-face 'flycheck-warning-list-info)
+  (add-to-list 'flycheck-checkers 'eglot-checker)
 
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
@@ -313,7 +313,14 @@
 (use-package company
   :ensure t
   :config
-  (global-company-mode))
+  (global-company-mode)
+  (setq company-idle-delay 0.2)
+  (setq company-show-numbers t)
+  (setq company-minimum-prefix-length 1)
+  (add-to-list 'company-backends 'company-yasnippet)
+  (defun company-preview-if-just-one-frontend (COMMAND)
+    (setq company-frontends '(company-pseudo-tooltip-frontend
+                               company-echo-metadata-frontend))))
 
 (use-package quelpa
   :ensure t)
@@ -328,6 +335,15 @@
   :after quelpa
   :ensure t)
 
+(setq use-package-ensure-function 'quelpa)
+
+(defun shell-other-window ()
+  "Open a `shell' in a new window."
+  (interactive)
+  (let ((buf (shell)))
+    (switch-to-buffer (other-buffer buf))
+    (switch-to-buffer-other-window buf)))
+
 (use-package realgud
   :ensure t)
 
@@ -335,9 +351,6 @@
   :ensure t
   :config
   (which-key-mode))
-
-(use-package f
-  :ensure t)
 
 (use-package json-mode
   :ensure t)
@@ -419,20 +432,26 @@
   :after (treemacs projectile)
   :ensure t)
 
-(use-package git-gutter
+(use-package diff-hl
   :ensure t
-  :config
-  (setq git-gutter:window-width 4)
-  (set-face-background 'git-gutter:deleted (face-attribute 'default :background))
-  (set-face-foreground 'git-gutter:deleted "red")
-  (setq git-gutter:deleted-sign "  ")
-  (set-face-background 'git-gutter:added (face-attribute 'default :background))
-  (set-face-foreground 'git-gutter:added "green")
-  (setq git-gutter:added-sign "  ")
-  (set-face-background 'git-gutter:modified (face-attribute 'default :background))
-  (set-face-foreground 'git-gutter:modified "yellow")
-  (setq git-gutter:modified-sign "  ")
-  (global-git-gutter-mode t))
+  :init
+  (global-diff-hl-mode)
+  )
+
+;; (use-package git-gutter
+;;   :ensure t
+;;   :config
+;;   (setq git-gutter:window-width 4)
+;;   (set-face-background 'git-gutter:deleted (face-attribute 'default :background))
+;;   (set-face-foreground 'git-gutter:deleted "red")
+;;   (setq git-gutter:deleted-sign "  ")
+;;   (set-face-background 'git-gutter:added (face-attribute 'default :background))
+;;   (set-face-foreground 'git-gutter:added "green")
+;;   (setq git-gutter:added-sign "  ")
+;;   (set-face-background 'git-gutter:modified (face-attribute 'default :background))
+;;   (set-face-foreground 'git-gutter:modified "yellow")
+;;   (setq git-gutter:modified-sign "  ")
+;;   (global-git-gutter-mode t))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)

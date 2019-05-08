@@ -1,7 +1,7 @@
 (setq initial-frame-alist
   '((tool-bar-lines . 0)
      (width . 106)
-     (font . "Fira Code-14")
+     (font . "Fira Code-15")
      (height . 60)
      (background-mode . 'dark)
      (ns-transparent-titlebar . t)
@@ -9,12 +9,14 @@
 
 (setq default-frame-alist
   '((tool-bar-lines . 0)
-     (font . "Fira Code-14")
+     (font . "Fira Code-15")
      (width . 106)
      (height . 60)
      (background-mode . 'dark)
      (ns-transparent-titlebar . t)
      (ns-appearance . dark)))
+
+(setq telephone-line-height 18)
 
 ;; Enable ligatures
 (when (window-system)

@@ -24,7 +24,8 @@ Optionally supply an ERROR callback function"
                  (funcall complete data)))
     :error (cl-function
              (lambda (&rest args &key error-thrown &allow-other-keys)
-               (funcall error error-thrown)))))
+               (funcall error error-thrown))))
+  )
 
 (defun cosmos-get-resource (done data resource &optional error)
   (if (and
@@ -46,6 +47,7 @@ Optionally supply an ERROR callback function"
   (api-request
     cosmos-api-url
     (lambda (data)
+      (message "test")
       (ivy-read "Resource: " (mapcar 'car data)))))
 
 
@@ -73,6 +75,11 @@ Optionally supply an ERROR callback function"
         (cosmos-list-resource done request-data))
       (lambda (request-error)
         (message "Error while calling Cosmos API: %S" request-error)))))
+
+(cosmos-list-resource
+  (lambda (list)
+    (message "FOOO")
+    (message (pp list))))
 
 (provide 'cosmos)
 ;;; cosmos.el ends here

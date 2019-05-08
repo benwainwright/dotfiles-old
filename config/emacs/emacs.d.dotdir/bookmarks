@@ -14,7 +14,7 @@
  (position . 1299))
 ("org-capture-last-stored"
  (filename . "~/Dropbox (BBC)/org/gtd/inbox.org")
- (front-context-string . "** TODO Remind L")
- (rear-context-string . "2019-04-02 Tue>\n")
- (position . 96))
+ (front-context-string . "** TODO Send ema")
+ (rear-context-string . "2019-04-13 Sat>\n")
+ (position . 539))
 )

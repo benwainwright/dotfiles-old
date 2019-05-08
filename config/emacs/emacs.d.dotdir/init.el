@@ -12,11 +12,13 @@
 (load "visual")
 (load "settings")
 (load "org-settings")
+(load "1pass")
 (load "packages")
 (load "global-hooks")
 (load "mac")
 (load "maps")
 (load "cosmos")
+(load "eglot-flycheck")
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
