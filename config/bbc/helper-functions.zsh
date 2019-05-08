@@ -264,8 +264,7 @@ bbc-repo() {
     if ! git clone "https://github.com/bbc/$repo.git" "$dir"; then
       read "?Do you want to create bbc/$repo? " choice
       case "$choice" in
-        n|N ) return;;
-        y|Y ) create-bbc-repo "$repo" return;;
+        y|Y|Yes|yes ) create-bbc-repo "$repo" return;;
       esac
     fi
   fi

@@ -12,6 +12,7 @@ export JENKINS_URL=https://jenkins.cd.tools.bbc.co.uk
 
 export CHRONOS=kieran-bamforth,andrewscfc,lalkhum,cefn,saralk
 export BBC_WORKSPACE=$HOME/workspace
+export MAGIC_REITH_SSH_CONFIG="$HOME/.ssh/config.reith.socks"
 
 # This allows PIP to use the BBC cloud cert as well as public CAs
 # Do this with the following set of commands

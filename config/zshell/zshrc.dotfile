@@ -8,8 +8,9 @@
 # Auto-start TMUX                                    #
 ######################################################
 
-if [ -z "$TMUX" ]
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-256color" ]
 then
+  echo "FOO"
     tmux attach -t TMUX || tmux new -s TMUX
 fi
 
@@ -44,7 +45,7 @@ function add_completion_dirs_to_fpath() {
 
   for completion_file in $completions; do
     completion_dir=$(dirname $completion_file)
-    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N) (completions): Adding $completion_dir to fpath" 
+    [ ! -z "$DEBUG_SOURCING" ] && echo "$(gdate +%s/%N) (completions): Adding $completion_dir to fpath"
     fpath=($completion_dir $fpath)
   done
 }
@@ -54,13 +55,13 @@ add_completion_dirs_to_fpath
 # Load plugins                                        #
 #######################################################
 
-autoload -Uz compinit
-compinit
-
 if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
   echo "load-plugins.sh not found. Installing with antibody"
   antibody bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
 fi
+
+autoload -Uz compinit
+compinit
 
 source "$ZSH_DIR/load-plugins.sh"
 
@@ -177,3 +178,13 @@ export PATH="/usr/local/sbin:$PATH"
 ######################################################
 
 # zprof
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh

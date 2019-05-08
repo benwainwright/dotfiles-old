@@ -30,3 +30,6 @@ bind-key l split-window -h -c "#{pane_current_path}"
 
 set -g mouse on
 set-option -g history-limit 4000
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'

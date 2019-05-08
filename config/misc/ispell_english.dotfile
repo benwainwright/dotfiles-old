@@ -1,6 +1,8 @@
 checkdoc
+CLI
 Flycheck
 Flyspell
+Homebrew
 onRequest
 preHandler
 requiredKey

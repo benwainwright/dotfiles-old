@@ -11,50 +11,37 @@ if has("multi_byte")
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
+call plug#begin('~/.vim/plugged')
 
-set runtimepath+=/Users/wainwb01/.vim/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('/Users/wainwb01/.vim/dein')
-  call dein#begin('/Users/wainwb01/.vim/dein')
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'tpope/vim-commentary'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'prabirshrestha/asyncomplete-emoji.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'chrisbra/unicode.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'vim-airline/vim-airline'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-vinegar'
 
-  " Let dein manage dein
-  call dein#add('/Users/wainwb01/.vim/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('tpope/vim-fugitive')
+" Personal plugins
+Plug 'benwainwright/fzf-switch-project'
 
-  call dein#add('junegunn/rainbow_parentheses.vim', {
-        \ 'lazy': 1,
-			  \ 'on_ft': ['javascript', 'typescript']
-			  \ })
-
-  call dein#add('sheerun/vim-polyglot')
-  call dein#add('ryanoasis/vim-devicons')
-  call dein#add('junegunn/fzf.vim')
-  call dein#add('/usr/local/opt/fzf')
-  call dein#add('tpope/vim-commentary')
-  call dein#add('christoomey/vim-tmux-navigator')
-  call dein#add('prabirshrestha/vim-lsp')
-  call dein#add('prabirshrestha/async.vim')
-  call dein#add('prabirshrestha/asyncomplete.vim')
-  call dein#add('prabirshrestha/asyncomplete-buffer.vim')
-  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-  call dein#add('rafi/awesome-vim-colorschemes')
-  call dein#add('prabirshrestha/asyncomplete-emoji.vim')
-  "call dein#add('mhinz/vim-signify')
-  " Personal plugins
-  call dein#add('benwainwright/fzf-switch-project')
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('jeffkreeftmeijer/vim-numbertoggle')
-  call dein#add('tpope/vim-surround')
-  call dein#add('w0rp/ale')
-  call dein#add('chrisbra/unicode.vim')
-  call dein#add('ludovicchabant/vim-gutentags')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('jiangmiao/auto-pairs')
-  call dein#add('tpope/vim-vinegar')
-
-    call dein#end()
-  call dein#save_state()
-endif
-
+call plug#end()
 colorscheme anderson
 
 let g:gutentags_file_list_command = 'rg --files'
@@ -69,8 +56,15 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " imap <C-x> <Plug>(asyncomplete_force_refresh)
 
+tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
+tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
+tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
+tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+nnoremap <silent> <c-x> :terminal<cr>
+tnoremap <silent> <c-x> <c-w>:q<cr>
+
 if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
+  au User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx'],
@@ -78,8 +72,8 @@ if executable('typescript-language-server')
 endif
 
 if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
+  " pip install python-language-server
+  au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
         \ 'cmd': {server_info->['pyls']},
         \ 'whitelist': ['python'],
@@ -96,23 +90,20 @@ if executable('docker-langserver')
 endif
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'whitelist': ['*'],
-    \ 'blacklist': ['javascript', 'javascript.jsx', 'typescript', 'python'],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ }))
+      \ 'name': 'buffer',
+      \ 'whitelist': ['*'],
+      \ 'blacklist': ['javascript', 'javascript.jsx', 'typescript', 'python'],
+      \ 'completor': function('asyncomplete#sources#buffer#completor'),
+      \ }))
 
 " Required:
 set confirm                     " Actual confirm box rather than dialog box on errors (such as if
-                                " you quit without write
+" you quit without write
 
 syntax enable                   " Enable syntax highlighting
 filetype indent plugin on       " attempt to determine the type of a file based on its name and possibly its
-                                " contents. Use this to allow intelligent auto-indenting for each filetype,
-                                " and for plugins that are filetype specific.
-if dein#check_install()
-  call dein#install()
-endif
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
 
 " Core VIM settings
 "==============
@@ -125,6 +116,7 @@ set exrc
 
 set lazyredraw
 
+set splitbelow                  " All horizontal splits go to the bottom half
 set tabstop=2                   " Number of spaces that a tab counts for
 set expandtab                   " Use appropriate number of spaces to insert a tab
 set shiftwidth=2                " Number of spaces used for indentenation
@@ -136,11 +128,11 @@ set ignorecase                  " Ignore case in search patterns
 set smartcase                   " If search pattern contains uppercase chars, ignorecase is turned off
 
 set nocompatible                " set 'nocompatible' to ward off unexpected things that your
-                                " distro might have made, as well as sanely reset options when
-                                " re-sourcing .vimrc
+" distro might have made, as well as sanely reset options when
+" re-sourcing .vimrc
 
 set wildmode=longest,list,full  " Completion mode - see :help wildmode for more
-                                " info on specific settings
+" info on specific settings
 set wildmenu                    " Enhanced command line completion mode
 set showcmd                     " Show last command at the bottom of the screen
 set laststatus=2                " Always show statusline
@@ -150,26 +142,26 @@ set splitright                  " vertical split opens on the right
 
 set directory^=$HOME/.vim/tmp/  " Where to store temporary files
 set autoread                    " If file changes on disk and buffer hasn't
-                                " changed, autoread from disk
+" changed, autoread from disk
 if has("persistent_undo")
   set undofile                  " Store undo data between sessions
   set undodir=~/.vim/undo       " Location of undo data
 endif
 
 set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
-                                " dividers
-                                "
+" dividers
+"
 set completeopt+=menuone,noinsert,preview,noselect
 
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
 function! NumberToggle()
-    if(&relativenumber == 1)
-        set norelativenumber
-    else
-        set relativenumber
-    endif
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
 endfunc
 
 " Map leader key to be the space bar
@@ -201,13 +193,13 @@ nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gco :GCheckout<CR>
 
 command! -bang -nargs=0 GCheckout
-  \ call fzf#vim#grep(
-  \   'git branch -v', 0,
-  \   {
-  \     'sink': function('s:open_branch_fzf')
-  \   },
-  \   <bang>0
-  \ )
+      \ call fzf#vim#grep(
+      \   'git branch -v', 0,
+      \   {
+      \     'sink': function('s:open_branch_fzf')
+      \   },
+      \   <bang>0
+      \ )
 
 function! s:checkout_pr(pr)
   let l:hashNumber = split(a:pr)[0]
@@ -218,10 +210,11 @@ endfunction
 nnoremap <leader>gpco :CheckoutPR<CR>
 
 command! -bang -nargs=0 CheckoutPR
-  \ call fzf#run({
-  \ 'source' : "hub pr list | awk '{$1=$1}1'",
-  \ 'sink' : function('s:checkout_pr'),
-  \ 'down' : '30%'})
+      \ call fzf#run({
+      \ 'source' : "hub pr list | awk '{$1=$1}1'",
+      \ 'sink' : function('s:checkout_pr'),
+      \ 'down' : '30%'})
+
 function! OpenLinePr()
   let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
   let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
@@ -260,7 +253,7 @@ nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
-inoremap <leader>; <esc>maA;<esc>`al
+" inoremap <leader>; <esc>maA;<esc>`al
 
 nnoremap <C-n> :tabp<CR>
 nnoremap <C-p> :tabn<CR>
@@ -283,9 +276,9 @@ highlight GitGutterAdd
 
 highlight GitGutterDelete 
       \ ctermfg=red
-      \ ctermbg=237
-      \ guibg=#3C3D37
+      \ ctermbg=23
       \ guifg=red
+      \ guibg=#3C3D37
 
 highlight GitGutterChange 
       \ ctermfg=yellow
@@ -293,15 +286,29 @@ highlight GitGutterChange
       \ guibg=#3C3D37
       \ guifg=yellow
 
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
 highlight ALEWarningSign ctermfg=yellow
 highlight ALEWarning ctermbg=yellow ctermfg=black
-highlight ALEErrorSign ctermfg=red
 highlight ALEError ctermbg=red ctermfg=white
 highlight CursorLine ctermbg=236
 
-set background=dark
+highlight LspHintText
+      \ guibg=#3C3D37
+
+highlight LspHint
+      \  gui=undercurl
+
+highlight ALEErrorSign 
+      \ ctermfg=red
+      \ guibg=#3C3D37
+      \ guifg=red
+
+highlight ALEError
+      \ gui=undercurl
+      \ guisp=red
+
+highlight LspErrorText
+      \ guibg=#3C3D37
+
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
@@ -344,3 +351,14 @@ let g:gitgutter_sign_added = ''
 let g:gitgutter_sign_modified = ''
 let g:gitgutter_sign_removed = ''
 let g:gitgutter_sign_modified_removed = ''
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+"let g:airline_powerline_fonts = 1
+" unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'

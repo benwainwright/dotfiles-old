@@ -1,5 +1,5 @@
-# Imports proxy settings for reith
-Include config.reith.socks
+# Imports Reith proxy settings
+Include ~/.ssh/config.reith.socks
 
 Host github.com
   AddKeysToAgent yes
@@ -17,3 +17,4 @@ Host *,??-*-?
   ProxyCommand >&1; h="%h"; r=${h##*,}; i=${h%%,*}; v=$(($(cut -d. -f2 <<<$i) / 32)); exec ssh -q -p 22000 bastion-tunnel@$v.access.$r.cloud.bbc.co.uk nc $i %p
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
+

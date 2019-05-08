@@ -1,1 +1,7 @@
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Magic Reith shell configuration (Automatically added by reith init-shell)
+eval $(reith print-shell-init-script)
+
+# Magic Reith shell configuration (Automatically added by reith init-shell)
+eval $(reith print-shell-init-script)

@@ -7,8 +7,7 @@
 [user]
 	name = Ben Wainwright
 	email = ben.wainwright@bbc.co.uk
-  signingkey = 8CF2DB4239BC37FD
-
+  signingkey = 381EA0DF1467070F5E2B96B78CF2DB4239BC37FD
 [diff]
 	tool = Kaleidoscope
 
@@ -55,3 +54,5 @@
 
 [github]
 	user = benwainwright
+[gpg]
+	program = gpg
