@@ -1,0 +1,42 @@
+{
+	"folders": [
+		{
+			"path": "/Users/wainwb01/workspace/web"
+		},
+		{
+			"path": "/Users/wainwb01/workspace/cosmic"
+		},
+		{
+			"name": "fabl-service-gateway",
+			"path": "/Users/wainwb01/workspace/fabl-service-gateway"
+		},
+		{
+			"name": "fabl-api",
+			"path": "/Users/wainwb01/workspace/fabl-api"
+		},
+		{
+			"name": "web-infrastructure",
+			"path": "/Users/wainwb01/workspace/web-infrastructure"
+		},
+		{
+			"name": "web-sandbox",
+			"path": "/Users/wainwb01/workspace/web-sandbox"
+		},
+		{
+			"name": "cosmos-troposphere",
+			"path": "/Users/wainwb01/workspace/cosmos-troposphere"
+		},
+		{
+			"name": "cosmos",
+			"path": "/Users/wainwb01/workspace/cosmos"
+		},
+		{
+			"name": "troposphere",
+			"path": "/Users/wainwb01/repos/troposphere"
+		},
+		{
+			"path": "/Users/wainwb01/workspace/test-lambda"
+		}
+	],
+	"settings": {}
+}
