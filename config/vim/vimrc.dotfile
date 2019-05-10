@@ -13,6 +13,8 @@ if has("multi_byte")
 endif
 call plug#begin('~/.vim/plugged')
 
+Plug 'gioele/vim-autoswap'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'sheerun/vim-polyglot'
