@@ -1,6 +1,7 @@
 if &compatible
   set nocompatible               " Be iMproved
 endif
+let g:airline#extensions#tabline#fnamecollapse = 0
 
 if has("multi_byte")
   if &termencoding == ""
