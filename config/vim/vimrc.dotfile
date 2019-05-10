@@ -64,6 +64,11 @@ tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
 nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
 tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
 
+function Shell_start_in_split(direction)
+  let l:buffer = term_start($SHELL, { 'hidden': 1 })
+  execute a:direction . ' sbuffer ' . l:buffer
+endfunction
+
 function Toggle_terminal()
   if !exists('g:toggledTerminalBuffer') 
         \ || !bufexists(g:toggledTerminalBuffer)
@@ -76,7 +81,6 @@ function Toggle_terminal()
     execute "sbuffer" . g:toggledTerminalBuffer
   endif
 endfunction
-
 
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
@@ -183,6 +187,8 @@ endfunc
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
+let g:fzf_projects_projects = []
+let g:fzf_projects_workspaces = [ ]
 let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
 let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos" ]
 
@@ -374,6 +380,8 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 augroup vimrc
   autocmd!
   autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
@@ -395,13 +403,32 @@ let g:ale_javascript_eslint_use_global = 1
 let g:ale_echo_msg_format = '%s (%linter%)'
 let g:ale_sh_shellcheck_options = '-e SC1090'
 
+" air-line
+let g:airline_powerline_fonts = 1
+
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-"let g:airline_powerline_fonts = 1
 " unicode symbols
-" let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
