@@ -1,3 +1,3 @@
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias v='vim'
+alias v='gvim'
 alias sv='sudo vim'
