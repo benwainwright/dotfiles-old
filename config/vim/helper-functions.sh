@@ -2,7 +2,7 @@
 gvim() {
   if [ "$#" -eq 0 ]; then
     if [ "$(command gvim --serverlist)" ]; then
-      command gvim --remote-expr "foreground()" > /dev/null
+      command gvim --remote-expr "foreground() || execute('cd $PWD')" > /dev/null
     else
       command gvim
     fi
