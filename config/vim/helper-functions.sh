@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 gvim() {
-
-  if [ "$#" -eq 0 ] && [ "$(gvim --serverlist)" ]; then
-    command gvim --remote-expr "foreground()" > /dev/null
+  if [ "$#" -eq 0 ]; then
+    if [ "$(command gvim --serverlist)" ]; then
+      command gvim --remote-expr "foreground()" > /dev/null
+    else
+      command gvim
+    fi
     return
   fi
-
   command gvim --remote-silent "$@"
 }
