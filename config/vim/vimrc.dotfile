@@ -14,15 +14,21 @@ if has("multi_byte")
 endif
 call plug#begin('~/.vim/plugged')
 
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'airblade/vim-rooter'
 Plug 'gioele/vim-autoswap'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/async.vim'
@@ -33,15 +39,17 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'prabirshrestha/asyncomplete-emoji.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'chrisbra/unicode.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-vinegar'
+Plug 'bkad/CamelCaseMotion'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Personal plugins
+Plug '$HOME/repos/fzf-git'
 Plug 'benwainwright/fzf-switch-project'
 
 call plug#end()
@@ -54,6 +62,7 @@ let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal 
 let g:lsp_signs_hint = { 'text':  '💡' }
 
 
+let g:argumentobject_force_toplevel = 1
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
@@ -67,12 +76,12 @@ tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
 nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
 tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
 
-function Shell_start_in_split(direction)
+function! Shell_start_in_split(direction)
   let l:buffer = term_start($SHELL, { 'hidden': 1 })
   execute a:direction . ' sbuffer ' . l:buffer
 endfunction
 
-function Toggle_terminal()
+function! Toggle_terminal()
   if !exists('g:toggledTerminalBuffer') 
         \ || !bufexists(g:toggledTerminalBuffer)
         \ || g:toggledTerminalBuffer == 0
@@ -186,6 +195,8 @@ function! NumberToggle()
   endif
 endfunc
 
+let g:auto_save = 1
+
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -212,18 +223,10 @@ nnoremap <leader>C :BCommits<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>cm :Gcommit<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
-nnoremap <leader>tn :TestNearest<CR>
+noremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
-nnoremap <leader>gco :GCheckout<CR>
-
-command! -bang -nargs=0 GCheckout
-      \ call fzf#vim#grep(
-      \   'git branch -v', 0,
-      \   {
-      \     'sink': function('s:open_branch_fzf')
-      \   },
-      \   <bang>0
-      \ )
+nnoremap <leader>gcb :GitCheckoutBranch<CR>
+nnoremap <leader>gcp :GitCheckoutPr<CR>
 
 function! s:checkout_pr(pr)
   let l:hashNumber = split(a:pr)[0]
@@ -279,8 +282,10 @@ nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 " inoremap <leader>; <esc>maA;<esc>`al
 
-nnoremap <C-n> :tabp<CR>
-nnoremap <C-p> :tabn<CR>
+nnoremap <C-n> :bprev<CR>
+nnoremap <C-p> :bnext<CR>
+nnoremap <C-]> :lnext<CR>
+nnoremap <C-[> :lprev<CR>
 
 
 " Don't spellcheck URLS
@@ -289,8 +294,8 @@ syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
 syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell;
 
 " Colors
-colorscheme monokai
 set background=dark
+colorscheme carbonized-dark
 
 highlight GitGutterAdd  
       \ ctermfg=green  
@@ -408,25 +413,13 @@ let g:ale_sh_shellcheck_options = '-e SC1090'
 
 " air-line
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
+set verbosefile=~/vim-verbose.log
 " airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -435,3 +428,4 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+let g:airline#extensions#tabline#exclude_preview = 1
