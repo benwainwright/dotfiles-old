@@ -221,22 +221,22 @@ nnoremap <silent> <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
 nnoremap ; :Buffers<CR>
-nnoremap <leader>r :Tags<CR>
-nnoremap <C-f> :GitFiles<CR>
-nnoremap <C-F> :Files<CR>
+nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <C-t> :Tags<CR>
+nnoremap <C-e> :call NetrwSidebarToggle()<CR>
 nnoremap <leader>F :GitFiles!<CR>
-nnoremap <leader>g :GitFiles?<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>c :Commits<CR>
-nnoremap <leader>C :BCommits<CR>
-nnoremap <leader>s :Gstatus<CR>
-nnoremap <leader>cm :Gcommit<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
 noremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
-nnoremap <leader>gcb :GitCheckoutBranch<CR>
-nnoremap <leader>gcp :GitCheckoutPr<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :GitCheckoutBranch<CR>
+nnoremap <leader>gp :GitCheckoutPr<CR>
+
+nnoremap <leader>ldf :LspDefinition<CR>
+nnoremap <leader>ldc :LspDeclaration<CR>
+nnoremap <leader>lca :LspCodeAction<CR>
+nnoremap <leader>lr :LspRename<CR>
 
 function! s:checkout_pr(pr)
   let l:hashNumber = split(a:pr)[0]
