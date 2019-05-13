@@ -172,7 +172,6 @@ set smartcase                   " If search pattern contains uppercase chars, ig
 set nocompatible                " set 'nocompatible' to ward off unexpected things that your
 " distro might have made, as well as sanely reset options when
 " re-sourcing .vimrc
-
 set wildmode=longest,list,full  " Completion mode - see :help wildmode for more
 " info on specific settings
 set wildmenu                    " Enhanced command line completion mode
@@ -206,7 +205,7 @@ function! NumberToggle()
   endif
 endfunc
 
-let g:auto_save = 1
+let g:netrw_altv=1
 
 " Map leader key to be the space bar
 let mapleader = "\<Space>"
