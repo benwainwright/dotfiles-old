@@ -1,27 +1,28 @@
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-let g:airline#extensions#tabline#fnamecollapse = 0
-
-if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  "setglobal bomb
-  set fileencodings=ucs-bom,utf-8,latin1
-endif
-
-if bufname('%') == ''
-  set bufhidden=wipe
-endif
-  
+" Plugins
+" =======
+" {{{
 call plug#begin('~/.vim/plugged')
 
 if has('macunix')
   Plug 'rizzatti/dash.vim'
 endif
+
+" Personal plugins
+Plug '$HOME/repos/fzf-git'
+Plug '$HOME/repos/fzf-project'
+
+" Tim Pope
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
+" June Gunn
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'plytophogy/vim-virtualenv'
 Plug 'anowlcalledjosh/vim-lilypond'
@@ -29,17 +30,8 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'gioele/vim-autoswap'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/async.vim'
@@ -59,33 +51,188 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'michaeljsmith/vim-indent-object'
 
-" Personal plugins
-Plug '$HOME/repos/fzf-git'
-Plug '$HOME/repos/fzf-project'
-
 call plug#end()
+" }}}
 
+" Core VIM settings
+" =================
+" {{{
 
+" Enable syntax highlighting
+syntax enable                  
+
+" attempt to determine the type of a file based on its name and possibly its 
+" contents. Use this to allow intelligent auto-indenting for each filetype
+" and for plugins that are filetype specific.
+filetype indent plugin on       
+
+" Actual confirm box rather than dialog box on errors (such as if
+" you quit without writing to a file)
+set confirm                     
+
+" Allows the vim unknown buffer to work with the system clipboard, so if you
+" yank a piece of text, it will be available to paste outside of VIM
+set clipboard=unnamed           
+
+" How characters are represented by VIM internally
+set encoding=UTF-8
+
+" Default character encoding for a new buffer
+setglobal fileencoding=utf-8
+
+" The buffer local setting 'fileencoding' setting specifies
+" the encoding of a given buffer. This list will be used
+" in order to decide what to set it to
+set fileencodings=ucs-bom,utf-8,latin1
+
+" Without this setting, when I switch to a new buffer, the current
+" one is unloaded. This means that if I've made a change I'll then
+" be asked if I want to save it. With this turned on, the buffer 
+" simply becomes 'hidden'
+set hidden
+
+" Don't redraw the screen while executing macros, registers and other
+" untyped commands
+set lazyredraw
+
+" All horizontal splits go to the bottom half
+set splitbelow
+
+" Number of spaces that tab counts for
+set tabstop=2
+
+" In insert mode, use the appropriate number of spaces to insert a tab
+set expandtab
+
+" Number of spaces used for indentation
+set shiftwidth=2
+
+" Indenting (so << and >>) is rounded to multiples of 'shiftwidth'
+set shiftround
+
+" Use marker comments for code folding
+set foldmethod=marker
+
+" Highlight search hits
+set hlsearch
+
+" Update search matches as characters are added to search
+set incsearch
+
+" Ignore case in search patterns
+set ignorecase
+
+" Override the 'ignorecase' setting if the search pattern 
+" contains uppercase characters
+set smartcase
+
+" set 'nocompatible' to ward off unexpected things that your
+" distro might have made, as well as sanely reset options when
+" re-sourcing .vimrc
+set nocompatible
+
+" Completion mode:
+" - longest: Complete till ongest common string
+" - list: When more than one match, list all matches
+" - full: Complete the next full match
+set wildmode=longest,list,full
+
+" Enhanced command line completion mode
+set wildmenu
+
+" Show last command in the last line of the screen
+set showcmd
+
+" Always show the statusline regardless of how many windows there are
+set laststatus=2
+
+" Show line and column numbers
+set ruler
+
+" Turn on line numbers
+set number
+
+" Vertical splits always open on the right
+set splitright
+
+" Where to store all temporary data (e.g. swap files)
+set directory^=$HOME/.vim/tmp/
+
+" When debugging, put the verbose logfile here
+set verbosefile=~/vim-verbose.log
+
+" If the file change son disk and the buffer hasn't changed
+" autoread from disk
+set autoread
+
+" Store undo data between vim sessions
+if has("persistent_undo")
+  set undofile
+  set undodir=~/.vim/undo
+endif
+
+" Add these characters to VIM's definition of what a 'word'
+" is for the purposes of motions
+set iskeyword+=_,$,@,%,-
+
+" Completion options
+" - menu: Use a popup menu to show the possible completions
+" - menuone: Use the popup menu also when there is only one match
+" - preview: Show extra information about the selected completion
+" - noselect: Do not select a match in the menu. Force the user to choose
+set completeopt+=menuone,noinsert,preview,noselect
+
+" Don't show 'ins-completion-menu' messages, e.g. "match 1 of 2"
+" "the only match" are not shown
+set shortmess+=c   " Shut off completion messages
+
+" Turns off the bell in specific situations. In this case
+" when there is an unknown char after <C-G> in Insert mode
+set belloff+=ctrlg " If Vim beeps during completion
+
+" When opening a file from the command line, this stops
+" the empty buffer appearing as a separate buffer in my
+" tabline
+if bufname('%') == ''
+  set bufhidden=wipe
+endif
+  
+" Don't spellcheck URLS
+syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
+" Don't spell check initialisms
+syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell;
+
+" }}}
+
+" Misc Plugin Config
+" ==================
+" {{{
 let g:gutentags_file_list_command = 'rg --files'
 let g:signify_vcs_list = [ 'git' ]
-let g:lsp_signs_enabled = 1           " enable signs
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-let g:lsp_signs_hint = { 'text':  '💡' }
-
-
 let g:argumentobject_force_toplevel = 1
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-" imap <C-x> <Plug>(asyncomplete_force_refresh)
 
-tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
-tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
-tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
-tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+      \ 'name': 'buffer',
+      \ 'whitelist': ['*'],
+      \ 'blacklist': ['javascript', 'javascript.jsx', 'typescript', 'python'],
+      \ 'completor': function('asyncomplete#sources#buffer#completor'),
+      \ }))
+let g:netrw_altv=1
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
+let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos" ]
+" }}}
 
-nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
-tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
+" Functions
+" =========
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
 
 function! Shell_start_in_split(direction)
   let l:buffer = term_start($SHELL, { 'hidden': 1 })
@@ -105,6 +252,29 @@ function! Toggle_terminal()
   endif
 endfunction
 
+function! OpenLinePr()
+  let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
+  let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
+  let l:response = system(l:hash_cmd)
+  if v:shell_error == 0
+    let l:repo_url = system('hub browse -u | cut -d/ -f1-5 | tr -d "\n"')
+    let l:pr_search_url = l:repo_url . "/pulls\\?q=" . l:response
+    let l:command = 'silent !open ' . l:pr_search_url . " | :redraw!"
+    execute l:command
+  else
+    echoerr l:response
+  endif
+endfunction
+
+function! NetrwSidebarToggle()
+  let g:netrw_chgwin = winnr()
+  Vexplore
+endfunction
+" 
+
+" LSP Config
+" ==========
+" {{{
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
@@ -131,184 +301,95 @@ if executable('docker-langserver')
         \ })
 endif
 
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-      \ 'name': 'buffer',
-      \ 'whitelist': ['*'],
-      \ 'blacklist': ['javascript', 'javascript.jsx', 'typescript', 'python'],
-      \ 'completor': function('asyncomplete#sources#buffer#completor'),
-      \ }))
+let g:lsp_signs_enabled = 1           " enable signs
+let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+let g:lsp_signs_error = { 'text':'' }
+let g:lsp_signs_warning = { 'text': '' }
+let g:lsp_signs_information = { 'text': ''}
+let g:lsp_signs_hint = { 'text':  '' }
+let g:lsp_signs_hint = { 'text':  '💡' }
+" }}}
 
-" Required:
-set confirm                     " Actual confirm box rather than dialog box on errors (such as if
-" you quit without write
-
-syntax enable                   " Enable syntax highlighting
-filetype indent plugin on       " attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
-
-" Core VIM settings
-"==============
-
-set clipboard=unnamed           " Allows the vim unknown buffer to work with the system clipboard
-set encoding=UTF-8              " Set character encoding used inside VIM
-set hidden                      " Change buffer without saving
-
-set exrc
-
-set lazyredraw
-
-set splitbelow                  " All horizontal splits go to the bottom half
-set tabstop=2                   " Number of spaces that a tab counts for
-set expandtab                   " Use appropriate number of spaces to insert a tab
-set shiftwidth=2                " Number of spaces used for indentenation
-set shiftround                  " << >> snap to multiples of shiftwidth
-
-set hlsearch                    " highlight search hits
-set incsearch                   " Update search matches as characters are added to search
-set ignorecase                  " Ignore case in search patterns
-set smartcase                   " If search pattern contains uppercase chars, ignorecase is turned off
-
-set nocompatible                " set 'nocompatible' to ward off unexpected things that your
-" distro might have made, as well as sanely reset options when
-" re-sourcing .vimrc
-set wildmode=longest,list,full  " Completion mode - see :help wildmode for more
-" info on specific settings
-set wildmenu                    " Enhanced command line completion mode
-set showcmd                     " Show last command at the bottom of the screen
-set laststatus=2                " Always show statusline
-set ruler                       " Show line and column number
-set number                      " Turn on line numbering
-set splitright                  " vertical split opens on the right
-
-set directory^=$HOME/.vim/tmp/  " Where to store temporary files
-set autoread                    " If file changes on disk and buffer hasn't
-" changed, autoread from disk
-if has("persistent_undo")
-  set undofile                  " Store undo data between sessions
-  set undodir=~/.vim/undo       " Location of undo data
-endif
-
-set iskeyword+=_,$,@,%,-        " These chars really shouldn't be word
-" dividers
-"
-set completeopt+=menuone,noinsert,preview,noselect
-
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-
-let g:netrw_altv=1
-
-" Map leader key to be the space bar
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-let g:fzf_projects_projects = []
-let g:fzf_projects_workspaces = [ ]
-let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
-let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos" ]
-
-nnoremap <silent> <leader>cd :FzfSwitchProject<CR>
-
-function! NetrwSidebarToggle()
-  let g:netrw_chgwin = winnr()
-  Vexplore
-endfunction
-
+" Normal Mode Mappings
+" ====================
+" {{{
+nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
 nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
 nnoremap ; :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
+nnoremap <silent> <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
 nnoremap <C-e> :call NetrwSidebarToggle()<CR>
 nnoremap <leader>F :GitFiles!<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
-noremap <leader>tn :TestNearest<CR>
+nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :GitCheckoutBranch<CR>
 nnoremap <leader>gp :GitCheckoutPr<CR>
-
 nnoremap <leader>ldf :LspDefinition<CR>
 nnoremap <leader>ldc :LspDeclaration<CR>
 nnoremap <leader>lca :LspCodeAction<CR>
 nnoremap <leader>lr :LspRename<CR>
-
-function! s:checkout_pr(pr)
-  let l:hashNumber = split(a:pr)[0]
-  let l:number = l:hashNumber[1:strlen(a:pr)]
-  execute '!hub pr checkout ' . l:number
-endfunction
-
-nnoremap <leader>gpco :CheckoutPR<CR>
-
-command! -bang -nargs=0 CheckoutPR
-      \ call fzf#run({
-      \ 'source' : "hub pr list | awk '{$1=$1}1'",
-      \ 'sink' : function('s:checkout_pr'),
-      \ 'down' : '30%'})
-
-function! OpenLinePr()
-  let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
-  let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
-  let l:response = system(l:hash_cmd)
-  if v:shell_error == 0
-    let l:repo_url = system('hub browse -u | cut -d/ -f1-5 | tr -d "\n"')
-    let l:pr_search_url = l:repo_url . "/pulls\\?q=" . l:response
-    let l:command = 'silent !open ' . l:pr_search_url . " | :redraw!"
-    execute l:command
-  else
-    echoerr l:response
-  endif
-endfunction
 nnoremap <Leader>pr :call OpenLinePr()<cr>
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" Normal mode mappings
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
-autocmd! bufwritepost ~/.vimrc source ~/.vimrc
-
-" Insert mode mappings
-inoremap <c-u> <esc>gUawi
-
-" Mapping selecting mappings
 nnoremap <leader><tab> <plug>(fzf-maps-n)
 xnoremap <leader><tab> <plug>(fzf-maps-x)
 onoremap <leader><tab> <plug>(fzf-maps-o)
-
 nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
 nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
-" inoremap <leader>; <esc>maA;<esc>`al
-
 nnoremap <C-n> :bprev<CR>
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-]> :lnext<CR>
 nnoremap <C-[> :lprev<CR>
+" }}}
 
+" Insert mode mappings
+" =====================
+" {{{
+inoremap <c-u> <esc>gUawi
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+" }}}
 
-" Don't spellcheck URLS
-syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
-" Don't spell check initialisms
-syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell;
+" Terminal mode mappings
+" ======================
+" {{{
+tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
+tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
+tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
+tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
+tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+" }}}
 
-" Colors
+" Autocommands
+" ============
+" {{{
+augroup vimrc
+  autocmd!
+  autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
+  autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
+  autocmd FileType markdown,conf setlocal linebreak
+  autocmd FileType markdown,conf setlocal textwidth=80
+  autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
+  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+  autocmd bufwritepost ~/.vimrc source ~/.vimrc
+augroup END
+" }}}
+
+" Colors and Highlights
+" ====================
+" {{{
 colorscheme onehalfdark 
 let g:airline_theme='onehalfdark'
 
@@ -344,8 +425,6 @@ highlight LspHintText
       \ guibg=#282C34
       \ guifg=#66D9EF
 
-let g:lsp_signs_hint = { 'text':  '' }
-
 highlight LspHint
       \  gui=undercurl
 
@@ -354,8 +433,6 @@ highlight ALEErrorSign
       \ ctermbg=237
       \ guibg=#282C34
       \ guifg=red
-
-let g:ale_sign_error = ''
 
 highlight ALEError
       \ gui=undercurl
@@ -367,26 +444,15 @@ highlight ALEWarningSign
       \ guifg=yellow
       \ guibg=#282C34
 
-let g:ale_sign_warning = ''
-
 highlight LspErrorText
       \ guibg=#282C34
       \ guifg=red
-
-let g:lsp_signs_error = { 'text':'' }
 
 highlight LspWarningText
       \ ctermfg=yellow
       \ ctermbg=237
       \ guifg=yellow
       \ guibg=#282C34
-
-let g:lsp_signs_warning = { 'text': '' }
-let g:lsp_signs_information = { 'text': ''}
-let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
-let g:gitgutter_sign_removed = ''
-let g:gitgutter_sign_modified_removed = ''
 
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
@@ -403,21 +469,22 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
-let g:fzf_history_dir = '~/.local/share/fzf-history'
+" }}}
 
-augroup vimrc
-  autocmd!
-  autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
-  autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
-  autocmd FileType markdown,conf setlocal linebreak
-  autocmd FileType markdown,conf setlocal textwidth=80
-  autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
-  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-augroup END
+" GitGutter
+" =========
+" {{{
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_modified_removed = ''
+" }}}
 
-
+" ALE
+" ===
+" {{{
 let g:ale_sign_column_always = 1
-"let g:ale_linters = {
+let g:ale_linters = {
       \ 'javascript.jsx': ['eslint'],
       \ 'javascript': ['eslint'],
       \ 'typescript': ['tslint']
@@ -425,8 +492,13 @@ let g:ale_sign_column_always = 1
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_echo_msg_format = '%s (%linter%)'
 let g:ale_sh_shellcheck_options = '-e SC1090'
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+" }}}
 
-" air-line
+" Airline
+" =======
+" {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -434,8 +506,8 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-set verbosefile=~/vim-verbose.log
-" airline symbols
+let g:airline#extensions#tabline#exclude_preview = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -443,4 +515,4 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-let g:airline#extensions#tabline#exclude_preview = 1
+" }}}
