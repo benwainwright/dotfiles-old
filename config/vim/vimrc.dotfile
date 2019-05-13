@@ -315,7 +315,7 @@ let g:airline_theme='onehalfdark'
 highlight GitGutterAdd  
       \ ctermfg=green  
       \ ctermbg=237 
-      \ guibg=#3C3D37
+      \ guibg=#282C34
       \ guifg=green
 
 highlight GitGutterDelete 
