@@ -321,6 +321,8 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :GitCheckoutBranch<CR>
 nnoremap <leader>gp :GitCheckoutPr<CR>
+nnoremap <leader>pbb :PrBlame<CR>
+nnoremap <leader>pbc :PrBlame!<CR>
 nnoremap <leader>ldf :LspDefinition<CR>
 nnoremap <leader>ldc :LspDeclaration<CR>
 nnoremap <leader>lca :LspCodeAction<CR>
