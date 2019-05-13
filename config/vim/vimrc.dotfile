@@ -225,7 +225,7 @@ let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos" ]
 
 " Functions
 " =========
-
+" {{{
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber
@@ -270,7 +270,7 @@ function! NetrwSidebarToggle()
   let g:netrw_chgwin = winnr()
   Vexplore
 endfunction
-" 
+" }}}
 
 " LSP Config
 " ==========
