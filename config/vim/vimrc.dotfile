@@ -10,6 +10,7 @@ endif
 " Personal plugins
 Plug '$HOME/repos/fzf-git'
 Plug '$HOME/repos/fzf-project'
+Plug '$HOME/repos/pr-blame'
 
 " Tim Pope
 Plug 'tpope/vim-unimpaired'
@@ -249,20 +250,6 @@ function! Toggle_terminal()
     execute "close " . l:win
   else
     execute "sbuffer" . g:toggledTerminalBuffer
-  endif
-endfunction
-
-function! OpenLinePr()
-  let l:blame_cmd = 'git blame ' . expand('%') . ' -L ' . line('.') . ',' .  line('.')
-  let l:hash_cmd = l:blame_cmd . " | awk '{print $1}'"
-  let l:response = system(l:hash_cmd)
-  if v:shell_error == 0
-    let l:repo_url = system('hub browse -u | cut -d/ -f1-5 | tr -d "\n"')
-    let l:pr_search_url = l:repo_url . "/pulls\\?q=" . l:response
-    let l:command = 'silent !open ' . l:pr_search_url . " | :redraw!"
-    execute l:command
-  else
-    echoerr l:response
   endif
 endfunction
 
