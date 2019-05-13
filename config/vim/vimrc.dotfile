@@ -218,6 +218,11 @@ let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos" ]
 
 nnoremap <silent> <leader>cd :FzfSwitchProject<CR>
 
+function! NetrwSidebarToggle()
+  let g:netrw_chgwin = winnr()
+  Vexplore
+endfunction
+
 nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
 nnoremap ; :Buffers<CR>
