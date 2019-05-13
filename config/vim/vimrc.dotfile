@@ -27,7 +27,6 @@ Plug 'anowlcalledjosh/vim-lilypond'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
-Plug 'airblade/vim-rooter'
 Plug 'gioele/vim-autoswap'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rhubarb'
