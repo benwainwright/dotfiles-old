@@ -61,7 +61,7 @@ Plug 'michaeljsmith/vim-indent-object'
 
 " Personal plugins
 Plug '$HOME/repos/fzf-git'
-Plug 'benwainwright/fzf-switch-project'
+Plug '$HOME/repos/fzf-project'
 
 call plug#end()
 colorscheme anderson
