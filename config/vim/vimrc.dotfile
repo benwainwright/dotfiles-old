@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
 if has('macunix')
   Plug 'rizzatti/dash.vim'
 endif
+
 Plug 'plytophogy/vim-virtualenv'
 Plug 'anowlcalledjosh/vim-lilypond'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
