@@ -12,6 +12,11 @@ if has("multi_byte")
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
+
+if bufname('%') == ''
+  set bufhidden=wipe
+endif
+  
 call plug#begin('~/.vim/plugged')
 
 Plug 'weirongxu/plantuml-previewer.vim'
