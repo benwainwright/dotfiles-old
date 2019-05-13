@@ -23,6 +23,7 @@ if has('macunix')
   Plug 'rizzatti/dash.vim'
 endif
 Plug 'plytophogy/vim-virtualenv'
+Plug 'anowlcalledjosh/vim-lilypond'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'airblade/vim-rooter'
