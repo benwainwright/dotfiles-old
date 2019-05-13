@@ -64,7 +64,7 @@ Plug '$HOME/repos/fzf-git'
 Plug '$HOME/repos/fzf-project'
 
 call plug#end()
-colorscheme anderson
+
 
 let g:gutentags_file_list_command = 'rg --files'
 let g:signify_vcs_list = [ 'git' ]
