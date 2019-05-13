@@ -19,6 +19,9 @@ endif
   
 call plug#begin('~/.vim/plugged')
 
+if has('macunix')
+  Plug 'rizzatti/dash.vim'
+endif
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'airblade/vim-rooter'
