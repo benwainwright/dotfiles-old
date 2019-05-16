@@ -34,6 +34,8 @@ Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Misc
 Plug 'fatih/vim-go'
 Plug 'janko/vim-test'
 Plug 'syngan/vim-vimlint'
