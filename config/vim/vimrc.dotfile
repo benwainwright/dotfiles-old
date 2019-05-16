@@ -34,7 +34,11 @@ Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
+Plug 'fatih/vim-go'
+Plug 'janko/vim-test'
+Plug 'syngan/vim-vimlint'
+Plug 'ynkdir/vim-vimlparser'
+Plug 'Shougo/neco-vim'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'anowlcalledjosh/vim-lilypond'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -266,6 +270,16 @@ endfunction
 " LSP Config
 " ==========
 " {{{
+"
+
+if executable('gopls')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['gopls']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
+
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
