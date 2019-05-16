@@ -226,10 +226,18 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
       \ 'blacklist': ['vim', 'javascript', 'javascript.jsx', 'typescript', 'python'],
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
       \ }))
+
+call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+    \ 'name': 'necovim',
+    \ 'whitelist': ['vim'],
+    \ 'completor': function('asyncomplete#sources#necovim#completor'),
+    \ }))
+  
 let g:netrw_altv=1
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
-let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos" ]
+let g:fzfSwitchProjectWorkspaces = [ "~/workspace", "~/repos", "~/go/src/github.com/benwainwright", "~/go/src/github.com/bbc" ]
+let g:asyncomplete_auto_completeopt = 0
 " }}}
 
 " Functions
