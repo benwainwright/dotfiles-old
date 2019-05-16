@@ -219,7 +219,7 @@ let g:argumentobject_force_toplevel = 1
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
       \ 'whitelist': ['*'],
-      \ 'blacklist': ['javascript', 'javascript.jsx', 'typescript', 'python'],
+      \ 'blacklist': ['vim', 'javascript', 'javascript.jsx', 'typescript', 'python'],
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
       \ }))
 let g:netrw_altv=1
@@ -364,11 +364,18 @@ inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " Terminal mode mappings
 " ======================
 " {{{
-tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
-tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
-tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
-tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
-tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+if has('gui_running')
+  tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
+  tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
+  tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
+  tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
+  tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+  tnoremap <silent> <c-a>x <c-w>:KillCurrentTerminalBuffer<cr> 
+  tnoremap <silent> <C-a>l <c-w>:CreateTerminalSplitRight<CR>
+  tnoremap <silent> <C-a>h <c-w>:CreateTerminalSplitLeft<CR>
+  tnoremap <silent> <C-a>k <c-w>:CreateTerminalSplitUp<CR>
+  tnoremap <silent> <C-a>j <c-w>:CreateTerminalSplitDown<CR>
+endif
 " }}}
 
 " Autocommands
