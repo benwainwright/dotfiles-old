@@ -308,41 +308,48 @@ let maplocalleader = "\\"
 " ====================
 " {{{
 nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
-nnoremap <C-g> :Ag<CR>
-nnoremap <leader>K :Ag!<CR>
-nnoremap ; :Buffers<CR>
-nnoremap <C-f> :FzfChooseProjectFile<CR>
+nnoremap <silent> <C-g> :Ag<CR>
+nnoremap <silent> <leader>K :Ag!<CR>
+nnoremap <silent> ; :Buffers<CR>
+nnoremap <silent> <C-f> :FzfChooseProjectFile<CR>
 nnoremap <silent> <leader>cd :FzfSwitchProject<CR>
-nnoremap <C-t> :Tags<CR>
-nnoremap <C-e> :call NetrwSidebarToggle()<CR>
-nnoremap <leader>F :GitFiles!<CR>
-nnoremap <leader>nn :call NumberToggle()<CR>
-nnoremap <leader>tn :TestNearest<CR>
-nnoremap <leader>T :TestFile<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gb :GitCheckoutBranch<CR>
-nnoremap <leader>gp :GitCheckoutPr<CR>
-nnoremap <leader>pbb :PrBlame<CR>
-nnoremap <leader>pbc :PrBlame!<CR>
-nnoremap <leader>ldf :LspDefinition<CR>
-nnoremap <leader>ldc :LspDeclaration<CR>
-nnoremap <leader>lca :LspCodeAction<CR>
-nnoremap <leader>lr :LspRename<CR>
-nnoremap <Leader>pr :call OpenLinePr()<cr>
-nnoremap <leader>ev :vsplit ~/.vimrc<cr>
-nnoremap <leader><tab> <plug>(fzf-maps-n)
-xnoremap <leader><tab> <plug>(fzf-maps-x)
-onoremap <leader><tab> <plug>(fzf-maps-o)
+nnoremap <silent> <C-t> :Tags<CR>
+nnoremap <silent> <C-e> :call NetrwSidebarToggle()<CR>
+nnoremap <silent> <leader>F :GitFiles!<CR>
+nnoremap <silent> <leader>nn :call NumberToggle()<CR>
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>T :TestFile<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gb :GitCheckoutBranch<CR>
+nnoremap <silent> <leader>gp :GitCheckoutPr<CR>
+nnoremap <silent> <leader>pbb :PrBlame<CR>
+nnoremap <silent> <leader>pbc :PrBlame!<CR>
+nnoremap <silent> <leader>ldf :LspDefinition<CR>
+nnoremap <silent> <leader>ldc :LspDeclaration<CR>
+nnoremap <silent> <leader>lca :LspCodeAction<CR>
+nnoremap <silent> <leader>lr :LspRename<CR>
+nnoremap <silent> <Leader>pr :call OpenLinePr()<cr>
+nnoremap <silent> <leader>ev :vsplit ~/.vimrc<cr>
+nnoremap <silent> <leader><tab> <plug>(fzf-maps-n)
+xnoremap <silent> <leader><tab> <plug>(fzf-maps-x)
+onoremap <silent> <leader><tab> <plug>(fzf-maps-o)
 nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
 nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
-nnoremap <C-n> :bprev<CR>
-nnoremap <C-p> :bnext<CR>
-nnoremap <C-]> :lnext<CR>
-nnoremap <C-[> :lprev<CR>
+nnoremap <silent> <C-n> :bprev<CR>
+nnoremap <silent> <C-p> :bnext<CR>
+nnoremap <silent> <C-]> :lnext<CR>
+nnoremap <silent> <C-[> :lprev<CR>
+
+if has('gui_running')
+  nnoremap <silent> <C-a>l :CreateTerminalSplitRight<CR>
+  nnoremap <silent> <C-a>h :CreateTerminalSplitLeft<CR>
+  nnoremap <silent> <C-a>k :CreateTerminalSplitUp<CR>
+  nnoremap <silent> <C-a>j :CreateTerminalSplitDown<CR>
+endif
 " }}}
 
 " Insert mode mappings
