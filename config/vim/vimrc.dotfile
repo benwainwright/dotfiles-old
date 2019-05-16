@@ -251,24 +251,6 @@ function! NumberToggle()
   endif
 endfunc
 
-function! Shell_start_in_split(direction)
-  let l:buffer = term_start($SHELL, { 'hidden': 1 })
-  execute a:direction . ' sbuffer ' . l:buffer
-endfunction
-
-function! Toggle_terminal()
-  if !exists('g:toggledTerminalBuffer') 
-        \ || !bufexists(g:toggledTerminalBuffer)
-        \ || g:toggledTerminalBuffer == 0
-    let g:toggledTerminalBuffer = term_start($SHELL)
-  elseif bufwinnr(g:toggledTerminalBuffer) > 0
-    let l:win = bufwinnr(g:toggledTerminalBuffer)
-    execute "close " . l:win
-  else
-    execute "sbuffer" . g:toggledTerminalBuffer
-  endif
-endfunction
-
 function! NetrwSidebarToggle()
   let g:netrw_chgwin = winnr()
   Vexplore
