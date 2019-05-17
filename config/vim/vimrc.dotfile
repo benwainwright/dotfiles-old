@@ -263,6 +263,24 @@ function! NetrwSidebarToggle()
   let g:netrw_chgwin = winnr()
   Vexplore
 endfunction
+
+" Shamelessly stolen from https://vim.fandom.com/wiki/Maximize_window_and_return_to_previous_split_structure
+function! s:maximise_toggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+command! MaximiseToggle call s:maximise_toggle()
 " }}}
 
 " LSP Config
@@ -358,6 +376,7 @@ nnoremap <silent> <C-n> :bprev<CR>
 nnoremap <silent> <C-p> :bnext<CR>
 nnoremap <silent> <C-]> :lnext<CR>
 nnoremap <silent> <C-[> :lprev<CR>
+nnoremap <silent> <C-a>z :MaximiseToggle<CR>
 
 if has('gui_running')
   nnoremap <silent> <C-a>l :CreateTerminalSplitRight<CR>
@@ -385,6 +404,7 @@ if has('gui_running')
   tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
   tnoremap <silent> <c-x> <c-w>:call Toggle_terminal()<cr>
   tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+  tnoremap <silent> <C-a>z <c-w>:MaximiseToggle<CR>
   tnoremap <silent> <c-a>x <c-w>:KillCurrentTerminalBuffer<cr> 
   tnoremap <silent> <C-a>l <c-w>:CreateTerminalSplitRight<CR>
   tnoremap <silent> <C-a>h <c-w>:CreateTerminalSplitLeft<CR>
