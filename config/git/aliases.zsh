@@ -1,4 +1,5 @@
 alias g='git'
+alias grm='git fetch --all && git rebase origin/master'
 alias gr='git rebase'
 alias gri='git rebase -i'
 alias gf='git fetch'
