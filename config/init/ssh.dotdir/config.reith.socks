@@ -1,7 +1,12 @@
-# This file is automatically edited by my Reith switching script
-# When I switch between on and off Reith.
+# This file was generated automatically and will be automatically
+# edited in place by reithd when you connect and disconnect to the
+# BBC corporate network.
+#
+# To use, add the line "include ~/.ssh/config.reith.socks"
+# to your ~/.ssh/config file
+
 Host github.com
-#  ProxyCommand nc -x "socks-gw.reith.bbc.co.uk:1085" -X 5 %h %p
+  ProxyCommand nc -x "socks-gw.reith.bbc.co.uk:1080" -X 5 %h %p
 
 Host ?.access.*.cloud.bbc.co.uk
-#  ProxyCommand nc -x socks-gw.reith.bbc.co.uk:1085 -X 5 %h %p
+  ProxyCommand nc -x "socks-gw.reith.bbc.co.uk:1080" -X 5 %h %p

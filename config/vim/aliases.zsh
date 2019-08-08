@@ -1,3 +1,5 @@
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias v='gvim'
-alias sv='sudo vim'
+# alias vim='mvim-remote'
+# alias gvim='mvim-remote'
+alias v='vim'
+# alias sv='sudo mvim-remote'
+# alias vf='v $(fasd -lf | fzf)'

@@ -11,4 +11,5 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias lop='listening-on-port'
 alias path='echo -e ${PATH//:/\\n}'
 alias r='echo "Reloading shell" && source ~/.zshrc'
+alias jf='cd $(fasd -ld | fzf)'
 

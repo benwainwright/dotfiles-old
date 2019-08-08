@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-gvim() {
+mvim-remote() {
   if [ "$#" -eq 0 ]; then
-    if [ "$(command gvim --serverlist)" ]; then
-      command gvim --remote-expr "execute('cd $PWD')" > /dev/null
-      command gvim --remote-expr "foreground()" > /dev/null
+    if [ "$(command mvim --serverlist)" ]; then
+      command mvim --remote-expr "execute('cd $PWD')" > /dev/null
+      command mvim --remote-expr "foreground()" > /dev/null
     else
-      command gvim
+      command mvim
     fi
     return
   fi
-  command gvim --remote-silent "$@"
+  command mvim --remote-silent "$@"
 }

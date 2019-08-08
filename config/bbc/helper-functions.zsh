@@ -141,52 +141,6 @@ cosmos-get-login() {
     GET "logins/$id"
 }
 
-ssh-cosmos() {
-  local service environment \
-        login loginStatus \
-        cacheFolder status \
-        expiresAt expiresAtSeconds \
-        cachedLogin region ip
-
-  service="$1"
-  environment="$2"
-  cacheFolder="$HOME/.cosmos-ssh-logins"
-  cacheFile="$cacheFolder/$(echo "$service-$environment")"
-  region="$3"
-
-  if [ ! -d "$cacheFolder" ]; then
-    mkdir "$cacheFolder"
-  fi
-
-  if [ -z "$region" ]; then
-    region="eu-west-1"
-  fi
-
-  if [ -f "$cacheFile" ]; then
-    cachedLogin=$(cat $cacheFile)
-    loginStatus=$(echo "$cachedLogin" | jq --raw-output ".status")
-    if [ "$loginStatus" = "current" ]; then
-      printf "Cached login found :-)\n"
-      expiresAt=$(echo "$cachedLogin" | jq --raw-output .expires_at)
-      expiresAtSeconds=$(python -c "import dateutil.parser; print(dateutil.parser.parse('$expiresAt').strftime('%s'))")
-      if [ "$expiresAtSeconds" -gt $(date +%s) ]; then
-        login="$cachedLogin"
-      else
-        printf "Expired :-(\n"
-      fi
-    fi
-  fi
-
-  if [ -z "$login" ]; then
-    printf "Cached login data was not found :-( creating a new one using the Cosmos API\n"
-    login=$(cosmos-create-login "$service" "$environment" | tee "$cacheFile")
-  fi
-
-  ip=$(echo "$login" | jq --raw-output ".instance_private_ip")
-  echo "Connecting to $ip in $region via ssh..."
-  ssh "$ip,$region"
-}
-
 cosmos-create-login() {
   local service environment \
         instanceId loginStatus \

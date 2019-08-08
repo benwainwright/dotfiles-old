@@ -4,6 +4,14 @@ jira_transition_ticket_fzf() {
   jira transition --noedit "$state" "$ticket"
 }
 
+jira_print_ticket() {
+  local issue
+
+  issue="$1"
+
+  curl "$JIRA_URL/rest/api/latest/issue/$issue" | jq . 
+}
+
 jira_browse() {
   jira browse ORBITEN-$1
 }

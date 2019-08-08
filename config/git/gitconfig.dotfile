@@ -56,3 +56,5 @@
 	user = benwainwright
 [gpg]
 	program = gpg
+[url "https://:@github.com/"]
+	insteadOf = https://github.com/
