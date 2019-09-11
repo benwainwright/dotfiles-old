@@ -12,14 +12,16 @@
 (setq undo-tree-auto-save-history t)
 
 (setq auto-revert-check-vc-info t)
-(setq backup-directory-alist `(("." . "~/.emacssaves")))
+(setq backup-directory-alist `
+  (
+    ("." . "~/.emacssaves")))
 (setq custom-file "~/.emacs.d/custom.el")
 (setq display-line-numbers-type 'relative)
 (load custom-file)
 
-(load-theme 'adwaita)
-
-(setq display-buffer-alist '(("\\`\\*e?shell" display-buffer-pop-up-window)))
+(setq display-buffer-alist '
+  (
+    ("\\`\\*e?shell" display-buffer-pop-up-window)))
 
 (electric-pair-mode t)
 
