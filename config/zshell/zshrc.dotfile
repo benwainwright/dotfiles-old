@@ -115,8 +115,8 @@ source_shellfiles
 # Adds fzf shell bindings, such as Ctrl-R replacement
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Setup fasd aliases
-eval "$(fasd --init auto)"
+# Setup fnm aliases
+eval "$(fnm env --multi)"
 
 #####################################################
 # Zshell configuration                              #
@@ -189,3 +189,5 @@ export PATH="/usr/local/sbin:$PATH"
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
+# fnm
+eval "$(fnm env --multi)"

@@ -6,6 +6,10 @@ Host github.com
   UseKeychain yes
   Identityfile ~/.ssh/id_rsa.github
 
+Host gitlab.com
+  Preferredauthentications publickey
+  IdentityFile ~/.ssh/id_rsa.gitlab
+
 Host ?.access.*.cloud.bbc.co.uk
   AddKeysToAgent yes
   IdentityFile ~/.ssh/id_rsa.bbc
