@@ -1,6 +1,0 @@
-[submodule "install/pm"]
-	path = install/pm
-	url = https://github.com/Angelmmiguel/pm
-[submodule "config/jenkins/jenkins-zsh"]
-	path = config/jenkins/jenkins-zsh
-	url = https://github.com/benwainwright/jenkins-zsh
