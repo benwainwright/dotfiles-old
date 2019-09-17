@@ -42,7 +42,9 @@ export SPACESHIP_PROMPT_ORDER=( \
 #######################################################
 
 function add_completion_dirs_to_fpath() {
+  setopt NULL_GLOB
   readonly completions=($DOTFILES_DIR/config/*/completions/_*.zsh)
+  unsetopt NULL_GLOB
 
   for completion_file in $completions; do
     completion_dir=$(dirname $completion_file)
