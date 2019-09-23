@@ -1,42 +1,61 @@
-;-*- mode: Lisp; -*-
-(add-to-list 'load-path "~/.emacs.d/config")
-(add-to-list 'load-path "~/.emacs.d/emacs-personal-packages")
+;;; init.el -*- lexical-binding: t; -*-
+;;
+;; Author:  Henrik Lissner <henrik@lissner.net>
+;; URL:     https://github.com/hlissner/doom-emacs
+;;
+;;   =================     ===============     ===============   ========  ========
+;;   \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
+;;   ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
+;;   || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||
+;;   ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||
+;;   || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||
+;;   ||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||
+;;   || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||
+;;   ||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||
+;;   ||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||
+;;   ||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||
+;;   ||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||
+;;   ||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||
+;;   ||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||
+;;   ||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||
+;;   ||.=='    _-'                                                     `' |  /==.||
+;;   =='    _-'                                                            \/   `==
+;;   \   _-'                                                                `-_   /
+;;    `''                                                                      ``'
+;;
+;; These demons are not part of GNU Emacs.
+;;
+;;; License: MIT
 
-; Putting this right at the start so that no matter how badly
-; I screw things up I can always reload easily
-;(setq init-file-path load-file-name)
-;(defun reload-init-file ()
-;  (interactive)
-;  (load-file init-file-path))
+;; A big contributor to startup times is garbage collection. We up the gc
+;; threshold to temporarily prevent it from running, then reset it later with
+;; `doom-restore-garbage-collection-h'. Not resetting it will cause
+;; stuttering/freezes.
+(setq gc-cons-threshold most-positive-fixnum)
 
-(load "packages")
+;; In noninteractive sessions, prioritize non-byte-compiled source files to
+;; prevent the use of stale byte-code. Otherwise, it saves us a little IO time
+;; to skip the mtime checks on every *.elc file we load.
+(setq load-prefer-newer noninteractive)
 
-; Packages must be loaded before visual, as the theme
-; is loaded using use-package
-(load "visual")
-(load "settings")
-;(load "org-settings")
-;(load "1pass")
-(load "global-hooks")
-(load "mac")
-(load "maps")
-;(load "cosmos")
-;(load "eglot-flycheck")
+(let (file-name-handler-alist)
+  (when (version< emacs-version "25.3")
+    (error "Detected Emacs %s. Doom only supports Emacs 25.3 and higher"
+           emacs-version))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (solarized-theme zenburn-theme yasnippet-snippets xterm-color xref-js2 which-key web-mode typescript-mode treemacs-projectile treemacs-evil telephone-line symon smartparens smart-mode-line rjsx-mode restclient request realgud-node-inspect rainbow-delimiters quelpa-use-package powerline plantuml-mode org-bullets multi-term monokai-theme material-theme magit-popup lua-mode linum-relative json-mode jenkins helm-system-packages helm-swoop helm-rg helm-projectile groovy-mode git-gutter general format-all forge focus flycheck feature-mode exec-path-from-shell evil-surround evil-org evil-magit evil-leader eglot editorconfig drag-stuff dracula-theme dockerfile-mode docker-compose-mode discover diminish diff-hl deadgrep dashboard dash-at-point darkroom counsel-projectile company browse-kill-ring browse-at-remote aggressive-indent ag ace-popup-menu))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
- ;; Local Variables:
-;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
-;; End:
+  ;; Ensure Doom is running out of this file's directory
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
+;; Load the heart of Doom Emacs
+(load (concat user-emacs-directory "core/core")
+      nil 'nomessage)
+
+;; And let 'er rip!
+(add-hook 'window-setup-hook #'doom-display-benchmark-h)
+(when (cdr command-line-args)
+  (add-to-list 'command-switch-alist
+               (cons "--restore" #'doom-restore-session-handler)))
+
+(doom-initialize)
+(doom-initialize-core)
+(doom-initialize-modules)
