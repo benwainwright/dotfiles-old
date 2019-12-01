@@ -1,2 +1,1 @@
-((magit-commit nil)
- (magit-reset nil))
+((magit-pull nil))
