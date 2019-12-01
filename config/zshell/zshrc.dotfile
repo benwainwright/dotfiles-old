@@ -1,42 +1,10 @@
-######################################################
-# Begin profiling                                    #
-######################################################
-
-# zmodload zsh/zprof
-
-######################################################
-# Auto-start TMUX                                    #
-######################################################
-
-if [ -z "$TMUX" ] && \
-   [ "$TERM" = "xterm-256color" ] && \
-   [ "$TERM_PROGRAM" != "vscode" ]
-then
-    tmux attach -t TMUX || tmux new -s TMUX
-fi
 
 ######################################################
 # Add binaries to path                               #
 ######################################################
 
-PATH=$DOTFILES_DIR/bin:$PATH
+PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
 
-#######################################################
-# Setup prompt                                        #
-#######################################################
-
-export SPACESHIP_PROMPT_ORDER=( \
-  time \
-  user \
-  dir \
-  host \
-  git \
-  package \
-  node \
-  line_sep \
-  exit_code \
-  char \
-  )
 #######################################################
 # Load #
 #######################################################
@@ -118,7 +86,7 @@ source_shellfiles
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Setup fnm aliases
-eval "$(fnm env --multi)"
+# eval "$(fnm env --multi)"
 
 #####################################################
 # Zshell configuration                              #
@@ -173,7 +141,6 @@ colors
 
 # Evaluate colors in prompt skin
 setopt PROMPT_SUBST
-
 export PATH="/usr/local/sbin:$PATH"
 
 ######################################################
@@ -191,5 +158,4 @@ export PATH="/usr/local/sbin:$PATH"
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
-# fnm
-eval "$(fnm env --multi)"
+export PATH
