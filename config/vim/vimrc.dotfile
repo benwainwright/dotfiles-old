@@ -465,8 +465,8 @@ augroup END
 " Colors and Highlights
 " ====================
 " {{{
-colorscheme onehalfdark 
-let g:airline_theme='onehalfdark'
+"colorscheme onehalfdark 
+"let g:airline_theme='onehalfdark'
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
