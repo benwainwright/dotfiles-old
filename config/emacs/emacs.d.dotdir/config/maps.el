@@ -21,7 +21,7 @@
 (define-key my-global-keymaps-mode-map (kbd "C-k")     'windmove-up)
 (define-key my-global-keymaps-mode-map (kbd "C-h")     'windmove-left)
 (define-key my-global-keymaps-mode-map (kbd "C-l")     'windmove-right)
-(define-key my-global-keymaps-mode-map (kbd "C-t")     'treemacs)
+(define-key my-global-keymaps-mode-map (kbd "C-t")     'neotree-toggle)
 (my-global-keymaps-mode)
 
 (unbind-key "C-f" evil-normal-state-map)
@@ -38,7 +38,7 @@
 (defvar leader-map (make-sparse-keymap)
   "Keymap for \"leader\" shortcuts.")
 
-; (unbind-key "<SPC>" evil-motion-state-map)
+					; (unbind-key "<SPC>" evil-motion-state-map)
 (define-key evil-normal-state-map (kbd "SPC") leader-map)
 (define-key evil-visual-state-map (kbd "SPC") leader-map)
 
@@ -94,6 +94,16 @@
 
 ;; Dash
 (define-key leader-map "dap" 'dash-at-point)
+
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)

@@ -104,9 +104,34 @@
 (use-package format-all
   :ensure t)
 
+(use-package moe-theme
+  :ensure t
+  :config
+  (moe-dark)
+  (set-face-attribute 'fringe nil
+		      :foreground (face-foreground 'default)
+		      :background (face-background 'default)))
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
+
+(use-package neotree
+  :ensure t
+  :config
+  (setq projectile-switch-project-action 'neotree-projectile-action))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Language Specific Packages ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package go-mode
+  :ensure t)
+
+(use-package groovy-mode
+  :ensure t)
+
+(use-package jenkinsfile-mode
   :ensure t)

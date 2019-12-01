@@ -1,6 +1,8 @@
 (add-to-list 'load-path "~/.emacs.d/config")
+(add-to-list 'load-path "~/.emacs.d/vendored")
 
 (require 'packages)
+(require 'jenkinsfile-mode)
 (require 'paths)
 (require 'initial-frame)
 (require 'settings)
