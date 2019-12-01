@@ -7,3 +7,7 @@ nice-tree() {
 listening-on-port() {
   lsof -i :$1 | sed '1p;/LISTEN/!d'
 }
+
+cj() {
+  curl --silent "$@" | jq .
+}
