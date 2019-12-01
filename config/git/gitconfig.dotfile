@@ -37,9 +37,6 @@
 [push]
 	default = simple
 
-[credential]
-	helper = osxkeychain
-
 [core]
 	editor = vim
 	excludesfile = /Users/wainwb01/.gitignore_global
@@ -56,5 +53,5 @@
 	user = benwainwright
 [gpg]
 	program = gpg
-[url "https://:@github.com/"]
-	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = “https://github.com/”
