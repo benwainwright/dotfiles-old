@@ -7,6 +7,17 @@ git-search-prs() {
     parse-number-from-hub-list)
 }
 
+git-update-with-branch() {
+  if [ -z "$1" ]; then
+    branch="master"
+  else
+    branch="$1"
+  fi
+
+  git fetch origin "$branch" && \
+  git rebase origin/$branch
+}
+
 parse-number-from-hub-list() {
   cut -d" " -f1 | tr -dc "0-9"
 }
@@ -102,7 +113,7 @@ git-remove-repo-if-inactive() {
   if [ -d "$repo/.git" ] && [ $(git-last-commit-timestamp "$repo") -lt $one_month_ago ]; then
     if git-has-changes "$repo"; then
       read "?$repo has uncommitted changes; do you still want to remove it (y/n)? " choice
-      case "$choice" in 
+      case "$choice" in
         n|N ) return;;
         * ) echo "invalid";;
       esac

@@ -32,3 +32,4 @@ alias pr='[ ! -z $(git rev-parse --show-cdup) ] && cd $(git rev-parse --show-cdu
 alias gb='git browse'
 alias gbp='git-browse-pr'
 alias gbi='git-browse-issue'
+alias gup='git-update-with-branch'
