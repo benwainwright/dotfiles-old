@@ -122,7 +122,6 @@
   :config
   (setq projectile-switch-project-action 'neotree-projectile-action))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Language Specific Packages ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -131,7 +130,4 @@
   :ensure t)
 
 (use-package groovy-mode
-  :ensure t)
-
-(use-package jenkinsfile-mode
   :ensure t)
