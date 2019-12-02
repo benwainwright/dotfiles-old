@@ -1,6 +1,5 @@
 ;; Self contained packages file. Will install use-package if it isn't available
 ;; Then install all packages defined in this file
-
 (provide 'packages)
 (require 'package)
 (package-initialize)
@@ -87,6 +86,10 @@
 (use-package magit
   :ensure t)
 
+(use-package forge
+  :ensure t
+  :after magit)
+
 (use-package evil-magit
   :ensure t
   :after (magit evil))
@@ -161,4 +164,7 @@
   :ensure t)
 
 (use-package docker-compose-mode
+  :ensure t)
+
+(use-package npm-mode
   :ensure t)
