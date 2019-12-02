@@ -76,7 +76,8 @@
   :ensure t
   :config
   (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'js-mode-hook #'lsp))
+  (add-hook 'js-mode-hook #'lsp)
+  (add-hook 'python-mode-hook #'lsp))
 
 (use-package editorconfig
   :ensure t
