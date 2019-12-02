@@ -2,6 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendored")
 
 (require 'packages)
+(require 'ligatures)
 (require 'jenkinsfile-mode)
 (require 'paths)
 (require 'initial-frame)
