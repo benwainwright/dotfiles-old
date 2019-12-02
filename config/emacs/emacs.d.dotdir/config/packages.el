@@ -147,6 +147,9 @@
 (use-package counsel-projectile
   :ensure t)
 
+(use-package browse-at-remote
+  :ensure t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Language Specific Packages ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
