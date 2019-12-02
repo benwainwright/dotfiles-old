@@ -167,4 +167,6 @@
   :ensure t)
 
 (use-package npm-mode
-  :ensure t)
+  :ensure t
+  :config
+  (npm-global-mode))
