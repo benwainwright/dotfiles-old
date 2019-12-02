@@ -1,1 +1,1 @@
-alias e="emacs"
+e="emacs"
