@@ -129,9 +129,10 @@
    :foreground (face-attribute 'line-number :foreground)))
 (use-package neotree
   :ensure t)
+(use-package rainbow-delimiters
   :ensure t
   :config
-  (powerline-default-theme))
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package neotree
   :ensure t
