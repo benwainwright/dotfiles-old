@@ -34,6 +34,8 @@
 (unbind-key "C-t" evil-motion-state-map)
 (bind-key ";" 'helm-buffers-list evil-motion-state-map)
 (bind-key ";" 'helm-buffers-list evil-normal-state-map)
+(bind-key "C-u" 'evil-scroll-up evil-motion-state-map)
+(bind-key "C-u" 'evil-scroll-up evil-normal-state-map)
 
 (defvar leader-map (make-sparse-keymap)
   "Keymap for \"leader\" shortcuts.")
