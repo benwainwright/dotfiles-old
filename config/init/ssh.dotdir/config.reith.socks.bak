@@ -1,7 +1,0 @@
-# This file is automatically edited by my Reith switching script
-# When I switch between on and off Reith.
-Host github.com
-#  ProxyCommand nc -x "socks-gw.reith.bbc.co.uk:1085" -X 5 %h %p
-
-Host ?.access.*.cloud.bbc.co.uk
-#  ProxyCommand nc -x socks-gw.reith.bbc.co.uk:1085 -X 5 %h %p
