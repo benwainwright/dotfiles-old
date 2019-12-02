@@ -11,7 +11,7 @@
 (define-key my-global-keymaps-mode-map (kbd "C-n")     'next-buffer)
 (define-key my-global-keymaps-mode-map (kbd "C-p")     'previous-buffer)
 (define-key my-global-keymaps-mode-map (kbd "s-p")     'helm-projectile-switch-project)
-(define-key my-global-keymaps-mode-map (kbd "s-g")     'helm-projectile-ag)
+(define-key my-global-keymaps-mode-map (kbd "s-g")     'counsel-projectile-ag)
 (define-key my-global-keymaps-mode-map (kbd "C-f")     'helm-projectile-find-file)
 (define-key my-global-keymaps-mode-map (kbd "M-x")     'helm-M-x)
 (define-key my-global-keymaps-mode-map (kbd "C-x C-f") 'helm-find-files)

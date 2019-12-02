@@ -126,6 +126,11 @@
   :ensure t
   :config
   (setq projectile-switch-project-action 'neotree-projectile-action))
+(use-package counsel
+  :ensure t)
+
+(use-package counsel-projectile
+  :ensure t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Language Specific Packages ;;;
