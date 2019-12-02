@@ -1,3 +1,5 @@
+(provide 'mac)
+
 ;; Allow hash to be entered
 (defun insert-pound ()
   "Insert a pound into the buffer."

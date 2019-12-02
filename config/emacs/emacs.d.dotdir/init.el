@@ -7,4 +7,5 @@
 (require 'initial-frame)
 (require 'settings)
 (require 'maps)
+(require 'mac)
 (require 'hooks)
