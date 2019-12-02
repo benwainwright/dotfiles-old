@@ -127,6 +127,8 @@
    'line-number-current-line nil
    :background "#303030"
    :foreground (face-attribute 'line-number :foreground)))
+(use-package neotree
+  :ensure t)
   :ensure t
   :config
   (powerline-default-theme))
