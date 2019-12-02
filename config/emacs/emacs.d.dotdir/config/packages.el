@@ -114,11 +114,19 @@
   :ensure t
   :config
   (moe-dark)
-  (set-face-attribute 'fringe nil
-		      :foreground (face-foreground 'default)
-		      :background (face-background 'default)))
+  (set-face-attribute
+   'fringe nil
+   :foreground (face-foreground 'default)
+   :background (face-background 'default))
 
-(use-package powerline
+  (set-face-attribute
+   'line-number nil
+   :background (face-background 'default))
+
+  (set-face-attribute
+   'line-number-current-line nil
+   :background "#303030"
+   :foreground (face-attribute 'line-number :foreground)))
   :ensure t
   :config
   (powerline-default-theme))
