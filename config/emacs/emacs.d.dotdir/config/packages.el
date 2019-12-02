@@ -136,10 +136,11 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-(use-package neotree
+(use-package diff-hl
   :ensure t
   :config
-  (setq projectile-switch-project-action 'neotree-projectile-action))
+  (global-diff-hl-mode))
+
 (use-package counsel
   :ensure t)
 
