@@ -159,3 +159,6 @@
 
 (use-package groovy-mode
   :ensure t)
+
+(use-package docker-compose-mode
+  :ensure t)
