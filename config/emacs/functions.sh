@@ -7,7 +7,7 @@ emacs() {
 
   # check whether an Emacs server is already running and start daemon
   # if not
-  if ! pgrep -l "^Emacs" > /dev/null; then
+  if ! pgrep -l "^$(basename $EMACS)" > /dev/null; then
    echo "Emacs daemon not running. Starting..."
    $EMACS --daemon
   fi
