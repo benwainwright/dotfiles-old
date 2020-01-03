@@ -30,7 +30,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Misc
 " Plug 'liuchengxu/vim-which-key'
 Plug 'preservim/nerdtree'
-Plug 'fatih/vim-go'
 Plug 'janko/vim-test'
 Plug 'syngan/vim-vimlint'
 Plug 'ynkdir/vim-vimlparser'
@@ -166,12 +165,17 @@ set splitright
 " Where to store all temporary data (e.g. swap files)
 set directory^=$HOME/.vim/tmp/
 
+set backupdir=$HOME/.vim/backup/
+
 " When debugging, put the verbose logfile here
 set verbosefile=~/vim-verbose.log
 
 " If the file change son disk and the buffer hasn't changed
 " autoread from disk
 set autoread
+
+" Write to disk automatically
+set autowrite
 
 " Store undo data between vim sessions
 if has("persistent_undo")
@@ -302,7 +306,7 @@ let maplocalleader = "\\"
 
 " Normal Mode Mappings
 " ====================
-" {{{
+"s {{{
 
 xnoremap <silent> <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>f  <Plug>(coc-format-selected)
@@ -321,6 +325,7 @@ nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>T :TestFile<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <silent> <leader>gb :GitCheckoutBranch<CR>
 nnoremap <silent> <leader>gp :GitCheckoutPr<CR>
 nnoremap <silent> <leader>pbb :PrBlame<CR>
@@ -337,7 +342,7 @@ nnoremap <silent> <c-c>ren :LspRename<CR>
 nnoremap <silent> <c-c>h :LspHover<CR>
 nnoremap <silent> <c-c>s :LspStatus<CR>
 nnoremap <silent> <c-c>f :LspDocumentFormat<CR>
-noremap <silent> <c-c>dd :LspDocumentDiagnostics<CR>
+nnoremap <silent> <c-c>dd :LspDocumentDiagnostics<CR>
 nnoremap <silent> <Leader>pr :call OpenLinePr()<cr>
 nnoremap <silent> <leader>ev :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
 nnoremap <silent> <leader><tab> <plug>(fzf-maps-n)
@@ -401,7 +406,6 @@ augroup vimrc
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
   autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
   autocmd bufwritepost ~/.vimrc source ~/.vimrc
-  autocmd BufWritePre *.py Black
 augroup END
 " }}}
 
@@ -493,21 +497,6 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
-" }}}
-" ALE
-" ===
-" {{{
-let g:ale_sign_column_always = 1
-let g:ale_linters = {
-      \ 'javascript.jsx': ['eslint'],
-      \ 'javascript': ['eslint'],
-      \ 'typescript': ['eslint']
-      \ }
-let g:ale_javascript_eslint_use_global = 1
-let g:ale_echo_msg_format = '%s (%linter%)'
-let g:ale_sh_shellcheck_options = '-e SC1090'
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
 " }}}
 
 " Airline
