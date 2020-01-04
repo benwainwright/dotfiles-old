@@ -7,6 +7,17 @@ set guioptions+=c  " use console dialogs instead of popups for simple choices
 
 set guioptions-=m  " remove menu bar
 set guioptions-=T  " remove toolbar
-set guioptions-=lL " remove lefthand toolbar
-set guioptions-=rR " remove righthand toolbar
+set guioptions-=l  " remove lefthand toolbar
+set guioptions-=L
+set guioptions-=r  " remove righthand toolbar
 
+tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
+tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
+tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
+tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+tnoremap <silent> <C-a>z <c-w>:MaximiseToggle<CR>
+tnoremap <silent> <c-a>x <c-w>:KillCurrentTerminalBuffer<cr> 
+tnoremap <silent> <C-a>l <c-w>:CreateTerminalSplitRight<CR>
+tnoremap <silent> <C-a>h <c-w>:CreateTerminalSplitLeft<CR>
+tnoremap <silent> <C-a>k <c-w>:CreateTerminalSplitUp<CR>
+tnoremap <silent> <C-a>j <c-w>:CreateTerminalSplitDown<CR>
