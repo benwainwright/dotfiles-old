@@ -333,6 +333,7 @@ nnoremap <silent> <leader>nn :call NumberToggle()<CR>
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>T :TestFile<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gp :Gpush<CR>
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <silent> <leader>gb :CheckoutBranch<CR>
