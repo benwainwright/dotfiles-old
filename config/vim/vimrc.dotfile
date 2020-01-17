@@ -257,6 +257,14 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " ==================
 " {{{
 
+if has('gui')
+  let test#strategy = "vimterminal"
+else
+  let test#strategy = "dispatch"
+endif
+
+let test#javascript#jest#file_pattern = '\.spec\.(.+\.)?(ts|tsx|js|jsx)$'
+
 " See https://github.com/ryanoasis/vim-devicons/issues/154#issuecomment-281095173
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
@@ -426,7 +434,9 @@ augroup END
 " Colors and Highlights
 " ====================
 " {{{
-colorscheme monokai
+set background=dark
+colorscheme palenight
+
 "let g:airline_theme='monokai'
 
 " Sneaky hack that removes the tildes from the fringe
