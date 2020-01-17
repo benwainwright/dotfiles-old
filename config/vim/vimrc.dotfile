@@ -263,7 +263,7 @@ else
   let test#strategy = "dispatch"
 endif
 
-let test#javascript#jest#file_pattern = '\.spec\.(.+\.)?(ts|tsx|js|jsx)$'
+let test#javascript#jest#file_pattern = '\v.+.spec.(js|jsx|ts|tsx)$'
 
 " See https://github.com/ryanoasis/vim-devicons/issues/154#issuecomment-281095173
 if exists('g:loaded_webdevicons')
