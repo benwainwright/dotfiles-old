@@ -1,6 +1,12 @@
 #######################################################
 # Load #
 #######################################################
+if [ $TERM != "screen" ]; then
+  exec tmux
+fi
+#######################################################
+# Load #
+#######################################################
 
 function add_completion_dirs_to_fpath() {
   setopt NULL_GLOB
@@ -75,11 +81,14 @@ source_shellfiles
 # Configure shell integrations                      #
 # ###################################################
 
+#export NODE_OPTIONS='--require ndb/preload.js'
+#export NODE_PATH=':/Users/wainwb01/.config/yarn/global/node_modules/ndb/lib/preload'
+#export NDD_IPC='/var/folders/9b/kdn1d1k13v5cbmdmxbj9gmjn5f9pm5/T/node-ndb.28842.sock'
+
 # Adds fzf shell bindings, such as Ctrl-R replacement
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Setup fnm aliases
-eval "$(fnm env --multi)"
+#source /usr/local/opt/asdf/asdf.sh
 
 #####################################################
 # Zshell configuration                              #
@@ -141,14 +150,3 @@ export PATH="/usr/local/sbin:$PATH"
 ######################################################
 
 # zprof
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/wainwb01/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
-export PATH

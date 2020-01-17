@@ -341,7 +341,6 @@ nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>pp :Gpush<CR>
 nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
@@ -350,6 +349,9 @@ nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
 nnoremap <leader>pbc :PrBlame!<CR>
 nnoremap <c-c><c-d> :LspDefinition<CR>
+nnoremap <leader>pp :Gpush<CR>
+nnoremap <leader>pp :Gpush<CR>
+nnoremap <leader>pp :Gpush<CR>
 nnoremap <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <c-c>dc :LspDeclaration<CR>
 nnoremap <c-c>td :LspTypeDefinition<CR>
