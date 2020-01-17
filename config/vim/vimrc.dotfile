@@ -325,58 +325,59 @@ let maplocalleader = "\\"
 " ====================
 "s {{{
 
-xnoremap <silent> <leader>f  <Plug>(coc-format-selected)
+xnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>f  <Plug>(coc-format-selected)
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-nnoremap <silent> <c-x> :call Toggle_terminal()<cr>
-nnoremap <silent> <C-g> :Ag<CR>
-nnoremap <silent> <leader>K :Ag!<CR>
-nnoremap <silent> ; :Buffers<CR>
-nnoremap <silent> <C-f> :FzfChooseProjectFile<CR>
-nnoremap <silent> <leader>cd :FzfSwitchProject<CR>
-nnoremap <silent> <C-t> :Tags<CR>
-nnoremap <silent> <C-e> :NERDTreeFind<CR>
-nnoremap <silent> <leader>F :GitFiles!<CR>
-nnoremap <silent> <leader>nn :call NumberToggle()<CR>
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>T :TestFile<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent> <leader>gp :Gpush<CR>
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
-nnoremap <silent> <leader>gb :CheckoutBranch<CR>
-nnoremap <silent> <leader>gp :CheckoutPR<CR>
-nnoremap <silent> <leader>pbb :PrBlame<CR>
-nnoremap <silent> <leader>pbc :PrBlame!<CR>
-nnoremap <silent> <c-c><c-d> :LspDefinition<CR>
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <c-c>dc :LspDeclaration<CR>
-nnoremap <silent> <c-c>td :LspTypeDefinition<CR>
-nnoremap <silent> <c-c>ca :LspCodeAction<CR>
-nnoremap <silent> <c-c>cc :Commentary<CR>
-nnoremap <silent> <c-c><c-r> :LspReferences<CR>
-nnoremap <silent> <c-c>rn :LspNextReference<CR>
-nnoremap <silent> <c-c>rp :LspPreviousReference<CR>
-nnoremap <silent> <F10> :call CocAction("document.renameCurrentWord")<CR>
-nnoremap <silent> <c-c>h :LspHover<CR>
-nnoremap <silent> <c-c>s :LspStatus<CR>
-nnoremap <silent> <c-c>f :LspDocumentFormat<CR>
-nnoremap <silent> <c-c>dd :LspDocumentDiagnostics<CR>
-nnoremap <silent> <Leader>pr :call OpenLinePr()<cr>
-nnoremap <silent> <leader>ev :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
-nnoremap <silent> <leader><tab> <plug>(fzf-maps-n)
-xnoremap <silent> <leader><tab> <plug>(fzf-maps-x)
-onoremap <silent> <leader><tab> <plug>(fzf-maps-o)
-nnoremap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
-nnoremap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
-nnoremap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
-nnoremap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
-nnoremap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
-nnoremap <silent> <C-n> :bprev<CR>
-nnoremap <silent> <C-p> :bnext<CR>
-nnoremap <silent> <C-]> :lnext<CR>
-nnoremap <silent> <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <leader> :WhichKey '<Space>'<CR>
+nnoremap <c-x> :call Toggle_terminal()<cr>
+nnoremap <C-g> :Ag<CR>
+nnoremap <leader>K :Ag!<CR>
+nnoremap ; :Buffers<CR>
+nnoremap <C-f> :FzfChooseProjectFile<CR>
+nnoremap <leader>cd :FzfSwitchProject<CR>
+nnoremap <C-t> :Tags<CR>
+nnoremap <C-e> :NERDTreeFind<CR>
+nnoremap <leader>F :GitFiles!<CR>
+nnoremap <leader>nn :call NumberToggle()<CR>
+nnoremap <leader>tn :TestNearest<CR>
+nnoremap <leader>T :TestFile<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>pp :Gpush<CR>
+nnoremap <leader>gl :Git log<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
+nnoremap <leader>gb :CheckoutBranch<CR>
+nnoremap <leader>gp :CheckoutPR<CR>
+nnoremap <leader>pbb :PrBlame<CR>
+nnoremap <leader>pbc :PrBlame!<CR>
+nnoremap <c-c><c-d> :LspDefinition<CR>
+nnoremap <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <c-c>dc :LspDeclaration<CR>
+nnoremap <c-c>td :LspTypeDefinition<CR>
+nnoremap <space>ca :CocList actions<CR>
+nnoremap <c-c>cc :Commentary<CR>
+nnoremap <c-c><c-r> :LspReferences<CR>
+nnoremap <c-c>rn :LspNextReference<CR>
+nnoremap <c-c>rp :LspPreviousReference<CR>
+nnoremap <F10> :call CocAction("document.renameCurrentWord")<CR>
+nnoremap <c-c>h :LspHover<CR>
+nnoremap <c-c>s :LspStatus<CR>
+nnoremap <c-c>f :LspDocumentFormat<CR>
+nnoremap <c-c>dd :LspDocumentDiagnostics<CR>
+nnoremap <Leader>pr :call OpenLinePr()<cr>
+nnoremap <leader>ev :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
+nnoremap <leader><tab> <plug>(fzf-maps-n)
+xnoremap <leader><tab> <plug>(fzf-maps-x)
+onoremap <leader><tab> <plug>(fzf-maps-o)
+nnoremap t<C-n> :TestNearest<CR> " t Ctrl+n
+nnoremap t<C-f> :TestFile<CR>    " t Ctrl+f
+nnoremap t<C-s> :TestSuite<CR>   " t Ctrl+s
+nnoremap t<C-l> :TestLast<CR>    " t Ctrl+l
+nnoremap t<C-g> :TestVisit<CR>   " t Ctrl+g
+nnoremap <C-n> :bprev<CR>
+nnoremap <C-p> :bnext<CR>
+nnoremap <C-]> :lnext<CR>
+nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
+nnoremap K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
