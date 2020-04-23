@@ -1,3 +1,19 @@
+aws-select-account() {
+  account=$(cat ~/.awsAccounts.json | jq --raw-output ".[].name" | fzf --height=10)
+  cat ~/.awsAccounts.json | jq --raw-output ".[] | select(.name == \"$account\").account"
+}
+
+# aws() {
+#   if [ -z "$AWS_ACCESS_KEY_ID" ] || \
+#      [ -z "$AWS_SECRET_ACCESS_KEY" ] || \
+#      [ -z "$AWS_SESSION_TOKEN" ]; then
+#     if [ -z "$AWS_ACCOUNT" ]; then
+#       AWS_ACCOUNT=$(aws-select-account)
+#     fi
+#     awsAuthenticateWithWormhole "$AWS_ACCOUNT"
+#   fi
+#   command aws "$@"
+# }
 
 # Parse the config into an associative array
 # Could be made to pick up more info in the future
@@ -15,6 +31,74 @@ aws-config-reader() {
     fi
   done < ~/.aws/config
   set +x
+}
+
+
+codebuildSelectProject() {
+  local region
+
+  region=$1
+  aws \
+    codebuild \
+    list-projects \
+    --region "$1" \
+    | jq ".projects[]" \
+    --raw-output \
+    | fzf --height 20
+}
+
+codebuildGetProject() {
+  local project region
+
+  region=$1
+  
+  project=$(codebuildSelectProject "$region")
+
+  aws \
+    codebuild \
+    batch-get-project \
+    --names "$project"
+}
+
+codebuildGetLastBuildId() {
+  local project
+  local region
+
+  project="$1"
+  region="$2"
+
+  aws \
+    codebuild \
+    list-builds-for-project \
+    --region "$region" \
+    --project-name "$project" \
+    | jq --raw-output ".ids[0]" 
+}
+
+codebuildGetLastBuildFromProject() {
+  local project
+  local region
+
+  region="$1"
+
+  project=$(codebuildSelectProject "$region")
+  id=$(codebuildGetLastBuildId "$project" "$region")
+}
+
+
+
+awsAuthenticateWithWormhole() {
+  local account
+
+  account=$1
+
+  >&2 echo "Getting AWS credentials from Wormhole"
+  creds=$(curl --silent --show-error https://wormhole.api.bbci.co.uk/account/$account/credentials)
+
+  export AWS_ACCESS_KEY_ID=$(echo $creds | jq --raw-output ".accessKeyId")
+  export AWS_SECRET_ACCESS_KEY=$(echo $creds | jq --raw-output ".secretAccessKey")
+  export AWS_SESSION_TOKEN=$(echo $creds | jq --raw-output ".sessionToken")
+  >&2 echo "Done"
 }
 
 aws_cli_profile_set() {
@@ -55,8 +139,10 @@ ecr-login-with-profile() {
 # The way I did this (using cut) is probably brittle; but I really
 # cannot be bothered to work out the regex
 ecr-stdin-login() {
+  set -x
   local raw_login_cmd=$(aws ecr get-login --no-include-email)
   local login_cmd=$(echo $raw_login_cmd | cut -f 1-4,7 -d " ")
   local password=$(echo $raw_login_cmd | cut -f 6 -d " ")
   eval "echo $password | $login_cmd --password-stdin"
+  set +x
 }

@@ -5,7 +5,7 @@
 call plug#begin('~/.vim/plugged')
 
 if has('macunix')
-  "  Plug 'rizzatti/dash.vim'
+  Plug 'rizzatti/dash.vim'
 endif
 
 " Personal plugins
@@ -18,7 +18,10 @@ Plug 'benwainwright/terminal'
 " Tim Pope
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rhubarb'
+Plug 'lifepillar/vim-solarized8'
+Plug 'dracula/vim'
 Plug 'tpope/vim-fugitive'
+
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
@@ -32,11 +35,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Misc
 Plug 'sickill/vim-monokai'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'liuchengxu/vim-which-key'
-Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --disable-tcl --enable-go' }
+" Need to do manual setup as described in README
+Plug 'puremourning/vimspector'
 Plug 'preservim/nerdtree'
 Plug 'janko/vim-test'
 Plug 'syngan/vim-vimlint'
+Plug 'morhetz/gruvbox'
 Plug 'ynkdir/vim-vimlparser'
 Plug 'Shougo/neco-vim'
 Plug 'plytophogy/vim-virtualenv', { 'for': 'python' }
@@ -221,6 +227,7 @@ let &t_ut=''
 
 
 if exists('+termguicolors')
+  set t_Co=256
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
@@ -335,13 +342,14 @@ nnoremap ; :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
-nnoremap <C-e> :NERDTreeFind<CR>
+nnoremap <C-e> :NERDTreeToggleVCS<CR>
 nnoremap <leader>F :GitFiles!<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gl :Git log<CR>
+nnoremap <leader>pp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <leader>gb :CheckoutBranch<CR>
@@ -349,9 +357,6 @@ nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
 nnoremap <leader>pbc :PrBlame!<CR>
 nnoremap <c-c><c-d> :LspDefinition<CR>
-nnoremap <leader>pp :Gpush<CR>
-nnoremap <leader>pp :Gpush<CR>
-nnoremap <leader>pp :Gpush<CR>
 nnoremap <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <c-c>dc :LspDeclaration<CR>
 nnoremap <c-c>td :LspTypeDefinition<CR>
@@ -378,6 +383,10 @@ nnoremap t<C-g> :TestVisit<CR>   " t Ctrl+g
 nnoremap <C-n> :bprev<CR>
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-]> :lnext<CR>
+
+ " this mapping is causing weird startup errors
+ "nnoremap <silent> <C-[> :lprev<cr>
+
 nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
 nnoremap K :call <SID>show_documentation()<CR>
 
@@ -389,8 +398,6 @@ function! s:show_documentation()
   endif
 endfunction
 
- " this mapping is causing weird startup errors
- "nnoremap <silent> <C-[> :lprev<cr>
 
  nnoremap <silent> <C-a>z :MaximiseToggle<CR>
 
@@ -446,15 +453,13 @@ colorscheme palenight
 highlight NonText guifg=bg
 
 highlight CursorLine ctermbg=236
-
-highlight DiffDelete guifg=red guibg=#3C3D37
-highlight DiffAdd guifg=green guibg=#3C3D37
-highlight DiffChange guifg=yellow guibg=#3C3D37
-highlight CocErrorSign guifg=red guibg=#3C3D37
-highlight CocWarningSign guifg=yellow guibg=#3C3D37
-highlight CocInfoSign guifg=blue guibg=#3C3D37
-highlight CocHintSign guifg=green guibg=#3C3D37
-highlight CocUnderline gui=undercurl guisp=red
+highlight DiffDelete guifg=red guibg=NONE
+highlight DiffAdd guifg=green guibg=NONE
+highlight DiffChange guifg=yellow guibg=NONE
+highlight CocErrorSign guifg=red guibg=NONE
+highlight CocWarningSign guifg=yellow guibg=NONE
+highlight CocInfoSign guifg=#3399FF guibg=NONE
+highlight CocHintSign guifg=green guibg=NONE
 
 highlight terminal
       \ guibg=black
@@ -474,7 +479,7 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
-" }}}
+"" }}}
 
 " Airline
 " =======

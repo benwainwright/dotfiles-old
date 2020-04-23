@@ -11,9 +11,11 @@ local mash = {"cmd", "alt", "ctrl"}
 local spectacle = {"cmd", "alt"}
 local spectacleshift = {"cmd", "alt", "shift"}
 
+hotkey.bind(spectacle, 'T', function() application.launchOrFocus('Things3') end)
+hotkey.bind(spectacle, 'N', function() application.launchOrFocus('Evernote') end)
+hotkey.bind(spectacle, 'I', function() application.launchOrFocus('Kitty') end)
 hotkey.bind(spectacle, 'M', function() application.launchOrFocus('Spotify') end)
 hotkey.bind(spectacle, 'S', function() application.launchOrFocus('Slack') end)
-hotkey.bind(spectacle, 'I', function() application.launchOrFocus('iTerm') end)
 hotkey.bind(spectacle, 'G', function() application.launchOrFocus('Jasper') end)
 hotkey.bind(spectacle, 'B', function() application.launchOrFocus('Google Chrome') end)
 hotkey.bind(spectacle, 'C', function() application.launchOrFocus('Calendar') end)
@@ -22,7 +24,8 @@ hotkey.bind(spectacle, 'A', function() application.launchOrFocus('Airmail 3') en
 hotkey.bind(spectacle, 'D', function() application.launchOrFocus('Dash') end)
 hotkey.bind(spectacle, 'F', function() application.launchOrFocus('Finder') end)
 hotkey.bind(spectacle, 'O', function() application.launchOrFocus('OmniFocus') end)
-hotkey.bind(spectacle, 'V', function() application.launchOrFocus('Visual Studio Code') end)
+hotkey.bind(spectacle, 'V', function() application.launchOrFocus('MacVim') end)
+hotkey.bind(spectacle, 'Z', function() application.launchOrFocus('Zoom.us') end)
 hotkey.bind(mash, 'h', function() window.focusedWindow():moveOneScreenWest() end)
 hotkey.bind(mash, 'l', function() window.focusedWindow():moveOneScreenEast() end)
 hotkey.bind(mash, 'j', function() window.focusedWindow():moveOneScreenSouth() end)

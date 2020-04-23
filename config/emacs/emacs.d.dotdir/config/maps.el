@@ -21,7 +21,9 @@
 (define-key my-global-keymaps-mode-map (kbd "C-k")     'windmove-up)
 (define-key my-global-keymaps-mode-map (kbd "C-h")     'windmove-left)
 (define-key my-global-keymaps-mode-map (kbd "C-l")     'windmove-right)
-(define-key my-global-keymaps-mode-map (kbd "C-t")     'neotree-toggle)
+(define-key my-global-keymaps-mode-map (kbd "C-t")     'neotree-project-dir-toggle)
+(define-key my-global-keymaps-mode-map (kbd "<f12>")   'lsp-find-definition)
+(define-key my-global-keymaps-mode-map (kbd "<S-f12>")   'lsp-find-)
 (my-global-keymaps-mode)
 
 (unbind-key "C-f" evil-normal-state-map)
@@ -45,7 +47,7 @@
 (define-key evil-visual-state-map (kbd "SPC") leader-map)
 
 ;; Shortcuts
-(define-key leader-map "c" 'magit-branch-checkout)
+(define-key leader-map "c" 'counsel-git-checkout)
 (define-key leader-map "p" 'magit-pull)
 (define-key leader-map "r" 'reload-init-file)
 
@@ -77,6 +79,7 @@
 (define-key leader-map "db" 'describe-bindings)
 (define-key leader-map "dm" 'describe-mode)
 (define-key leader-map "ds" 'describe-syntax)
+
 
 ;; Evaluate Elisp
 (define-key leader-map "ed" 'eval-defun)

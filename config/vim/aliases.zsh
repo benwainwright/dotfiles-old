@@ -1,5 +1,5 @@
-# alias vim='mvim-remote'
 # alias gvim='mvim-remote'
+# alias vim='gvim'
 alias v='vim'
 # alias sv='sudo mvim-remote'
-# alias vf='v $(fasd -lf | fzf)'
+alias vf='v $(fasd -lf | fzf)'

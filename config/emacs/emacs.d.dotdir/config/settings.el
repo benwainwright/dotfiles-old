@@ -10,7 +10,7 @@
 (scroll-bar-mode -1)
 
 ;; Highlight current line
-(global-hl-line-mode +1)
+;; (global-hl-line-mode +1) ;; This appears kind of broken in Emacs 27
 
 ;; Fix color problem on mac
 (setq ns-use-srgb-colorspace nil)

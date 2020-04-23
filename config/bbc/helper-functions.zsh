@@ -1,5 +1,4 @@
 export COSMOS_LOGIN_CACHE=~/.cosmos-logins
-
 curl-bbc() {
   local verb url ttl body
 
