@@ -21,9 +21,12 @@
 (define-key my-global-keymaps-mode-map (kbd "C-k")     'windmove-up)
 (define-key my-global-keymaps-mode-map (kbd "C-h")     'windmove-left)
 (define-key my-global-keymaps-mode-map (kbd "C-l")     'windmove-right)
-(define-key my-global-keymaps-mode-map (kbd "C-t")     'neotree-project-dir-toggle)
+(define-key my-global-keymaps-mode-map (kbd "C-t")     'treemacs)
+(define-key my-global-keymaps-mode-map (kbd "<f2>")     'lsp-rename)
 (define-key my-global-keymaps-mode-map (kbd "<f12>")   'lsp-find-definition)
-(define-key my-global-keymaps-mode-map (kbd "<S-f12>")   'lsp-find-)
+(define-key my-global-keymaps-mode-map (kbd "<S-f12>")   'lsp-find-declaration)
+(define-key my-global-keymaps-mode-map (kbd "<f10>")   'lsp-find-references)
+
 (my-global-keymaps-mode)
 
 (unbind-key "C-f" evil-normal-state-map)

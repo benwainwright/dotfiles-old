@@ -12,9 +12,6 @@
 ;; Highlight current line
 ;; (global-hl-line-mode +1) ;; This appears kind of broken in Emacs 27
 
-;; Fix color problem on mac
-(setq ns-use-srgb-colorspace nil)
-
 ;; Get rid of initial scratch message
 (setq initial-scratch-message "")
 
@@ -29,3 +26,6 @@
 
 ;; Automatically insert matching delimeter pairs
 (electric-pair-mode t)
+
+;; Don't warn when opening large files
+(setq large-file-warning-threshold nil)
