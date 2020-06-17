@@ -169,3 +169,8 @@
 
 (use-package browse-at-remote
   :ensure t)
+
+(use-package ace-popup-menu
+  :ensure t
+  :config
+  (ace-popup-menu-mode 1))
