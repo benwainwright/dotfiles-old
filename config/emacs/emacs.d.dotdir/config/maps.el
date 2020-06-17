@@ -28,8 +28,11 @@
 (define-key my-global-keymaps-mode-map (kbd "<f10>")   'lsp-find-references)
 (define-key my-global-keymaps-mode-map (kbd "<f3>")   'bar-to-clipboard)
 (define-key my-global-keymaps-mode-map (kbd "<S-f3>")   'browse-at-remote)
+(define-key my-global-keymaps-mode-map (kbd "M-h")      'drag-stuff-left)
+(define-key my-global-keymaps-mode-map (kbd "M-l")      'drag-stuff-right)
 (define-key my-global-keymaps-mode-map (kbd "M-k")      'drag-stuff-up)
 (define-key my-global-keymaps-mode-map (kbd "M-j")      'drag-stuff-down)
+(define-key my-global-keymaps-mode-map (kbd "<f4>")   'my-string-inflection-cycle-auto)
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
 

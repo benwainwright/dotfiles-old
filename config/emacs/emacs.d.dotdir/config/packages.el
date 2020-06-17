@@ -202,3 +202,23 @@
   :ensure t
   :config
   (drag-stuff-mode t))
+
+(use-package string-inflection
+  :ensure t
+  :config
+
+  ;; C-q C-u is the key bindings similar to Vz Editor.
+  (global-unset-key (kbd "C-q"))
+
+  (defun my-string-inflection-cycle-auto ()
+    "switching by major-mode"
+    (interactive)
+    (cond
+     ((eq major-mode 'emacs-lisp-mode)
+      (string-inflection-all-cycle))
+     ((eq major-mode 'python-mode)
+      (string-inflection-python-style-cycle))
+     ((eq major-mode 'java-mode)
+      (string-inflection-java-style-cycle))
+     (t
+      (string-inflection-java-style-cycle)))))
