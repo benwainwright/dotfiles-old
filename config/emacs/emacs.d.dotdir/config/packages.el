@@ -1,4 +1,4 @@
-					; Self contained packages file. Will install use-package if it isn't available
+;; Self contained packages file. Will install use-package if it isn't available
 ;; Then install all packages defined in this file
 (provide 'packages)
 (require 'package)
