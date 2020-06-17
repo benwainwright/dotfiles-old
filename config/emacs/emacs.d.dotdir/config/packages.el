@@ -167,5 +167,5 @@
   :config
   (yas-global-mode 1))
 
-(use-package git-link
+(use-package browse-at-remote
   :ensure t)
