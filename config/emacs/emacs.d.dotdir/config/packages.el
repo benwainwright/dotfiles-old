@@ -197,3 +197,8 @@
   :ensure t
   :config
   (volatile-highlights-mode t))
+
+(use-package drag-stuff
+  :ensure t
+  :config
+  (drag-stuff-mode t))
