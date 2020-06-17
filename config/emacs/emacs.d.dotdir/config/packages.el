@@ -23,10 +23,10 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-(use-package monokai-theme
+(use-package moe-theme
   :ensure t
   :config
-  (load-theme 'monokai t))
+  (load-theme 'moe-dark t))
 
 ;; Vim emulation
 (use-package evil
@@ -81,6 +81,7 @@
   :config
   (add-hook 'go-mode-hook #'lsp)
   (add-hook 'js-mode-hook #'lsp)
+  (add-hook 'web-mode-hook #'lsp)
   (add-hook 'typescript-mode-hook #'lsp)
   (add-hook 'python-mode-hook #'lsp))
 
@@ -119,6 +120,12 @@
   (setq gc-cons-threshold 100000000)
   (add-hook 'after-init-hook 'global-company-mode))
 
+(use-package company-quickhelp
+  :ensure t
+  :config
+  (company-quickhelp-mode))
+
+
 (use-package flycheck
   :ensure t)
 
@@ -134,3 +141,29 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(use-package powerline
+  :ensure t)
+
+
+(use-package git-gutter-fringe
+  :ensure t)
+
+(use-package helm-rg
+  :ensure t)
+
+(use-package web-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.tsx" . web-mode)))
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))

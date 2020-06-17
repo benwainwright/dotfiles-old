@@ -1,9 +1,9 @@
-(provide 'initial-frame)
+(provide 'visual)
 
 (setq initial-frame-alist
       '((tool-bar-lines . 0)
 	(width . 106)
-	(font . "Fira Code-15")
+	(font . "Fira Code-14")
 	(height . 60)
 	(background-mode . 'dark)
 	(ns-transparent-titlebar . t)
@@ -11,7 +11,7 @@
 
 (setq default-frame-alist
       '((tool-bar-lines . 0)
-	(font . "Fira Code-15")
+	(font . "Fira Code-14")
 	(width . 106)
 	(height . 60)
 	(background-mode . 'dark)

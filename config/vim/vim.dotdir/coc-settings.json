@@ -11,7 +11,7 @@
   "suggest.timeout": "5000",
   "tsserver.log":"verbose",
   "diagnostic.hintSign": "",
-  "coc.preferences.formatOnSaveFiletypes": ["typescript", "python", "typescriptreact", "swift"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript.jasmine", "javascript", "typescript", "python", "typescriptreact", "swift"],
   "languageserver": {
     "swift": {
       "command": "sourcekit-lsp",

@@ -57,3 +57,5 @@
 	insteadOf = “https://github.com/”
 [credential]
 	helper = store
+[url "foo"]
+	insteadOf = bar
