@@ -15,24 +15,39 @@ aws-select-account() {
 #   command aws "$@"
 # }
 
-# Parse the config into an associative array
-# Could be made to pick up more info in the future
-# Currently just takes the credentials line and extracts account_id
+aws() {
+  if [ -z $AWS_DEFAULT_PROFILE ] || [ "$1" = "--switch" ]; then
+    aws-switch-profile-fzf
+  fi
+  command aws "$@"
+}
+
 aws-config-reader() {
-  typeset -gA aws_profiles
+  unset aws_profiles
   aws_profiles = ()
   local profile='unknown'
   while read line; do
     if [[ $line =~ '^\[profile' ]]; then
       profile=$(echo "$line"| sed 's/\[profile \(.*\)\]/\1/g')
-    elif [[ $line =~ '^credential_process' ]]; then
-      local account_id=$(echo "$line" | grep -Eo '\d+')
-      aws_profiles[$profile]=$account_id
+      aws_profiles+=($profile)
     fi
   done < ~/.aws/config
   set +x
 }
 
+aws-switch-profile-fzf() {
+  aws-config-reader
+
+  local prof=$(
+    for name in $aws_profiles; do
+      printf "$name\n" $name
+    done | sort | fzf --height=20% --prompt="profile: " | awk '{print $1}'
+  )
+
+  export AWS_DEFAULT_PROFILE=$prof
+  export AWS_PROFILE=$prof
+  echo "AWS_DEFAULT_PROFILE and AWS_DEFAULT_PROFILE now set to $prof"
+}
 
 codebuildSelectProject() {
   local region
@@ -51,7 +66,7 @@ codebuildGetProject() {
   local project region
 
   region=$1
-  
+
   project=$(codebuildSelectProject "$region")
 
   aws \
@@ -72,7 +87,7 @@ codebuildGetLastBuildId() {
     list-builds-for-project \
     --region "$region" \
     --project-name "$project" \
-    | jq --raw-output ".ids[0]" 
+    | jq --raw-output ".ids[0]"
 }
 
 codebuildGetLastBuildFromProject() {
@@ -105,20 +120,6 @@ aws_cli_profile_set() {
   export AWS_DEFAULT_PROFILE=$1
 }
 
-aws-switch-profile-fzf() {
-  aws-config-reader
-
-  # Loop over associative array printing some text suitable for fzf
-  # then pick the first word of the fzf selection
-  local prof=$(
-    for key val in ${(kv)aws_profiles}; do
-      printf "%-20s %s\n" $key $val
-    done | sort | fzf --height=20% --prompt="profile: " | awk '{print $1}'
-  )
-
-  export AWS_DEFAULT_PROFILE=$prof
-  echo "AWS_DEFAULT_PROFILE now set to $AWS_DEFAULT_PROFILE"
-}
 
 ecr-login() {
   if [ -z $AWS_DEFAULT_PROFILE ] || [ "$1" = "--switch" ]; then

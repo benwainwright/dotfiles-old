@@ -1,43 +1,19 @@
 [profile webcore-dev]
-credential_process = /usr/local/bin/aws-cli-wormhole-credentials.sh 997052946310
+credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 997052946310
 region = eu-west-1
 
-[profile tooling]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 536795411033
+[profile webcore-prod]
+credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 561847100151
 region = eu-west-1
 
-[profile nav-prod]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 737337088607
-region = eu-west-1
+[profile personal-choirpractise-ci-machine-user]
+region = us-east-1
+output = json
 
-[profile homepage-dev]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 878276681969
-region = eu-west-1
+[profile personal-ben-admin]
+region = us-east-1
+output = json
 
-[profile ck-prod]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 332079403212
-region = eu-west-1
-
-[profile homepage-prod]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 277000594937
-region = eu-west-1
-
-[profile ck-dev]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 799926735682
-region = eu-west-1
-
-[profile nav-dev]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 896406479331
-region = eu-west-1
-
-[profile search-prod]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 766660034703
-region = eu-west-1
-
-[profile search-dev]
-credential_process = /usr/local/bin/awscli-wormhole-credentials.sh 400814471121
-region = eu-west-1
-
-[profile personal]
-region = eu-west-2
+[profile personal-app-deploy]
+region = us-east-1
 output = json
