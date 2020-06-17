@@ -244,3 +244,8 @@
   :ensure t
   :config
   (helm-descbinds-mode))
+
+(use-package google-this
+  :ensure t
+  :config
+  (google-this-mode 1))
