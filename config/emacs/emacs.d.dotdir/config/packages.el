@@ -167,3 +167,6 @@
   :ensure t
   :config
   (yas-global-mode 1))
+
+(use-package git-link
+  :ensure t)
