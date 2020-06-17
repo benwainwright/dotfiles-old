@@ -174,3 +174,6 @@
   :ensure t
   :config
   (ace-popup-menu-mode 1))
+
+(use-package helpful
+  :ensure t)
