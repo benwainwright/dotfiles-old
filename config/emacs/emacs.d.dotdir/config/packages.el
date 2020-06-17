@@ -5,8 +5,7 @@
 (package-initialize)
 
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")))
-
+                         ("melpa" . "https://melpa.org/packages/")))
 
 ;; Setup use-package
 (unless (package-installed-p 'use-package)
