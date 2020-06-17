@@ -180,3 +180,8 @@
 
 (use-package rainbow-mode
   :ensure t)
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
