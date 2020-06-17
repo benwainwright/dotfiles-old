@@ -26,6 +26,8 @@
 (define-key my-global-keymaps-mode-map (kbd "<f12>")   'lsp-find-definition)
 (define-key my-global-keymaps-mode-map (kbd "<S-f12>")   'lsp-find-declaration)
 (define-key my-global-keymaps-mode-map (kbd "<f10>")   'lsp-find-references)
+(define-key my-global-keymaps-mode-map (kbd "<f3>")   'bar-to-clipboard)
+(define-key my-global-keymaps-mode-map (kbd "<S-f3>")   'browse-at-remote)
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
 
