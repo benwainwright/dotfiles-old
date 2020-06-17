@@ -185,3 +185,10 @@
   :ensure t
   :config
   (which-key-mode))
+
+(use-package dimmer
+  :ensure t
+  :config
+  (dimmer-configure-helm)
+  (dimmer-configure-which-key)
+  (dimmer-mode t))
