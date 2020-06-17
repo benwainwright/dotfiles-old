@@ -239,3 +239,8 @@
   :ensure t
   :config
   (guide-key-mode 1))
+
+(use-package helm-descbinds
+  :ensure t
+  :config
+  (helm-descbinds-mode))
