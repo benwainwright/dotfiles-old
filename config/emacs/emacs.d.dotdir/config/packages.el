@@ -222,3 +222,8 @@
       (string-inflection-java-style-cycle))
      (t
       (string-inflection-java-style-cycle)))))
+
+(use-package evil-nerd-commenter
+  :ensure t
+  :config
+  (evilnc-default-hotkeys))
