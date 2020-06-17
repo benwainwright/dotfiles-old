@@ -192,3 +192,8 @@
   (dimmer-configure-helm)
   (dimmer-configure-which-key)
   (dimmer-mode t))
+
+(use-package volatile-highlights
+  :ensure t
+  :config
+  (volatile-highlights-mode t))
