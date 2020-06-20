@@ -1,8 +1,10 @@
 checkdoc
 CLI
+ECR
 Flycheck
 Flyspell
 Homebrew
 onRequest
 preHandler
 requiredKey
+Webcore
