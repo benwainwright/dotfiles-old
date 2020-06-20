@@ -251,3 +251,6 @@
   :ensure t
   :config
   (google-this-mode 1))
+
+(use-package helm-lsp
+  :ensure t)

@@ -32,6 +32,7 @@
 (define-key my-global-keymaps-mode-map (kbd "M-k")      'drag-stuff-up)
 (define-key my-global-keymaps-mode-map (kbd "M-j")      'drag-stuff-down)
 (define-key my-global-keymaps-mode-map (kbd "<f4>")   'my-string-inflection-cycle-auto)
+(define-key my-global-keymaps-mode-map (kbd "C-s")      'helm-lsp-workspace-symbol)
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
 
