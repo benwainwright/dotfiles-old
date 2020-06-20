@@ -129,7 +129,9 @@
   :ensure t)
 
 (use-package lsp-ui
-  :ensure t)
+  :ensure t
+  :config
+  (setq lsp-ui-doc-use-webkit t))
 
 (use-package lsp-treemacs
   :ensure t
