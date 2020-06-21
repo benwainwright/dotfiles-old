@@ -11,7 +11,6 @@
 (define-key my-global-keymaps-mode-map (kbd "C-n")     'next-buffer)
 (define-key my-global-keymaps-mode-map (kbd "C-p")     'previous-buffer)
 (define-key my-global-keymaps-mode-map (kbd "s-p")     'helm-projectile-switch-project)
-(define-key my-global-keymaps-mode-map (kbd "s-g")     'counsel-projectile-ag)
 (define-key my-global-keymaps-mode-map (kbd "C-f")     'helm-projectile-find-file)
 (define-key my-global-keymaps-mode-map (kbd "M-x")     'helm-M-x)
 (define-key my-global-keymaps-mode-map (kbd "C-x C-f") 'helm-find-files)
@@ -32,7 +31,6 @@
 (define-key my-global-keymaps-mode-map (kbd "M-k")      'drag-stuff-up)
 (define-key my-global-keymaps-mode-map (kbd "M-j")      'drag-stuff-down)
 (define-key my-global-keymaps-mode-map (kbd "<f4>")   'my-string-inflection-cycle-auto)
-(define-key my-global-keymaps-mode-map (kbd "C-s")      'helm-lsp-workspace-symbol)
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
 
@@ -60,8 +58,6 @@
 
 ;; Shortcuts
 (define-key leader-map "c" 'counsel-git-checkout)
-(define-key leader-map "p" 'magit-pull)
-(define-key leader-map "r" 'reload-init-file)
 
 ;; Git and Github related
 (define-key leader-map "gcp" 'forge-checkout-pullreq)
@@ -106,8 +102,12 @@
 (define-key leader-map "fn" 'flycheck-prev-error)
 
 ;; Flyspell
-(define-key leader-map "sc" 'flyspell-correct-word-before-point)
-(define-key leader-map "sn" 'flyspell-goto-next-error)
+(define-key leader-map "fsc" 'flyspell-correct-word-before-point)
+(define-key leader-map "fsn" 'flyspell-goto-next-error)
+
+;; Search
+(define-key leader-map "sg" 'helm-projectile-ag)
+(define-key leader-map "ss" 'helm-lsp-workspace-symbol)
 
 ;; Dash
 (define-key leader-map "dap" 'dash-at-point)

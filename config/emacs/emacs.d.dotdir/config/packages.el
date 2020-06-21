@@ -47,6 +47,9 @@
 (use-package treemacs
   :ensure t)
 
+(use-package helm-ag
+  :ensure t)
+
 
 (use-package helm-projectile
   :ensure t
