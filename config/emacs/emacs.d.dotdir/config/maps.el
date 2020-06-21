@@ -62,7 +62,7 @@
 ;; Git and Github related
 (define-key leader-map "gcp" 'forge-checkout-pullreq)
 (define-key leader-map "gbr" 'browse-at-remote)
-(define-key leader-map "gbc" 'browse-at-remote)
+(define-key leader-map "gbc" 'bar-to-clipboard)
 (define-key leader-map "gib" 'forge-browse-issue)
 (define-key leader-map "gic" 'forge-create-issue)
 (define-key leader-map "gpc" 'forge-create-pullreq)

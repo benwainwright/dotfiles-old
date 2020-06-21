@@ -175,6 +175,9 @@
 (use-package browse-at-remote
   :ensure t)
 
+(use-package ag
+  :ensure t)
+
 (use-package ace-popup-menu
   :ensure t
   :config
