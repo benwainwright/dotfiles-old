@@ -238,8 +238,8 @@
   :ensure t
   :config
   (progn (show-smartparens-global-mode t))
-  (add-hook 'prog-mode-hook #'turn-on-smartparens-strict-mode)
-  (add-hook 'markdown-mode-hook #'turn-on-smartparens-strict-mode))
+  (add-hook 'prog-mode-hook #'turn-on-smartparens-mode)
+  (add-hook 'markdown-mode-hook #'turn-on-smartparens-mode))
 
 (use-package guide-key
   :ensure t
