@@ -93,7 +93,9 @@
   (editorconfig-mode 1))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (setq magit-prefer-remote-upstream t))
 
 (use-package forge
   :ensure t
