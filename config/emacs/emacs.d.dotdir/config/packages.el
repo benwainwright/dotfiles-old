@@ -109,6 +109,9 @@
 (use-package format-all
   :ensure t)
 
+(use-package pos-tip
+  :ensure t)
+
 (use-package company
   :ensure t
   :config
@@ -176,10 +179,10 @@
 (use-package ag
   :ensure t)
 
-(use-package ace-popup-menu
-  :ensure t
-  :config
-  (ace-popup-menu-mode 1))
+;;(use-package ace-popup-menu
+;;  :ensure t
+;;  :config
+;;  (ace-popup-menu-mode 1))
 
 (use-package helpful
   :ensure t)
@@ -258,3 +261,9 @@
 
 (use-package helm-lsp
   :ensure t)
+
+(use-package no-littering
+  :ensure t
+  :config
+  (setq auto-save-file-name-transforms
+	`((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
