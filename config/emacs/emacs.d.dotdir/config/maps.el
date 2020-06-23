@@ -33,6 +33,10 @@
 (define-key my-global-keymaps-mode-map (kbd "<f4>")   'my-string-inflection-cycle-auto)
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
+(define-key my-global-keymaps-mode-map (kbd "C-a h") (lambda ()(interactive)(split-window-horizontally)))
+(define-key my-global-keymaps-mode-map (kbd "C-a l") (lambda ()(interactive)(split-window-horizontally) (other-window 1)))
+(define-key my-global-keymaps-mode-map (kbd "C-a j") (lambda ()(interactive)(split-window-vertically) (other-window 1)))
+(define-key my-global-keymaps-mode-map (kbd "C-a k") (lambda ()(interactive)(split-window-vertically) ))
 
 (my-global-keymaps-mode)
 
@@ -60,20 +64,23 @@
 (define-key leader-map "c" 'counsel-git-checkout)
 
 ;; Git and Github related
-(define-key leader-map "gcp" 'forge-checkout-pullreq)
 (define-key leader-map "gbr" 'browse-at-remote)
 (define-key leader-map "gbc" 'bar-to-clipboard)
 (define-key leader-map "gib" 'forge-browse-issue)
 (define-key leader-map "gic" 'forge-create-issue)
-(define-key leader-map "gpc" 'forge-create-pullreq)
-(define-key leader-map "gpb" 'forge-browse-pullreq)
-(define-key leader-map "grl" 'magit-reflog-current)
-(define-key leader-map "gri" 'magit-rebase-interactive)
-(define-key leader-map "gcl" 'magit-clone)
-(define-key leader-map "gfa" 'magit-fetch-all)
-(define-key leader-map "gcm" 'magit-commit)
-(define-key leader-map "gs" 'magit-status)
-(define-key leader-map "gl" 'magit-log-current)
+(define-key leader-map "gprn" 'forge-create-pullreq)
+(define-key leader-map "gprc" 'forge-checkout-pullreq)
+(define-key leader-map "gprb" 'forge-browse-pullreq)
+
+(define-key leader-map "mrl" 'magit-reflog-current)
+(define-key leader-map "mri" 'magit-rebase-interactive)
+(define-key leader-map "mcl" 'magit-clone)
+(define-key leader-map "mfa" 'magit-fetch-all)
+(define-key leader-map "mcm" 'magit-commit)
+(define-key leader-map "ms" 'magit-status)
+(define-key leader-map "ml" 'magit-log-current)
+(define-key leader-map "mcb" 'magit-branch-and-checkout)
+
 (define-key leader-map "hs" 'git-gutter:stage-hunk)
 (define-key leader-map "hp" 'git-gutter:previous-hunk)
 (define-key leader-map "hn" 'git-gutter:next-hunk)
