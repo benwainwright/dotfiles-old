@@ -118,11 +118,14 @@
 (use-package company
   :ensure t
   :bind
-  (:map company-active-map
-	("<return>" . nil)
-	("RET" . nil)
-	("<tab>" . 'company-complete-selection))
   :config
+  ;; Borrowed from https://emacs.stackexchange.com/a/24800/10957
+  (dolist (key '("<return>" "RET"))
+    (define-key company-active-map (kbd key)
+      `(menu-item nil company-complete
+		  :filter ,(lambda (cmd)
+			     (when (company-explicit-action-p)
+			       cmd)))))
 
   (setq company-backends (remove 'company-gtags company-backends))
   (setq company-backends (remove 'company-etags company-backends))
