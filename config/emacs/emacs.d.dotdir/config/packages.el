@@ -117,7 +117,13 @@
 
 (use-package company
   :ensure t
+  :bind
+  (:map company-active-map
+	("<return>" . nil)
+	("RET" . nil)
+	("<tab>" . 'company-complete-selection))
   :config
+
   (setq company-backends (remove 'company-gtags company-backends))
   (setq company-backends (remove 'company-etags company-backends))
   (setq company-minimum-prefix-length 0)
