@@ -81,6 +81,7 @@
 (use-package lsp-mode
   :ensure t
   :config
+  (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
   (add-hook 'go-mode-hook #'lsp)
   (add-hook 'js-mode-hook #'lsp)
   (add-hook 'web-mode-hook #'lsp)
