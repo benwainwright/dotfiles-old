@@ -76,7 +76,7 @@
    "~/go/src/github.com/bbc/")
 
   (add-to-list 'projectile-known-projects "~/dotfiles")
-  (add-to-list 'projectile-known-projects "~/Google Drive/org")
+  (add-to-list 'projectile-known-projects "~/Dropbox (BBC)/org")
   (helm-projectile-on))
 
 (use-package lsp-mode
@@ -278,20 +278,28 @@
 (use-package org
   :ensure t
   :config
-  (setq org-directory "~/Google Drive/org/")
+  (setq org-directory "~/Dropbox (BBC)/org/")
+  (setq org-refile-targets '(("~/gtd/gtd.org" :maxlevel . 3)
+                             ("~/gtd/someday.org" :level . 1)
+                             ("~/gtd/tickler.org" :maxlevel . 2)))
   (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                 (file+headline "~/Google Drive/org/inbox.org" "Tasks")
+                                 (file+headline "~/Dropbox (BBC)/org/inbox.org" "Tasks")
                                  "* TODO %i%?")
                                 ("T" "Tickler" entry
-                                 (file+headline "~/Google Drive/org/tickler.org" "Tickler")
+                                 (file+headline "~/Dropbox (BBC)/org/tickler.org" "Tickler")
                                  "* %i%? \n %U")))
 
-  (setq org-agenda-files '("~/Google Drive/org/personal.org"
-                           "~/Google Drive/org/work.org"
-                           "~/Google Drive/org/inbox.org")))
+  (setq org-agenda-files '("~/Dropbox (BBC)/org/gtd.org"
+                           "~/Dropbox (BBC)/org/inbox.org"
+                           "~/Dropbox (BBC)/org/someday.org")))
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package no-littering
   :ensure t
   :config
   (setq auto-save-file-name-transforms
-	`((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
