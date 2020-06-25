@@ -276,7 +276,19 @@
   :ensure t)
 
 (use-package org
-  :ensure t)
+  :ensure t
+  :config
+  (setq org-directory "~/Google Drive/org/")
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                                 (file+headline "~/Google Drive/org/inbox.org" "Tasks")
+                                 "* TODO %i%?")
+                                ("T" "Tickler" entry
+                                 (file+headline "~/Google Drive/org/tickler.org" "Tickler")
+                                 "* %i%? \n %U")))
+
+  (setq org-agenda-files '("~/Google Drive/org/personal.org"
+                           "~/Google Drive/org/work.org"
+                           "~/Google Drive/org/inbox.org")))
 
 (use-package no-littering
   :ensure t
