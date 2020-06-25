@@ -29,3 +29,5 @@
 
 ;; Don't warn when opening large files
 (setq large-file-warning-threshold nil)
+
+(setq visible-bell t)
