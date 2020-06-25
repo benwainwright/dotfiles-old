@@ -271,6 +271,9 @@
 (use-package helm-lsp
   :ensure t)
 
+(use-package org
+  :ensure t)
+
 (use-package no-littering
   :ensure t
   :config
