@@ -76,6 +76,7 @@
    "~/go/src/github.com/bbc/")
 
   (add-to-list 'projectile-known-projects "~/dotfiles")
+  (add-to-list 'projectile-known-projects "~/Google Drive/org")
   (helm-projectile-on))
 
 (use-package lsp-mode
