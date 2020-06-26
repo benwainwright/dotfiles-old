@@ -19,9 +19,11 @@
 (setq inhibit-startup-message t)
 
 ;; Persist undo history between sessions
+(defvar undo-tree-auto-save-history)
 (setq undo-tree-auto-save-history t)
 
 ;; Turn on relative line numbers
+(defvar display-line-numbers-type)
 (setq display-line-numbers-type 'relative)
 
 ;; Automatically insert matching delimeter pairs
