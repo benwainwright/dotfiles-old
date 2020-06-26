@@ -31,6 +31,7 @@
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; or for treemacs users
+  (defvar doom-theme-treemacs-theme)
   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
   (doom-themes-treemacs-config)
 
@@ -141,12 +142,17 @@
   :ensure t
   :bind
   :config
+
+  (defvar company-lsp-cache-candidates)
   (setq company-lsp-cache-candidates t)
 
   (setq company-backends (remove 'company-gtags company-backends))
   (setq company-backends (remove 'company-etags company-backends))
   (setq company-minimum-prefix-length 0)
+
+  (defvar company-dabbrev-downcase)
   (setq company-dabbrev-downcase 0)
+
   (setq company-idle-delay 0)
   (setq lsp-prefer-capf t)
   (setq read-process-output-max (* 1024 1024))
@@ -165,7 +171,9 @@
   (global-flycheck-mode)
   (setq-default flycheck-disabled-checkers
 		(append flycheck-disabled-checkers
-			'(javascript-jshint)))
+			'(javascript-jshint emacs-lisp-checkdoc)))
+
+
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (defun my/use-eslint-from-node-modules ()
     (let* ((root (locate-dominating-file
