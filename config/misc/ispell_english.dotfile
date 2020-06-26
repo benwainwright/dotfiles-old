@@ -3,6 +3,7 @@ BBC
 checkdoc
 CLI
 ECR
+ESLint
 Flycheck
 Flyspell
 Github
