@@ -23,10 +23,10 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-(use-package telephone-line
-  :ensure t
-  :config
-  (telephone-line-mode 1))
+;; (use-package telephone-line
+;;   :ensure t
+;;   :config
+;;   (telephone-line-mode 1))
 
 (use-package moe-theme
   :ensure t
