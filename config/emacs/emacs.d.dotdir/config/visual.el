@@ -1,5 +1,7 @@
 (provide 'visual)
 
+(setq powerline-image-apple-rgb t)
+
 (setq initial-frame-alist
       '((tool-bar-lines . 0)
 	(width . 106)
