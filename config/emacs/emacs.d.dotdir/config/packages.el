@@ -12,6 +12,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Use-package definitions ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -21,6 +22,11 @@
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
+
+(use-package telephone-line
+  :ensure t
+  :config
+  (telephone-line-mode 1))
 
 (use-package moe-theme
   :ensure t
@@ -284,6 +290,11 @@
 
 (use-package helm-lsp
   :ensure t)
+
+(use-package flycheck-jest
+  :ensure t
+  :config
+  (flycheck-jest-setup))
 
 (use-package org
   :ensure t
