@@ -120,13 +120,7 @@
   :ensure t
   :bind
   :config
-  ;; Borrowed from https://emacs.stackexchange.com/a/24800/10957
-  (dolist (key '("<return>" "RET"))
-    (define-key company-active-map (kbd key)
-      `(menu-item nil company-complete
-		  :filter ,(lambda (cmd)
-			     (when (company-explicit-action-p)
-			       cmd)))))
+  (setq company-lsp-cache-candidates t)
 
   (setq company-backends (remove 'company-gtags company-backends))
   (setq company-backends (remove 'company-etags company-backends))
