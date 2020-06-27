@@ -40,6 +40,7 @@
 
 
 (define-key treemacs-mode-map (kbd "<C-return>") 'treemacs-create-file)
+(define-key treemacs-mode-map (kbd "M-RET") 'treemacs-create-dir)
 
 (my-global-keymaps-mode)
 
