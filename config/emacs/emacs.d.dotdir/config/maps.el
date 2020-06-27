@@ -38,6 +38,9 @@
 (define-key my-global-keymaps-mode-map (kbd "C-a j") (lambda ()(interactive)(split-window-vertically) (other-window 1)))
 (define-key my-global-keymaps-mode-map (kbd "C-a k") (lambda ()(interactive)(split-window-vertically) ))
 
+
+(define-key treemacs-mode-map (kbd "<C-return>") 'treemacs-create-file)
+
 (my-global-keymaps-mode)
 
 (unbind-key "C-f" evil-normal-state-map)
