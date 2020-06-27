@@ -347,3 +347,17 @@
   :config
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+
+(use-package go-mode
+  :ensure t)
+
+(use-package simple-httpd
+  :ensure t)
+
+(use-package skewer-mode
+  :ensure t
+  :config
+  (skewer-setup))
+
+(use-package mermaid-mode
+  :ensure t)
