@@ -67,7 +67,9 @@
 
 ;; Sidebar
 (use-package treemacs
-  :ensure t)
+  :ensure t
+  :config
+  (setq treemacs-file-event-delay 500))
 
 (use-package helm-ag
   :ensure t)
