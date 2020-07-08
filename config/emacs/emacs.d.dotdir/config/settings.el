@@ -30,6 +30,6 @@
 (electric-pair-mode t)
 
 ;; Don't warn when opening large files
-(setq large-file-warning-threshold nil)
+(setq large-file-warning-threshold 100000000)
 
 (setq visible-bell t)

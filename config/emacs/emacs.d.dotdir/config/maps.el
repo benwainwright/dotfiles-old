@@ -39,11 +39,15 @@
 (define-key my-global-keymaps-mode-map (kbd "C-a k") (lambda ()(interactive)(split-window-vertically) ))
 
 
+(defvar treemacs-mode-map)
 (define-key treemacs-mode-map (kbd "<C-return>") 'treemacs-create-file)
 (define-key treemacs-mode-map (kbd "M-RET") 'treemacs-create-dir)
+(define-key treemacs-mode-map (kbd "<C-backspace>") 'treemacs-delete)
 
 (my-global-keymaps-mode)
 
+(defvar evil-normal-state-map)
+(defvar evil-motion-state-map)
 (unbind-key "C-f" evil-normal-state-map)
 (unbind-key "C-f" evil-motion-state-map)
 (unbind-key "C-p" evil-normal-state-map)

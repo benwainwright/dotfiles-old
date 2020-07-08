@@ -103,15 +103,6 @@
   (add-to-list 'projectile-known-projects "~/Dropbox (BBC)/org")
   (helm-projectile-on))
 
-(use-package lsp-mode
-  :ensure t
-  :config
-  (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
-  (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'js-mode-hook #'lsp)
-  (add-hook 'web-mode-hook #'lsp)
-  (add-hook 'typescript-mode-hook #'lsp)
-  (add-hook 'python-mode-hook #'lsp))
 
 (use-package editorconfig
   :ensure t
@@ -160,6 +151,34 @@
   (setq read-process-output-max (* 1024 1024))
   (setq gc-cons-threshold 100000000)
   (add-hook 'after-init-hook 'global-company-mode))
+
+;; (use-package company-box
+;;   :Ensure t
+;;   :hook (company-mode . company-box-mode))
+
+
+(use-package lsp-mode
+  :ensure t
+  :config
+  (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
+  (add-hook 'go-mode-hook #'lsp)
+  (add-hook 'js-mode-hook #'lsp)
+  (add-hook 'web-mode-hook #'lsp)
+  (add-hook 'typescript-mode-hook #'lsp)
+  (add-hook 'python-mode-hook #'lsp)
+  (defun lsp--setup-company ()
+    (add-hook 'company-completion-started-hook
+	      (lambda (&rest _)
+		(lsp--capf-clear-cache)
+		(setq-local lsp-inhibit-lsp-hooks t))
+	      nil
+	      t)
+    (add-hook 'company-after-completion-hook
+	      (lambda (&rest _)
+		(lsp--capf-clear-cache)
+		(setq-local lsp-inhibit-lsp-hooks nil))
+	      nil
+	      t)))
 
 (use-package company-quickhelp
   :ensure t
@@ -222,10 +241,10 @@
 (use-package json-mode
   :ensure t)
 
-(use-package yasnippet
-  :ensure t
-  :config
-  (yas-global-mode 1))
+;; (use-package yasnippet
+;;   :ensure t
+;;   :config
+;;   (yas-global-mode 1))
 
 (use-package browse-at-remote
   :ensure t)
@@ -363,3 +382,9 @@
 
 (use-package mermaid-mode
   :ensure t)
+
+(use-package ob-mermaid
+  :ensure t
+  :config
+  (defvar ob-mermaid-cli-path)
+  (setq ob-mermaid-cli-path "/usr/local/bin/mmdc"))

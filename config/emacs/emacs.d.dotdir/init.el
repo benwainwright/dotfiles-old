@@ -2,10 +2,10 @@
 (add-to-list 'load-path "~/.emacs.d/vendored")
 
 (require 'hooks)
+(require 'settings)
 (require 'packages)
 (require 'visual)
 (require 'ligatures)
-(require 'settings)
 (require 'maps)
 (require 'mac)
 (require 'directories)
