@@ -17,3 +17,6 @@ output = json
 [profile personal-app-deploy]
 region = us-east-1
 output = json
+[profile alex-account]
+region = us-east-1
+output = json
