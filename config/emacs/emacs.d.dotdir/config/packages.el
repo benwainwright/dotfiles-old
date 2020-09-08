@@ -139,17 +139,17 @@
   (defvar company-lsp-cache-candidates)
   (setq company-lsp-cache-candidates t)
 
-  (setq company-backends (remove 'company-gtags company-backends))
-  (setq company-backends (remove 'company-etags company-backends))
   (setq company-minimum-prefix-length 0)
 
   (defvar company-dabbrev-downcase)
   (setq company-dabbrev-downcase 0)
 
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.3)
   (setq lsp-prefer-capf t)
   (setq read-process-output-max (* 1024 1024))
   (setq gc-cons-threshold 100000000)
+
+  (setq company-backends '(company-keywords company-capf company-files))
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;; (use-package company-box
