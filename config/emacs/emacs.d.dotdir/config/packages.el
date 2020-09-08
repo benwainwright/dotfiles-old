@@ -375,6 +375,11 @@
 (use-package simple-httpd
   :ensure t)
 
+(use-package ctags-update
+  :ensure t
+  :config
+  (ctags-global-auto-update-mode))
+
 (use-package skewer-mode
   :ensure t
   :config
