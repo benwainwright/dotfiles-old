@@ -57,8 +57,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bkad/CamelCaseMotion'
 Plug 'vim-scripts/argtextobj.vim'
@@ -85,7 +85,7 @@ filetype indent plugin on
 " you quit without writing to a file)
 set confirm
 
-set updatetime=300
+set updatetime=100
 
 " Allows the vim unknown buffer to work with the system clipboard, so if you
 " yank a piece of text, it will be available to paste outside of VIM
@@ -438,6 +438,7 @@ augroup vimrc
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
   autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
   autocmd bufwritepost ~/.vimrc source ~/.vimrc
+  autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
 augroup END
 " }}}
 
