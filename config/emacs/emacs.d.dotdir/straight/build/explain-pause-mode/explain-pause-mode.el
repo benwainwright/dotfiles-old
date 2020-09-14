@@ -1,1 +1,0 @@
-/Users/wainwb01/.emacs.d/straight/repos/explain-pause-mode/explain-pause-mode.el
