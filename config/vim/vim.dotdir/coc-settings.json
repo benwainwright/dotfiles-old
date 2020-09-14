@@ -9,9 +9,11 @@
   "diagnostic.errorSign": "",
   "diagnostic.infoSign":"",
   "suggest.timeout": "5000",
+  "suggest.triggerCompletionWait": 100,
   "tsserver.log":"verbose",
   "diagnostic.hintSign": "",
   "coc.preferences.formatOnSaveFiletypes": ["javascript.jasmine", "javascript", "typescript", "python", "typescriptreact", "swift"],
+  "python.jediEnabled": false,
   "languageserver": {
     "swift": {
       "command": "sourcekit-lsp",

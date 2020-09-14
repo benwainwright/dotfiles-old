@@ -4,10 +4,6 @@
 " {{{
 call plug#begin('~/.vim/plugged')
 
-if has('macunix')
-  Plug 'rizzatti/dash.vim'
-endif
-
 " Personal plugins
 "Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
@@ -18,8 +14,6 @@ Plug 'benwainwright/terminal'
 " Tim Pope
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rhubarb'
-Plug 'lifepillar/vim-solarized8'
-Plug 'dracula/vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-dispatch'
@@ -34,27 +28,27 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Misc
-Plug 'sickill/vim-monokai'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'liuchengxu/vim-which-key'
+
+" Language plugins
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'anowlcalledjosh/vim-lilypond'
+Plug 'ynkdir/vim-vimlparser'
+Plug 'peitalin/vim-jsx-typescript'
+
+" Color theme
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
 " Need to do manual setup as described in README
 Plug 'puremourning/vimspector'
-Plug 'preservim/nerdtree'
 Plug 'janko/vim-test'
 Plug 'syngan/vim-vimlint'
-Plug 'morhetz/gruvbox'
-Plug 'ynkdir/vim-vimlparser'
-Plug 'Shougo/neco-vim'
 Plug 'plytophogy/vim-virtualenv', { 'for': 'python' }
-Plug 'anowlcalledjosh/vim-lilypond'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'weirongxu/plantuml-previewer.vim'
-Plug 'tyru/open-browser.vim'
 Plug 'gioele/vim-autoswap'
-Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
 Plug 'edkolev/tmuxline.vim'
@@ -65,6 +59,9 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'neoclide/coc-denite'
+Plug 'antoinemadec/coc-fzf'
+Plug 'vim-airline/vim-airline'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 " }}}
@@ -243,7 +240,7 @@ let g:path_to_python_interpreter = '/usr/bin/python'
 
 " COC
 " ===
-" {{{
+"{{{
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -257,6 +254,34 @@ function! s:check_back_space() abort
 
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+let g:coc_global_extensions = [
+      \ 'coc-marketplace',
+      \ 'coc-vimlsp',
+      \ 'coc-snippets',
+      \ 'coc-prettier', 
+      \ 'coc-jest', 
+      \ 'coc-git', 
+      \ 'coc-eslint',
+      \ 'coc-emoji',
+      \ 'coc-yaml',
+      \ 'coc-tsserver',
+      \ 'coc-python',
+      \ 'coc-docker',
+      \ 'coc-json',
+      \ 'coc-stylelint',
+      \ 'coc-css',
+      \ 'coc-highlight',
+      \ 'coc-emmet',
+      \ 'coc-html',
+      \ 'coc-webpack',
+      \ 'coc-markdownlint',
+      \ 'coc-spell-checker',
+      \ 'coc-scssmodules',
+      \ 'coc-sh',
+      \ 'coc-react-refactor',
+      \ 'coc-explorer',
+      \ ]
 
 " }}}
 
@@ -282,6 +307,7 @@ let g:signify_vcs_list = [ 'git' ]
 let g:argumentobject_force_toplevel = 1
 
 let g:netrw_altv=1
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
 let g:fzfSwitchProjectWorkspaces = [
@@ -342,7 +368,7 @@ nnoremap ; :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
-nnoremap <C-e> :NERDTreeToggleVCS<CR>
+nnoremap <C-e> :CocCommand explorer<CR>
 nnoremap <leader>F :GitFiles!<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
@@ -357,7 +383,8 @@ nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
 nnoremap <leader>pbc :PrBlame!<CR>
 nnoremap <c-c><c-d> :LspDefinition<CR>
-nnoremap <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <space>a  :<C-u>CocList diagnostics<CR>
+nnoremap <space>s :CocList symbols<CR>
 nnoremap <c-c>dc :LspDeclaration<CR>
 nnoremap <c-c>td :LspTypeDefinition<CR>
 nnoremap <space>ca :CocList actions<CR>
@@ -365,10 +392,9 @@ nnoremap <c-c>cc :Commentary<CR>
 nnoremap <c-c><c-r> :LspReferences<CR>
 nnoremap <c-c>rn :LspNextReference<CR>
 nnoremap <c-c>rp :LspPreviousReference<CR>
-nnoremap <F10> :call CocAction("document.renameCurrentWord")<CR>
+nmap <F2> <Plug>(coc-rename)<CR>
 nnoremap <c-c>h :LspHover<CR>
 nnoremap <c-c>s :LspStatus<CR>
-nnoremap <c-c>f :LspDocumentFormat<CR>
 nnoremap <c-c>dd :LspDocumentDiagnostics<CR>
 nnoremap <Leader>pr :call OpenLinePr()<cr>
 nnoremap <leader>ev :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
@@ -414,7 +440,7 @@ endif
 vnoremap <silent> <c-c>cc :Commentary<CR>
 " }}}
 
-" Insert mode mappings
+" insert mode mappings
 " =====================
 " {{{
 inoremap <c-u> <esc>gUawi
@@ -446,9 +472,8 @@ augroup END
 " ====================
 " {{{
 set background=dark
-colorscheme palenight
+colorscheme onehalfdark
 
-"let g:airline_theme='monokai'
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -485,9 +510,9 @@ let g:fzf_colors =
 " Airline
 " =======
 " {{{
-let g:airline#extensions#tabline#excludes = [""]
+let g:airline_extensions = []
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 if !exists('g:airline_symbols')
