@@ -1,0 +1,1 @@
+/Users/wainwb01/.emacs.d/straight/repos/straight.el/straight.el

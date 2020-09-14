@@ -131,13 +131,18 @@
 (use-package pos-tip
   :ensure t)
 
+(use-package eglot
+  :ensure t
+  :config
+  (add-hook 'typescript-mode-hook 'eglot-ensure))
+
 (use-package company
   :ensure t
   :bind
   :config
 
-  (defvar company-lsp-cache-candidates)
-  (setq company-lsp-cache-candidates t)
+  ;; (defvar company-lsp-cache-candidates)
+  ;; (setq company-lsp-cache-candidates t)
 
   (setq company-minimum-prefix-length 0)
 
@@ -145,7 +150,7 @@
   (setq company-dabbrev-downcase 0)
 
   (setq company-idle-delay 0.3)
-  (setq lsp-prefer-capf t)
+  ;; (setq lsp-prefer-capf t)
   (setq read-process-output-max (* 1024 1024))
   (setq gc-cons-threshold 100000000)
 
@@ -157,28 +162,29 @@
 ;;   :hook (company-mode . company-box-mode))
 
 
-(use-package lsp-mode
-  :ensure t
-  :config
-  (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
-  (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'js-mode-hook #'lsp)
-  (add-hook 'web-mode-hook #'lsp)
-  (add-hook 'typescript-mode-hook #'lsp)
-  (add-hook 'python-mode-hook #'lsp)
-  (defun lsp--setup-company ()
-    (add-hook 'company-completion-started-hook
-	      (lambda (&rest _)
-		(lsp--capf-clear-cache)
-		(setq-local lsp-inhibit-lsp-hooks t))
-	      nil
-	      t)
-    (add-hook 'company-after-completion-hook
-	      (lambda (&rest _)
-		(lsp--capf-clear-cache)
-		(setq-local lsp-inhibit-lsp-hooks nil))
-	      nil
-	      t)))
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :config
+;;   (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
+;;   (add-hook 'go-mode-hook #'lsp)
+;;   (add-hook 'js-mode-hook #'lsp)
+;;   (add-hook 'web-mode-hook #'lsp)
+;;   (add-hook 'typescript-mode-hook #'lsp)
+;;   (add-hook 'python-mode-hook #'lsp)
+;;   (setq lsp-restart 'auto-restart)
+;;   (defun lsp--setup-company ()
+;;     (add-hook 'company-completion-started-hook
+;; 	      (lambda (&rest _)
+;; 		(lsp--capf-clear-cache)
+;; 		(setq-local lsp-inhibit-lsp-hooks t))
+;; 	      nil
+;; 	      t)
+;;     (add-hook 'company-after-completion-hook
+;; 	      (lambda (&rest _)
+;; 		(lsp--capf-clear-cache)
+;; 		(setq-local lsp-inhibit-lsp-hooks nil))
+;; 	      nil
+;; 	      t)))
 
 (use-package company-quickhelp
   :ensure t
@@ -207,13 +213,13 @@
         (setq-local flycheck-javascript-eslint-executable eslint))))
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
-(use-package lsp-ui
-  :ensure t)
+;; (use-package lsp-ui
+;;   :ensure t)
 
-(use-package lsp-treemacs
-  :ensure t
-  :config
-  (lsp-treemacs-sync-mode 1))
+;; (use-package lsp-treemacs
+;;   :ensure t
+;;   :config
+;;   (lsp-treemacs-sync-mode 1))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -332,8 +338,8 @@
   :config
   (google-this-mode 1))
 
-(use-package helm-lsp
-  :ensure t)
+;; (use-package helm-lsp
+;;   :ensure t)
 
 (use-package flycheck-jest
   :ensure t
@@ -387,6 +393,11 @@
 
 (use-package mermaid-mode
   :ensure t)
+
+(use-package explain-pause-mode
+  :straight (explain-pause-mode :type git :host github :repo "lastquestion/explain-pause-mode")
+  :config
+  (explain-pause-mode))
 
 (use-package ob-mermaid
   :ensure t
