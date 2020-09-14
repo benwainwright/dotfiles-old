@@ -31,7 +31,6 @@
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; or for treemacs users
-  (defvar doom-themes-treemacs-theme)
   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
   (doom-themes-treemacs-config)
 
@@ -140,6 +139,12 @@
   :ensure t
   :bind
   :config
+<<<<<<< HEAD
+=======
+
+  (defvar company-lsp-cache-candidates)
+  (setq company-lsp-cache-candidates t)
+>>>>>>> b22a97cb32639ddcd24fd33758c22b395fab3c1d
 
   ;; (defvar company-lsp-cache-candidates)
   ;; (setq company-lsp-cache-candidates t)
@@ -149,8 +154,13 @@
   (defvar company-dabbrev-downcase)
   (setq company-dabbrev-downcase 0)
 
+<<<<<<< HEAD
   (setq company-idle-delay 0.3)
   ;; (setq lsp-prefer-capf t)
+=======
+  (setq company-idle-delay 0)
+  (setq lsp-prefer-capf t)
+>>>>>>> b22a97cb32639ddcd24fd33758c22b395fab3c1d
   (setq read-process-output-max (* 1024 1024))
   (setq gc-cons-threshold 100000000)
 
