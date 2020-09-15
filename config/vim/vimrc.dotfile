@@ -263,6 +263,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-prettier', 
       \ 'coc-jest', 
+      \ 'coc-inline-jest', 
       \ 'coc-git', 
       \ 'coc-eslint',
       \ 'coc-emoji',
