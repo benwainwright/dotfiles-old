@@ -395,7 +395,7 @@ nnoremap <c-c>cc :Commentary<CR>
 nnoremap <c-c><c-r> :LspReferences<CR>
 nnoremap <c-c>rn :LspNextReference<CR>
 nnoremap <c-c>rp :LspPreviousReference<CR>
-nmap <F2> <Plug>(coc-rename)<CR>
+nmap <leader>r <Plug>(coc-rename)
 nnoremap <c-c>h :LspHover<CR>
 nnoremap <c-c>s :LspStatus<CR>
 nnoremap <c-c>dd :LspDocumentDiagnostics<CR>
