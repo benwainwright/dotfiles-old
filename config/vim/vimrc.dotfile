@@ -153,13 +153,10 @@ set wildmode=longest,list,full
 " Enhanced command line completion mode
 set wildmenu
 
-set signcolumn=number
-
 " Show last command in the last line of the screen
 set showcmd
 
-" Show signs in the number column
-set signcolumn=number
+set signcolumn=yes
 
 " Always show the statusline regardless of how many windows there are
 set laststatus=2
