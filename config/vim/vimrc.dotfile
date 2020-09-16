@@ -12,7 +12,6 @@ Plug 'benwainwright/pr-blame'
 Plug 'benwainwright/terminal'
 
 " Tim Pope
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 
@@ -60,7 +59,6 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'neoclide/coc-denite'
 Plug 'antoinemadec/coc-fzf'
-Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 
 call plug#end()
@@ -522,26 +520,3 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 "" }}}
-
-" Airline
-" =======
-" {{{
-let g:airline_extensions = []
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#tabline#exclude_preview = 1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-" }}}
