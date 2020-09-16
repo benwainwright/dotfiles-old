@@ -40,6 +40,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Need to do manual setup as described in README
+Plug 'tweekmonster/startuptime.vim'
 Plug 'puremourning/vimspector'
 Plug 'janko/vim-test'
 Plug 'syngan/vim-vimlint'
