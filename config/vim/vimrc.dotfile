@@ -309,7 +309,6 @@ let g:signify_vcs_list = [ 'git' ]
 let g:argumentobject_force_toplevel = 1
 
 let g:netrw_altv=1
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
 let g:fzfSwitchProjectWorkspaces = [
