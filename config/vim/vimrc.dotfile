@@ -401,7 +401,7 @@ nnoremap <c-c>h :LspHover<CR>
 nnoremap <c-c>s :LspStatus<CR>
 nnoremap <c-c>dd :LspDocumentDiagnostics<CR>
 nnoremap <Leader>pr :call OpenLinePr()<cr>
-nnoremap <leader>ev :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
+nnoremap <leader>v :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
 nnoremap <leader><tab> <plug>(fzf-maps-n)
 xnoremap <leader><tab> <plug>(fzf-maps-x)
 onoremap <leader><tab> <plug>(fzf-maps-o)
