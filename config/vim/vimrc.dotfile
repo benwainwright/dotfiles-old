@@ -295,7 +295,13 @@ nnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <C-e> :CocCommand explorer<CR>
 nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
-nnoremap <leader>s :CocList symbols<CR>
+
+if has('nvim')
+  nnoremap <leader>s :CocFzfList symbols<CR>
+else
+  nnoremap <leader>s :CocList symbols<CR>
+endif
+
 nnoremap <space>ca :CocList actions<CR>
 nmap <leader>r <Plug>(coc-rename)
 " Run jest for current project
