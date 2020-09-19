@@ -28,7 +28,8 @@
     "html",
     "css",
     "scss",
-    "json"
+    "json",
+    "yaml"
   ],
   "python.jediEnabled": false,
   "languageserver": {
