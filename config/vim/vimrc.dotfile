@@ -32,14 +32,11 @@ Plug 'liuchengxu/vim-which-key'
 " Language plugins
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'anowlcalledjosh/vim-lilypond'
 Plug 'ynkdir/vim-vimlparser'
 Plug 'peitalin/vim-jsx-typescript'
 
 " Color theme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
-" Need to do manual setup as described in README
 Plug 'tweekmonster/startuptime.vim'
 Plug 'semanser/vim-outdated-plugins'
 Plug 'puremourning/vimspector'
@@ -62,6 +59,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'neoclide/coc-denite'
 Plug 'antoinemadec/coc-fzf'
 Plug 'mattn/emmet-vim'
+Plug 'rbong/vim-crystalline'
 
 call plug#end()
 " }}}
@@ -238,7 +236,13 @@ syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
 syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
 
 let g:path_to_python_interpreter = '/usr/bin/python'
+
+let mapleader = "\<Space>"
+let maplocalleader = "\\"
+
 " }}}
+
+
 
 " COC
 " ===
@@ -288,8 +292,6 @@ let g:coc_global_extensions = [
       \ ]
 
 
-vnoremap <leader>a :CocAction<CR>
-nnoremap <leader>a :CocAction<CR>
 xnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <C-e> :CocCommand explorer<CR>
@@ -319,7 +321,10 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
  " this mapping is causing weird startup errors
  "nnoremap <silent> <C-[> :lprev<cr>
 
-nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
+nnoremap <leader>gg :call CocAction('jumpDefinition', 'tab drop')<CR>
+nnoremap <leader>gi :call CocAction('jumpImplementation', 'tab drop')<CR>
+nnoremap <leader>gr <Plug>(coc-references)
+
 nnoremap K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -397,9 +402,6 @@ command! MaximiseToggle call s:fullscreen_tab_toggle()
 
 " }}}
 
-let mapleader = "\<Space>"
-let maplocalleader = "\\"
-
 " Normal Mode Mappings
 " ====================
 "s {{{
@@ -420,7 +422,6 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>pp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <leader>gb :CheckoutBranch<CR>
 nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
@@ -524,51 +525,45 @@ let g:fzf_colors =
 
 "" }}}
 
-" Statusline
-" ==========
+" Crystalline
+" ===========
+function! StatusLine(current, width)
+  let l:s = ''
 
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+  if a:current
+    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+  else
+    let l:s .= '%#CrystallineInactive#'
+  endif
+  let l:s .= ' %f%h%w%m%r '
+  if a:current
+    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+  endif
+
+  let l:s .= '%='
+  if a:current
+    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+    let l:s .= crystalline#left_mode_sep('')
+  endif
+  if a:width > 80
+    let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+  else
+    let l:s .= ' '
+  endif
+
+  return l:s
 endfunction
 
-function! StatuslineGit()
-  let l:branchName = GitBranch()
-  return strlen(l:branchName) > 0 ? ' ' . l:branchName . ' ' : ''
+function! TabLine()
+  let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
 endfunction
 
-set statusline=                                 " Clear
-set statusline+=%1*\                            " Color -
-set statusline+=%t                              " Tail of the filename
-set statusline+=%2*                             " Color
-set statusline+=%h                              " Help file flag
-set statusline+=%r                              " Read only flag
-set statusline+=%3*                             " Color
-set statusline+=%m                              " Modified flag
-set statusline+=%=                              " Left/right separator
-set statusline+=%4*\                            " Color -
-" set statusline+=%{g:pluginUpdateStatus}         " Up to date plugins
-set statusline+=\ \                             " --
-set statusline+=%{&filetype}                    " Filetype
-set statusline+=\ \                             " --
-set statusline+=%{&fenc}                        " File encoding
-set statusline+=[%{&ff}]                        " File format
-set statusline+=[                               " Indent settings: begin
-set statusline+=%{&expandtab?\"sp\":\"tab\"}\   " Indent settings
-set statusline+=%{&shiftwidth}                  " Indent settings
-set statusline+=]                               " Indent settings: end
-set statusline+=\ %5*\ \ \                      " - Color ---
-set statusline+=%2c                             " Cursor column
-set statusline+=\ \                             " --
-set statusline+=%2v                             " Cursor column (virtual)
-set statusline+=\ \                             " --
-set statusline+=(%l\ /\ %L)                     " Cursor line/total lines
-" set statusline+=\ \                             " --
-" set statusline+=%P                              " Percent through file
+let g:crystalline_enable_sep = 1
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'default'
 
-hi User1 ctermfg=250 ctermbg=234
-hi User2 ctermfg=008 ctermbg=234
-hi User3 ctermfg=143 ctermbg=234
-hi User4 ctermfg=237 ctermbg=233
-hi User5 ctermfg=238 ctermbg=233
-" set statusline+=%{FugitiveHead()}
-
+set showtabline=2
+set guioptions-=e
+set laststatus=2

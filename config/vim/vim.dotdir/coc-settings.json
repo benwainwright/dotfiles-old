@@ -17,6 +17,7 @@
   "diagnostic.hintSign": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript.jasmine",
+    "vim",
     "markdown",
     "Markdown",
     "javascript",
