@@ -287,6 +287,43 @@ let g:coc_global_extensions = [
       \ 'coc-explorer',
       \ ]
 
+
+vnoremap <leader>a :CocAction<CR>
+nnoremap <leader>a :CocAction<CR>
+xnoremap <leader>f  <Plug>(coc-format-selected)
+nnoremap <leader>f  <Plug>(coc-format-selected)
+nnoremap <C-e> :CocCommand explorer<CR>
+nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
+nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
+nnoremap <leader>s :CocList symbols<CR>
+nnoremap <space>ca :CocList actions<CR>
+nmap <leader>r <Plug>(coc-rename)
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
+
+ " this mapping is causing weird startup errors
+ "nnoremap <silent> <C-[> :lprev<cr>
+
+nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
+nnoremap K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 " }}}
 
 " Misc Plugin Config
@@ -361,11 +398,6 @@ let maplocalleader = "\\"
 " ====================
 "s {{{
 
-
-vnoremap <leader>a :CocAction<CR>
-nnoremap <leader>a :CocAction<CR>
-xnoremap <leader>f  <Plug>(coc-format-selected)
-nnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader> :WhichKey '<Space>'<CR>
 nnoremap <c-x> :call Toggle_terminal()<cr>
 nnoremap <C-g> :Ag<CR>
@@ -374,7 +406,6 @@ nnoremap ; :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
-nnoremap <C-e> :CocCommand explorer<CR>
 nnoremap <leader>F :GitFiles!<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
@@ -389,16 +420,12 @@ nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
 nnoremap <leader>pbc :PrBlame!<CR>
 nnoremap <c-c><c-d> :LspDefinition<CR>
-nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
-nnoremap <leader>s :CocList symbols<CR>
 nnoremap <c-c>dc :LspDeclaration<CR>
 nnoremap <c-c>td :LspTypeDefinition<CR>
-nnoremap <space>ca :CocList actions<CR>
 nnoremap <c-c>cc :Commentary<CR>
 nnoremap <c-c><c-r> :LspReferences<CR>
 nnoremap <c-c>rn :LspNextReference<CR>
 nnoremap <c-c>rp :LspPreviousReference<CR>
-nmap <leader>r <Plug>(coc-rename)
 nnoremap <c-c>h :LspHover<CR>
 nnoremap <c-c>s :LspStatus<CR>
 nnoremap <c-c>dd :LspDocumentDiagnostics<CR>
@@ -416,32 +443,6 @@ nnoremap <C-n> :bprev<CR>
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-]> :lnext<CR>
 
-
-" Run jest for current project
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
-
-" Run jest for current file
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
-
-" Run jest for current test
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-
-" Init jest in current cwd, require global jest command exists
-command! JestInit :call CocAction('runCommand', 'jest.init')
-
- " this mapping is causing weird startup errors
- "nnoremap <silent> <C-[> :lprev<cr>
-
-nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
-nnoremap K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 
  nnoremap <silent> <C-a>z :MaximiseToggle<CR>
