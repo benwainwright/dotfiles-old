@@ -425,16 +425,7 @@ nnoremap <leader>gb :CheckoutBranch<CR>
 nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
 nnoremap <leader>pbc :PrBlame!<CR>
-nnoremap <c-c><c-d> :LspDefinition<CR>
-nnoremap <c-c>dc :LspDeclaration<CR>
-nnoremap <c-c>td :LspTypeDefinition<CR>
 nnoremap <c-c>cc :Commentary<CR>
-nnoremap <c-c><c-r> :LspReferences<CR>
-nnoremap <c-c>rn :LspNextReference<CR>
-nnoremap <c-c>rp :LspPreviousReference<CR>
-nnoremap <c-c>h :LspHover<CR>
-nnoremap <c-c>s :LspStatus<CR>
-nnoremap <c-c>dd :LspDocumentDiagnostics<CR>
 nnoremap <Leader>pr :call OpenLinePr()<cr>
 nnoremap <leader>v :vsplit ~/dotfiles/config/vim/vimrc.dotfile<cr>
 nnoremap <leader><tab> <plug>(fzf-maps-n)
