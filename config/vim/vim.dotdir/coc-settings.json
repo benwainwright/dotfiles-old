@@ -1,6 +1,7 @@
 {
   "suggest.floatEnable": true,
   "suggest.detailField": "preview",
+  "list.source.symbols.excludes": ["node_modules"],
   "suggest.enablePreview": true,
   "git.changedSign.text": "",
   "git.addedSign.text": "",
