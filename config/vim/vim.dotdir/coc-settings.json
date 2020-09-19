@@ -9,12 +9,26 @@
   "git.removedSign.text": "",
   "diagnostic.warningSign": "",
   "diagnostic.errorSign": "",
-  "diagnostic.infoSign":"",
-  "suggest.timeout": "5000",
+  "diagnostic.infoSign": "",
+  "suggest.timeout": 5000,
   "suggest.triggerCompletionWait": 100,
-  "tsserver.log":"verbose",
+  "tsserver.log": "verbose",
   "diagnostic.hintSign": "",
-  "coc.preferences.formatOnSaveFiletypes": ["javascript.jasmine", "javascript", "typescript", "python", "typescriptreact", "swift", "html"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript.jasmine",
+    "markdown",
+    "Markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "python",
+    "typescriptreact",
+    "swift",
+    "html",
+    "css",
+    "scss",
+    "json"
+  ],
   "python.jediEnabled": false,
   "languageserver": {
     "swift": {
@@ -22,14 +36,8 @@
       "args": [],
       "filetypes": ["swift"],
       "initializationOptions": {},
-      "settings": {
-      }
+      "settings": {}
     }
   },
-  "cSpell.userWords": [
-    "ITCSS",
-    "OOCSS",
-    "SMACSS",
-    "modularisation"
-  ]
+  "cSpell.userWords": ["ITCSS", "OOCSS", "SMACSS", "modularisation"]
 }
