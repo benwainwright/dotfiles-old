@@ -242,6 +242,7 @@ let g:path_to_python_interpreter = '/usr/bin/python'
 " COC
 " ===
 "{{{
+let g:coc_config_home = $HOME . '/.vim' 
 
 function! s:check_back_space() abort
     let col = col('.') - 1
