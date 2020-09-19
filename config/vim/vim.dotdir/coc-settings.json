@@ -17,6 +17,7 @@
   "diagnostic.hintSign": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript.jasmine",
+    "sh",
     "vim",
     "markdown",
     "Markdown",
@@ -46,6 +47,7 @@
     "Broxy",
     "ITCSS",
     "OOCSS",
+    "Pagemon",
     "SMACSS",
     "modularisation",
     "webcore"

@@ -18,7 +18,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 " June Gunn
@@ -36,6 +35,7 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'peitalin/vim-jsx-typescript'
 
 " Color theme
+Plug 'machakann/vim-sandwich'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tweekmonster/startuptime.vim'
 Plug 'semanser/vim-outdated-plugins'
@@ -43,13 +43,11 @@ Plug 'puremourning/vimspector'
 Plug 'janko/vim-test'
 Plug 'syngan/vim-vimlint'
 Plug 'plytophogy/vim-virtualenv', { 'for': 'python' }
-Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'gioele/vim-autoswap'
 Plug 'ryanoasis/vim-devicons'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bkad/CamelCaseMotion'
@@ -60,6 +58,9 @@ Plug 'neoclide/coc-denite'
 Plug 'antoinemadec/coc-fzf'
 Plug 'mattn/emmet-vim'
 Plug 'rbong/vim-crystalline'
+
+Plug 'frazrepo/vim-rainbow'
+let g:rainbow_active = 1
 
 call plug#end()
 " }}}
@@ -242,8 +243,6 @@ let maplocalleader = "\\"
 
 " }}}
 
-
-
 " COC
 " ===
 "{{{
@@ -321,9 +320,9 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
  " this mapping is causing weird startup errors
  "nnoremap <silent> <C-[> :lprev<cr>
 
-nnoremap <leader>gg :call CocAction('jumpDefinition', 'tab drop')<CR>
-nnoremap <leader>gi :call CocAction('jumpImplementation', 'tab drop')<CR>
-nnoremap <leader>gr <Plug>(coc-references)
+nnoremap gd :call CocAction('jumpDefinition', 'tab drop')<CR>
+nnoremap gi :call CocAction('jumpImplementation', 'tab drop')<CR>
+nnoremap gr <Plug>(coc-references)
 
 nnoremap K :call <SID>show_documentation()<CR>
 
@@ -369,6 +368,7 @@ let g:fzfSwitchProjectWorkspaces = [
       \ ]
 
 let g:asyncomplete_auto_completeopt = 0
+let g:fzf_layout = { 'down': '~40%' }
 "" }}}
 
 " Functions
