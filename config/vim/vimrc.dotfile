@@ -523,3 +523,19 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 "" }}}
+
+" Statusline
+" ==========
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchName = GitBranch()
+  return strlen(l:branchName) > 0 ? ' ' . l:branchName . ' ' : ''
+endfunction
+
+set statusline="\ "
+set statusline+=%{FugitiveHead()}
+
