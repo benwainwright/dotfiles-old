@@ -4,6 +4,7 @@
   "list.source.symbols.excludes": ["node_modules"],
   "suggest.enablePreview": true,
   "explorer.icon.enableVimDevicons": true,
+  "cSpell.ignoreRegExpList": ["^Plug \\'.*\\'.*"],
   "git.changedSign.text": "",
   "git.addedSign.text": "",
   "git.removedSign.text": "",
