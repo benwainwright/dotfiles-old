@@ -40,5 +40,12 @@
       "settings": {}
     }
   },
-  "cSpell.userWords": ["ITCSS", "OOCSS", "SMACSS", "modularisation"]
+  "cSpell.userWords": [
+    "Broxy",
+    "ITCSS",
+    "OOCSS",
+    "SMACSS",
+    "modularisation",
+    "webcore"
+  ]
 }
