@@ -359,6 +359,9 @@ let maplocalleader = "\\"
 " ====================
 "s {{{
 
+
+vnoremap <leader>a :CocAction<CR>
+nnoremap <leader>a :CocAction<CR>
 xnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader> :WhichKey '<Space>'<CR>
@@ -384,8 +387,8 @@ nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
 nnoremap <leader>pbc :PrBlame!<CR>
 nnoremap <c-c><c-d> :LspDefinition<CR>
-nnoremap <space>a  :<C-u>CocList diagnostics<CR>
-nnoremap <space>s :CocList symbols<CR>
+nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
+nnoremap <leader>s :CocList symbols<CR>
 nnoremap <c-c>dc :LspDeclaration<CR>
 nnoremap <c-c>td :LspTypeDefinition<CR>
 nnoremap <space>ca :CocList actions<CR>
