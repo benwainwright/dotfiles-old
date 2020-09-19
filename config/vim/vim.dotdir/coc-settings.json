@@ -25,5 +25,11 @@
       "settings": {
       }
     }
-  }
+  },
+  "cSpell.userWords": [
+    "ITCSS",
+    "OOCSS",
+    "SMACSS",
+    "modularisation"
+  ]
 }
