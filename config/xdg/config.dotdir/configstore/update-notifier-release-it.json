@@ -1,0 +1,10 @@
+{
+	"optOut": false,
+	"lastUpdateCheck": 1589885342113,
+	"update": {
+		"latest": "13.6.1",
+		"current": "12.6.3",
+		"type": "major",
+		"name": "release-it"
+	}
+}

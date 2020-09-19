@@ -1,0 +1,2464 @@
+{
+  "coc-python|global": {
+    "INTERPRETERS_CACHE_v3_CondaEnvFileService": [],
+    "INTERPRETERS_CACHE_v3_CondaEnvService": [],
+    "/usr/local/bin/python3.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.5-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 5,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.5-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+        "fileHash": "2d9246185eee65544956c6d36322aeae324d9b36dbacd407e2f524b8dda07f712f625de2650c6e2669f9a06907e9dac74ef1bea65bac0bc87135f4bcf1190184"
+      },
+      "expiry": 1578144999733
+    },
+    "/usr/local/bin/python3.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.5-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 5,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.5-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+        "fileHash": "89cbcdd87b511a3f4d4a117c6bb38b7cfac73b998feb84bda937195a66005f9878a65221f96437de62a251d34fe62985ab3614bdba82e4e0856de066cce9b262"
+      },
+      "expiry": 1578144999740
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim3/bin/python3.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim3/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim3",
+        "fileHash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb"
+      },
+      "expiry": 1589531330346
+    },
+    "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python3.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+        "fileHash": "028b6c89131b2b83a33b210a50f0f1519f8ac34ee779efd0382ddf07b7153dd75c6a604cdf0f71438bfc5c7201f0f8bb6e3694961145c0526df7ca49729360ae"
+      },
+      "expiry": 1589531330340
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim3/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim3/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim3",
+        "fileHash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb"
+      },
+      "expiry": 1589531330354
+    },
+    "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+        "fileHash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc"
+      },
+      "expiry": 1589531330359
+    },
+    "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python3.4.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python3.4",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+        "fileHash": "5f07a4a10967f4d98a36721fad061008e8d62714ab43003012b349be6e2ab7b8c0be33a7f118effc456fad55e7e22fce5c52a5cdb09fc310705d2da615892aa7"
+      },
+      "expiry": 1589531330350
+    },
+    "/usr/bin/python2.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.10-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 10,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.10-final"
+        },
+        "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "80f17212f91a52472865f515b34d9fb07c7091ff3c0dcb9c4f7cd2d198c2f93c803051f565c61773c47660f1db5af675b1ca2d4516718eb9af61e1c6f4bee286"
+      },
+      "expiry": 1589531330264
+    },
+    "/usr/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.10-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 10,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.10-final"
+        },
+        "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "f361b5486a4c7ef87a4e57ff83a7a9ed294a9b67875f2b342e84ceb802873b78d84b292f6c0879413cd853bbaeea42a7672fcdfef4ec4fa6af667466487a6f7f"
+      },
+      "expiry": 1589531330256
+    },
+    "/usr/local/opt/python/bin/python3.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/opt/python/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7",
+        "fileHash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967"
+      },
+      "expiry": 1589531329378
+    },
+    "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python2.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+        "fileHash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f"
+      },
+      "expiry": 1589531330992
+    },
+    "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python2.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+        "fileHash": "618a5e8d197bab69ca4894ff6a904c458f55f350b9f0e0cc390f2adc1d19b6b37b4e5f5cfeb19271e9d722f63a956de0ba19f1c7532ca27db625e520f4237025"
+      },
+      "expiry": 1589531330988
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim2/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661"
+      },
+      "expiry": 1589531331006
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim2/bin/python2.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661"
+      },
+      "expiry": 1589531330984
+    },
+    "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+        "fileHash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f"
+      },
+      "expiry": 1589531330997
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim2/bin/python2.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661"
+      },
+      "expiry": 1589531331002
+    },
+    "INTERPRETERS_CACHE_v3_VirtualEnvService": [
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+        "fileHash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f",
+        "envName": "2.7.11",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+        "fileHash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f",
+        "envName": "2.7.11",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+        "fileHash": "618a5e8d197bab69ca4894ff6a904c458f55f350b9f0e0cc390f2adc1d19b6b37b4e5f5cfeb19271e9d722f63a956de0ba19f1c7532ca27db625e520f4237025",
+        "envName": "2.7.11",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+        "fileHash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc",
+        "envName": "3.4.4",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+        "fileHash": "028b6c89131b2b83a33b210a50f0f1519f8ac34ee779efd0382ddf07b7153dd75c6a604cdf0f71438bfc5c7201f0f8bb6e3694961145c0526df7ca49729360ae",
+        "envName": "3.4.4",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python3.4",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+        "fileHash": "5f07a4a10967f4d98a36721fad061008e8d62714ab43003012b349be6e2ab7b8c0be33a7f118effc456fad55e7e22fce5c52a5cdb09fc310705d2da615892aa7",
+        "envName": "3.4.4",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661",
+        "envName": "neovim2",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661",
+        "envName": "neovim2",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.11-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 11,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.11-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661",
+        "envName": "neovim2",
+        "type": "Pyenv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim3/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim3",
+        "fileHash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb",
+        "envName": "neovim3",
+        "type": "Venv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/.pyenv/versions/neovim3/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.4.4-final",
+          "major": 3,
+          "minor": 4,
+          "patch": 4,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.4.4-final"
+        },
+        "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim3",
+        "fileHash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb",
+        "envName": "neovim3",
+        "type": "Venv"
+      }
+    ],
+    "/usr/local/opt/python@2/bin/python2.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/opt/python@2/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0"
+      },
+      "expiry": 1589531331418
+    },
+    "/usr/local/bin/python2.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "e0998cb8e9711973f21cb790467d7aed7af823fb6f231dc4b0f5b2554acf9e45f8c7399baf9dcb05518132b9cf8ee66f9587fb0a388ed4b7b45f9039db76edbe"
+      },
+      "expiry": 1589531331435
+    },
+    "INTERPRETERS_CACHE_v3_CurrentPathService": [
+      {
+        "architecture": 3,
+        "path": "/usr/local/opt/python@2/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/opt/python@2/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/opt/python/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7",
+        "fileHash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967",
+        "type": "Unknown"
+      }
+    ],
+    "preferredGlobalPyInterpreter": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.6-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 6,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.6-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967",
+      "type": "Unknown",
+      "cachedEntry": true,
+      "displayName": "Python 3.7.6 64-bit"
+    },
+    "/usr/local/bin/python2.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "a175e2f50a8098b178e66b3875f4bc493f4ec0c84092b478d8bbab4dfd04616e434c5bbba0fc1658a5f9a477afd233f9b0fe1e0c6e3959960e3fc791fae48df4"
+      },
+      "expiry": 1589531331439
+    },
+    "/usr/local/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/usr/local/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "235dbf8f6526087f22bc44e6d3f538d80621fa87301107f93bb6d4eb500a627be6aa8976fe7a886afa6270420edfd8a46f836d3274b197e492ccbe722fb54ea0"
+      },
+      "expiry": 1589531331432
+    },
+    "INTERPRETERS_CACHE_v3_KnownPathsService": [
+      {
+        "architecture": 3,
+        "path": "/usr/local/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "235dbf8f6526087f22bc44e6d3f538d80621fa87301107f93bb6d4eb500a627be6aa8976fe7a886afa6270420edfd8a46f836d3274b197e492ccbe722fb54ea0",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "a175e2f50a8098b178e66b3875f4bc493f4ec0c84092b478d8bbab4dfd04616e434c5bbba0fc1658a5f9a477afd233f9b0fe1e0c6e3959960e3fc791fae48df4",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "e0998cb8e9711973f21cb790467d7aed7af823fb6f231dc4b0f5b2554acf9e45f8c7399baf9dcb05518132b9cf8ee66f9587fb0a388ed4b7b45f9039db76edbe",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.10-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 10,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.10-final"
+        },
+        "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "f361b5486a4c7ef87a4e57ff83a7a9ed294a9b67875f2b342e84ceb802873b78d84b292f6c0879413cd853bbaeea42a7672fcdfef4ec4fa6af667466487a6f7f",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.10-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 10,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.10-final"
+        },
+        "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "80f17212f91a52472865f515b34d9fb07c7091ff3c0dcb9c4f7cd2d198c2f93c803051f565c61773c47660f1db5af675b1ca2d4516718eb9af61e1c6f4bee286",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "235dbf8f6526087f22bc44e6d3f538d80621fa87301107f93bb6d4eb500a627be6aa8976fe7a886afa6270420edfd8a46f836d3274b197e492ccbe722fb54ea0",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/bin/python2",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "a175e2f50a8098b178e66b3875f4bc493f4ec0c84092b478d8bbab4dfd04616e434c5bbba0fc1658a5f9a477afd233f9b0fe1e0c6e3959960e3fc791fae48df4",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/local/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.17-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 17,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.17-final"
+        },
+        "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "e0998cb8e9711973f21cb790467d7aed7af823fb6f231dc4b0f5b2554acf9e45f8c7399baf9dcb05518132b9cf8ee66f9587fb0a388ed4b7b45f9039db76edbe",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.10-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 10,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.10-final"
+        },
+        "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "f361b5486a4c7ef87a4e57ff83a7a9ed294a9b67875f2b342e84ceb802873b78d84b292f6c0879413cd853bbaeea42a7672fcdfef4ec4fa6af667466487a6f7f",
+        "type": "Unknown"
+      },
+      {
+        "architecture": 3,
+        "path": "/usr/bin/python2.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "2.7.10-final",
+          "major": 2,
+          "minor": 7,
+          "patch": 10,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "2.7.10-final"
+        },
+        "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+        "fileHash": "80f17212f91a52472865f515b34d9fb07c7091ff3c0dcb9c4f7cd2d198c2f93c803051f565c61773c47660f1db5af675b1ca2d4516718eb9af61e1c6f4bee286",
+        "type": "Unknown"
+      }
+    ],
+    "PipEnvInformation": [],
+    "/usr/local/opt/python/bin/python3.7.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967",
+        "info": {
+          "architecture": 3,
+          "path": "/usr/local/opt/python/bin/python3.7",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "3.7.6-final",
+            "major": 3,
+            "minor": 7,
+            "patch": 6,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "3.7.6-final"
+          },
+          "sysPrefix": "/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7",
+          "fileHash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967",
+          "type": "Unknown",
+          "displayName": "Python 3.7.6 64-bit",
+          "__store": true
+        }
+      },
+      "expiry": 1589531580774
+    },
+    "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 2.7.11 64-bit ('2.7.11': pyenv)",
+        "hash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f-d761eccf9b80fe19d07349e95f93b2e3"
+      },
+      "expiry": 1589531580745
+    },
+    "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.4.4 64-bit ('3.4.4': pyenv)",
+        "hash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc-5f12f19d8b92760e8cb9a12a7b170798"
+      },
+      "expiry": 1589531580740
+    },
+    "/usr/local/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 2.7.17 64-bit",
+        "hash": "235dbf8f6526087f22bc44e6d3f538d80621fa87301107f93bb6d4eb500a627be6aa8976fe7a886afa6270420edfd8a46f836d3274b197e492ccbe722fb54ea0-a72258a95aefc7c7a1e21e8cef77744d"
+      },
+      "expiry": 1589531580755
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim2/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 2.7.11 64-bit ('neovim2': pyenv)",
+        "hash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661-54f5006f2808cff93dd9b9a22b90ce6a"
+      },
+      "expiry": 1589531580750
+    },
+    "/usr/local/bin/python3.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.5 64-bit",
+        "hash": "89cbcdd87b511a3f4d4a117c6bb38b7cfac73b998feb84bda937195a66005f9878a65221f96437de62a251d34fe62985ab3614bdba82e4e0856de066cce9b262-368775c73a496d32776c53f593b30bbd"
+      },
+      "expiry": 1578145231013
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim3/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.4.4 64-bit ('neovim3': venv)",
+        "hash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb-e2b9f540f17daf992f5b9d9860230a29"
+      },
+      "expiry": 1589531580760
+    },
+    "/usr/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 2.7.10 64-bit",
+        "hash": "f361b5486a4c7ef87a4e57ff83a7a9ed294a9b67875f2b342e84ceb802873b78d84b292f6c0879413cd853bbaeea42a7672fcdfef4ec4fa6af667466487a6f7f-fee9be979ec8c22da89a472f04feb775"
+      },
+      "expiry": 1589531580764
+    },
+    "/usr/local/opt/python/bin/python3.7.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.6 64-bit",
+        "hash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967-0f648c3291f6e74cbb50ef0cde83cd9f"
+      },
+      "expiry": 1589531580853
+    },
+    "/usr/local/opt/python@2/bin/python2.7.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 2.7.17 64-bit",
+        "hash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0-79e3658226e7bfab2112bfe6f6f2be73"
+      },
+      "expiry": 1589531580769
+    },
+    "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f",
+        "info": {
+          "architecture": 3,
+          "path": "/Users/wainwb01/.pyenv/versions/2.7.11/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "2.7.11-final",
+            "major": 2,
+            "minor": 7,
+            "patch": 11,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "2.7.11-final"
+          },
+          "sysPrefix": "/Users/wainwb01/.pyenv/versions/2.7.11",
+          "fileHash": "c6c5281fd26df3b808212d78cc03a888f122d7f645618025f8f9529dcd15f48970cfd93fe16e661aee25e81eff5bac900dd0c259c12718ccbcf9b4e2cbff574f",
+          "envName": "2.7.11",
+          "type": "Pyenv",
+          "displayName": "Python 2.7.11 64-bit ('2.7.11': pyenv)"
+        }
+      },
+      "expiry": 1589531580793
+    },
+    "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc",
+        "info": {
+          "architecture": 3,
+          "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "3.4.4-final",
+            "major": 3,
+            "minor": 4,
+            "patch": 4,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "3.4.4-final"
+          },
+          "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+          "fileHash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc",
+          "envName": "3.4.4",
+          "type": "Pyenv",
+          "displayName": "Python 3.4.4 64-bit ('3.4.4': pyenv)"
+        }
+      },
+      "expiry": 1589531580785
+    },
+    "/usr/local/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "235dbf8f6526087f22bc44e6d3f538d80621fa87301107f93bb6d4eb500a627be6aa8976fe7a886afa6270420edfd8a46f836d3274b197e492ccbe722fb54ea0",
+        "info": {
+          "architecture": 3,
+          "path": "/usr/local/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "2.7.17-final",
+            "major": 2,
+            "minor": 7,
+            "patch": 17,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "2.7.17-final"
+          },
+          "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+          "fileHash": "235dbf8f6526087f22bc44e6d3f538d80621fa87301107f93bb6d4eb500a627be6aa8976fe7a886afa6270420edfd8a46f836d3274b197e492ccbe722fb54ea0",
+          "type": "Unknown",
+          "displayName": "Python 2.7.17 64-bit"
+        }
+      },
+      "expiry": 1589531580814
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim2/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661",
+        "info": {
+          "architecture": 3,
+          "path": "/Users/wainwb01/.pyenv/versions/neovim2/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "2.7.11-final",
+            "major": 2,
+            "minor": 7,
+            "patch": 11,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "2.7.11-final"
+          },
+          "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim2",
+          "fileHash": "0918f7668f283fd40e32a09229db2579e6f44c2be926155f45933037641f5e4cb0bce75a43f008be775a0c46bc0f3ebeb70607775502d5da4694fb1e95140661",
+          "envName": "neovim2",
+          "type": "Pyenv",
+          "displayName": "Python 2.7.11 64-bit ('neovim2': pyenv)"
+        }
+      },
+      "expiry": 1589531580803
+    },
+    "/usr/local/bin/python3.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "89cbcdd87b511a3f4d4a117c6bb38b7cfac73b998feb84bda937195a66005f9878a65221f96437de62a251d34fe62985ab3614bdba82e4e0856de066cce9b262",
+        "info": {
+          "architecture": 3,
+          "path": "/usr/local/bin/python3",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "3.7.5-final",
+            "major": 3,
+            "minor": 7,
+            "patch": 5,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "3.7.5-final"
+          },
+          "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+          "fileHash": "89cbcdd87b511a3f4d4a117c6bb38b7cfac73b998feb84bda937195a66005f9878a65221f96437de62a251d34fe62985ab3614bdba82e4e0856de066cce9b262",
+          "type": "Unknown",
+          "displayName": "Python 3.7.5 64-bit"
+        }
+      },
+      "expiry": 1578145231073
+    },
+    "/Users/wainwb01/.pyenv/versions/neovim3/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb",
+        "info": {
+          "architecture": 3,
+          "path": "/Users/wainwb01/.pyenv/versions/neovim3/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "3.4.4-final",
+            "major": 3,
+            "minor": 4,
+            "patch": 4,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "3.4.4-final"
+          },
+          "sysPrefix": "/Users/wainwb01/.pyenv/versions/neovim3",
+          "fileHash": "47b691f49a1d7115ae925f4a121c72c5cf75278b3043b7aecc5213724c5b7010fb942984f1c0f49891489769422ad5f0ac2125c7f1df14d4d9cc2993a650aaeb",
+          "envName": "neovim3",
+          "type": "Venv",
+          "displayName": "Python 3.4.4 64-bit ('neovim3': venv)"
+        }
+      },
+      "expiry": 1589531580823
+    },
+    "/usr/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "f361b5486a4c7ef87a4e57ff83a7a9ed294a9b67875f2b342e84ceb802873b78d84b292f6c0879413cd853bbaeea42a7672fcdfef4ec4fa6af667466487a6f7f",
+        "info": {
+          "architecture": 3,
+          "path": "/usr/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "2.7.10-final",
+            "major": 2,
+            "minor": 7,
+            "patch": 10,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "2.7.10-final"
+          },
+          "sysPrefix": "/System/Library/Frameworks/Python.framework/Versions/2.7",
+          "fileHash": "f361b5486a4c7ef87a4e57ff83a7a9ed294a9b67875f2b342e84ceb802873b78d84b292f6c0879413cd853bbaeea42a7672fcdfef4ec4fa6af667466487a6f7f",
+          "type": "Unknown",
+          "displayName": "Python 2.7.10 64-bit"
+        }
+      },
+      "expiry": 1589531580834
+    },
+    "/usr/local/opt/python@2/bin/python2.7.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0",
+        "info": {
+          "architecture": 3,
+          "path": "/usr/local/opt/python@2/bin/python2.7",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "2.7.17-final",
+            "major": 2,
+            "minor": 7,
+            "patch": 17,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "2.7.17-final"
+          },
+          "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+          "fileHash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0",
+          "type": "Unknown",
+          "displayName": "Python 2.7.17 64-bit"
+        }
+      },
+      "expiry": 1589531580842
+    },
+    "ProposeLSBanner": false,
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "c671e63ef845b27456e15577f678c2aa52a5f7a3c2ed51fcfd717bc99dc17869b14c6605de7283fa6e034d816b5867bdf7cb7a91b7869e5e5bfebccb721eeb17"
+      },
+      "expiry": 1580814221825
+    },
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "5f03aa03c2b7859a88fb2cd26a490eaad423bc0e93cb6b1915ab2e8da6a586e26652563273d5a1f6a3afe0944ae8a42220c825e9a236d112e5264a200435aa36"
+      },
+      "expiry": 1580814221830
+    },
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "15e07b60c63c94991cd51d33a06a34acce0d25ef144551cd4f678e4ae6537cebc10af05e5e422c052f1f0587e6bddab27d8b8cc1d136063e77814ea71609f141"
+      },
+      "expiry": 1580814221834
+    },
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)",
+        "hash": "15e07b60c63c94991cd51d33a06a34acce0d25ef144551cd4f678e4ae6537cebc10af05e5e422c052f1f0587e6bddab27d8b8cc1d136063e77814ea71609f141-b13bf9ab996402f6c59496fee8d84bdf"
+      },
+      "expiry": 1580814221930
+    },
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "15e07b60c63c94991cd51d33a06a34acce0d25ef144551cd4f678e4ae6537cebc10af05e5e422c052f1f0587e6bddab27d8b8cc1d136063e77814ea71609f141",
+        "info": {
+          "architecture": 3,
+          "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "3.7.6-final",
+            "major": 3,
+            "minor": 7,
+            "patch": 6,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "3.7.6-final"
+          },
+          "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+          "fileHash": "15e07b60c63c94991cd51d33a06a34acce0d25ef144551cd4f678e4ae6537cebc10af05e5e422c052f1f0587e6bddab27d8b8cc1d136063e77814ea71609f141",
+          "envName": "venv",
+          "type": "VirtualEnv",
+          "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)"
+        }
+      },
+      "expiry": 1580814221990
+    },
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "c671e63ef845b27456e15577f678c2aa52a5f7a3c2ed51fcfd717bc99dc17869b14c6605de7283fa6e034d816b5867bdf7cb7a91b7869e5e5bfebccb721eeb17"
+      },
+      "expiry": 1580814222038
+    },
+    "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)",
+        "hash": "c671e63ef845b27456e15577f678c2aa52a5f7a3c2ed51fcfd717bc99dc17869b14c6605de7283fa6e034d816b5867bdf7cb7a91b7869e5e5bfebccb721eeb17-173770aa9ab3c3e80746aba5381b5683"
+      },
+      "expiry": 1580814222090
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4"
+      },
+      "expiry": 1582715148679
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "1eb6357cc229605d4c21451aff6174dfa13366911b7cf792faf3ca143091866aa8eeae9b718d9d86ffa873c5b20a841d36538b58014a7834d3eed346492ab340"
+      },
+      "expiry": 1582715149041
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python.v3": {
+      "data": {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0"
+      },
+      "expiry": 1582715148702
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)",
+        "hash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0-8e7423894263d4f1c6b468cbe13eebbd"
+      },
+      "expiry": 1582715148819
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0",
+        "info": {
+          "architecture": 3,
+          "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python",
+          "version": {
+            "options": {
+              "loose": false,
+              "includePrerelease": false
+            },
+            "loose": false,
+            "raw": "3.7.6-final",
+            "major": 3,
+            "minor": 7,
+            "patch": 6,
+            "prerelease": [
+              "final"
+            ],
+            "build": [],
+            "version": "3.7.6-final"
+          },
+          "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+          "fileHash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0",
+          "envName": "venv",
+          "type": "VirtualEnv",
+          "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)"
+        }
+      },
+      "expiry": 1582715148886
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "1eb6357cc229605d4c21451aff6174dfa13366911b7cf792faf3ca143091866aa8eeae9b718d9d86ffa873c5b20a841d36538b58014a7834d3eed346492ab340"
+      },
+      "expiry": 1582628747454
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)",
+        "hash": "1eb6357cc229605d4c21451aff6174dfa13366911b7cf792faf3ca143091866aa8eeae9b718d9d86ffa873c5b20a841d36538b58014a7834d3eed346492ab340-33f6ac5cc8102de9f9d2a8dd0e4a47ba"
+      },
+      "expiry": 1582389334568
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7.interpreter.Details.v7": {
+      "data": {
+        "fileHash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4"
+      },
+      "expiry": 1582715148841
+    },
+    "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7.interpreter.displayName.v7": {
+      "data": {
+        "displayName": "Python 3.7.6 64-bit ('venv': virtualenv)",
+        "hash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4-eb27e4f5fb6531170cf4a36dee22357c"
+      },
+      "expiry": 1582715148971
+    },
+    "pylint_DisableLinterInstallPrompt": true,
+    "InterpreterAutoSeletionRule-currentPath": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python@2/bin/python2.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "2.7.17-final",
+        "major": 2,
+        "minor": 7,
+        "patch": 17,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "2.7.17-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python@2/2.7.17/Frameworks/Python.framework/Versions/2.7",
+      "fileHash": "826f361742eb16315ccac7aaca7cb61763c607bd136b02e58aef64aa4776988d43e113ab80eefc87c35ec1d168e90b9ebe2bf37845f24606798fd70cb0bb27d0",
+      "type": "Unknown",
+      "cachedEntry": true
+    },
+    "InterpreterAutoSeletionRule-system": {
+      "architecture": 3,
+      "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.4.4-final",
+        "major": 3,
+        "minor": 4,
+        "patch": 4,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.4.4-final"
+      },
+      "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+      "fileHash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc",
+      "envName": "3.4.4",
+      "type": "Pyenv",
+      "cachedEntry": true,
+      "displayName": "Python 3.4.4 64-bit ('3.4.4': pyenv)"
+    },
+    "InterpreterAutoSeletionRule-cachedInterpreters": {
+      "architecture": 3,
+      "path": "/Users/wainwb01/.pyenv/versions/3.4.4/bin/python",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.4.4-final",
+        "major": 3,
+        "minor": 4,
+        "patch": 4,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.4.4-final"
+      },
+      "sysPrefix": "/Users/wainwb01/.pyenv/versions/3.4.4",
+      "fileHash": "fa9a4a009b576133e542e42e3aa245fb4f615959416d8d263604917aba0cf2df724d8a1a55d467b20f55ff1f1dc90869046685d9a71cea1c469b76f02bd14ccc",
+      "envName": "3.4.4",
+      "type": "Pyenv",
+      "cachedEntry": true,
+      "displayName": "Python 3.4.4 64-bit ('3.4.4': pyenv)"
+    }
+  },
+  "coc-python|/Users/wainwb01/repos/troposphere": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:381148ecfe09dbdd8d0b850352155af6": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:381148ecfe09dbdd8d0b850352155af6": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/repos/troposphere": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": []
+  },
+  "coc-python|/Users/wainwb01/workspace/morph-api": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:cd8fb6a1f5956a490c0024ffa2d33e23": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:cd8fb6a1f5956a490c0024ffa2d33e23": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/morph-api": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService:bc213411c1d00e082cc76919e43f5dd8": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:bc213411c1d00e082cc76919e43f5dd8": []
+  },
+  "coc-python|/Users/wainwb01/workspace/cosmic": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:c4ebd28ee9a901ddd1d8a440cdbe1cd9": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:c4ebd28ee9a901ddd1d8a440cdbe1cd9": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService:cd8fb6a1f5956a490c0024ffa2d33e23": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:cd8fb6a1f5956a490c0024ffa2d33e23": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/cosmic": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    }
+  },
+  "coc-python|/Users/wainwb01/workspace/morph-router": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:c5d22d6b0de2b37064a88b2df19c15a5": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:c5d22d6b0de2b37064a88b2df19c15a5": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/morph-router": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": []
+  },
+  "coc-python|/Users/wainwb01/workspace/morph-alarms-slack-notifier": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:50e1bf9e69b8997de21a3e2b333fc431": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:50e1bf9e69b8997de21a3e2b333fc431": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/morph-alarms-slack-notifier": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": []
+  },
+  "coc-python|/Users/wainwb01/workspace/fabl-api": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:196b7a54f51ce4ec093148b4e8e88a2c": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:196b7a54f51ce4ec093148b4e8e88a2c": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService:cd8fb6a1f5956a490c0024ffa2d33e23": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:cd8fb6a1f5956a490c0024ffa2d33e23": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/fabl-api": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    }
+  },
+  "coc-python|/Users/wainwb01/workspace/cd-h": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:bc213411c1d00e082cc76919e43f5dd8": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:bc213411c1d00e082cc76919e43f5dd8": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/cd-h": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.5-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 5,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.5-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "fa51e29cf2b4dc0f043b414afaa92b0d0d60b3bf389b3d6d35e30925214aadf9bd756b6e77a94d8aa5591c6e7cd2682cfbdcc7b9cf0a6f044eb382c1cb5801b0",
+      "type": "Unknown"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService:196b7a54f51ce4ec093148b4e8e88a2c": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:196b7a54f51ce4ec093148b4e8e88a2c": []
+  },
+  "coc-python|/Users/wainwb01/workspace/webcore-pipelines": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:b441b8a2cc360ae0d810c076341ec189": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:b441b8a2cc360ae0d810c076341ec189": [
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "15e07b60c63c94991cd51d33a06a34acce0d25ef144551cd4f678e4ae6537cebc10af05e5e422c052f1f0587e6bddab27d8b8cc1d136063e77814ea71609f141",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "5f03aa03c2b7859a88fb2cd26a490eaad423bc0e93cb6b1915ab2e8da6a586e26652563273d5a1f6a3afe0944ae8a42220c825e9a236d112e5264a200435aa36",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "c671e63ef845b27456e15577f678c2aa52a5f7a3c2ed51fcfd717bc99dc17869b14c6605de7283fa6e034d816b5867bdf7cb7a91b7869e5e5bfebccb721eeb17",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      }
+    ],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/webcore-pipelines": {
+      "architecture": 3,
+      "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.6-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 6,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.6-final"
+      },
+      "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+      "fileHash": "c671e63ef845b27456e15577f678c2aa52a5f7a3c2ed51fcfd717bc99dc17869b14c6605de7283fa6e034d816b5867bdf7cb7a91b7869e5e5bfebccb721eeb17",
+      "envName": "venv",
+      "type": "VirtualEnv"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "15e07b60c63c94991cd51d33a06a34acce0d25ef144551cd4f678e4ae6537cebc10af05e5e422c052f1f0587e6bddab27d8b8cc1d136063e77814ea71609f141",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "5f03aa03c2b7859a88fb2cd26a490eaad423bc0e93cb6b1915ab2e8da6a586e26652563273d5a1f6a3afe0944ae8a42220c825e9a236d112e5264a200435aa36",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/..",
+        "fileHash": "c671e63ef845b27456e15577f678c2aa52a5f7a3c2ed51fcfd717bc99dc17869b14c6605de7283fa6e034d816b5867bdf7cb7a91b7869e5e5bfebccb721eeb17",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      }
+    ],
+    "INTERPRETERS_CACHE_v3_PipEnvService:196b7a54f51ce4ec093148b4e8e88a2c": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:196b7a54f51ce4ec093148b4e8e88a2c": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService:7c973e9fbdac64ba797435380808fd9d": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:7c973e9fbdac64ba797435380808fd9d": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService:938bdd396f329ac6fde30a24d5757c8c": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:938bdd396f329ac6fde30a24d5757c8c": [],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/fabl-modules-codepipeline-hack": {
+      "architecture": 3,
+      "path": "/usr/local/opt/python/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.6-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 6,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.6-final"
+      },
+      "sysPrefix": "/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7",
+      "fileHash": "c85679bdc9ae6bfb410001ded7c0bcc84f0c15d9d678c5bba3c4cec18286cdbd016d90d89dab50932f8576d2e6a3d6a8e4bf9a250b56ef56e9a04afd42de8967",
+      "type": "Unknown",
+      "cachedEntry": true,
+      "displayName": "Python 3.7.6 64-bit"
+    },
+    "INTERPRETERS_CACHE_v3_PipEnvService:16ca6cc7948e51db12e67148e8b653cc": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:16ca6cc7948e51db12e67148e8b653cc": [],
+    "SelectedPythonPath": "/Users/wainwb01/workspace/webcore-pipelines/venv/bin/python3.7"
+  },
+  "coc-python|/Users/wainwb01/workspace/web-infrastructure": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:938bdd396f329ac6fde30a24d5757c8c": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:938bdd396f329ac6fde30a24d5757c8c": [
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "1eb6357cc229605d4c21451aff6174dfa13366911b7cf792faf3ca143091866aa8eeae9b718d9d86ffa873c5b20a841d36538b58014a7834d3eed346492ab340",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      }
+    ],
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "1eb6357cc229605d4c21451aff6174dfa13366911b7cf792faf3ca143091866aa8eeae9b718d9d86ffa873c5b20a841d36538b58014a7834d3eed346492ab340",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      }
+    ],
+    "autoSelectedWorkspacePythonInterpreter-/Users/wainwb01/workspace/web-infrastructure": {
+      "architecture": 3,
+      "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7",
+      "version": {
+        "options": {
+          "loose": false,
+          "includePrerelease": false
+        },
+        "loose": false,
+        "raw": "3.7.6-final",
+        "major": 3,
+        "minor": 7,
+        "patch": 6,
+        "prerelease": [
+          "final"
+        ],
+        "build": [],
+        "version": "3.7.6-final"
+      },
+      "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+      "fileHash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4",
+      "envName": "venv",
+      "type": "VirtualEnv"
+    },
+    "SelectedPythonPath": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7"
+  },
+  "coc-python|/Users/wainwb01/workspace/fabl-module-build": {
+    "INTERPRETERS_CACHE_v3_PipEnvService:0f0157eb10de783a7ea133c1eca41ca8": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:0f0157eb10de783a7ea133c1eca41ca8": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "SelectedPythonPath": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3",
+    "INTERPRETERS_CACHE_v3_PipEnvService:938bdd396f329ac6fde30a24d5757c8c": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:938bdd396f329ac6fde30a24d5757c8c": [
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "5e9c18b2f28a98faffa1f4f2cd5b880f5617bb85cc2aacee1386cceaf551abcdcd5f7dae61bd061dd55a691b9d1b84ea009dc29a038ed8af4e4174ea4a707dd0",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "1eb6357cc229605d4c21451aff6174dfa13366911b7cf792faf3ca143091866aa8eeae9b718d9d86ffa873c5b20a841d36538b58014a7834d3eed346492ab340",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      },
+      {
+        "architecture": 3,
+        "path": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/python3.7",
+        "version": {
+          "options": {
+            "loose": false,
+            "includePrerelease": false
+          },
+          "loose": false,
+          "raw": "3.7.6-final",
+          "major": 3,
+          "minor": 7,
+          "patch": 6,
+          "prerelease": [
+            "final"
+          ],
+          "build": [],
+          "version": "3.7.6-final"
+        },
+        "sysPrefix": "/Users/wainwb01/workspace/web-infrastructure/venv/bin/..",
+        "fileHash": "4bfc5d22c8de7adb15690e5944ed70d040832b1572e55b51b4957a6e04459d2429b6e741cef313f0aa86f2f5d0a9421243bd44459f15853e2749b2c3979792d4",
+        "envName": "venv",
+        "type": "VirtualEnv"
+      }
+    ],
+    "INTERPRETERS_CACHE_v3_PipEnvService:bb662429b0152cf3156e22cc7ab200a4": [],
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService:bb662429b0152cf3156e22cc7ab200a4": []
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "lists": {
+    "%2FUsers%2Fwainwb01%2Frepos%2Ftroposphere": [
+      "symbols"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-alarms-slack-notifier": [
+      "extensions",
+      "exten"
+    ],
+    "%2FUsers%2Fwainwb01%2Fgo%2Fsrc%2Fgithub": {
+      "com%2Fbenwainwright%2Fcall2": [
+        "extensions",
+        "commands"
+      ]
+    },
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "actions",
+      "refere"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-api": [
+      "symbols",
+      "diagnostics",
+      "outline",
+      "action",
+      "branches",
+      "gfiles",
+      "folders"
+    ],
+    "%2FUsers%2Fwainwb01": [
+      "actions"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fcosmic": [
+      "diagnostics"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv7%2Fpackages%2Fapplication%2Fsrc%2Fcore": [
+      "exte",
+      "ex",
+      "exten"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus": [
+      "symb",
+      "sym",
+      "actions",
+      "outline",
+      "marketplace"
+    ],
+    "%2FUsers%2Fwainwb01%2Fdotfiles": [
+      "sy"
+    ],
+    "%2FUsers%2Fwainwb01%2Fdotfiles%2Fconfig%2Fvim%2Fvim": {
+      "dotdir%2Fplugged%2Fcoc": {
+        "nvim": [
+          "extensions"
+        ]
+      }
+    }
+  },
+  "symbols": {
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "CommandBus"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-api": [
+      "expor",
+      "handler"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus": [
+      "fetchStatus",
+      "fetchData",
+      "t",
+      "app",
+      "dataresponse",
+      "statusdata",
+      "App",
+      "index",
+      "StatusPanel"
+    ],
+    "%2FUsers%2Fwainwb01%2Fdotfiles": [
+      "foo"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus-data": [
+      "Statu",
+      "StatusD",
+      "StatusDataResponse"
+    ]
+  },
+  "extensions": {
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-alarms-slack-notifier": [
+      "go"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fcoc-go": [
+      "go"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "sni"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv7%2Fpackages%2Fapplication%2Fsrc%2Fcore": [
+      "coc-es"
+    ],
+    "%2FUsers%2Fwainwb01%2Fdotfiles%2Fconfig%2Fvim%2Fvim": {
+      "dotdir%2Fplugged%2Fcoc": {
+        "nvim": [
+          "j",
+          "coc"
+        ]
+      }
+    },
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus": [
+      "jest"
+    ]
+  },
+  "commands": {
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Ffabl-api": [
+      "go instal gp"
+    ],
+    "%2FUsers%2Fwainwb01%2Fgo%2Fsrc%2Fgithub": {
+      "com%2Fbenwainwright%2Fcall2": [
+        "workspace",
+        "go",
+        "go.test",
+        "git sta",
+        "git",
+        "worspace"
+      ]
+    },
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fcd-pipelines": [
+      "ts",
+      "tsserver"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-api": [
+      "workspace"
+    ],
+    "%2FUsers%2Fwainwb01%2Fdotfiles": [
+      "document",
+      "rename"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "workspace out",
+      "workspace"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Ffabl-modules": [
+      "workspace"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-common": [
+      "tsserver log",
+      "workspace output",
+      "log"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-manager": [
+      "format"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv7%2Fpackages%2Fapplication%2Fsrc%2Fcore": [
+      "workspace"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv7": [
+      "format"
+    ]
+  },
+  "actions": {
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "convert",
+      "named ",
+      "plan",
+      "kkkkkg",
+      "rename"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-manager": [
+      "rm"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv7": [
+      "jump",
+      "me"
+    ]
+  },
+  "branches": {
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fmorph-api": [
+      "master"
+    ]
+  },
+  "folders": {
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "fzf-git:q"
+    ]
+  },
+  "diagnostics": {
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fcd-pipelines": [
+      "statics"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv5": [
+      "kk"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Freithd": [
+      "jj"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fplanv7": [
+      "jjj"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Ffabl-api": [
+      "kj"
+    ],
+    "%2FUsers%2Fwainwb01%2Frepos%2Fcss-methodologies": [
+      "w"
+    ],
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus": [
+      "v"
+    ],
+    "%2FUsers%2Fwainwb01%2Fdotfiles%2Fconfig%2Fvim%2Fvim": {
+      "dotdir%2Fplugged%2Ffzf-project": [
+        "v"
+      ]
+    }
+  },
+  "outline": {
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus": [
+      "env"
+    ]
+  },
+  "marketplace": {
+    "%2FUsers%2Fwainwb01%2Fdotfiles%2Fconfig%2Fvim%2Fvim": {
+      "dotdir%2Fplugged%2Fcoc": {
+        "nvim": [
+          "j"
+        ]
+      }
+    },
+    "%2FUsers%2Fwainwb01%2Fworkspace%2Fstatus": [
+      "kkj",
+      "ajjj"
+    ]
+  }
+}
