@@ -14,7 +14,7 @@
   "suggest.triggerCompletionWait": 100,
   "tsserver.log":"verbose",
   "diagnostic.hintSign": "",
-  "coc.preferences.formatOnSaveFiletypes": ["javascript.jasmine", "javascript", "typescript", "python", "typescriptreact", "swift"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript.jasmine", "javascript", "typescript", "python", "typescriptreact", "swift", "html"],
   "python.jediEnabled": false,
   "languageserver": {
     "swift": {
