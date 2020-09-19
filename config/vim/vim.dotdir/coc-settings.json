@@ -3,6 +3,7 @@
   "suggest.detailField": "preview",
   "list.source.symbols.excludes": ["node_modules"],
   "suggest.enablePreview": true,
+  "explorer.icon.enableVimDevicons": true,
   "git.changedSign.text": "",
   "git.addedSign.text": "",
   "git.removedSign.text": "",
