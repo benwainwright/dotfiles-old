@@ -4,3 +4,4 @@
 *.zwc
 *.add.spl
 TAGS.tmp
+config/emacs/emacs.d.dotdir/straight
