@@ -1,4 +1,8 @@
 {
+  "suggest.removeDuplicateItems": true,
+  "coc.preferences.jumpCommand": "tabe",
+  "diagnostic.virtualText": true,
+  "codeLens.enable": true,
   "suggest.floatEnable": true,
   "suggest.detailField": "preview",
   "list.source.symbols.excludes": ["node_modules"],
