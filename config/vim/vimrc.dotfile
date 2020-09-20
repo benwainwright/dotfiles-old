@@ -45,7 +45,6 @@ Plug 'syngan/vim-vimlint'
 Plug 'plytophogy/vim-virtualenv', { 'for': 'python' }
 Plug 'gioele/vim-autoswap'
 Plug 'ryanoasis/vim-devicons'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
 Plug 'ludovicchabant/vim-gutentags'
@@ -58,6 +57,7 @@ Plug 'neoclide/coc-denite'
 Plug 'antoinemadec/coc-fzf'
 Plug 'mattn/emmet-vim'
 Plug 'rbong/vim-crystalline'
+Plug 'knubie/vim-kitty-navigator'
 
 Plug 'frazrepo/vim-rainbow'
 let g:rainbow_active = 1
@@ -69,6 +69,8 @@ call plug#end()
 " =================
 " {{{
 
+set title
+let &titlestring='%t - nvim'
 
 " Delete comment characters when joining lines
 set formatoptions+=j
@@ -347,6 +349,8 @@ endfunction
 " Misc Plugin Config
 " ==================
 " {{{
+
+let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
 
 if has('gui_running')
   let test#strategy = "vimterminal"
