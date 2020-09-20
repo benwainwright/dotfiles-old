@@ -49,7 +49,7 @@ Plug 'chrisbra/unicode.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bkad/CamelCaseMotion'
-Plug 'vim-scripts/argtextobj.vim'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'neoclide/coc-denite'
