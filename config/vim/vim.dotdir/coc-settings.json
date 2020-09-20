@@ -2,6 +2,7 @@
   "suggest.removeDuplicateItems": true,
   "coc.preferences.jumpCommand": "tabe",
   "diagnostic.virtualText": true,
+  "diagnostic.messageTarget": "echo",
   "codeLens.enable": true,
   "suggest.floatEnable": true,
   "suggest.detailField": "preview",
