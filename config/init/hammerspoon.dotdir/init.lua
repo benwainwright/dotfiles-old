@@ -13,7 +13,7 @@ local spectacleshift = {"cmd", "alt", "shift"}
 
 hotkey.bind(spectacle, 'T', function() application.launchOrFocus('Things3') end)
 hotkey.bind(spectacle, 'N', function() application.launchOrFocus('Evernote') end)
-hotkey.bind(spectacle, 'I', function() application.launchOrFocus('Alacritty') end)
+hotkey.bind(spectacle, 'I', function() application.launchOrFocus('Kitty') end)
 hotkey.bind(spectacle, 'M', function() application.launchOrFocus('Spotify') end)
 hotkey.bind(spectacle, 'S', function() application.launchOrFocus('Slack') end)
 hotkey.bind(spectacle, 'G', function() application.launchOrFocus('Jasper') end)
