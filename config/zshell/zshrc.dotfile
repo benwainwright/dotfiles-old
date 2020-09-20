@@ -1,13 +1,6 @@
 ########################################################
 ## Load #
 ########################################################
-#if [ -z $TMUX ]; then
-#  TERM=xterm
-#  exec tmux -2
-#fi
-########################################################
-## Load #
-########################################################
 
 function add_completion_dirs_to_fpath() {
   setopt NULL_GLOB
@@ -89,6 +82,9 @@ source_shellfiles
 # Adds fzf shell bindings, such as Ctrl-R replacement
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 eval "$(fasd --init auto)"
 
 #####################################################
@@ -148,12 +144,3 @@ export PATH="/usr/local/sbin:$PATH"
 
 zle -N aws-switch-profile-fzf
 bindkey '^S' aws-switch-profile-fzf
-
-#######################################################
-## End profiling                                      #
-#######################################################
-
-## zprof
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

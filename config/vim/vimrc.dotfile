@@ -86,6 +86,8 @@ syntax enable
 " Indicates a fast terminal connection
 set ttyfast
 
+set nrformats=bin,hex
+
 " attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype
 " and for plugins that are filetype specific.
@@ -350,12 +352,7 @@ endfunction
 " {{{
 
 let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
-
-if has('gui_running')
-  let test#strategy = "vimterminal"
-else
-  let test#strategy = "dispatch"
-endif
+let g:test#strategy = 'kitty'
 
 let test#javascript#jest#file_pattern = '\v.+.spec.(js|jsx|ts|tsx)$'
 
@@ -418,10 +415,9 @@ command! MaximiseToggle call s:fullscreen_tab_toggle()
 "s {{{
 
 nnoremap <leader> :WhichKey '<Space>'<CR>
-nnoremap <c-x> :call Toggle_terminal()<cr>
 nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
-nnoremap ; :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
@@ -452,15 +448,6 @@ nnoremap <C-n> :bprev<CR>
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-]> :lnext<CR>
 
-
- nnoremap <silent> <C-a>z :MaximiseToggle<CR>
-
-if has('gui_running')
-  nnoremap <silent> <C-a>l :CreateTerminalSplitRight<CR>
-  nnoremap <silent> <C-a>h :CreateTerminalSplitLeft<CR>
-  nnoremap <silent> <C-a>k :CreateTerminalSplitUp<CR>
-  nnoremap <silent> <C-a>j :CreateTerminalSplitDown<CR>
-endif
 " }}}
 
 " Visual mode mappings
@@ -501,7 +488,6 @@ augroup END
 " {{{
 set background=dark
 colorscheme onehalfdark
-
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
