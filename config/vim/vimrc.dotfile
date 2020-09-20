@@ -69,6 +69,16 @@ call plug#end()
 " =================
 " {{{
 
+
+" Delete comment characters when joining lines
+set formatoptions+=j
+
+" Increase the undo limit
+set history=1000
+
+" Persist coc workspace folders in session file
+set sessionoptions+=globals
+
 " Enable syntax highlighting
 syntax enable
 
