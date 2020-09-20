@@ -301,8 +301,6 @@ let g:coc_global_extensions = [
       \ ]
 
 
-xnoremap <leader>f  <Plug>(coc-format-selected)
-nnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <C-e> :CocCommand explorer<CR>
 nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
@@ -330,9 +328,9 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
  " this mapping is causing weird startup errors
  "nnoremap <silent> <C-[> :lprev<cr>
 
-nnoremap gd :call CocAction('jumpDefinition', 'tab drop')<CR>
-nnoremap gi :call CocAction('jumpImplementation', 'tab drop')<CR>
-nnoremap gr <Plug>(coc-references)
+nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'tab drop')<CR>
+nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'tab drop')<CR>
+nnoremap <leader>jr :call CocActionAsync('jumpReferences')<CR>
 
 nnoremap K :call <SID>show_documentation()<CR>
 
