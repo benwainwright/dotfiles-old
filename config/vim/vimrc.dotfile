@@ -454,7 +454,6 @@ nnoremap <C-p> :bnext<CR>
 nnoremap <C-]> :lnext<CR>
 
 
-
  nnoremap <silent> <C-a>z :MaximiseToggle<CR>
 
 if has('gui_running')
