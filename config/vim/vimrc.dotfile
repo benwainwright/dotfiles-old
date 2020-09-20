@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug '/Users/wainwb01/repos/git-extras'
 Plug 'benwainwright/fzf-project'
 Plug 'benwainwright/pr-blame'
-Plug 'benwainwright/terminal'
 
 " Tim Pope
 Plug 'tpope/vim-rhubarb'
