@@ -296,7 +296,6 @@ let g:coc_global_extensions = [
       \ 'coc-html',
       \ 'coc-webpack',
       \ 'coc-markdownlint',
-      \ 'coc-spell-checker',
       \ 'coc-scssmodules',
       \ 'coc-sh',
       \ 'coc-react-refactor',
