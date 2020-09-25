@@ -6,7 +6,9 @@ set -g status off
 set -s escape-time 0
 
 unbind C-b
+
 set-option -g prefix C-a
+unbind-key C-a
 bind-key C-a send-prefix
 
 # smart pane switching with awareness of Vim splits.
@@ -30,7 +32,15 @@ bind-key h split-window -hb -c "#{pane_current_path}"
 bind-key l split-window -h -c "#{pane_current_path}"
 
 set -g mouse on
-set-option -g history-limit 4000
+set-option -g history-limit 5000
 
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
+# tmux messages are displayed for 4 seconds
+set -g display-time 4000
+
+set -g focus-events on
+
+# super useful when using "grouped sessions" and multi-monitor setup
+setw -g aggressive-resize on
+
+# refresh 'status-left' and 'status-right' more often
+set -g status-interval 5

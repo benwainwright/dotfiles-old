@@ -34,7 +34,7 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'peitalin/vim-jsx-typescript'
 
 " Color theme
-Plug 'chriskempson/base16-vim'
+Plug 'w0ng/vim-hybrid'
 Plug 'machakann/vim-sandwich'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'semanser/vim-outdated-plugins'
@@ -486,7 +486,7 @@ augroup END
 " ====================
 " {{{
 set background=dark
-colorscheme base16-default-dark
+colorscheme hybrid
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -557,15 +557,9 @@ endfunction
 let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'default'
+let g:crystalline_theme = 'hybrid'
 
 set showtabline=2
 set guioptions-=e
 set laststatus=2
 
-" Colors stolen from here: https://github.com/chriskempson/base16-shell
-highlight CrystallineNormalMode guibg=#F7CA88
-highlight CrystallineInsertMode guibg=#7CAFC2
-highlight CrystallineVisualMode guibg=#BA8BAF
-highlight CrystallineReplaceMode guibg=#AB4642
-highlight Crystalline guibg=#585858
