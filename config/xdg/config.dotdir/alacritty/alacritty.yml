@@ -229,7 +229,7 @@ colors:
     background: "0x0d0d0d"
     foreground: "0xEBEBEB"
   cursor:
-    text: "0xFF261E"
+    text: "0xFFFFFF"
     cursor: "0xFF261E"
   normal:
     black: "0x0d0d0d"

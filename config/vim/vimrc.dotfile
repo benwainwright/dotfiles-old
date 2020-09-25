@@ -56,7 +56,7 @@ Plug 'neoclide/coc-denite'
 Plug 'antoinemadec/coc-fzf'
 Plug 'mattn/emmet-vim'
 Plug 'rbong/vim-crystalline'
-Plug 'knubie/vim-kitty-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'frazrepo/vim-rainbow'
 let g:rainbow_active = 1
