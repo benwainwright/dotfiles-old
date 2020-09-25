@@ -97,7 +97,7 @@ filetype indent plugin on
 " you quit without writing to a file)
 set confirm
 
-set updatetime=300
+set updatetime=400
 
 " Allows the vim unknown buffer to work with the system clipboard, so if you
 " yank a piece of text, it will be available to paste outside of VIM

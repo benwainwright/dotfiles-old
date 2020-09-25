@@ -1,15 +1,12 @@
 {
   "suggest.removeDuplicateItems": true,
   "coc.preferences.jumpCommand": "tabe",
-  "diagnostic.virtualText": true,
-  "diagnostic.messageTarget": "echo",
   "codeLens.enable": true,
   "suggest.floatEnable": true,
   "suggest.detailField": "preview",
   "list.source.symbols.excludes": ["node_modules"],
   "suggest.enablePreview": true,
   "explorer.icon.enableVimDevicons": true,
-  "cSpell.ignoreRegExpList": ["^Plug \\'.*\\'.*"],
   "git.changedSign.text": "",
   "git.addedSign.text": "",
   "git.removedSign.text": "",
@@ -47,15 +44,5 @@
       "initializationOptions": {},
       "settings": {}
     }
-  },
-  "cSpell.userWords": [
-    "Broxy",
-    "ITCSS",
-    "OOCSS",
-    "Pagemon",
-    "SMACSS",
-    "WEBCOREDEVX",
-    "modularisation",
-    "webcore"
-  ]
+  }
 }
