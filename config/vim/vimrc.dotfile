@@ -449,10 +449,10 @@ nnoremap t<C-f> :TestFile<CR>    " t Ctrl+f
 nnoremap t<C-s> :TestSuite<CR>   " t Ctrl+s
 nnoremap t<C-l> :TestLast<CR>    " t Ctrl+l
 nnoremap t<C-g> :TestVisit<CR>   " t Ctrl+g
-nnoremap <C-n> :bprev<CR>
-nnoremap <C-p> :bnext<CR>
-nnoremap <C-]> :lnext<CR>
-
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap [B :bfirst<CR>
+nnoremap ]B :blast<CR>
 " }}}
 
 " Visual mode mappings
