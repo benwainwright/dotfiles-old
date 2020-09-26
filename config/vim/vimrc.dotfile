@@ -350,6 +350,12 @@ endfunction
 " ==================
 " {{{
 
+" Stops autopairs doing the weird behaviour where you jump to the next pair
+" remap :Ag
+"
+" instead of inserting one
+let g:AutoPairsMultilineClose = 0
+
 let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
 let g:test#strategy = 'kitty'
 
