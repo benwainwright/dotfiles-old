@@ -11,6 +11,8 @@ set guioptions-=l  " remove lefthand toolbar
 set guioptions-=L
 set guioptions-=r  " remove righthand toolbar
 
+set showtabline=0
+
 tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
 tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
 tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
