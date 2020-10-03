@@ -2,7 +2,6 @@
 ## Bootstrap TMUX                                      #
 ########################################################
 TERM=xterm-256color
-
 if [ -z $TMUX ]; then
   exec tmux
 fi
@@ -96,6 +95,8 @@ source_shellfiles
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(fasd --init auto)"
+
+eval "$(rbenv init -)"
 
 #####################################################
 # Zshell configuration                              #

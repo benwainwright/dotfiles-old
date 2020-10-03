@@ -1,1 +1,2 @@
 cd build/classes/java/main
+rbenv local 2.7.1

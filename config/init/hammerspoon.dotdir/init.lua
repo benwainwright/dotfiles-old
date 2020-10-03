@@ -25,7 +25,7 @@ hotkey.bind(spectacle, 'A', function() application.launchOrFocus('Airmail 3') en
 hotkey.bind(spectacle, 'D', function() application.launchOrFocus('Dash') end)
 hotkey.bind(spectacle, 'F', function() application.launchOrFocus('Finder') end)
 hotkey.bind(spectacle, 'O', function() application.launchOrFocus('Microsoft Outlook') end)
-hotkey.bind(spectacle, 'V', function() application.launchOrFocus('Visual Studio Code') end)
+hotkey.bind(spectacle, 'V', function() application.launchOrFocus('MacVim') end)
 hotkey.bind(spectacle, 'Z', function() application.launchOrFocus('Zoom.us') end)
 hotkey.bind(mash, 'h', function() window.focusedWindow():moveOneScreenWest() end)
 hotkey.bind(mash, 'l', function() window.focusedWindow():moveOneScreenEast() end)

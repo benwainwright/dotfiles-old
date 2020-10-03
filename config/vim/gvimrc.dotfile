@@ -1,6 +1,6 @@
-set guifont=FuraCode\ Nerd\ Font\ Mono:h14
+set guifont=FiraCode\ Nerd\ Font:h13
 set macligatures
-set cursorline
+"set cursorline
 
 set guioptions+=a  " take ownership if windowing systems global selection in Visual mode
 set guioptions+=c  " use console dialogs instead of popups for simple choices

@@ -2,44 +2,53 @@
 "
 " =======
 " {{{
+runtime macros/matchit.vim
+
 call plug#begin('~/.vim/plugged')
 
 " Personal plugins
-"Plug 'benwainwright/fzf-git'
+Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
 Plug 'benwainwright/fzf-project'
 Plug 'benwainwright/pr-blame'
 
-" Tim Pope
+if(has('gui'))
+  Plug 'benwainwright/terminal'
+endif
+
+" " Tim Pope
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
-
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 
-" June Gunn
+ " June Gunn
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Misc
+ " Misc
 Plug 'liuchengxu/vim-which-key'
+Plug 'kshenoy/vim-signature'
 
-" Language plugins
+ " Language plugins
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ynkdir/vim-vimlparser'
 Plug 'peitalin/vim-jsx-typescript'
 
-" Color theme
+" " Color theme
+Plug 'hzchirs/vim-material'
 Plug 'w0ng/vim-hybrid'
-Plug 'machakann/vim-sandwich'
 Plug 'tweekmonster/startuptime.vim'
+
 " Plug 'semanser/vim-outdated-plugins'
 Plug 'puremourning/vimspector'
 Plug 'janko/vim-test'
+Plug 'wakatime/vim-wakatime'
 Plug 'syngan/vim-vimlint'
 Plug 'plytophogy/vim-virtualenv', { 'for': 'python' }
 Plug 'gioele/vim-autoswap'
@@ -52,24 +61,26 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'neoclide/coc-denite'
 Plug 'antoinemadec/coc-fzf'
 Plug 'mattn/emmet-vim'
-Plug 'rbong/vim-crystalline'
 Plug 'christoomey/vim-tmux-navigator'
-
+Plug 'vim-airline/vim-airline'
 Plug 'frazrepo/vim-rainbow'
 let g:rainbow_active = 1
 
 call plug#end()
 " }}}
+" remap :Ag
+"
 
 " Core VIM settings
 " =================
 " {{{
 
-set title
-let &titlestring='%t - nvim'
+if(has('nvim'))
+  set title
+  let &titlestring='%t - nvim'
+endif
 
 " Delete comment characters when joining lines
 set formatoptions+=j
@@ -181,7 +192,6 @@ set laststatus=2
 set ruler
 
 " Turn on line numbers
-set number
 
 " Vertical splits always open on the right
 set splitright
@@ -330,8 +340,8 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
  " this mapping is causing weird startup errors
  "nnoremap <silent> <C-[> :lprev<cr>
 
-nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'tab drop')<CR>
-nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'tab drop')<CR>
+nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'vsplit')<CR>
 nnoremap <leader>jr :call CocActionAsync('jumpReferences')<CR>
 
 nnoremap K :call <SID>show_documentation()<CR>
@@ -415,12 +425,14 @@ command! MaximiseToggle call s:fullscreen_tab_toggle()
 
 " }}}
 
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
+
 " Normal Mode Mappings
 " ====================
 "s {{{
 
-nnoremap <leader> :WhichKey '<Space>'<CR>
-nnoremap <C-g> :Ag<CR>
+nnoremap <CR> :noh<CR><CR>
+nnoremap <leader> :WhichKey '<Space>'<CR> nnoremap <C-g> :Ag<CR>
 nnoremap <leader>K :Ag!<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
@@ -453,6 +465,8 @@ nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
 nnoremap [B :bfirst<CR>
 nnoremap ]B :blast<CR>
+nnoremap [a :previous<CR>
+nnoremap ]a :next<CR>
 " }}}
 
 " Visual mode mappings
@@ -474,11 +488,13 @@ inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " {{{
 augroup vimrc
   autocmd!
-  autocmd CursorHold * silent call CocActionAsync('highlight')
+  "autocmd CursorHold * silent call CocActionAsync('highlight')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
   autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
   autocmd FileType markdown,conf setlocal linebreak
+  autocmd CmdlineEnter * :set norelativenumber
+  autocmd CmdlineLeave * :set relativenumber
   autocmd FileType markdown,conf setlocal textwidth=80
   autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
@@ -492,7 +508,8 @@ augroup END
 " ====================
 " {{{
 set background=dark
-colorscheme hybrid
+colorscheme vim-material
+let g:airline_theme='material'
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -508,6 +525,8 @@ highlight CocHintSign guifg=green guibg=NONE
 
 highlight terminal
       \ guibg=black
+
+highlight Cursor guifg=black
 
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
@@ -525,47 +544,5 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 "" }}}
-
-" Crystalline
-" ===========
-function! StatusLine(current, width)
-  let l:s = ''
-
-  if a:current
-    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
-  else
-    let l:s .= '%#CrystallineInactive#'
-  endif
-  let l:s .= ' %f%h%w%m%r '
-  if a:current
-    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
-  endif
-
-  let l:s .= '%='
-  if a:current
-    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
-    let l:s .= crystalline#left_mode_sep('')
-  endif
-  if a:width > 80
-    let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
-  else
-    let l:s .= ' '
-  endif
-
-  return l:s
-endfunction
-
-function! TabLine()
-  let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
-  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-endfunction
-
-let g:crystalline_enable_sep = 1
-let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'hybrid'
-
-set showtabline=2
-set guioptions-=e
-set laststatus=2
+let g:airline_powerline_fonts = 1
 
