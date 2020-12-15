@@ -15,12 +15,12 @@ aws-select-account() {
 #   command aws "$@"
 # }
 
-aws() {
-  if [ -z $AWS_DEFAULT_PROFILE ] || [ "$1" = "--switch" ]; then
-    aws-switch-profile-fzf
-  fi
-  command aws "$@"
-}
+# aws() {
+#   if [ -z $AWS_DEFAULT_PROFILE ] || [ "$1" = "--switch" ]; then
+#     aws-switch-profile-fzf
+#   fi
+#   command aws "$@"
+# }
 
 aws-config-reader() {
   unset aws_profiles

@@ -155,3 +155,5 @@ export PATH="/usr/local/sbin:$PATH"
 
 zle -N aws-switch-profile-fzf
 bindkey '^S' aws-switch-profile-fzf
+
+eval `opam env`

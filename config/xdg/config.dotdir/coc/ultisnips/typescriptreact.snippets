@@ -1,0 +1,55 @@
+snippet functionalComponent "Functional react component with arrow function syntax"
+import React from "react";
+
+interface $1Props {
+
+}
+
+const $1: React.FC<$1Props> = (props) => {
+	return <React.Fragment></React.Fragment>
+}
+
+export default $1;
+endsnippet
+
+snippet import "Import statement"
+import { $1 } from '$2'
+endsnippet
+
+snippet importGlobal "Global import statement"
+import * as $1 from '$2'
+endsnippet
+
+snippet importDefault "Default import statement"
+import $1 from '$2'
+endsnippet
+
+snippet eslintDisableNextLine "Disable a specific eslint rule on the next line"
+// eslint-disable-next-line $1
+endsnippet
+
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt

@@ -10,11 +10,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
 Plug 'benwainwright/fzf-project'
-Plug 'benwainwright/pr-blame'
-
-if(has('gui'))
-  Plug 'benwainwright/terminal'
-endif
 
 " " Tim Pope
 Plug 'tpope/vim-rhubarb'
@@ -22,36 +17,31 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 
  " June Gunn
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
- " Misc
-Plug 'liuchengxu/vim-which-key'
+ " " Misc
 Plug 'kshenoy/vim-signature'
 
  " Language plugins
-Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ynkdir/vim-vimlparser'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'jparise/vim-graphql'
 
-" " Color theme
-Plug 'hzchirs/vim-material'
-Plug 'w0ng/vim-hybrid'
+" Color theme
+
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tweekmonster/startuptime.vim'
-
-" Plug 'semanser/vim-outdated-plugins'
-Plug 'puremourning/vimspector'
-Plug 'janko/vim-test'
+Plug 'honza/vim-snippets'
+Plug 'mlaursen/vim-react-snippets'
+Plug 'wellle/targets.vim'
 Plug 'wakatime/vim-wakatime'
-Plug 'syngan/vim-vimlint'
-Plug 'plytophogy/vim-virtualenv', { 'for': 'python' }
 Plug 'gioele/vim-autoswap'
+Plug 'puremourning/vimspector'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
@@ -61,17 +51,15 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'antoinemadec/coc-fzf'
+Plug 'lepture/vim-velocity'
 Plug 'mattn/emmet-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-airline/vim-airline'
-Plug 'frazrepo/vim-rainbow'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
 call plug#end()
 " }}}
-" remap :Ag
-"
 
 " Core VIM settings
 " =================
@@ -87,6 +75,8 @@ set formatoptions+=j
 
 " Increase the undo limit
 set history=1000
+
+set relativenumber
 
 " Persist coc workspace folders in session file
 set sessionoptions+=globals
@@ -108,7 +98,7 @@ filetype indent plugin on
 " you quit without writing to a file)
 set confirm
 
-set updatetime=400
+set updatetime=300
 
 " Allows the vim unknown buffer to work with the system clipboard, so if you
 " yank a piece of text, it will be available to paste outside of VIM
@@ -289,12 +279,11 @@ let g:coc_global_extensions = [
       \ 'coc-vimlsp',
       \ 'coc-snippets',
       \ 'coc-prettier', 
-      \ 'coc-jest', 
-      \ 'coc-inline-jest', 
       \ 'coc-git', 
+      \ 'coc-phpls',
       \ 'coc-eslint',
       \ 'coc-emoji',
-      \ 'coc-yaml',
+      "\ 'coc-yaml',
       \ 'coc-tsserver',
       \ 'coc-python',
       \ 'coc-docker',
@@ -317,11 +306,7 @@ nnoremap <C-e> :CocCommand explorer<CR>
 nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
 
-if has('nvim')
-  nnoremap <leader>s :CocFzfList symbols<CR>
-else
-  nnoremap <leader>s :CocList symbols<CR>
-endif
+nnoremap <leader>s :CocList symbols<CR>
 
 nnoremap <space>ca :CocList actions<CR>
 nmap <leader>r <Plug>(coc-rename)
@@ -340,8 +325,10 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
  " this mapping is causing weird startup errors
  "nnoremap <silent> <C-[> :lprev<cr>
 
-nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
-nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'vsplit')<CR>
+nnoremap <leader>jvd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+nnoremap <leader>jvi :call CocActionAsync('jumpImplementation', 'vsplit')<CR>
+nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'edit')<CR>
+nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'edit')<CR>
 nnoremap <leader>jr :call CocActionAsync('jumpReferences')<CR>
 
 nnoremap K :call <SID>show_documentation()<CR>
@@ -349,8 +336,10 @@ nnoremap K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -432,8 +421,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 "s {{{
 
 nnoremap <CR> :noh<CR><CR>
-nnoremap <leader> :WhichKey '<Space>'<CR> nnoremap <C-g> :Ag<CR>
-nnoremap <leader>K :Ag!<CR>
+nnoremap <leader>G :Ag<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
@@ -467,6 +455,12 @@ nnoremap [B :bfirst<CR>
 nnoremap ]B :blast<CR>
 nnoremap [a :previous<CR>
 nnoremap ]a :next<CR>
+nmap <Tab> <Plug>VimspectorToggleBreakpoint
+nmap <F2> <Plug>VimspectorStepOver
+nmap <F3> <Plug>VimspectorStepInto
+nmap <F4> <Plug>VimspectorStepOut
+nmap <F5> <Plug>VimspectorContinue
+nmap <F6> <Plug>VimspectorRunToCursor
 " }}}
 
 " Visual mode mappings
@@ -488,7 +482,10 @@ inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " {{{
 augroup vimrc
   autocmd!
-  "autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  autocmd BufNewFile,BufRead *.vtl set ft=velocity
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+  autocmd CursorHold * silent call CocActionAsync('highlight')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
   autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
@@ -508,8 +505,16 @@ augroup END
 " ====================
 " {{{
 set background=dark
-colorscheme vim-material
-let g:airline_theme='material'
+colorscheme PaperColor
+
+
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -544,5 +549,35 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 "" }}}
+
+let g:neovide_cursor_vfx_mode = "wireframe"
 let g:airline_powerline_fonts = 1
 
+set guifont=FiraCode\ Nerd\ Font:h18
+
+if has('gui')
+  set macligatures
+endif
+
+set guioptions+=a  " take ownership if windowing systems global selection in Visual mode
+set guioptions+=c  " use console dialogs instead of popups for simple choices
+
+set guioptions-=m  " remove menu bar
+set guioptions-=T  " remove toolbar
+set guioptions-=l  " remove lefthand toolbar
+set guioptions-=L
+set guioptions-=r  " remove righthand toolbar
+
+set showtabline=0
+
+tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
+tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
+tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
+tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
+tnoremap <silent> <C-a>z <c-w>:MaximiseToggle<CR>
+tnoremap <silent> <c-a>x <c-w>:KillCurrentTerminalBuffer<cr> 
+tnoremap <silent> <C-a>l <c-w>:CreateTerminalSplitRight<CR>
+tnoremap <silent> <C-a>h <c-w>:CreateTerminalSplitLeft<CR>
+
+tnoremap <silent> <C-a>k <c-w>:CreateTerminalSplitUp<CR>
+tnoremap <silent> <C-a>j <c-w>:CreateTerminalSplitDown<CR>

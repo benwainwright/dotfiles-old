@@ -13,6 +13,7 @@ bind-key C-a send-prefix
 
 # smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
+
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
@@ -30,6 +31,7 @@ bind-key j split-window -v -c "#{pane_current_path}"
 bind-key k split-window -vb -c "#{pane_current_path}"
 bind-key h split-window -hb -c "#{pane_current_path}"
 bind-key l split-window -h -c "#{pane_current_path}"
+bind-key q split-window -v -c "#{pane_current_path}" -l20
 
 set -g mouse on
 set-option -g history-limit 5000

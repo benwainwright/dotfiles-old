@@ -7,6 +7,14 @@ git-search-prs() {
     parse-number-from-hub-list)
 }
 
+git_main_branch() {
+  if [[ -n "$(git branch --list main)" ]]; then
+    echo main
+  else
+    echo master
+  fi
+}
+
 git-update-with-branch() {
   if [ -z "$1" ]; then
     branch="master"

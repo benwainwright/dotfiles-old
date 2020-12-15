@@ -1,6 +1,7 @@
 {
   "suggest.removeDuplicateItems": true,
   "coc.preferences.jumpCommand": "tabe",
+  "diagnostic.refreshAfterSave": false,
   "codeLens.enable": true,
   "suggest.floatEnable": true,
   "suggest.detailField": "preview",
@@ -8,6 +9,9 @@
   "suggest.enablePreview": true,
   "explorer.icon.enableVimDevicons": true,
   "git.changedSign.text": "",
+  "yaml.schemas": {
+    "http://json.schemastore.org/github-workflow": "*/.github/workfows/*.yaml"
+  },
   "git.addedSign.text": "",
   "git.removedSign.text": "",
   "diagnostic.warningSign": "",
@@ -36,6 +40,7 @@
     "json",
     "yaml"
   ],
+
   "python.jediEnabled": false,
   "languageserver": {
     "swift": {
