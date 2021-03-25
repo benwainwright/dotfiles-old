@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env zsh
 
 force=false
 
@@ -13,13 +13,13 @@ parse_args() {
 }
 
 symlink() {
+  set -s
   local command
   command="ln -s"
   if $force; then
     command+="fn"
   fi
-  echo "Symlinking '$1' to '$2'"
-  $command "$1" "$2"
+  eval "$command $1 $2"
 }
 
 symlink_dotfiles() {

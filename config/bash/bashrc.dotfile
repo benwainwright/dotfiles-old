@@ -5,3 +5,7 @@ eval $(reith print-shell-init-script)
 
 # Magic Reith shell configuration (Automatically added by reith init-shell)
 eval $(reith print-shell-init-script)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -9,7 +9,8 @@ call plug#begin('~/.vim/plugged')
 " Personal plugins
 Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
-Plug 'benwainwright/fzf-project'
+"Plug 'benwainwright/fzf-project'
+Plug '~/repos/fzf-project'
 
 " " Tim Pope
 Plug 'tpope/vim-rhubarb'
@@ -278,6 +279,7 @@ let g:coc_global_extensions = [
       \ 'coc-marketplace',
       \ 'coc-vimlsp',
       \ 'coc-snippets',
+      \ 'coc-tabnine',
       \ 'coc-prettier', 
       \ 'coc-git', 
       \ 'coc-phpls',
@@ -285,7 +287,7 @@ let g:coc_global_extensions = [
       \ 'coc-emoji',
       "\ 'coc-yaml',
       \ 'coc-tsserver',
-      \ 'coc-python',
+      "\ 'coc-python',
       \ 'coc-docker',
       \ 'coc-json',
       \ 'coc-stylelint',

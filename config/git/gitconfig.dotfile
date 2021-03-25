@@ -46,8 +46,6 @@
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
-[commit]
-	template = /Users/wainwb01/.stCommitMsg
 
 [github]
 	user = benwainwright
@@ -55,6 +53,7 @@
 	program = gpg
 [url "git@github.com:"]
 	insteadOf = “https://github.com/”
+	insteadOf = https://github.com
 [credential]
 	helper = store
 [url "foo"]

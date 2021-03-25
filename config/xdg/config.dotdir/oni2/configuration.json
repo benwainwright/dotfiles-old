@@ -1,6 +1,6 @@
 {
   "editor.detectIndentation": true,
-  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "Fira Code",
   "experimental.editor.cursorSmoothCaretAnimation": true,
   "editor.fontSize": 16,
   "editor.largeFileOptimizations": true,

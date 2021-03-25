@@ -13,7 +13,6 @@ local spectacleshift = {"cmd", "alt", "shift"}
 
 hotkey.bind(spectacle, 'T', function() application.launchOrFocus('Things3') end)
 hotkey.bind(spectacle, 'N', function() application.launchOrFocus('Evernote') end)
-hotkey.bind(spectacle, 'I', function() application.launchOrFocus('Alacritty') end)
 hotkey.bind(spectacle, 'M', function() application.launchOrFocus('Spotify') end)
 hotkey.bind(spectacle, 'S', function() application.launchOrFocus('Slack') end)
 hotkey.bind(spectacle, 'G', function() application.launchOrFocus('Jasper') end)
@@ -21,7 +20,7 @@ hotkey.bind(spectacle, 'B', function() application.launchOrFocus('Google Chrome'
 hotkey.bind(spectacle, 'R', function() application.launchOrFocus('Remember The Milk') end)
 hotkey.bind(spectacle, 'C', function() application.launchOrFocus('Calendar') end)
 hotkey.bind(spectacle, 'E', function() application.launchOrFocus('Emacs') end)
-hotkey.bind(spectacle, 'A', function() application.launchOrFocus('Airmail 3') end)
+hotkey.bind(spectacle, 'A', function() application.launchOrFocus('Alacritty') end)
 hotkey.bind(spectacle, 'D', function() application.launchOrFocus('Dash') end)
 hotkey.bind(spectacle, 'F', function() application.launchOrFocus('Finder') end)
 hotkey.bind(spectacle, 'O', function() application.launchOrFocus('Microsoft Outlook') end)
