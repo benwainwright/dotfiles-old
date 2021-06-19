@@ -9,10 +9,9 @@ call plug#begin('~/.vim/plugged')
 " Personal plugins
 Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
-"Plug 'benwainwright/fzf-project'
-Plug '~/repos/fzf-project'
+Plug 'benwainwright/fzf-project'
 
-" " Tim Pope
+"" " Tim Pope
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -20,14 +19,14 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
 
- " June Gunn
+" June Gunn
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
- " " Misc
+" " Misc
 Plug 'kshenoy/vim-signature'
 
- " Language plugins
+" Language plugins
 Plug 'pangloss/vim-javascript'
 Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
@@ -40,7 +39,7 @@ Plug 'tweekmonster/startuptime.vim'
 Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
 Plug 'wellle/targets.vim'
-Plug 'wakatime/vim-wakatime'
+"Plug 'wakatime/vim-wakatime'
 Plug 'gioele/vim-autoswap'
 Plug 'puremourning/vimspector'
 Plug 'ryanoasis/vim-devicons'
@@ -571,6 +570,8 @@ set guioptions-=L
 set guioptions-=r  " remove righthand toolbar
 
 set showtabline=0
+
+set noswapfile
 
 tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
 tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>

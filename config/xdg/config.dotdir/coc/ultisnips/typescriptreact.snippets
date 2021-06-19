@@ -1,15 +1,26 @@
-snippet functionalComponent "Functional react component with arrow function syntax"
-import React from "react";
+snippet fc "Functional react component with arrow function syntax"
+import { FC, Fragment } from "react";
 
 interface $1Props {
 
 }
 
-const $1: React.FC<$1Props> = (props) => {
-	return <React.Fragment></React.Fragment>
+const $1: FC<$1Props> = (props) => {
+	return <Fragment></Fragment>
 }
 
 export default $1;
+endsnippet
+
+snippet comTest "Test file for react component"
+import { shallow } from "enzyme";
+import $1 from "./$2";
+
+describe("The <$1> component", () => {
+	it("renders without errors", () => {
+		shallow(<$1 />)
+	})
+})
 endsnippet
 
 snippet import "Import statement"

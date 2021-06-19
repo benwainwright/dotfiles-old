@@ -1,0 +1,16 @@
+{
+	"telemetry": {
+		"machineId": "9c614e07-fc3e-416f-99a9-a103b38cfe74",
+		"enabled": true
+	},
+	"cli": {
+		"packageManager": "npm"
+	},
+	"feedback": {
+		"firstCheckDate": 1622315191948,
+		"sevenDayFeedbackDate": 1622920216698
+	},
+	"lastExperimentNotice": {
+		"Persistent webpack caching": 1623750172749
+	}
+}

@@ -1,10 +1,14 @@
+comTest
+fc
+functionalComponent
+set
+timeout
+error
 stdout
 eslintDisableNextLine
-functionalComponent
 exp
 class
 foreach
-error
 dev
 import
 new
@@ -17,6 +21,5 @@ if
 forof
 for
 get
-set
 private
 #region
