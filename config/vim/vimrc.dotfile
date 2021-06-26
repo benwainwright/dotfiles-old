@@ -41,7 +41,6 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'wellle/targets.vim'
 "Plug 'wakatime/vim-wakatime'
 Plug 'gioele/vim-autoswap'
-Plug 'puremourning/vimspector'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
@@ -456,12 +455,6 @@ nnoremap [B :bfirst<CR>
 nnoremap ]B :blast<CR>
 nnoremap [a :previous<CR>
 nnoremap ]a :next<CR>
-nmap <Tab> <Plug>VimspectorToggleBreakpoint
-nmap <F2> <Plug>VimspectorStepOver
-nmap <F3> <Plug>VimspectorStepInto
-nmap <F4> <Plug>VimspectorStepOut
-nmap <F5> <Plug>VimspectorContinue
-nmap <F6> <Plug>VimspectorRunToCursor
 " }}}
 
 " Visual mode mappings

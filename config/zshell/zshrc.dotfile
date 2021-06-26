@@ -163,3 +163,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 export REQUESTS_CA_BUNDLE="$HOME/.mac-ca-roots"
+
+export NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist
+export PATH="/usr/local/opt/curl/bin:$PATH"
