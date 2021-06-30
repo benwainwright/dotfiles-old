@@ -23,7 +23,7 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" " Misc
+" Misc
 Plug 'kshenoy/vim-signature'
 
 " Language plugins
@@ -32,19 +32,19 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
 
 " Color theme
-
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
 Plug 'wellle/targets.vim'
-"Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime'
 Plug 'gioele/vim-autoswap'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bkad/CamelCaseMotion'
 Plug 'PeterRincker/vim-argumentative'
@@ -225,6 +225,8 @@ set shortmess+=c   " Shut off completion messages
 " when there is an unknown char after <C-G> in Insert mode
 set belloff+=ctrlg " If Vim beeps during completion
 
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+
 " When opening a file from the command line, this stops
 " the empty buffer appearing as a separate buffer in my
 " tabline
@@ -252,6 +254,7 @@ let g:path_to_python_interpreter = '/usr/bin/python'
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
+
 
 " }}}
 
@@ -365,7 +368,6 @@ if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
 
-let g:gutentags_file_list_command = 'rg --files'
 let g:signify_vcs_list = [ 'git' ]
 let g:argumentobject_force_toplevel = 1
 
@@ -421,8 +423,8 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 "s {{{
 
 nnoremap <CR> :noh<CR><CR>
-nnoremap <leader>G :Ag<CR>
-nnoremap <C-b> :Buffers<CR>
+nnoremap <leader>G :Clap grep2<CR>
+nnoremap <C-b> :Clap buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
@@ -465,17 +467,22 @@ vnoremap <silent> <c-c>cc :Commentary<CR>
 " insert mode mappings
 " =====================
 " {{{
-inoremap <c-u> <esc>gUawi
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " }}}
+
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+xnoremap al $o^
+onoremap al :normal val<CR>
 
 " Autocommands
 " ============
 " {{{
 augroup vimrc
   autocmd!
+    autocmd! FileType json set filetype=jsonc
 
   autocmd BufNewFile,BufRead *.vtl set ft=velocity
   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
