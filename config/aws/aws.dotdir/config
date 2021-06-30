@@ -28,4 +28,4 @@ region=us-east-1
 [profile ben-tnm]
 region=us-east-1
 [default]
-region = eu-west-2
+region = us-east-1
