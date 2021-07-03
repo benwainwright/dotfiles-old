@@ -8,24 +8,17 @@ local geometry = hs.geometry
 local appfinder = hs.appfinder
 
 local mash = {"cmd", "alt", "ctrl"}
-local spectacle = {"cmd", "alt"}
+local cmdCtrl = {"cmd", "alt"}
 local spectacleshift = {"cmd", "alt", "shift"}
+local cmdCtrl = {"cmd", "ctrl"}
 
-hotkey.bind(spectacle, 'T', function() application.launchOrFocus('Things3') end)
-hotkey.bind(spectacle, 'N', function() application.launchOrFocus('Evernote') end)
-hotkey.bind(spectacle, 'M', function() application.launchOrFocus('Spotify') end)
-hotkey.bind(spectacle, 'S', function() application.launchOrFocus('Slack') end)
-hotkey.bind(spectacle, 'G', function() application.launchOrFocus('Jasper') end)
-hotkey.bind(spectacle, 'B', function() application.launchOrFocus('Google Chrome') end)
-hotkey.bind(spectacle, 'R', function() application.launchOrFocus('Remember The Milk') end)
-hotkey.bind(spectacle, 'C', function() application.launchOrFocus('Calendar') end)
-hotkey.bind(spectacle, 'E', function() application.launchOrFocus('Emacs') end)
-hotkey.bind(spectacle, 'A', function() application.launchOrFocus('Alacritty') end)
-hotkey.bind(spectacle, 'D', function() application.launchOrFocus('Dash') end)
-hotkey.bind(spectacle, 'F', function() application.launchOrFocus('Finder') end)
-hotkey.bind(spectacle, 'O', function() application.launchOrFocus('Microsoft Outlook') end)
-hotkey.bind(spectacle, 'V', function() application.launchOrFocus('MacVim') end)
-hotkey.bind(spectacle, 'Z', function() application.launchOrFocus('Zoom.us') end)
+hotkey.bind(cmdCtrl, 'T', function() application.launchOrFocus('Things3') end)
+hotkey.bind(cmdCtrl, 'N', function() application.launchOrFocus('Evernote') end)
+hotkey.bind(cmdCtrl, 'M', function() application.launchOrFocus('Spotify') end)
+hotkey.bind(cmdCtrl, 'B', function() application.launchOrFocus('Google Chrome') end)
+hotkey.bind(cmdCtrl, 'C', function() application.launchOrFocus('Calendar') end)
+hotkey.bind(cmdCtrl, 'I', function() application.launchOrFocus('iTerm') end)
+hotkey.bind(cmdCtrl, 'F', function() application.launchOrFocus('Finder') end)
 hotkey.bind(mash, 'h', function() window.focusedWindow():moveOneScreenWest() end)
 hotkey.bind(mash, 'l', function() window.focusedWindow():moveOneScreenEast() end)
 hotkey.bind(mash, 'j', function() window.focusedWindow():moveOneScreenSouth() end)
@@ -43,19 +36,19 @@ function moveNamedAppTo(name, x, y, h, w)
     app:mainWindow():focus()
 end
 
-hotkey.bind(spectacle, "H", function()
+hotkey.bind(cmdCtrl, "H", function()
     moveTo(window.focusedWindow(), 0, 0, 0.5, 1)
 end)
 
-hotkey.bind(spectacle, "J", function()
+hotkey.bind(cmdCtrl, "J", function()
     moveTo(window.focusedWindow(), 0, 0.5, 1, 0.5)
 end)
 
-hotkey.bind(spectacle, "K", function()
+hotkey.bind(cmdCtrl, "K", function()
     moveTo(window.focusedWindow(), 0, 0, 1, 0.5)
 end)
 
-hotkey.bind(spectacle, "L", function()
+hotkey.bind(cmdCtrl, "L", function()
     moveTo(window.focusedWindow(), 0.5, 0, 0.5, 1)
 end)
 
@@ -80,6 +73,6 @@ hotkey.bind(spectacleshift, "L", function()
 end)
 
 -- Full screen.
-hotkey.bind(spectacle, "F", function()
+hotkey.bind(cmdCtrl, "F", function()
     local win = window.focusedWindow():maximize()
 end)
