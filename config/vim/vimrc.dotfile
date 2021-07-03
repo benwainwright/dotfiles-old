@@ -497,6 +497,8 @@ augroup vimrc
   autocmd FileType markdown,conf setlocal linebreak
   autocmd CmdlineEnter * :set norelativenumber
   autocmd CmdlineLeave * :set relativenumber
+  autocmd FileType coc-explorer setlocal nonumber
+  autocmd FileType coc-explorer setlocal norelativenumber
   autocmd FileType markdown,conf setlocal textwidth=80
   autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
