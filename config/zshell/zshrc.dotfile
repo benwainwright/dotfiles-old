@@ -160,6 +160,12 @@ colors
 setopt PROMPT_SUBST
 export PATH="/usr/local/sbin:$PATH"
 
+
+########################################################
+## Misc setup                                          #
+########################################################
+eval "$(fasd --init posix-alias zsh-hook)"
+
 zle -N aws-switch-profile-fzf
 bindkey '^S' aws-switch-profile-fzf
 
