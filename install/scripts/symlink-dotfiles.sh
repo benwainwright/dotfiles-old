@@ -1,4 +1,4 @@
-source $SCRIPTS/lib/symlink.sh
+source $SCRIPTS/symlink.sh
 symlink_dotfiles() {
   echo "\nSymlinking dotfiles"
   echo "***"

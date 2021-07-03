@@ -3,7 +3,7 @@
 DOTFILES=~/dotfiles
 SCRIPTS=$DOTFILES/install/scripts
 
-source $SCRIPTS/lib/index.sh
+source $SCRIPTS/index.sh
 
 parse_args "$@"
 
