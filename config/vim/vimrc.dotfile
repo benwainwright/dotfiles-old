@@ -32,6 +32,7 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
 
 " Color theme
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -507,16 +508,7 @@ augroup END
 " ====================
 " {{{
 set background=dark
-colorscheme PaperColor
-
-
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
+colorscheme material
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
