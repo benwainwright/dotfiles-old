@@ -487,7 +487,6 @@ augroup vimrc
     autocmd! FileType json set filetype=jsonc
 
   autocmd BufNewFile,BufRead *.vtl set ft=velocity
-  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
   autocmd CursorHold * silent call CocActionAsync('highlight')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
