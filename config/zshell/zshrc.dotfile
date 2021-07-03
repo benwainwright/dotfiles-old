@@ -8,8 +8,10 @@ fi
 ########################################################
 ## Bootstrap TMUX                                      #
 ########################################################
-ZSH_TMUX_AUTOSTART=true
 
+export ZSH_TMUX_AUTOSTART=true
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
 
 ########################################################
 ## Load #
@@ -27,6 +29,11 @@ function add_completion_dirs_to_fpath() {
   done
 }
 add_completion_dirs_to_fpath
+
+#######################################################
+# Plugin environment variables                        #
+#######################################################
+
 
 #######################################################
 # Load plugins                                        #
@@ -163,3 +170,7 @@ export REQUESTS_CA_BUNDLE="$HOME/.mac-ca-roots"
 
 export NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist
 export PATH="/usr/local/opt/curl/bin:$PATH"
+
+
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
