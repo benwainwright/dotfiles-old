@@ -6,7 +6,7 @@ local on_attach = function(client, bufnr)
 
   local opts = { noremap=true, silent=true }
 
-  d
+  buf_set_keymap('n', 'jD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'jd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
