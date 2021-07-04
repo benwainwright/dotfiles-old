@@ -12,6 +12,7 @@ local cmdCtrl = {"cmd", "alt"}
 local spectacleshift = {"cmd", "alt", "shift"}
 local cmdCtrl = {"cmd", "ctrl"}
 
+hotkey.bind(cmdCtrl, 'E', function() application.launchOrFocus('Microsoft Teams') end)
 hotkey.bind(cmdCtrl, 'T', function() application.launchOrFocus('Things3') end)
 hotkey.bind(cmdCtrl, 'N', function() application.launchOrFocus('Evernote') end)
 hotkey.bind(cmdCtrl, 'M', function() application.launchOrFocus('Spotify') end)
