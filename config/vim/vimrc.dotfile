@@ -427,6 +427,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 " ====================
 "s {{{
 
+nnoremap <leader>a :CocAction<CR>
 nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>G :Clap grep2<CR>
 nnoremap <C-b> :Clap buffers<CR>
