@@ -69,6 +69,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'luochen1990/rainbow'
 Plug 'preservim/vimux'
+Plug 'mfussenegger/nvim-dap'
 let g:rainbow_active = 1
 
 " vimrc
