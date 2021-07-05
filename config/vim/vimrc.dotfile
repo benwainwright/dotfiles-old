@@ -32,15 +32,22 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
 Plug 'neovim/nvim-lspconfig'
 
+" LSP
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+" Plug 'RishabhRD/popfix'
+" Plug 'RishabhRD/nvim-lsputils'
+" Plug 'kosayoda/nvim-lightbulb'
+" Plug 'onsails/lspkind-nvim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Color theme
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'sainnhe/sonokai'
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-test/vim-test'
-Plug 'nvim-lua/completion-nvim'
-Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'tweekmonster/startuptime.vim'
 Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
@@ -62,9 +69,20 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
+" vimrc
+let g:completion_chain_complete_list = {
+    \ 'default': [
+    \    {'complete_items': ['lsp', 'snippet', 'tabnine']},
+    \    {'mode': '<c-p>'},
+    \    {'mode': '<c-n>'}
+    \]
+\}
+
 call plug#end()
 " }}}
 
+let g:completion_trigger_character = [".", "\"", ",", "/", "@", "<", "(", "[", "{", "=", ">"]
+let g:completion_timer_cycle = 50
 " Core VIM settings
 " =================
 " {{{
@@ -271,7 +289,37 @@ let maplocalleader = "\\"
 "{{{
 let g:coc_config_home = $HOME . '/.vim' 
 
+function! s:check_back_space() abort
+    let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+"Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
 let g:coc_global_extensions = [
+      \ 'coc-marketplace',
+      \ 'coc-scssmodules',
+      \ 'coc-sh',
+      \ 'coc-react-refactor',
+      \ 'coc-vimlsp',
+      \ 'coc-phpls',
+      \ 'coc-eslint',
+      \ 'coc-emoji',
+      "\ 'coc-yaml',
+      \ 'coc-tsserver',
+      "\ 'coc-python',
+      \ 'coc-snippets',
+      \ 'coc-json',
+      \ 'coc-webpack',
+      \ 'coc-stylelint',
+      \ 'coc-css',
+      \ 'coc-tabnine',
       \ 'coc-prettier', 
       \ 'coc-git', 
       \ 'coc-docker',
@@ -284,6 +332,46 @@ let g:coc_global_extensions = [
 
 
 nnoremap <C-e> :CocCommand explorer<CR>
+
+nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
+nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
+
+nnoremap <leader>s :CocList symbols<CR>
+
+nnoremap <space>ca :CocList actions<CR>
+nmap <leader>r <Plug>(coc-rename)
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
+
+ " this mapping is causing weird startup errors
+ "nnoremap <silent> <C-[> :lprev<cr>
+
+nnoremap <leader>jvd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+nnoremap <leader>jvi :call CocActionAsync('jumpImplementation', 'vsplit')<CR>
+nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'edit')<CR>
+nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'edit')<CR>
+nnoremap <leader>jr :call CocActionAsync('jumpReferences')<CR>
+
+nnoremap K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 "" }}}
 
@@ -320,7 +408,6 @@ let g:fzfSwitchProjectWorkspaces = [
       \ "~/go/src/github.com/bbc"
       \ ]
 
-let g:asyncomplete_auto_completeopt = 0
 let g:fzf_layout = { 'down': '~40%' }
 "" }}}
 
@@ -425,6 +512,8 @@ augroup vimrc
     autocmd! FileType json set filetype=jsonc
 
   autocmd BufNewFile,BufRead *.vtl set ft=velocity
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   " autocmd CursorHold * silent call CocActionAsync('highlight')
   " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
@@ -447,7 +536,7 @@ augroup END
 " ====================
 " {{{
 set background=dark
-colorscheme material
+colorscheme sonokai
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg

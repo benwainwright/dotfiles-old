@@ -6,8 +6,8 @@ local on_attach = function(client, bufnr)
 
   local opts = { noremap=true, silent=true }
 
-  buf_set_keymap('n', 'jD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'jd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -17,7 +17,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'jr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -34,15 +34,62 @@ local on_attach = function(client, bufnr)
   {text = ""})
   vim.fn.sign_define("LspDiagnosticsSignHint",
   {text = ""})
+
+  vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+  vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+  vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+  vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+  vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+  vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+  vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+  vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+
+  vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+  require('lspkind').init({
+    --
+    with_text = false,
+
+    -- default symbol map
+    -- can be either 'default' or
+    -- 'codicons' for codicon preset (requires vscode-codicons font installed)
+    --
+    -- default: 'default'
+    preset = 'codicons',
+
+    -- override preset symbols
+    --
+    -- default: {}
+    symbol_map = {
+      Text = '',
+      Method = 'ƒ',
+      Function = '',
+      Constructor = '',
+      Variable = '',
+      Class = '',
+      Interface = 'ﰮ',
+      Module = '',
+      Property = '',
+      Unit = '',
+      Value = '',
+      Enum = '了',
+      Keyword = '',
+      Snippet = '﬌',
+      Color = '',
+      File = '',
+      Folder = '',
+      EnumMember = '',
+      Constant = '',
+      Struct = ''
+    },
+  })
 end
 
-local servers = { 'tsserver', 'bashls', 'vimls', 'graphql', 'pyls', 'stylelint_lsp', 'vscode-langservers-extracted', 'jsonls' }
+local servers = { 'tsserver'
+, 'bashls', 'vimls', 'graphql', 'pyls', 'stylelint_lsp', 'vscode-langservers-extracted', 'jsonls' }
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
 }
 
 nvim_lsp.diagnosticls.setup {
