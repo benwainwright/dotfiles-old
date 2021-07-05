@@ -48,6 +48,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'tweekmonster/startuptime.vim'
 Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
@@ -67,6 +68,7 @@ Plug 'mattn/emmet-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'luochen1990/rainbow'
+Plug 'preservim/vimux'
 let g:rainbow_active = 1
 
 " vimrc
@@ -384,11 +386,12 @@ endfunction
 "
 " instead of inserting one
 let g:AutoPairsMultilineClose = 0
-
+let test#javascript#jest#options = "--color=always"
 let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
-let g:test#strategy = 'kitty'
+let g:test#strategy = 'vimux'
 
-let test#javascript#jest#file_pattern = '\v.+.spec.(js|jsx|ts|tsx)$'
+
+let test#javascript#jest#file_pattern = '\v.+.(spec|spec.node).(js|jsx|ts|tsx)$'
 
 " See https://github.com/ryanoasis/vim-devicons/issues/154#issuecomment-281095173
 if exists('g:loaded_webdevicons')
@@ -510,25 +513,25 @@ onoremap al :normal val<CR>
 augroup vimrc
   autocmd!
     autocmd! FileType json set filetype=jsonc
-
-  autocmd BufNewFile,BufRead *.vtl set ft=velocity
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  " autocmd CursorHold * silent call CocActionAsync('highlight')
-  " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
-  autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
-  autocmd FileType markdown,conf setlocal linebreak
-  autocmd CmdlineEnter * :set norelativenumber
-  autocmd CmdlineLeave * :set relativenumber
-  autocmd FileType coc-explorer setlocal nonumber
-  autocmd FileType coc-explorer setlocal norelativenumber
-  autocmd FileType markdown,conf setlocal textwidth=80
-  autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
-  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
-  autocmd bufwritepost ~/.vimrc source ~/.vimrc
-  autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+    au BufWritePost * UltestNearest
+    autocmd BufNewFile,BufRead *.vtl set ft=velocity
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    " autocmd CursorHold * silent call CocActionAsync('highlight')
+    " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
+    autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
+    autocmd FileType markdown,conf setlocal linebreak
+    autocmd CmdlineEnter * :set norelativenumber
+    autocmd CmdlineLeave * :set relativenumber
+    autocmd FileType coc-explorer setlocal nonumber
+    autocmd FileType coc-explorer setlocal norelativenumber
+    autocmd FileType markdown,conf setlocal textwidth=80
+    autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
+    autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+    autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+    autocmd bufwritepost ~/.vimrc source ~/.vimrc
+    autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
 augroup END
 " }}}
 
