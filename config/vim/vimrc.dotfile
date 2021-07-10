@@ -48,7 +48,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-test/vim-test'
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'tweekmonster/startuptime.vim'
 Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
@@ -318,6 +318,7 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       "\ 'coc-python',
       \ 'coc-snippets',
+      \ 'coc-actions',
       \ 'coc-json',
       \ 'coc-webpack',
       \ 'coc-stylelint',
@@ -341,7 +342,8 @@ nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
 
 nnoremap <leader>s :CocList symbols<CR>
 
-nnoremap <space>ca :CocList actions<CR>
+nnoremap <space>a :CocAction<CR>
+vnoremap <leader>a :CocAction<CR>
 nmap <leader>r <Plug>(coc-rename)
 " Run jest for current project
 command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
@@ -408,8 +410,7 @@ let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
 let g:fzfSwitchProjectWorkspaces = [
       \ "~/workspace",
       \ "~/repos",
-      \ "~/go/src/github.com/benwainwright",
-      \ "~/go/src/github.com/bbc"
+      \ "~/cinch-repos"
       \ ]
 
 let g:fzf_layout = { 'down': '~40%' }
@@ -452,10 +453,16 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 " ====================
 "s {{{
 
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <leader>a :CocAction<CR>
 nnoremap <CR> :noh<CR><CR>
-nnoremap <leader>G :Clap grep2<CR>
-nnoremap <C-b> :Clap buffers<CR>
+nnoremap <leader>G :Ag<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Tags<CR>
@@ -514,7 +521,7 @@ onoremap al :normal val<CR>
 augroup vimrc
   autocmd!
     autocmd! FileType json set filetype=jsonc
-    au BufWritePost * UltestNearest
+    " au BufWritePost * UltestNearest
     autocmd BufNewFile,BufRead *.vtl set ft=velocity
     autocmd CursorHold * silent call CocActionAsync('highlight')
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
