@@ -1,0 +1,5 @@
+require("load-vim-config")
+require("plugins")
+require("lsp")
+require("load-compe")
+require("custom-highlights")
