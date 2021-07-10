@@ -1,4 +1,6 @@
-{
+ {
+  "Lua.workspace.maxPreload": 2000,
+  "Lua.workspace.preloadFileSize": 10000,
   "suggest.removeDuplicateItems": true,
   "coc.preferences.jumpCommand": "tabe",
   "diagnostic.virtualTextCurrentLineOnly": false,

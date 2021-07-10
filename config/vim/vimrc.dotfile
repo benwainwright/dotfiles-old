@@ -31,6 +31,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
 
 " LSP
 " Plug 'nvim-lua/completion-nvim'
@@ -42,9 +43,11 @@ Plug 'neovim/nvim-lspconfig'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Color theme
-Plug 'sainnhe/sonokai'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'projekt0n/github-nvim-theme'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-test/vim-test'
@@ -58,6 +61,7 @@ Plug 'gioele/vim-autoswap'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
+Plug 'sindrets/diffview.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bkad/CamelCaseMotion'
 Plug 'PeterRincker/vim-argumentative'
@@ -68,6 +72,7 @@ Plug 'mattn/emmet-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'luochen1990/rainbow'
+Plug 'TimUntersberger/neogit'
 Plug 'preservim/vimux'
 Plug 'mfussenegger/nvim-dap'
 let g:rainbow_active = 1
@@ -84,6 +89,10 @@ let g:completion_chain_complete_list = {
 call plug#end()
 " }}}
 
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_update_cwd = 1
+let g:nvim_tree_follow = 1
 let g:completion_trigger_character = [".", "\"", ",", "/", "@", "<", "(", "[", "{", "=", ">"]
 let g:completion_timer_cycle = 50
 " Core VIM settings
@@ -308,15 +317,14 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:coc_global_extensions = [
       \ 'coc-marketplace',
       \ 'coc-scssmodules',
+      \ 'coc-lua', 
       \ 'coc-sh',
       \ 'coc-react-refactor',
       \ 'coc-vimlsp',
       \ 'coc-phpls',
       \ 'coc-eslint',
       \ 'coc-emoji',
-      "\ 'coc-yaml',
       \ 'coc-tsserver',
-      "\ 'coc-python',
       \ 'coc-snippets',
       \ 'coc-actions',
       \ 'coc-json',
@@ -325,17 +333,15 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-tabnine',
       \ 'coc-prettier', 
-      \ 'coc-git', 
       \ 'coc-docker',
       \ 'coc-highlight',
       \ 'coc-emmet',
       \ 'coc-html',
       \ 'coc-markdownlint',
-      \ 'coc-explorer',
       \ ]
 
 
-nnoremap <C-e> :CocCommand explorer<CR>
+nnoremap <C-e> :NvimTreeToggle<CR>
 
 nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
 nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
@@ -473,7 +479,7 @@ nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>pp :Gpush<CR>
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Neogit kind=split<CR>
 nnoremap <leader>gb :CheckoutBranch<CR>
 nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
@@ -530,6 +536,7 @@ augroup vimrc
     autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
     autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
     autocmd FileType markdown,conf setlocal linebreak
+    autocmd FileType NvimTree setlocal relativenumber
     autocmd CmdlineEnter * :set norelativenumber
     autocmd CmdlineLeave * :set relativenumber
     autocmd FileType coc-explorer setlocal nonumber
@@ -546,8 +553,6 @@ augroup END
 " Colors and Highlights
 " ====================
 " {{{
-set background=dark
-colorscheme sonokai
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -584,7 +589,6 @@ let g:fzf_colors =
 "" }}}
 
 let g:neovide_cursor_vfx_mode = "wireframe"
-let g:airline_powerline_fonts = 1
 
 set guifont=FiraCode\ Nerd\ Font:h18
 
@@ -610,3 +614,5 @@ tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
 tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
 tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
 tnoremap <silent> <C-a>z <c-w>:MaximiseToggle<CR>
+
+highlight DiffAdd ctermbg=NONE guibg=NONE ctermfg=green guifg=green 
