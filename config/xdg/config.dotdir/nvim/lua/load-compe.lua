@@ -32,3 +32,5 @@ require'compe'.setup {
     luasnip = true;
   };
 }
+
+vim.api.nvim_set_var("completion_enable_snippet", "UltiSnips")

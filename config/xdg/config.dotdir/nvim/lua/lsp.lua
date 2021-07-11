@@ -97,7 +97,7 @@ local lspInstallServers = {
   'python',
   'css',
   'json',
---  'lua'
+  --'lua'
 }
 
 for _, server in ipairs(lspInstallServers) do
@@ -111,7 +111,32 @@ lspInstall.setup()
 local servers = lspInstall.installed_servers()
 
 for _, server in pairs(servers) do
-  if server == "diagnosticls" then
+  if server == "tsserver"then
+
+    lspConfig.tsserver.setup {
+
+      on_attach = function(client, bufnr)
+
+        local ts_utils = require("nvim-lsp-ts-utils")
+
+        -- defaults
+        ts_utils.setup {
+          eslint_enable_diagnostics = false,
+          enable_formatting = false,
+
+          update_imports_on_move = true,
+          require_confirmation_on_move = false,
+          watch_dir = nil,
+        }
+
+        -- required to fix code action ranges
+        ts_utils.setup_client(client)
+
+        on_attach(client, bufnr)
+      end
+    }
+
+  elseif server == "diagnosticls" then
     lspConfig.diagnosticls.setup {
       on_attach = on_attach,
       filetypes = {"typescript", "typescriptreact"},
@@ -198,6 +223,5 @@ for _, server in pairs(servers) do
       on_attach = on_attach,
     }
   end
-
 end
 

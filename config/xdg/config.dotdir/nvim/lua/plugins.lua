@@ -1,7 +1,10 @@
 return require('packer').startup(function(use)
 
   use {
+    "SirVer/ultisnips"
+  }
 
+  use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
@@ -10,6 +13,7 @@ return require('packer').startup(function(use)
   }
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'benwainwright/fzf-project' }
 
   use { 
     'projekt0n/github-nvim-theme',
@@ -42,5 +46,18 @@ return require('packer').startup(function(use)
         }
       }
     end
+  }
+
+  use {
+    'neovim/nvim-lspconfig',
+  }
+  use {
+    'jose-elias-alvarez/nvim-lsp-ts-utils',
+    {
+      requires = {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function() require("null-ls").setup() end
+      }
+    }
   }
 end)
