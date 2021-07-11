@@ -187,3 +187,4 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"

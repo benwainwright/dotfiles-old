@@ -395,6 +395,11 @@ augroup vimrc
     autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
     autocmd bufwritepost ~/.vimrc source ~/.vimrc
     autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+    autocmd FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
+          \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+          \  1,
+          \  0
+          \)
 augroup END
 " }}}
 
