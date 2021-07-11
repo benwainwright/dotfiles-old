@@ -97,7 +97,7 @@ local lspInstallServers = {
   'python',
   'css',
   'json',
-  'lua'
+--  'lua'
 }
 
 for _, server in ipairs(lspInstallServers) do

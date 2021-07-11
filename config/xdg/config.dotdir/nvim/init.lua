@@ -1,5 +1,7 @@
 require("load-vim-config")
-require("plugins")
+require("core-settings")
 require("lsp")
 require("load-compe")
+require("plugins")
+require("treesitter")
 require("custom-highlights")
