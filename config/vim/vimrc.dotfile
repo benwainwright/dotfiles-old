@@ -37,7 +37,6 @@ Plug 'nvim-lua/plenary.nvim'
 " LSP
 Plug 'hrsh7th/nvim-compe'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/trouble.nvim'
 Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
@@ -49,10 +48,7 @@ Plug 'onsails/lspkind-nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Color theme
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'projekt0n/github-nvim-theme'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'hoob3rt/lualine.nvim'
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -78,7 +74,6 @@ Plug 'mattn/emmet-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'luochen1990/rainbow'
-Plug 'TimUntersberger/neogit'
 Plug 'preservim/vimux'
 Plug 'mfussenegger/nvim-dap'
 let g:rainbow_active = 1
