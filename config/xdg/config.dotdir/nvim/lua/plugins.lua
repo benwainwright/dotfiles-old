@@ -12,6 +12,14 @@ return require('packer').startup(function(use)
     end
   }
 
+  use { 
+    "weirongxu/plantuml-previewer.vim",
+    requires = {
+      "tyru/open-browser.vim",
+      "aklt/plantuml-syntax"
+    }
+  }
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'benwainwright/fzf-project' }
 
