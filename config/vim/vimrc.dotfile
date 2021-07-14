@@ -55,6 +55,7 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'wellle/targets.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'gioele/vim-autoswap'
+Plug 'aklt/plantuml-syntax'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
@@ -454,7 +455,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 nnoremap <leader>a :CocAction<CR>
 nnoremap <CR> :noh<CR><CR>
-nnoremap <leader>G :Clap grep2<CR>
+nnoremap <leader>G :Ag<CR>
 nnoremap <C-b> :Clap buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
