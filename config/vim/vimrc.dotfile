@@ -107,6 +107,7 @@ if bufname('%') == ''
   set bufhidden=wipe
 endif
 
+set signcolumn=yes
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
 let &t_ut=''
 
@@ -359,9 +360,9 @@ vnoremap <silent> <c-c>cc :Commentary<CR>
 " insert mode mappings
 " =====================
 " {{{
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " }}}
 
 xnoremap il g_o^
