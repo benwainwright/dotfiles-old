@@ -114,7 +114,7 @@ for _, server in pairs(servers) do
   if server == "tsserver"then
 
     lspConfig.tsserver.setup {
-
+      debounce_text_changes = 150,
       on_attach = function(client, bufnr)
 
         local ts_utils = require("nvim-lsp-ts-utils")
@@ -123,7 +123,6 @@ for _, server in pairs(servers) do
         ts_utils.setup {
           eslint_enable_diagnostics = false,
           enable_formatting = false,
-
           update_imports_on_move = true,
           require_confirmation_on_move = false,
           watch_dir = nil,
@@ -197,24 +196,19 @@ for _, server in pairs(servers) do
           pandoc = 'markdownlint'
         },
         formatters = {
-          prettierEslint = {
-            command = 'prettier-eslint',
-            args = { '--stdin' },
-            rootPatterns = { '.git' },
-          },
           prettier = {
-            command = 'prettier',
-            args = { '--stdin-filepath', '%filename' }
+            args = { '--stdin-filepath', '%filename' },
+            command = './node_modules/.bin/prettier',
           }
         },
         formatFiletypes = {
           css = 'prettier',
-          javascript = 'prettierEslint',
-          javascriptreact = 'prettierEslint',
+          javascript = 'prettier',
+          javascriptreact = 'prettier',
           json = 'prettier',
           scss = 'prettier',
-          typescript = 'prettierEslint',
-          typescriptreact = 'prettierEslint'
+          typescript = 'prettier',
+          typescriptreact = 'prettier'
         }
       }
     }

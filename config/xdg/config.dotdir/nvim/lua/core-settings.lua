@@ -131,7 +131,7 @@ options.set("undofile", true)
 
 -- Add these characters to VIM's definition of what a 'word'
 -- is for the purposes of motions
-options.append("iskeyword", "_,$,@,%,-")
+options.append("iskeyword", ",_,$,@,%,-")
 
 -- Completion options
 -- * menu: Use a popup menu to show the possible completions

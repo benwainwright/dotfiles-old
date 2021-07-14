@@ -7,7 +7,6 @@ runtime macros/matchit.vim
 call plug#begin('~/.vim/plugged')
 
 " Personal plugins
-Plug 'sbdchd/neoformat'
 Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
 
@@ -25,6 +24,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Misc
 Plug 'kshenoy/vim-signature'
+Plug 'sbdchd/neoformat'
 
 " Language plugins
 Plug 'pangloss/vim-javascript'
@@ -32,6 +32,7 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
+
 
 " LSP
 Plug 'hrsh7th/nvim-compe'
@@ -373,9 +374,11 @@ onoremap al :normal val<CR>
 " {{{
 augroup vimrc
   autocmd!
+
     autocmd! FileType json set filetype=jsonc
     " au BufWritePost * UltestNearest
     autocmd BufNewFile,BufRead *.vtl set ft=velocity
+    autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
     " autocmd CursorHold * silent call CocActionAsync('highlight')
     " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     " autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -386,7 +389,6 @@ augroup vimrc
     autocmd FileType NvimTree setlocal relativenumber
     autocmd CmdlineEnter * :set norelativenumber
     autocmd CmdlineLeave * :set relativenumber
-    autocmd BufWritePre * undojoin | Neoformat
     autocmd FileType coc-explorer setlocal nonumber
     autocmd FileType coc-explorer setlocal norelativenumber
     autocmd FileType markdown,conf setlocal textwidth=80
