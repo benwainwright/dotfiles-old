@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 " Personal plugins
 Plug 'benwainwright/fzf-git'
 Plug '/Users/wainwb01/repos/git-extras'
-Plug 'benwainwright/fzf-project'
 
 "" " Tim Pope
 Plug 'tpope/vim-rhubarb'
@@ -25,45 +24,51 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Misc
 Plug 'kshenoy/vim-signature'
+Plug 'sbdchd/neoformat'
 
 " Language plugins
 Plug 'pangloss/vim-javascript'
 Plug 'ynkdir/vim-vimlparser'
 Plug 'jparise/vim-graphql'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+
 
 " LSP
+Plug 'hrsh7th/nvim-compe'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-" Plug 'RishabhRD/popfix'
-" Plug 'RishabhRD/nvim-lsputils'
-" Plug 'kosayoda/nvim-lightbulb'
-" Plug 'onsails/lspkind-nvim'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'onsails/lspkind-nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Color theme
-Plug 'sainnhe/sonokai'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'vim-airline/vim-airline'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-test/vim-test'
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'tweekmonster/startuptime.vim'
 Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
 Plug 'wellle/targets.vim'
-Plug 'wakatime/vim-wakatime'
 Plug 'gioele/vim-autoswap'
 Plug 'aklt/plantuml-syntax'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
+Plug 'sindrets/diffview.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bkad/CamelCaseMotion'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'lepture/vim-velocity'
 Plug 'mattn/emmet-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -85,175 +90,17 @@ let g:completion_chain_complete_list = {
 call plug#end()
 " }}}
 
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_lsp_diagnostics = 1
+let g:nvim_tree_update_cwd = 1
+let g:nvim_tree_follow = 1
 let g:completion_trigger_character = [".", "\"", ",", "/", "@", "<", "(", "[", "{", "=", ">"]
 let g:completion_timer_cycle = 50
+
 " Core VIM settings
 " =================
 " {{{
-
-if(has('nvim'))
-  set title
-  let &titlestring='%t - nvim'
-endif
-
-" Delete comment characters when joining lines
-set formatoptions+=j
-
-" Increase the undo limit
-set history=1000
-
-set relativenumber
-
-" Persist coc workspace folders in session file
-set sessionoptions+=globals
-
-" Enable syntax highlighting
-syntax enable
-
-" Indicates a fast terminal connection
-set ttyfast
-
-set nrformats=bin,hex
-
-" attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype
-" and for plugins that are filetype specific.
-filetype indent plugin on
-
-" Actual confirm box rather than dialog box on errors (such as if
-" you quit without writing to a file)
-set confirm
-
-set updatetime=300
-
-" Allows the vim unknown buffer to work with the system clipboard, so if you
-" yank a piece of text, it will be available to paste outside of VIM
-set clipboard=unnamed
-
-" How characters are represented by VIM internally
-set encoding=UTF-8
-
-" Default character encoding for a new buffer
-setglobal fileencoding=utf-8
-
-" The buffer local setting 'fileencoding' setting specifies
-" the encoding of a given buffer. This list will be used
-" in order to decide what to set it to
-set fileencodings=ucs-bom,utf-8,latin1
-
-" Without this setting, when I switch to a new buffer, the current
-" one is unloaded. This means that if I've made a change I'll then
-" be asked if I want to save it. With this turned on, the buffer
-" simply becomes 'hidden'
-set hidden
-
-" Don't redraw the screen while executing macros, registers and other
-" untyped commands
-set lazyredraw
-
-" All horizontal splits go to the bottom half
-set splitbelow
-
-" Number of spaces that tab counts for
-set tabstop=2
-
-" In insert mode, use the appropriate number of spaces to insert a tab
-set expandtab
-
-" Number of spaces used for indentation
-set shiftwidth=2
-
-" Indenting (so << and >>) is rounded to multiples of 'shiftwidth'
-set shiftround
-
-" Use marker comments for code folding
-set foldmethod=marker
-
-" Highlight search hits
-set hlsearch
-
-" Update search matches as characters are added to search
-set incsearch
-
-" Ignore case in search patterns
-set ignorecase
-
-" Override the 'ignorecase' setting if the search pattern
-" contains uppercase characters
-set smartcase
-
-" set 'nocompatible' to ward off unexpected things that your
-" distro might have made, as well as sanely reset options when
-" re-sourcing .vimrc
-set nocompatible
-
-" Completion mode:
-" - longest: Complete till ongest common string
-" - list: When more than one match, list all matches
-" - full: Complete the next full match
-set wildmode=longest,list,full
-
-" Enhanced command line completion mode
-set wildmenu
-
-" Show last command in the last line of the screen
-set showcmd
-
-set signcolumn=yes
-
-" Always show the statusline regardless of how many windows there are
-set laststatus=2
-
-" Show line and column numbers
-set ruler
-
-" Turn on line numbers
-
-" Vertical splits always open on the right
-set splitright
-
-" Where to store all temporary data (e.g. swap files)
-set directory^=$HOME/.vim/tmp/
-
-set backupdir=$HOME/.vim/backup/
-
-" When debugging, put the verbose logfile here
-set verbosefile=~/vim-verbose.log
-
-" If the file change son disk and the buffer hasn't changed
-" autoread from disk
-set autoread
-
-" Write to disk automatically
-set autowrite
-
-" Store undo data between vim sessions
-if has("persistent_undo")
-  set undofile
-  set undodir=~/.vim/undo
-endif
-
-" Add these characters to VIM's definition of what a 'word'
-" is for the purposes of motions
-set iskeyword+=_,$,@,%,-
-
-" Completion options
-" - menu: Use a popup menu to show the possible completions
-" - menuone: Use the popup menu also when there is only one match
-" - preview: Show extra information about the selected completion
-" - noselect: Do not select a match in the menu. Force the user to choose
-set completeopt+=menuone,noinsert,preview,noselect
-
-" Don't show 'ins-completion-menu' messages, e.g. "match 1 of 2"
-" "the only match" are not shown
-set shortmess+=c   " Shut off completion messages
-
-" Turns off the bell in specific situations. In this case
-" when there is an unknown char after <C-G> in Insert mode
-set belloff+=ctrlg " If Vim beeps during completion
-
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-
 " When opening a file from the command line, this stops
 " the empty buffer appearing as a separate buffer in my
 " tabline
@@ -261,9 +108,20 @@ if bufname('%') == ''
   set bufhidden=wipe
 endif
 
+set signcolumn=yes
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
 let &t_ut=''
 
+
+set directory^=$HOME/.vim/tmp/
+
+set backupdir=$HOME/.vim/backup/
+
+" Store undo data between vim sessions
+if has("persistent_undo")
+  set undofile
+  set undodir=~/.vim/undo
+endif
 
 if exists('+termguicolors')
   set t_Co=256
@@ -291,93 +149,91 @@ let maplocalleader = "\\"
 " COC
 " ===
 "{{{
-let g:coc_config_home = $HOME . '/.vim' 
+"let g:coc_config_home = $HOME . '/.vim' 
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
+"function! s:check_back_space() abort
+"    let col = col('.') - 1
+"      return !col || getline('.')[col - 1]  =~ '\s'
+"    endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
 
-"Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+""Close preview window when completion is done.
+"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:coc_global_extensions = [
-      \ 'coc-marketplace',
-      \ 'coc-scssmodules',
-      \ 'coc-sh',
-      \ 'coc-react-refactor',
-      \ 'coc-vimlsp',
-      \ 'coc-phpls',
-      \ 'coc-eslint',
-      \ 'coc-emoji',
-      "\ 'coc-yaml',
-      \ 'coc-tsserver',
-      "\ 'coc-python',
-      \ 'coc-snippets',
-      \ 'coc-json',
-      \ 'coc-webpack',
-      \ 'coc-stylelint',
-      \ 'coc-css',
-      \ 'coc-tabnine',
-      \ 'coc-prettier', 
-      \ 'coc-git', 
-      \ 'coc-docker',
-      \ 'coc-highlight',
-      \ 'coc-emmet',
-      \ 'coc-html',
-      \ 'coc-markdownlint',
-      \ 'coc-explorer',
-      \ ]
+"let g:coc_global_extensions = [
+"      \ 'coc-marketplace',
+"      \ 'coc-scssmodules',
+"      \ 'coc-lua', 
+"      \ 'coc-sh',
+"      \ 'coc-react-refactor',
+"      \ 'coc-vimlsp',
+"      \ 'coc-phpls',
+"      \ 'coc-eslint',
+"      \ 'coc-emoji',
+"      \ 'coc-tsserver',
+"      \ 'coc-snippets',
+"      \ 'coc-actions',
+"      \ 'coc-json',
+"      \ 'coc-webpack',
+"      \ 'coc-stylelint',
+"      \ 'coc-css',
+"      \ 'coc-tabnine',
+"      \ 'coc-prettier', 
+"      \ 'coc-docker',
+"      \ 'coc-highlight',
+"      \ 'coc-emmet',
+"      \ 'coc-html',
+"      \ 'coc-markdownlint',
+"      \ ]
 
 
-nnoremap <C-e> :CocCommand explorer<CR>
+"nnoremap <C-e> :NvimTreeToggle<CR>
 
-nnoremap <leader>hs :call CocAction("runCommand", "git.chunkStage")<CR>
-nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
+"nnoremap <leader>e  :<C-u>CocList diagnostics<CR>
 
-nnoremap <leader>s :CocList symbols<CR>
+"nnoremap <leader>s :CocList symbols<CR>
 
-nnoremap <space>ca :CocList actions<CR>
-nmap <leader>r <Plug>(coc-rename)
-" Run jest for current project
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+"nnoremap <space>a :CocAction<CR>
+"vnoremap <leader>a :CocAction<CR>
+"nmap <leader>r <Plug>(coc-rename)
+"" Run jest for current project
+"command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 
-" Run jest for current file
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+"" Run jest for current file
+"command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
 
-" Run jest for current test
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+"" Run jest for current test
+"nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 
-" Init jest in current cwd, require global jest command exists
-command! JestInit :call CocAction('runCommand', 'jest.init')
+"" Init jest in current cwd, require global jest command exists
+"command! JestInit :call CocAction('runCommand', 'jest.init')
 
- " this mapping is causing weird startup errors
- "nnoremap <silent> <C-[> :lprev<cr>
+" " this mapping is causing weird startup errors
+" "nnoremap <silent> <C-[> :lprev<cr>
 
-nnoremap <leader>jvd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
-nnoremap <leader>jvi :call CocActionAsync('jumpImplementation', 'vsplit')<CR>
-nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'edit')<CR>
-nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'edit')<CR>
-nnoremap <leader>jr :call CocActionAsync('jumpReferences')<CR>
+"nnoremap <leader>jvd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+"nnoremap <leader>jvi :call CocActionAsync('jumpImplementation', 'vsplit')<CR>
+"nnoremap <leader>jd :call CocActionAsync('jumpDefinition', 'edit')<CR>
+"nnoremap <leader>ji :call CocActionAsync('jumpImplementation', 'edit')<CR>
+"nnoremap <leader>jr :call CocActionAsync('jumpReferences')<CR>
 
-nnoremap K :call <SID>show_documentation()<CR>
+"nnoremap K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+"function! s:show_documentation()
+"  if (index(['vim','help'], &filetype) >= 0)
+"    execute 'h '.expand('<cword>')
+"  elseif (coc#rpc#ready())
+"    call CocActionAsync('doHover')
+"  else
+"    execute '!' . &keywordprg . " " . expand('<cword>')
+"  endif
+"endfunction
 
-"" }}}
+""" }}}
 
 " Misc Plugin Config
 " ==================
@@ -409,8 +265,7 @@ let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
 let g:fzfSwitchProjectWorkspaces = [
       \ "~/workspace",
       \ "~/repos",
-      \ "~/go/src/github.com/benwainwright",
-      \ "~/go/src/github.com/bbc"
+      \ "~/cinch-repos"
       \ ]
 
 let g:fzf_layout = { 'down': '~40%' }
@@ -453,13 +308,20 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 " ====================
 "s {{{
 
+nnoremap <C-e> :NvimTreeToggle<CR>
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <leader>a :CocAction<CR>
 nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>G :Ag<CR>
-nnoremap <C-b> :Clap buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
-nnoremap <C-t> :Tags<CR>
+nnoremap <C-t> :Trouble<CR>
 nnoremap <leader>F :GitFiles!<CR>
 nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
@@ -467,7 +329,7 @@ nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>pp :Gpush<CR>
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Neogit kind=split<CR>
 nnoremap <leader>gb :CheckoutBranch<CR>
 nnoremap <leader>gp :CheckoutPR<CR>
 nnoremap <leader>pbb :PrBlame<CR>
@@ -499,9 +361,9 @@ vnoremap <silent> <c-c>cc :Commentary<CR>
 " insert mode mappings
 " =====================
 " {{{
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " }}}
 
 xnoremap il g_o^
@@ -514,16 +376,19 @@ onoremap al :normal val<CR>
 " {{{
 augroup vimrc
   autocmd!
+
     autocmd! FileType json set filetype=jsonc
-    au BufWritePost * UltestNearest
+    " au BufWritePost * UltestNearest
     autocmd BufNewFile,BufRead *.vtl set ft=velocity
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
+    " autocmd CursorHold * silent call CocActionAsync('highlight')
+    " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     " autocmd CursorHold * silent call CocActionAsync('highlight')
     " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
     autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
     autocmd FileType markdown,conf setlocal linebreak
+    autocmd FileType NvimTree setlocal relativenumber
     autocmd CmdlineEnter * :set norelativenumber
     autocmd CmdlineLeave * :set relativenumber
     autocmd FileType coc-explorer setlocal nonumber
@@ -534,14 +399,17 @@ augroup vimrc
     autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
     autocmd bufwritepost ~/.vimrc source ~/.vimrc
     autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+    autocmd FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
+          \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+          \  1,
+          \  0
+          \)
 augroup END
 " }}}
 
 " Colors and Highlights
 " ====================
 " {{{
-set background=dark
-colorscheme sonokai
 
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -578,7 +446,6 @@ let g:fzf_colors =
 "" }}}
 
 let g:neovide_cursor_vfx_mode = "wireframe"
-let g:airline_powerline_fonts = 1
 
 set guifont=FiraCode\ Nerd\ Font:h18
 
@@ -604,3 +471,5 @@ tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
 tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
 tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
 tnoremap <silent> <C-a>z <c-w>:MaximiseToggle<CR>
+
+highlight DiffAdd ctermbg=NONE guibg=NONE ctermfg=green guifg=green 
