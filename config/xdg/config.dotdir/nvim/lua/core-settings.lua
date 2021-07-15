@@ -2,12 +2,6 @@ local nvim = require("nvim-api")
 local options = nvim.options
 local exec = nvim.exec
 
--- Set the window title to the value of titlestring
-options.set("title", true)
-
--- Value for window title
-options.set("titlestring", "%t - nvim")
-
 -- Delete comment characters when joining lines
 options.append("formatoptions", "j")
 

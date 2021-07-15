@@ -1,14 +1,18 @@
 return require('packer').startup(function(use)
 
   use {
-    "SirVer/ultisnips",
-    config = function()
-      vim.api.nvim_set_var("UltiSnipsExpandTrigger", "<NULL>")
-    end
+    "knubie/vim-kitty-navigator"
   }
 
   use {
-    "prettier/vim-prettier"
+    "fladson/vim-kitty"
+  }
+
+  use {
+    "SirVer/ultisnips",
+    config = function()
+      vim.api.nvim_set_var("UltiSnipsExpandTrigger", "<NUL>")
+    end
   }
 
   use {

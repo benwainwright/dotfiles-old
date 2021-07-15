@@ -60,7 +60,6 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'wellle/targets.vim'
 Plug 'gioele/vim-autoswap'
 Plug 'ryanoasis/vim-devicons'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chrisbra/unicode.vim'
 Plug 'sindrets/diffview.nvim'
 Plug 'jiangmiao/auto-pairs'
@@ -70,7 +69,6 @@ Plug 'michaeljsmith/vim-indent-object'
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'lepture/vim-velocity'
 Plug 'mattn/emmet-vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'luochen1990/rainbow'
 Plug 'preservim/vimux'
@@ -111,6 +109,9 @@ set signcolumn=yes
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
 let &t_ut=''
 
+
+set title
+let &titlestring='%t - nvim'
 
 set directory^=$HOME/.vim/tmp/
 
@@ -273,20 +274,10 @@ let g:fzf_layout = { 'down': '~40%' }
 " Functions
 " =========
 " {{{
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-
 function! NetrwSidebarToggle()
   let g:netrw_chgwin = winnr()
   Vexplore
 endfunction
-
-
 
 function! s:fullscreen_tab_toggle()
   if winnr('$') > 0
@@ -322,7 +313,6 @@ nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
 nnoremap <C-t> :Trouble<CR>
 nnoremap <leader>F :GitFiles!<CR>
-nnoremap <leader>nn :call NumberToggle()<CR>
 nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>gc :Gcommit<CR>
@@ -377,22 +367,14 @@ augroup vimrc
   autocmd!
 
     autocmd! FileType json set filetype=jsonc
-    " au BufWritePost * UltestNearest
     autocmd BufNewFile,BufRead *.vtl set ft=velocity
     autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
-    " autocmd CursorHold * silent call CocActionAsync('highlight')
-    " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    " autocmd CursorHold * silent call CocActionAsync('highlight')
-    " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    autocmd BufNewFile,BufRead Jenkinsfile* setlocal filetype=groovy
     autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
     autocmd FileType markdown,conf setlocal linebreak
-    autocmd FileType NvimTree setlocal relativenumber
-    autocmd CmdlineEnter * :set norelativenumber
-    autocmd CmdlineLeave * :set relativenumber
-    autocmd FileType coc-explorer setlocal nonumber
-    autocmd FileType coc-explorer setlocal norelativenumber
+    autocmd FileType NvimTree setlocal number
     autocmd FileType markdown,conf setlocal textwidth=80
+    autocmd FileType kitty setlocal relativenumber
+    autocmd FileType vim setlocal relativenumber
     autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
     autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
     autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
