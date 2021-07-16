@@ -1,9 +1,18 @@
 return require('packer').startup(function(use)
 
+  -- Fancy splash screen
   use 'mhinz/vim-startify'
+
+  -- Common functions for LUA plugins
   use 'nvim-lua/plenary.nvim'
+
+  -- Add marks to sign column
   use 'kshenoy/vim-signature'
 
+  -- Add extra text objects
+  use 'wellle/targets.vim'
+
+  -- Rainbow parens
   use {
     "p00f/nvim-ts-rainbow",
     config = function()
@@ -17,29 +26,33 @@ return require('packer').startup(function(use)
     end
   }
 
-
-
+  -- Velocity syntax plugin
   use {
     'lepture/vim-velocity',
     ft = "velocity"
   }
 
-  use 'mattn/emmet-vim'
-
-  use 'mfussenegger/nvim-dap'
+  -- use 'mfussenegger/nvim-dap'
+  
+  -- Profile startuptime
   use {
     'tweekmonster/startuptime.vim',
     command = "StartupTime"
   }
 
+
   use 'honza/vim-snippets'
   use 'mlaursen/vim-react-snippets'
 
-  use 'wellle/targets.vim'
+  -- Behave sensibly with swap files
   use 'gioele/vim-autoswap'
   use 'ryanoasis/vim-devicons'
   use 'chrisbra/unicode.vim'
-  use 'sindrets/diffview.nvim'
+
+  use { 
+    'sindrets/diffview.nvim',
+    cmd = "DiffviewOpen"
+  }
 
   use {
     'jiangmiao/auto-pairs',
@@ -49,7 +62,13 @@ return require('packer').startup(function(use)
   use 'bkad/CamelCaseMotion'
   use 'PeterRincker/vim-argumentative'
   use 'michaeljsmith/vim-indent-object'
-  use 'vim-test/vim-test'
+
+  use {
+    'vim-test/vim-test',
+    cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" }
+  }
+
+
   use {
     'kyazdani42/nvim-tree.lua',
     cmd = "NvimTreeToggle",
@@ -76,6 +95,7 @@ return require('packer').startup(function(use)
   }
 
   use "glepnir/lspsaga.nvim"
+
   use 'kosayoda/nvim-lightbulb'
   use 'RishabhRD/nvim-lsputils'
   use 'kabouzeid/nvim-lspinstall'
@@ -95,7 +115,6 @@ return require('packer').startup(function(use)
   use 'RishabhRD/popfix'
   use 'onsails/lspkind-nvim'
   use 'ynkdir/vim-vimlparser'
-  use 'jparise/vim-graphql'
   use { 
     "sbdchd/neoformat",
     cmd = "Neoformat"

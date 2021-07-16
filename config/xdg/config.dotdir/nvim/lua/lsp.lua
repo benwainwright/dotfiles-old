@@ -119,9 +119,9 @@ for _, server in pairs(servers) do
 
         local ts_utils = require("nvim-lsp-ts-utils")
 
-        -- defaults
         ts_utils.setup {
           eslint_enable_diagnostics = false,
+          disable_commands = false,
           enable_formatting = false,
           update_imports_on_move = true,
           require_confirmation_on_move = false,
