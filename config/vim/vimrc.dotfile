@@ -1,7 +1,6 @@
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
 let &t_ut=''
 
-
 set title
 let &titlestring='%t - nvim'
 
@@ -36,12 +35,6 @@ let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 
-" }}}
-
-" Misc Plugin Config
-" ==================
-" {{{
-
 " Stops autopairs doing the weird behaviour where you jump to the next pair
 " remap :Ag
 "
@@ -49,8 +42,6 @@ let maplocalleader = "\\"
 let g:AutoPairsMultilineClose = 0
 let test#javascript#jest#options = "--color=always"
 let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
-let g:test#strategy = 'vimux'
-
 
 let test#javascript#jest#file_pattern = '\v.+.(spec|spec.node).(js|jsx|ts|tsx)$'
 
@@ -75,10 +66,6 @@ let g:fzf_layout = { 'down': '~40%' }
 "" }}}
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
-
-" Normal Mode Mappings
-" ====================
-"s {{{
 
 nnoremap <C-e> :NvimTreeToggle<CR>
 nnoremap <C-j> :m .+1<CR>==
@@ -124,27 +111,17 @@ nnoremap [a :previous<CR>
 nnoremap ]a :next<CR>
 " }}}
 
-" Visual mode mappings
-" {{{
 vnoremap <silent> <c-c>cc :Commentary<CR>
-" }}}
 
-" insert mode mappings
-" =====================
-" {{{
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-" }}}
 
 xnoremap il g_o^
 onoremap il :normal vil<CR>
 xnoremap al $o^
 onoremap al :normal val<CR>
 
-" Autocommands
-" ============
-" {{{
 augroup vimrc
   autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
@@ -168,12 +145,6 @@ augroup vimrc
           \  0
           \)
 augroup END
-" }}}
-
-" Colors and Highlights
-" ====================
-" {{{
-
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
 
@@ -205,9 +176,6 @@ let g:fzf_colors =
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
-
-"" }}}
-
 
 
 highlight DiffAdd ctermbg=NONE guibg=NONE ctermfg=green guifg=green 
