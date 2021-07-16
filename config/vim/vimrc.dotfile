@@ -1,111 +1,3 @@
-" Plugins
-"
-" =======
-" {{{
-runtime macros/matchit.vim
-
-call plug#begin('~/.vim/plugged')
-
-" Personal plugins
-Plug 'benwainwright/fzf-git'
-Plug '/Users/wainwb01/repos/git-extras'
-
-"" " Tim Pope
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-commentary'
-
-" June Gunn
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Misc
-Plug 'kshenoy/vim-signature'
-Plug 'sbdchd/neoformat'
-
-" Language plugins
-Plug 'pangloss/vim-javascript'
-Plug 'ynkdir/vim-vimlparser'
-Plug 'jparise/vim-graphql'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/plenary.nvim'
-
-
-" LSP
-Plug 'hrsh7th/nvim-compe'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'onsails/lspkind-nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Color theme
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'vim-test/vim-test'
-" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
-Plug 'tweekmonster/startuptime.vim'
-Plug 'honza/vim-snippets'
-Plug 'mlaursen/vim-react-snippets'
-Plug 'wellle/targets.vim'
-Plug 'gioele/vim-autoswap'
-Plug 'ryanoasis/vim-devicons'
-Plug 'chrisbra/unicode.vim'
-Plug 'sindrets/diffview.nvim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'bkad/CamelCaseMotion'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'michaeljsmith/vim-indent-object'
-" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'lepture/vim-velocity'
-Plug 'mattn/emmet-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'luochen1990/rainbow'
-Plug 'preservim/vimux'
-Plug 'mfussenegger/nvim-dap'
-let g:rainbow_active = 1
-
-" vimrc
-let g:completion_chain_complete_list = {
-    \ 'default': [
-    \    {'complete_items': ['lsp', 'snippet', 'tabnine']},
-    \    {'mode': '<c-p>'},
-    \    {'mode': '<c-n>'}
-    \]
-\}
-
-call plug#end()
-" }}}
-
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_lsp_diagnostics = 1
-let g:nvim_tree_update_cwd = 1
-let g:nvim_tree_follow = 1
-let g:completion_trigger_character = [".", "\"", ",", "/", "@", "<", "(", "[", "{", "=", ">"]
-let g:completion_timer_cycle = 50
-
-" Core VIM settings
-" =================
-" {{{
-" When opening a file from the command line, this stops
-" the empty buffer appearing as a separate buffer in my
-" tabline
-if bufname('%') == ''
-  set bufhidden=wipe
-endif
-
-set signcolumn=yes
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
 let &t_ut=''
 
@@ -271,27 +163,6 @@ let g:fzfSwitchProjectWorkspaces = [
 let g:fzf_layout = { 'down': '~40%' }
 "" }}}
 
-" Functions
-" =========
-" {{{
-function! NetrwSidebarToggle()
-  let g:netrw_chgwin = winnr()
-  Vexplore
-endfunction
-
-function! s:fullscreen_tab_toggle()
-  if winnr('$') > 0
-    tabedit %
-  else
-    tabclose
-  endif
-endfunction
-
-
-command! MaximiseToggle call s:fullscreen_tab_toggle()
-
-" }}}
-
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 " Normal Mode Mappings
@@ -365,7 +236,7 @@ onoremap al :normal val<CR>
 " {{{
 augroup vimrc
   autocmd!
-
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
     autocmd! FileType json set filetype=jsonc
     autocmd BufNewFile,BufRead *.vtl set ft=velocity
     autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
@@ -426,31 +297,6 @@ let g:fzf_colors =
 
 "" }}}
 
-let g:neovide_cursor_vfx_mode = "wireframe"
 
-set guifont=FiraCode\ Nerd\ Font:h18
-
-if has('gui')
-  set macligatures
-endif
-
-set guioptions+=a  " take ownership if windowing systems global selection in Visual mode
-set guioptions+=c  " use console dialogs instead of popups for simple choices
-
-set guioptions-=m  " remove menu bar
-set guioptions-=T  " remove toolbar
-set guioptions-=l  " remove lefthand toolbar
-set guioptions-=L
-set guioptions-=r  " remove righthand toolbar
-
-set showtabline=0
-
-set noswapfile
-
-tnoremap <silent> <c-h> <c-w>:TmuxNavigateLeft<cr>
-tnoremap <silent> <c-j> <c-w>:TmuxNavigateDown<cr>
-tnoremap <silent> <c-k> <c-w>:TmuxNavigateUp<cr>
-tnoremap <silent> <c-l> <c-w>:TmuxNavigateRight<cr>
-tnoremap <silent> <C-a>z <c-w>:MaximiseToggle<CR>
 
 highlight DiffAdd ctermbg=NONE guibg=NONE ctermfg=green guifg=green 
