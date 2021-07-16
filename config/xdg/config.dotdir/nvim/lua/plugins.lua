@@ -26,12 +26,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Velocity syntax plugin
-  use {
-    'lepture/vim-velocity',
-    ft = "velocity"
-  }
-
   -- use 'mfussenegger/nvim-dap'
   
   -- Profile startuptime
@@ -68,7 +62,6 @@ return require('packer').startup(function(use)
     cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" }
   }
 
-
   use {
     'kyazdani42/nvim-tree.lua',
     cmd = "NvimTreeToggle",
@@ -95,7 +88,6 @@ return require('packer').startup(function(use)
   }
 
   use "glepnir/lspsaga.nvim"
-
   use 'kosayoda/nvim-lightbulb'
   use 'RishabhRD/nvim-lsputils'
   use 'kabouzeid/nvim-lspinstall'
@@ -204,6 +196,5 @@ return require('packer').startup(function(use)
       }
     end
   }
-
 
 end)
