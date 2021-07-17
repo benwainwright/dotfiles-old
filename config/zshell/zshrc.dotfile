@@ -9,7 +9,7 @@ fi
 ## Bootstrap TMUX                                      #
 ########################################################
 
-export ZSH_TMUX_AUTOSTART=true
+# export ZSH_TMUX_AUTOSTART=true
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
