@@ -1,119 +1,8 @@
-<<<<<<< HEAD
-" Plugins
-"
-" =======
-" {{{
-runtime macros/matchit.vim
-
-call plug#begin('~/.vim/plugged')
-
-" Personal plugins
-Plug 'benwainwright/fzf-git'
-Plug '/Users/wainwb01/repos/git-extras'
-
-"" " Tim Pope
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-commentary'
-
-" June Gunn
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Misc
-Plug 'kshenoy/vim-signature'
-Plug 'sbdchd/neoformat'
-
-" Language plugins
-Plug 'pangloss/vim-javascript'
-Plug 'ynkdir/vim-vimlparser'
-Plug 'jparise/vim-graphql'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/plenary.nvim'
-
-
-" LSP
-Plug 'hrsh7th/nvim-compe'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'onsails/lspkind-nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Color theme
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'vim-test/vim-test'
-" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
-Plug 'tweekmonster/startuptime.vim'
-Plug 'honza/vim-snippets'
-Plug 'mlaursen/vim-react-snippets'
-Plug 'wellle/targets.vim'
-Plug 'gioele/vim-autoswap'
-Plug 'aklt/plantuml-syntax'
-Plug 'ryanoasis/vim-devicons'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'chrisbra/unicode.vim'
-Plug 'sindrets/diffview.nvim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'bkad/CamelCaseMotion'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'michaeljsmith/vim-indent-object'
-" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'lepture/vim-velocity'
-Plug 'mattn/emmet-vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'luochen1990/rainbow'
-Plug 'preservim/vimux'
-Plug 'mfussenegger/nvim-dap'
-let g:rainbow_active = 1
-
-" vimrc
-let g:completion_chain_complete_list = {
-    \ 'default': [
-    \    {'complete_items': ['lsp', 'snippet', 'tabnine']},
-    \    {'mode': '<c-p>'},
-    \    {'mode': '<c-n>'}
-    \]
-\}
-
-call plug#end()
-" }}}
-
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_lsp_diagnostics = 1
-let g:nvim_tree_update_cwd = 1
-let g:nvim_tree_follow = 1
-let g:completion_trigger_character = [".", "\"", ",", "/", "@", "<", "(", "[", "{", "=", ">"]
-let g:completion_timer_cycle = 50
-
-" Core VIM settings
-" =================
-" {{{
-" When opening a file from the command line, this stops
-" the empty buffer appearing as a separate buffer in my
-" tabline
-if bufname('%') == ''
-  set bufhidden=wipe
-endif
-
-set signcolumn=yes
-=======
->>>>>>> b61e3cc566d9f69992bbb3654c8aba9209e22f1f
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492663
 let &t_ut=''
+
+filetype plugin indent on
+syntax on
 
 set title
 let &titlestring='%t - nvim'
@@ -124,15 +13,15 @@ set backupdir=$HOME/.vim/backup/
 
 " Store undo data between vim sessions
 if has("persistent_undo")
-  set undofile
-  set undodir=~/.vim/undo
+ set undofile
+ set undodir=~/.vim/undo
 endif
 
 if exists('+termguicolors')
-  set t_Co=256
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+ set t_Co=256
+ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+ set termguicolors
 endif
 
 let g:material_theme_style = 'ocean'
@@ -161,7 +50,7 @@ let test#javascript#jest#file_pattern = '\v.+.(spec|spec.node).(js|jsx|ts|tsx)$'
 
 " See https://github.com/ryanoasis/vim-devicons/issues/154#issuecomment-281095173
 if exists('g:loaded_webdevicons')
-  call webdevicons#refresh()
+ call webdevicons#refresh()
 endif
 
 let g:signify_vcs_list = [ 'git' ]
@@ -171,10 +60,10 @@ let g:netrw_altv=1
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzfSwitchProjectProjects = [ "~/dotfiles" ]
 let g:fzfSwitchProjectWorkspaces = [
-      \ "~/workspace",
-      \ "~/repos",
-      \ "~/cinch-repos"
-      \ ]
+     \ "~/workspace",
+     \ "~/repos",
+     \ "~/cinch-repos"
+     \ ]
 
 let g:fzf_layout = { 'down': '~40%' }
 "" }}}
@@ -237,27 +126,29 @@ xnoremap al $o^
 onoremap al :normal val<CR>
 
 augroup vimrc
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  autocmd! FileType json set filetype=jsonc
-  autocmd BufNewFile,BufRead *.vtl set ft=velocity
-  autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
-  autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
-  autocmd FileType markdown,conf setlocal linebreak
-  autocmd FileType NvimTree setlocal number
-  autocmd FileType markdown,conf setlocal textwidth=80
-  autocmd FileType kitty setlocal relativenumber
-  autocmd FileType vim setlocal relativenumber
-  autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
-  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
-  autocmd bufwritepost ~/.vimrc source ~/.vimrc
-  autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
-  autocmd FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
-        \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
-        \  1,
-        \  0
-        \)
+ autocmd!
+
+ autocmd FileType fzf setlocal nonumber norelativenumber 
+ autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+ autocmd! FileType json set filetype=jsonc
+ autocmd BufNewFile,BufRead *.vtl set ft=velocity
+ autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
+ autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
+ autocmd FileType markdown,conf setlocal linebreak
+ autocmd FileType NvimTree setlocal number
+ autocmd FileType markdown,conf setlocal textwidth=80
+ autocmd FileType kitty setlocal relativenumber
+ autocmd FileType vim setlocal relativenumber
+ autocmd FileType gitcommit setlocal textwidth=0 wrapmargin=0
+ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+ autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+ autocmd bufwritepost ~/.vimrc source ~/.vimrc
+ autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+ autocmd FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
+      "\  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+       "\  1,
+       "\  0
+       "\)
 augroup END
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg
@@ -272,24 +163,24 @@ highlight CocInfoSign guifg=#3399FF guibg=NONE
 highlight CocHintSign guifg=green guibg=NONE
 
 highlight terminal
-      \ guibg=black
+     \ guibg=black
 
 highlight Cursor guifg=black
 
 let g:fzf_colors =
-      \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'border':  ['fg', 'Ignore'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
+     \ { 'fg':      ['fg', 'Normal'],
+     \ 'bg':      ['bg', 'Normal'],
+     \ 'hl':      ['fg', 'Comment'],
+     \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+     \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+     \ 'hl+':     ['fg', 'Statement'],
+     \ 'info':    ['fg', 'PreProc'],
+     \ 'border':  ['fg', 'Ignore'],
+     \ 'prompt':  ['fg', 'Conditional'],
+     \ 'pointer': ['fg', 'Exception'],
+     \ 'marker':  ['fg', 'Keyword'],
+     \ 'spinner': ['fg', 'Label'],
+     \ 'header':  ['fg', 'Comment'] }
 
 
 highlight DiffAdd ctermbg=NONE guibg=NONE ctermfg=green guifg=green 
