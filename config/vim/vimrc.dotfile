@@ -34,7 +34,6 @@ let g:AutoPairsMultilineClose = 0
 let test#javascript#jest#options = "--color=always"
 let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
 
-let test#javascript#jest#file_pattern = '\v.+.(spec|spec.node).(js|jsx|ts|tsx)$'
 
 " See https://github.com/ryanoasis/vim-devicons/issues/154#issuecomment-281095173
 if exists('g:loaded_webdevicons')
@@ -111,6 +110,7 @@ onoremap al :normal val<CR>
 
 augroup vimrc
   autocmd!
+  autocmd FileType fzf setlocal nonumber norelativenumber
   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   autocmd! FileType json set filetype=jsonc
   autocmd BufNewFile,BufRead *.vtl set ft=velocity

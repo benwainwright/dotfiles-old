@@ -111,8 +111,6 @@ return require('packer').startup(function(use)
     config = function()
       vim.api.nvim_exec(
       [=[
-        
-        "let test#javascript#jest#file_pattern = '\v^.*(spec|test)\.(ts|tsx|js|jsx)$'
         nnoremap <leader>dt :TestNearest -strategy=jest<CR>
         function! JestStrategy(cmd)
           let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
@@ -121,6 +119,26 @@ return require('packer').startup(function(use)
         endfunction      
         let g:test#custom_strategies = {'jest': function('JestStrategy')}
       ]=], false)
+    end
+  }
+
+  use {
+    "rcarriga/vim-ultest",
+    requires = {"vim-test/vim-test"},
+    run = ":UpdateRemotePlugins",
+    config = function()
+      require("ultest").setup {
+        builders = {
+          ['typescript#jest'] = function(command)
+            print(command)
+            return {}
+          end
+        }
+      }
+
+      local nv = require("nvim-api")
+      nv.map("n", "<leader>tn", "<cmd>UltestNearest<CR>")
+      nv.map("n", "<leader>tf", "<cmd>Ultest<CR>")
     end
   }
 
