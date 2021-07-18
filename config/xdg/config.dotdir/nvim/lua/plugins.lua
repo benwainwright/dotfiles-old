@@ -156,16 +156,16 @@ return require('packer').startup(function(use)
   use {
     'vim-test/vim-test',
     config = function()
-      vim.api.nvim_exec(
-      [=[
-        nnoremap <leader>dt :TestNearest -strategy=jest<CR>
-        function! JestStrategy(cmd)
-          let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
-          let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
-          call luaeval("require'debug-helper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
-        endfunction      
-        let g:test#custom_strategies = {'jest': function('JestStrategy')}
-      ]=], false)
+      -- vim.api.nvim_exec(
+      -- [=[
+      --   nnoremap <leader>dt :TestNearest -strategy=jest<CR>
+      --   function! JestStrategy(cmd)
+      --     let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
+      --     let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
+      --     call luaeval("require'debug-helper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
+      --   endfunction      
+      --   let g:test#custom_strategies = {'jest': function('JestStrategy')}
+      -- ]=], false)
     end
   }
 
