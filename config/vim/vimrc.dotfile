@@ -25,19 +25,10 @@ if exists('+termguicolors')
  set termguicolors
 endif
 
-let g:material_theme_style = 'ocean'
-let g:material_terminal_italics = 1
-
 " Don't spellcheck URLS
 syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
 " Don't spell check initialisms
 syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
-
-let g:path_to_python_interpreter = '/usr/bin/python'
-
-let mapleader = "\<Space>"
-let maplocalleader = "\\"
-
 
 " Stops autopairs doing the weird behaviour where you jump to the next pair
 " remap :Ag
@@ -47,7 +38,6 @@ let g:AutoPairsMultilineClose = 0
 let test#javascript#jest#options = "--color=always"
 let g:kitty_navigator_listening_on_address = 'unix:/tmp/mykitty'
 
-let test#javascript#jest#file_pattern = '\v.+.(spec|spec.node).(js|jsx|ts|tsx)$'
 
 " See https://github.com/ryanoasis/vim-devicons/issues/154#issuecomment-281095173
 if exists('g:loaded_webdevicons')
@@ -71,16 +61,12 @@ let g:fzf_layout = { 'down': '~40%' }
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-nnoremap <C-e> :NvimTreeToggle<CR>
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
+" nnoremap <C-e> :NvimTreeToggle<CR>
+" nnoremap <C-j> :m .+1<CR>==
+" nnoremap <C-k> :m .-2<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
-nnoremap <leader>a :CocAction<CR>
 nnoremap <CR> :noh<CR><CR>
-nnoremap <leader>G :Ag<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :FzfChooseProjectFile<CR>
 nnoremap <leader>cd :FzfSwitchProject<CR>
@@ -146,10 +132,10 @@ augroup vimrc
  autocmd bufwritepost ~/.vimrc source ~/.vimrc
  autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
  autocmd FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
-      "\  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
-       "\  1,
-       "\  0
-       "\)
+      \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+      \  1,
+      \  0
+      \ )
 augroup END
 " Sneaky hack that removes the tildes from the fringe
 highlight NonText guifg=bg

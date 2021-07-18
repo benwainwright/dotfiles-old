@@ -19,4 +19,10 @@ function M.options.prepend(name, value)
   vim.api.nvim_set_option(name, value .. currentValue)
 end
 
+function M.map(mode, keys, command, opts)
+  local options = { noremap = true }
+  if opts then options = vim.tbl_extend('force', options, opts) end
+  vim.api.nvim_set_keymap(mode, keys, command, options)
+end
+
 return M

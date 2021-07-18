@@ -1,7 +1,9 @@
 require("bootstrap-packer")
-require("core-settings")
-require("load-vim-config")
+require("bootstrap-packer")
 require("plugins")
+require("core-settings")
+require("keys")
+require("load-vim-config")
 require("lsp")
 require("custom-highlights")
 

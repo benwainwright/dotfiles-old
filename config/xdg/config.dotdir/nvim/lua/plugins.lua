@@ -73,7 +73,57 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use 'mfussenegger/nvim-dap'
+  use {
+    'mfussenegger/nvim-dap',
+    config = function ()
+      require("configure-dap")
+    end
+  }
+
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = "mfussenegger/nvim-dap",
+    config = function()
+      require("dapui").setup(
+      {
+        icons = {
+          expanded = "▾",
+          collapsed = "▸"
+        },
+        mappings = {
+          -- Use a table to apply multiple mappings
+          expand = {"<CR>", "<2-LeftMouse>"},
+          open = "o",
+          remove = "d",
+          edit = "e",
+        },
+        sidebar = {
+          open_on_start = true,
+          elements = {
+            -- You can change the order of elements in the sidebar
+            "scopes",
+            "breakpoints",
+            "stacks",
+            "watches"
+          },
+          width = 40,
+          position = "left" -- Can be "left" or "right"
+        },
+        tray = {
+          open_on_start = true,
+          elements = {
+            "repl"
+          },
+          height = 10,
+          position = "bottom" -- Can be "bottom" or "top"
+        },
+        floating = {
+          max_height = nil, -- These can be integers or a float between 0 and 1.
+          max_width = nil   -- Floats will be treated as percentage of your screen.
+        }
+      })
+    end
+  }
   
   -- Profile startuptime
   use {
@@ -96,8 +146,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'jiangmiao/auto-pairs',
-    event = "InsertEnter",
+    'jiangmiao/auto-pairs'
   }
 
   use 'bkad/CamelCaseMotion'
@@ -106,7 +155,38 @@ return require('packer').startup(function(use)
 
   use {
     'vim-test/vim-test',
-    cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" }
+    config = function()
+      vim.api.nvim_exec(
+      [=[
+        nnoremap <leader>dt :TestNearest -strategy=jest<CR>
+        function! JestStrategy(cmd)
+          let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
+          let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
+          call luaeval("require'debug-helper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
+        endfunction      
+        let g:test#custom_strategies = {'jest': function('JestStrategy')}
+      ]=], false)
+    end
+  }
+
+  use {
+    "rcarriga/vim-ultest",
+    requires = {"vim-test/vim-test"},
+    run = ":UpdateRemotePlugins",
+    config = function()
+      require("ultest").setup {
+        builders = {
+          ['typescript#jest'] = function(command)
+            print(command)
+            return {}
+          end
+        }
+      }
+
+      local nv = require("nvim-api")
+      nv.map("n", "<leader>tn", "<cmd>UltestNearest<CR>")
+      nv.map("n", "<leader>tf", "<cmd>Ultest<CR>")
+    end
   }
 
   use {
@@ -142,11 +222,9 @@ return require('packer').startup(function(use)
 
   use {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
-    {
-      requires = {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function() require("null-ls").setup() end
-      }
+    requires = {
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function() require("null-ls").setup() end
     }
   }
 
@@ -162,7 +240,6 @@ return require('packer').startup(function(use)
   use "knubie/vim-kitty-navigator"
   use "junegunn/fzf.vim"
   use "junegunn/fzf"
-  use "mfussenegger/nvim-dap"
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
