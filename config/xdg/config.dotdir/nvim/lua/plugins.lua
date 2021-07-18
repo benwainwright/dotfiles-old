@@ -5,47 +5,47 @@ return require('packer').startup(function(use)
     branch = "master"
   }
 
-  use {
-    'akinsho/nvim-toggleterm.lua',
-    config = function()
+  -- use {
+  --   'akinsho/nvim-toggleterm.lua',
+  --   config = function()
       
-      require("toggleterm").setup {
-        -- size can be a number or function which is passed the current terminal
-        size = function(term)
-          if term.direction == "horizontal" then
-            return 15
-          elseif term.direction == "vertical" then
-            return vim.o.columns * 0.4
-          end
-        end,
+  --     require("toggleterm").setup {
+  --       -- size can be a number or function which is passed the current terminal
+  --       size = function(term)
+  --         if term.direction == "horizontal" then
+  --           return 15
+  --         elseif term.direction == "vertical" then
+  --           return vim.o.columns * 0.4
+  --         end
+  --       end,
 
-        open_mapping = [[<c-\>]],
-        hide_numbers = true, -- hide the number column in toggleterm buffers
-        shade_filetypes = {},
-        shade_terminals = true,
-        shading_factor = '1', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
-        start_in_insert = true,
-        insert_mappings = true, -- whether or not the open mapping applies in insert mode
-        persist_size = true,
-        direction = 'horizontal',
-        close_on_exit = true, -- close the terminal window when the process exits
-        shell = vim.o.shell, -- change the default shell
-        -- This field is only relevant if direction is set to 'float'
-        float_opts = {
-          -- The border key is *almost* the same as 'nvim_win_open'
-          -- see :h nvim_win_open for details on borders however
-          -- the 'curved' border is a custom border type
-          -- not natively supported but implemented in this plugin.
-          border = 'single',
-          winblend = 3,
-          highlights = {
-            border = "Normal",
-            background = "Normal",
-          }
-        }
-      }
-    end
-  }
+  --       open_mapping = [[<c-\>]],
+  --       hide_numbers = true, -- hide the number column in toggleterm buffers
+  --       shade_filetypes = {},
+  --       shade_terminals = true,
+  --       shading_factor = '1', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+  --       start_in_insert = true,
+  --       insert_mappings = true, -- whether or not the open mapping applies in insert mode
+  --       persist_size = true,
+  --       direction = 'horizontal',
+  --       close_on_exit = true, -- close the terminal window when the process exits
+  --       shell = vim.o.shell, -- change the default shell
+  --       -- This field is only relevant if direction is set to 'float'
+  --       float_opts = {
+  --         -- The border key is *almost* the same as 'nvim_win_open'
+  --         -- see :h nvim_win_open for details on borders however
+  --         -- the 'curved' border is a custom border type
+  --         -- not natively supported but implemented in this plugin.
+  --         border = 'single',
+  --         winblend = 3,
+  --         highlights = {
+  --           border = "Normal",
+  --           background = "Normal",
+  --         }
+  --       }
+  --     }
+  --   end
+  -- }
 
   -- Fancy splash screen
   use 'mhinz/vim-startify'
@@ -84,8 +84,7 @@ return require('packer').startup(function(use)
     "rcarriga/nvim-dap-ui",
     requires = "mfussenegger/nvim-dap",
     config = function()
-      require("dapui").setup(
-      {
+      require("dapui").setup {
         icons = {
           expanded = "▾",
           collapsed = "▸"
@@ -121,7 +120,7 @@ return require('packer').startup(function(use)
           max_height = nil, -- These can be integers or a float between 0 and 1.
           max_width = nil   -- Floats will be treated as percentage of your screen.
         }
-      })
+      }
     end
   }
   
@@ -174,15 +173,6 @@ return require('packer').startup(function(use)
     requires = {"vim-test/vim-test"},
     run = ":UpdateRemotePlugins",
     config = function()
-      require("ultest").setup {
-        builders = {
-          ['typescript#jest'] = function(command)
-            print(command)
-            return {}
-          end
-        }
-      }
-
       local nv = require("nvim-api")
       nv.map("n", "<leader>tn", "<cmd>UltestNearest<CR>")
       nv.map("n", "<leader>tf", "<cmd>Ultest<CR>")
