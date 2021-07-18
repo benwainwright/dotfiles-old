@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>r', '<cmd>lua require(\'lspsaga.rename\').rename()<CR>', opts)
   buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('v', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('x', '<space>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
   buf_set_keymap('n', '<space>jr', '<cmd>LspTrouble lsp_references<cr>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -132,6 +132,12 @@ for _, server in pairs(servers) do
         ts_utils.setup_client(client)
 
         on_attach(client, bufnr)
+        lspConfig.tsserver.setup {
+
+      cmd = {
+        "yarn", "typescript-language-server", "--stdio"
+      }
+        }
       end
     }
 

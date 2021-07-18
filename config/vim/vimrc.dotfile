@@ -4,6 +4,7 @@ let &t_ut=''
 filetype plugin indent on
 syntax on
 
+set guifont=FiraCode\ Nerd\ Font\ Mono:h15
 set title
 let &titlestring='%t - nvim'
 
