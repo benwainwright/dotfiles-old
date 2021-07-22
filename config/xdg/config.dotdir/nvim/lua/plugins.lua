@@ -5,6 +5,10 @@ return require('packer').startup(function(use)
     branch = "master"
   }
 
+  use {
+    "ray-x/lsp_signature.nvim",
+  }
+
   -- use {
   --   'akinsho/nvim-toggleterm.lua',
   --   config = function()
