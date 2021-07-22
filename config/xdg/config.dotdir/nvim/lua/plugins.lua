@@ -206,7 +206,11 @@ return require('packer').startup(function(use)
 
   use "glepnir/lspsaga.nvim"
   use 'kosayoda/nvim-lightbulb'
-  use 'RishabhRD/nvim-lsputils'
+  use {
+    'RishabhRD/nvim-lsputils',
+    requires = 'RishabhRD/popfix'
+  }
+
   use 'kabouzeid/nvim-lspinstall'
   use 'neovim/nvim-lspconfig'
 
@@ -230,6 +234,7 @@ return require('packer').startup(function(use)
   use "knubie/vim-kitty-navigator"
   use "junegunn/fzf.vim"
   use "junegunn/fzf"
+  use 'gfanto/fzf-lsp.nvim'
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
