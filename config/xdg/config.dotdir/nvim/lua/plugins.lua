@@ -149,7 +149,8 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'jiangmiao/auto-pairs'
+     'windwp/nvim-autopairs',
+     config = function() require('nvim-autopairs').setup() end
   }
 
   use 'bkad/CamelCaseMotion'

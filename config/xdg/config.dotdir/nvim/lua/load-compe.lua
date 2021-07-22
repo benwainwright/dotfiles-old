@@ -47,6 +47,12 @@ end
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
@@ -64,10 +70,10 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {expr = true})
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm(luaeval('require \"nvim-autopairs\".autopairs_cr()'))", {expr = true})
