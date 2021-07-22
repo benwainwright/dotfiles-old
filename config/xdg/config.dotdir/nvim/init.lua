@@ -1,3 +1,4 @@
+require("disable-builtins")
 require("bootstrap-packer")
 require("bootstrap-packer")
 require("plugins")

@@ -51,8 +51,10 @@ return require('packer').startup(function(use)
   --   end
   -- }
 
-  -- Fancy splash screen
-  use 'mhinz/vim-startify'
+  use {
+    'glepnir/dashboard-nvim',
+    requires="liuchengxu/vim-clap"
+  }
 
   -- Common functions for LUA plugins
   use 'nvim-lua/plenary.nvim'
@@ -231,11 +233,6 @@ return require('packer').startup(function(use)
   use 'RishabhRD/popfix'
   use 'onsails/lspkind-nvim'
   use 'ynkdir/vim-vimlparser'
-  use { 
-    "sbdchd/neoformat",
-    cmd = "Neoformat"
-  }
-
   use "knubie/vim-kitty-navigator"
   use "junegunn/fzf.vim"
   use "junegunn/fzf"

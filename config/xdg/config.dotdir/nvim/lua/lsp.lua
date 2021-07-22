@@ -45,6 +45,7 @@ local on_attach = function(client, bufnr)
   vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
   vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
   vim.lsp.handlers["workspace/symbol"] = require'fzf_lsp'.workspace_symbol_handler
+  vim.lsp.handlers["textDocument/formatting"] = nil
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -53,6 +54,7 @@ local on_attach = function(client, bufnr)
       signs = true,
     }
   )
+
 
   vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 
@@ -139,19 +141,16 @@ for _, server in pairs(servers) do
         }
 
         -- required to fix code action ranges
+        client.resolved_capabilities.document_formatting = false
         ts_utils.setup_client(client)
 
-        on_attach(client, bufnr)
-        lspConfig.tsserver.setup {
 
-      cmd = {
-        "yarn", "typescript-language-server", "--stdio"
-      }
-        }
+        on_attach(client, bufnr)
       end
     }
 
   elseif server == "diagnosticls" then
+
     lspConfig.diagnosticls.setup {
       on_attach = on_attach,
       filetypes = {"typescript", "typescriptreact"},
@@ -213,8 +212,17 @@ for _, server in pairs(servers) do
         },
         formatters = {
           prettier = {
-            args = { '--stdin-filepath', '%filename' },
-            command = './node_modules/.bin/prettier',
+            args = { '--stdin', '--stdin-filepath', '%filepath' },
+
+            rootPatterns = {
+              '.eslintrc',
+              '.eslintrc.cjs',
+              '.eslintrc.js',
+              '.eslintrc.json',
+              '.eslintrc.yaml',
+              '.eslintrc.yml',
+            },
+            command = 'prettier_d_slim'
           }
         },
         formatFiletypes = {
