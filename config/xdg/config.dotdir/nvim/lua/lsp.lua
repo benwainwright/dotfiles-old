@@ -131,7 +131,7 @@ local servers = lspInstall.installed_servers()
 for _, server in pairs(servers) do
   if server == "typescript" then
 
-    lspConfig.tsserver.setup {
+    lspConfig.typescript.setup {
       debounce_text_changes = 150,
       on_attach = function(client, bufnr)
 
@@ -149,6 +149,8 @@ for _, server in pairs(servers) do
         -- required to fix code action ranges
         ts_utils.setup_client(client)
 
+
+        client.resolved_capabilities.document_formatting = false
         on_attach(client, bufnr)
       end
     }

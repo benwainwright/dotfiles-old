@@ -3,6 +3,7 @@ install_npm_globals() {
   echo "***"
   npm install -g \
     prettier_d_slim \
-    eslint_d
+    eslint_d \
+    typescript-language-server
 
 }
