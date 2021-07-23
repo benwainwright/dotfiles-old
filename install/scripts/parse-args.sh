@@ -37,6 +37,11 @@ parse_args() {
         shift
         ;;
 
+      --npmGlobals)
+        npmGlobals=true
+        shift
+        ;;
+
       *)
         shift
         ;;

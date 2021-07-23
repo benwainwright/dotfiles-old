@@ -30,3 +30,7 @@ fi
 if [ $iterm ] || [ $all ]; then
   set_iterm_preferences_location
 fi
+
+if [ $npmGlobals ] || [ $all ]; then
+  install_npm_globals
+fi
