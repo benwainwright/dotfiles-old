@@ -121,7 +121,6 @@ augroup vimrc
  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
  autocmd! FileType json set filetype=jsonc
  autocmd BufNewFile,BufRead *.vtl set ft=velocity
- autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx Neoformat
  autocmd FileType gitcommit,markdown,plantuml,conf setlocal spell
  autocmd FileType markdown,conf setlocal linebreak
  autocmd FileType NvimTree setlocal number
