@@ -56,7 +56,13 @@ local on_attach = function(client, bufnr)
   )
 
 
-  vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+  vim.cmd [[
+    augroup lsp
+      autocmd!
+      autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+      autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+    augroup END
+  ]]
 
   require('lspkind').init({
     --
@@ -123,7 +129,7 @@ lspInstall.setup()
 local servers = lspInstall.installed_servers()
 
 for _, server in pairs(servers) do
-  if server == "tsserver"then
+  if server == "typescript" then
 
     lspConfig.tsserver.setup {
       debounce_text_changes = 150,
@@ -141,9 +147,7 @@ for _, server in pairs(servers) do
         }
 
         -- required to fix code action ranges
-        client.resolved_capabilities.document_formatting = false
         ts_utils.setup_client(client)
-
 
         on_attach(client, bufnr)
       end
@@ -160,7 +164,7 @@ for _, server in pairs(servers) do
       init_options = {
         linters = {
           eslint = {
-            command = './node_modules/.bin/eslint',
+            command = 'eslint_d',
             rootPatterns = { '.git' },
             debounce = 100,
             args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
@@ -215,12 +219,18 @@ for _, server in pairs(servers) do
             args = { '--stdin', '--stdin-filepath', '%filepath' },
 
             rootPatterns = {
-              '.eslintrc',
-              '.eslintrc.cjs',
-              '.eslintrc.js',
-              '.eslintrc.json',
-              '.eslintrc.yaml',
-              '.eslintrc.yml',
+              '.prettierrc',
+              '.prettierrc.json',
+              '.prettierrc.toml',
+              '.prettierrc.json',
+              '.prettierrc.yml',
+              '.prettierrc.yaml',
+              '.prettierrc.json5',
+              '.prettierrc.js',
+              '.prettierrc.cjs',
+              'prettier.config.js',
+              'prettier.config.cjs',
+              '.git'
             },
             command = 'prettier_d_slim'
           }
