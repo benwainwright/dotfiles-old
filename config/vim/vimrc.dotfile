@@ -115,7 +115,7 @@ onoremap al :normal val<CR>
 augroup vimrc
  autocmd!
 
- autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
  autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
  autocmd FileType fzf setlocal nonumber norelativenumber 
  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
