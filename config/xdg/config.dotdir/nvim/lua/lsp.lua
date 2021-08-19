@@ -45,7 +45,6 @@ local on_attach = function(client, bufnr)
   vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
   vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
   vim.lsp.handlers["workspace/symbol"] = require'fzf_lsp'.workspace_symbol_handler
-  vim.lsp.handlers["textDocument/formatting"] = nil
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
