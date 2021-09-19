@@ -1,3 +1,4 @@
+alias git='git-safe'
 alias g='git'
 alias grm='git fetch --all && git rebase origin/master'
 alias gr='git rebase'

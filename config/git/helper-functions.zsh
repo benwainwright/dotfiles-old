@@ -137,3 +137,20 @@ remove-folder() {
   rm -rf "$repo"
   cd "$parent"
 }
+
+git-safe() {
+  local message="Force push is unsafe, use --force-with-lease instead :-)"
+  for arg in "$@"; do
+      if [ "$arg" = "push" ]; then
+          ispush=1
+      elif [ "$ispush" = 1 -a "$arg" = '-f' ]; then
+          echo $message
+          return 1
+      elif [ "$ispush" = 1 -a "$arg" = '--force' ]; then
+          echo $message
+          return 1
+      fi
+  done
+
+  command git "$@"
+}
