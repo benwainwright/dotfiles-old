@@ -5,7 +5,6 @@ aws/aws-cli
 molovo/tipz
 greymd/docker-zsh-completion
 romkatv/powerlevel10k
-lukechilds/zsh-nvm
 
 robbyrussell/oh-my-zsh path:plugins/fancy-ctrl-z
 robbyrussell/oh-my-zsh path:plugins/aws
