@@ -292,14 +292,21 @@ return require('packer').startup(function(use)
     cmd = { "FzfSwitchProject", "FzfChooseProjectFile" }
   }
 
-  use { 
-    'projekt0n/github-nvim-theme',
+  use {
+    'marko-cerovac/material.nvim',
     config = function()
-      require("github-theme").setup {
-        theme_style = "dark_default"
-      }
+      vim.g.material_style = "deep ocean"
+      vim.cmd('colorscheme material')
     end
   }
+
+  -- use { 
+  --   'projekt0n/github-nvim-theme',
+  --   config = function()
+  --     require("github-theme").setup {
+  --     }
+  --   end
+  -- }
 
   use {
     'TimUntersberger/neogit',
@@ -362,7 +369,7 @@ return require('packer').startup(function(use)
     config = function()
       require("lualine").setup {
         options = {
-          theme = 'github',
+          theme = 'material-nvim',
           section_separators = {"", ""},
           component_separators = {"", ""},
         }
