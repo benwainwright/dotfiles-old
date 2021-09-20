@@ -296,8 +296,7 @@ return require('packer').startup(function(use)
     'projekt0n/github-nvim-theme',
     config = function()
       require("github-theme").setup {
-        darkFloat = true,
-        darkSidebar = true
+        theme_style = "dark_default"
       }
     end
   }
