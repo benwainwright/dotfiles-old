@@ -1,10 +1,11 @@
-endpoint: https://jira.dev.bbc.co.uk
-unixproxy: /usr/local/var/client-cert-proxy.sock
-user: ben.wainwright@bbc.co.uk
-project: WEBCOREDEVX
+endpoint: https://cinch.atlassian.net
+user: ben.wainwright@cinch.co.uk
+authentication-method: api-token
+project: PD
+
 custom-commands:
   - name: current
     short: c
-    help: Search JIRA for a given string
+    help: Get Current Tickets
     script: |
-      {{ jira }} list -t current --query "project = \"WEBCOREDEVX\" AND (status = \"Next\" OR status = \"In Progress\"  OR status = \"On-Hold\")"
+      {{ jira }} list -t current --query '(status = \"Next\" OR status = \"Doing\")'
