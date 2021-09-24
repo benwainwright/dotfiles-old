@@ -14,6 +14,10 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'RishabhRD/popfix'
+  }
+
+  use {
     'folke/lsp-colors.nvim',
     config = function()
       require("lsp-colors").setup({
@@ -27,6 +31,11 @@ return require('packer').startup(function(use)
 
   use {
     "ray-x/lsp_signature.nvim",
+  }
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- use {
@@ -131,7 +140,6 @@ return require('packer').startup(function(use)
             "stacks",
             "watches"
           },
-          width = 40,
           position = "left" -- Can be "left" or "right"
         },
         tray = {
@@ -139,7 +147,6 @@ return require('packer').startup(function(use)
           elements = {
             "repl"
           },
-          height = 10,
           position = "bottom" -- Can be "bottom" or "top"
         },
         floating = {
@@ -219,20 +226,49 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'hrsh7th/nvim-compe',
-    event = "InsertEnter",
-    config = function() require("load-compe") end
+    'hrsh7th/nvim-cmp',
+    config = function()
+      local cmp = require'cmp'
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            vim.fn["UltiSnips#Anon"](args.body)
+          end,
+        },
+        mapping = {
+          ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'ultisnips' },
+          { name = 'buffer' },
+        }
+      })
+    end
   }
 
   use {
-    'tzachar/compe-tabnine',
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-compe",
-    event = "InsertEnter"
+    'hrsh7th/cmp-nvim-lsp'
+  }
+
+  use {
+    'hrsh7th/cmp-buffer'
+  }
+
+  use {
+    'quangnguyen30192/cmp-nvim-ultisnips'
   }
 
   use "glepnir/lspsaga.nvim"
   use 'kosayoda/nvim-lightbulb'
+
   use {
     'RishabhRD/nvim-lsputils',
     requires = 'RishabhRD/popfix'

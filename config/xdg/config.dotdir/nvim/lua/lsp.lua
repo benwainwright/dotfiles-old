@@ -27,6 +27,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
+  buf_set_keymap('n', "<space>S", "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>", opts)
 
   vim.fn.sign_define("DiagnosticSignError",
   {text = ""})
@@ -53,7 +54,6 @@ local on_attach = function(client, bufnr)
       signs = true,
     }
   )
-
 
   vim.cmd [[
     augroup lsp
@@ -248,6 +248,7 @@ for _, server in pairs(servers) do
     }
   else
     lspConfig[server].setup {
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
       on_attach = on_attach,
     }
   end
