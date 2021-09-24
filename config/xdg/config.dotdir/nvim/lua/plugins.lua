@@ -1,6 +1,10 @@
 return require('packer').startup(function(use)
 
   use {
+    'David-Kunz/jester'
+  }
+
+  use {
     'mg979/vim-visual-multi',
     branch = "master"
   }
@@ -11,6 +15,11 @@ return require('packer').startup(function(use)
 
   use {
     'mbbill/undotree'
+  }
+
+  use{
+      "vuki656/package-info.nvim",
+      requires = "MunifTanjim/nui.nvim",
   }
 
   use {
@@ -291,12 +300,19 @@ return require('packer').startup(function(use)
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         },
         sources = {
+          { name = 'cmp_tabnine'},
           { name = 'nvim_lsp' },
           { name = 'ultisnips' },
           { name = 'buffer' },
         }
       })
     end
+  }
+
+ 	use {
+    'tzachar/cmp-tabnine',
+    run='./install.sh',
+    requires = 'hrsh7th/nvim-cmp'
   }
 
   use {
