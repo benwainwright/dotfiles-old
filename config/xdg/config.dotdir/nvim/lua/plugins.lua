@@ -228,9 +228,54 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     config = function()
+      local lspkind = require'lspkind'
+
+      lspkind.init({
+        --
+        with_text = false,
+
+        -- default symbol map
+        -- can be either 'default' or
+        -- 'codicons' for codicon preset (requires vscode-codicons font installed)
+        --
+        -- default: 'default'
+        preset = 'codicons',
+
+        -- override preset symbols
+        --
+        -- default: {}
+        symbol_map = {
+          Text = '',
+          Method = 'ƒ',
+          Function = '',
+          Constructor = '',
+          Variable = '',
+          Class = '',
+          Interface = 'ﰮ',
+          Module = '',
+          Property = '',
+          Unit = '',
+          Value = '',
+          Enum = '了',
+          Keyword = '',
+          Snippet = '﬌',
+          Color = '',
+          File = '',
+          Folder = '',
+          EnumMember = '',
+          Constant = '',
+          Struct = ''
+        },
+      })
       local cmp = require'cmp'
 
       cmp.setup({
+        formatting = {
+          format = function(entry, vim_item)
+            vim_item.kind = lspkind.presets.default[vim_item.kind]
+            return vim_item
+          end
+        },
         snippet = {
           expand = function(args)
             vim.fn["UltiSnips#Anon"](args.body)
