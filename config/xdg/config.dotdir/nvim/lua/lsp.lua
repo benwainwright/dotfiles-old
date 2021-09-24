@@ -11,7 +11,7 @@ local on_attach = function(client, bufnr)
 
   buf_set_keymap('n', '<space>jD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<space>jd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua require(\'lspsaga.hover\').render_hover_doc()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<space>ji', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -145,12 +145,11 @@ for _, server in pairs(servers) do
           watch_dir = nil,
         }
 
-        -- required to fix code action ranges
-        ts_utils.setup_client(client)
 
 
         client.resolved_capabilities.document_formatting = false
         on_attach(client, bufnr)
+        ts_utils.setup_client(client)
       end
     }
 
