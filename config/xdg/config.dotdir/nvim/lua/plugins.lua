@@ -244,19 +244,8 @@ return require('packer').startup(function(use)
       local lspkind = require'lspkind'
 
       lspkind.init({
-        --
         with_text = false,
-
-        -- default symbol map
-        -- can be either 'default' or
-        -- 'codicons' for codicon preset (requires vscode-codicons font installed)
-        --
-        -- default: 'default'
         preset = 'codicons',
-
-        -- override preset symbols
-        --
-        -- default: {}
         symbol_map = {
           Text = '',
           Method = 'ƒ',
