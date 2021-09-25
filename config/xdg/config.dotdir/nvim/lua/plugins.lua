@@ -297,6 +297,11 @@ return require('packer').startup(function(use)
           { name = 'nvim_lsp' },
           { name = 'ultisnips' },
           { name = 'buffer' },
+        },
+        documentation = {
+          border = {
+            "┌", "─", "┐", "│", "┘", "─", "└", "│"
+          }
         }
       })
     end
