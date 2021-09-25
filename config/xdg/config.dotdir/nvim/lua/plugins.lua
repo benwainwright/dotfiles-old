@@ -4,6 +4,10 @@ return require('packer').startup(function(use)
     'David-Kunz/jester'
   }
 
+  use { 
+    "Pocco81/DAPInstall.nvim"
+  }
+
   use {
     'mg979/vim-visual-multi',
     branch = "master"
