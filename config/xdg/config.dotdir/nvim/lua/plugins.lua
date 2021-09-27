@@ -136,6 +136,10 @@ return require('packer').startup({ function(use)
     rtp = '.'
   }
 
+  use {
+    'peitalin/vim-jsx-typescript'
+  }
+
   use 'mlaursen/vim-react-snippets'
 
   -- Behave sensibly with swap files
