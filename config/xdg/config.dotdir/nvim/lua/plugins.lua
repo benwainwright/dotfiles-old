@@ -112,7 +112,6 @@ return require('packer').startup({ function(use)
           position = "left" -- Can be "left" or "right"
         },
         tray = {
-          open_on_start = true,
           elements = {
             "repl"
           },
