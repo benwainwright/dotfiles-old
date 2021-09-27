@@ -102,7 +102,6 @@ return require('packer').startup({ function(use)
           edit = "e",
         },
         sidebar = {
-          open_on_start = true,
           elements = {
             -- You can change the order of elements in the sidebar
             "scopes",
