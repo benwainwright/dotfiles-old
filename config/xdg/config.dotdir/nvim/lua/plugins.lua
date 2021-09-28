@@ -192,6 +192,7 @@ return require('packer').startup({ function(use)
     'kyazdani42/nvim-tree.lua',
     cmd = "NvimTreeToggle",
     config = function()
+      require'nvim-tree'.setup()
       vim.api.nvim_set_var("nvim_tree_highlight_opened_files", 1)
       vim.api.nvim_set_var("nvim_tree_git_hl", 1)
       vim.api.nvim_set_var("nvim_tree_lsp_diagnostics", 1)
