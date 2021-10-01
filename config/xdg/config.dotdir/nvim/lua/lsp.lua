@@ -134,7 +134,7 @@ for _, server in pairs(servers) do
         linters = {
           eslint = {
             command = 'eslint_d',
-            rootPatterns = { '.git' },
+            rootPatterns = { '.eslintrc.js', '.eslintrc.json', 'package.json' },
             debounce = 100,
             args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
             sourceName = 'eslint',
@@ -199,7 +199,6 @@ for _, server in pairs(servers) do
               '.prettierrc.cjs',
               'prettier.config.js',
               'prettier.config.cjs',
-              '.git'
             },
             command = 'prettier_d_slim'
           }
