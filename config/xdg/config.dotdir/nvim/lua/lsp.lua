@@ -1,5 +1,5 @@
 local lspConfig = require('lspconfig')
-local lspInstall = require('lspinstall')
+-- local lspInstall = require('lspinstall')
 
 local on_attach = function(client, bufnr)
 
@@ -71,154 +71,293 @@ local on_attach = function(client, bufnr)
 
 end
 
-local lspInstallServers = {
-  'bash',
-  'vim',
-  'graphql',
-  'typescript',
-  'diagnosticls',
-  'dockerfile',
-  'go',
-  'yaml',
-  'python',
-  'css',
-  'json',
-  --'lua'
-}
+--local lspInstallServers = {
+--  'bash',
+--  'vim',
+--  'graphql',
+--  'typescript',
+--  'diagnosticls',
+--  'dockerfile',
+--  'go',
+--  'yaml',
+--  'python',
+--  'css',
+--  'json',
+--  --'lua'
+--}
 
-for _, server in ipairs(lspInstallServers) do
-  if not lspInstall.is_server_installed(server) then
-    lspInstall.install_server(server)
-  end
-end
+--for _, server in ipairs(lspInstallServers) do
+--  if not lspInstall.is_server_installed(server) then
+--    lspInstall.install_server(server)
+--  end
+--end
 
-lspInstall.setup()
+-- lspInstall.setup()
 
-local servers = lspInstall.installed_servers()
+local lsp_installer = require("nvim-lsp-installer")
 
-for _, server in pairs(servers) do
-  if server == "typescript" then
+local lsp_installer_servers = require'nvim-lsp-installer.servers'
 
-    lspConfig.typescript.setup {
-      debounce_text_changes = 150,
-      on_attach = function(client, bufnr)
-
-        local ts_utils = require("nvim-lsp-ts-utils")
-
-        ts_utils.setup {
-          eslint_enable_diagnostics = false,
-          disable_commands = false,
-          enable_formatting = false,
-          update_imports_on_move = true,
-          require_confirmation_on_move = false,
-          watch_dir = nil,
-        }
-
-
-
-        client.resolved_capabilities.document_formatting = false
-        on_attach(client, bufnr)
-        ts_utils.setup_client(client)
-      end
-    }
-
-  elseif server == "diagnosticls" then
-
-    lspConfig.diagnosticls.setup {
-      on_attach = on_attach,
-      filetypes = {"typescript", "typescriptreact"},
-      flags = {
-        debounce_text_changes = 150,
-      },
-      init_options = {
-        linters = {
-          eslint = {
-            command = 'eslint_d',
-            rootPatterns = { '.eslintrc.js', '.eslintrc.json', 'package.json' },
-            debounce = 100,
-            args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-            sourceName = 'eslint',
-            parseJson = {
-              errorsRoot = '[0].messages',
-              line = 'line',
-              column = 'column',
-              endLine = 'endLine',
-              endColumn = 'endColumn',
-              message = '[eslint] ${message} [${ruleId}]',
-              security = 'severity'
-            },
-            securities = {
-              [2] = 'error',
-              [1] = 'warning'
-            }
+local dls_server_available, dls_requested_server = lsp_installer_servers.get_server("diagnosticls")
+if dls_server_available then
+    dls_requested_server:on_ready(function ()
+        local opts = {}
+        dls_requested_server:setup {
+          on_attach = on_attach,
+          filetypes = {"typescript", "typescriptreact"},
+          flags = {
+            debounce_text_changes = 150,
           },
-          markdownlint = {
-            command = 'markdownlint',
-            rootPatterns = { '.git' },
-            isStderr = true,
-            debounce = 100,
-            args = { '--stdin' },
-            offsetLine = 0,
-            offsetColumn = 0,
-            sourceName = 'markdownlint',
-            securities = {
-              undefined = 'hint'
-            },
-            formatLines = 1,
-            formatPattern = {
-              '^.*:(\\d+)\\s+(.*)$',
-              {
-                line = 1,
-                column = -1,
-                message = 2,
+          init_options = {
+            linters = {
+              eslint = {
+                command = 'eslint_d',
+                rootPatterns = { '.eslintrc.js', '.eslintrc.json', 'package.json' },
+                debounce = 100,
+                args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+                sourceName = 'eslint',
+                parseJson = {
+                  errorsRoot = '[0].messages',
+                  line = 'line',
+                  column = 'column',
+                  endLine = 'endLine',
+                  endColumn = 'endColumn',
+                  message = '[eslint] ${message} [${ruleId}]',
+                  security = 'severity'
+                },
+                securities = {
+                  [2] = 'error',
+                  [1] = 'warning'
+                }
+              },
+              markdownlint = {
+                command = 'markdownlint',
+                rootPatterns = { '.git' },
+                isStderr = true,
+                debounce = 100,
+                args = { '--stdin' },
+                offsetLine = 0,
+                offsetColumn = 0,
+                sourceName = 'markdownlint',
+                securities = {
+                  undefined = 'hint'
+                },
+                formatLines = 1,
+                formatPattern = {
+                  '^.*:(\\d+)\\s+(.*)$',
+                  {
+                    line = 1,
+                    column = -1,
+                    message = 2,
+                  }
+                }
               }
+            },
+            filetypes = {
+              javascript = 'eslint',
+              javascriptreact = 'eslint',
+              typescript = 'eslint',
+              typescriptreact = 'eslint',
+              markdown = 'markdownlint',
+              pandoc = 'markdownlint'
+            },
+            formatters = {
+              prettier = {
+                args = { '--stdin', '--stdin-filepath', '%filepath' },
+
+                rootPatterns = {
+                  '.prettierrc',
+                  '.prettierrc.json',
+                  '.prettierrc.toml',
+                  '.prettierrc.json',
+                  '.prettierrc.yml',
+                  '.prettierrc.yaml',
+                  '.prettierrc.json5',
+                  '.prettierrc.js',
+                  '.prettierrc.cjs',
+                  'prettier.config.js',
+                  'prettier.config.cjs',
+                },
+                command = 'prettier_d_slim'
+              }
+            },
+            formatFiletypes = {
+              css = 'prettier',
+              javascript = 'prettier',
+              javascriptreact = 'prettier',
+              json = 'prettier',
+              scss = 'prettier',
+              typescript = 'prettier',
+              typescriptreact = 'prettier'
             }
           }
-        },
-        filetypes = {
-          javascript = 'eslint',
-          javascriptreact = 'eslint',
-          typescript = 'eslint',
-          typescriptreact = 'eslint',
-          markdown = 'markdownlint',
-          pandoc = 'markdownlint'
-        },
-        formatters = {
-          prettier = {
-            args = { '--stdin', '--stdin-filepath', '%filepath' },
-
-            rootPatterns = {
-              '.prettierrc',
-              '.prettierrc.json',
-              '.prettierrc.toml',
-              '.prettierrc.json',
-              '.prettierrc.yml',
-              '.prettierrc.yaml',
-              '.prettierrc.json5',
-              '.prettierrc.js',
-              '.prettierrc.cjs',
-              'prettier.config.js',
-              'prettier.config.cjs',
-            },
-            command = 'prettier_d_slim'
-          }
-        },
-        formatFiletypes = {
-          css = 'prettier',
-          javascript = 'prettier',
-          javascriptreact = 'prettier',
-          json = 'prettier',
-          scss = 'prettier',
-          typescript = 'prettier',
-          typescriptreact = 'prettier'
         }
-      }
-    }
-  else
-    lspConfig[server].setup {
-      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-      on_attach = on_attach,
-    }
-  end
+
+    end)
+    if not dls_requested_server:is_installed() then
+        -- Queue the server to be installed
+        dls_requested_server:install()
+    end
 end
+
+local ts_server_available, ts_requested_server = lsp_installer_servers.get_server("tsserver")
+if ts_server_available then
+    ts_requested_server:on_ready(function ()
+        local opts = {}
+        ts_requested_server:setup {
+          debounce_text_changes = 150,
+          on_attach = function(client, bufnr)
+
+            local ts_utils = require("nvim-lsp-ts-utils")
+
+            ts_utils.setup {
+              eslint_enable_diagnostics = false,
+              disable_commands = false,
+              enable_formatting = false,
+              update_imports_on_move = true,
+              require_confirmation_on_move = false,
+              watch_dir = nil,
+            }
+
+
+
+            client.resolved_capabilities.document_formatting = false
+            on_attach(client, bufnr)
+            ts_utils.setup_client(client)
+          end
+        }
+    end)
+    if not ts_requested_server:is_installed() then
+        -- Queue the server to be installed
+        ts_requested_server:install()
+    end
+end
+
+-- local servers = lspInstall.installed_servers()
+
+-- for _, server in pairs(servers) do
+--   if server == "typescript" then
+
+--     lspConfig.typescript.setup {
+--       debounce_text_changes = 150,
+--       on_attach = function(client, bufnr)
+
+--         local ts_utils = require("nvim-lsp-ts-utils")
+
+--         ts_utils.setup {
+--           eslint_enable_diagnostics = false,
+--           disable_commands = false,
+--           enable_formatting = false,
+--           update_imports_on_move = true,
+--           require_confirmation_on_move = false,
+--           watch_dir = nil,
+--         }
+
+
+
+--         client.resolved_capabilities.document_formatting = false
+--         on_attach(client, bufnr)
+--         ts_utils.setup_client(client)
+--       end
+--     }
+
+--   elseif server == "diagnosticls" then
+
+--     lspConfig.diagnosticls.setup {
+--       on_attach = on_attach,
+--       filetypes = {"typescript", "typescriptreact"},
+--       flags = {
+--         debounce_text_changes = 150,
+--       },
+--       init_options = {
+--         linters = {
+--           eslint = {
+--             command = 'eslint_d',
+--             rootPatterns = { '.eslintrc.js', '.eslintrc.json', 'package.json' },
+--             debounce = 100,
+--             args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+--             sourceName = 'eslint',
+--             parseJson = {
+--               errorsRoot = '[0].messages',
+--               line = 'line',
+--               column = 'column',
+--               endLine = 'endLine',
+--               endColumn = 'endColumn',
+--               message = '[eslint] ${message} [${ruleId}]',
+--               security = 'severity'
+--             },
+--             securities = {
+--               [2] = 'error',
+--               [1] = 'warning'
+--             }
+--           },
+--           markdownlint = {
+--             command = 'markdownlint',
+--             rootPatterns = { '.git' },
+--             isStderr = true,
+--             debounce = 100,
+--             args = { '--stdin' },
+--             offsetLine = 0,
+--             offsetColumn = 0,
+--             sourceName = 'markdownlint',
+--             securities = {
+--               undefined = 'hint'
+--             },
+--             formatLines = 1,
+--             formatPattern = {
+--               '^.*:(\\d+)\\s+(.*)$',
+--               {
+--                 line = 1,
+--                 column = -1,
+--                 message = 2,
+--               }
+--             }
+--           }
+--         },
+--         filetypes = {
+--           javascript = 'eslint',
+--           javascriptreact = 'eslint',
+--           typescript = 'eslint',
+--           typescriptreact = 'eslint',
+--           markdown = 'markdownlint',
+--           pandoc = 'markdownlint'
+--         },
+--         formatters = {
+--           prettier = {
+--             args = { '--stdin', '--stdin-filepath', '%filepath' },
+
+--             rootPatterns = {
+--               '.prettierrc',
+--               '.prettierrc.json',
+--               '.prettierrc.toml',
+--               '.prettierrc.json',
+--               '.prettierrc.yml',
+--               '.prettierrc.yaml',
+--               '.prettierrc.json5',
+--               '.prettierrc.js',
+--               '.prettierrc.cjs',
+--               'prettier.config.js',
+--               'prettier.config.cjs',
+--             },
+--             command = 'prettier_d_slim'
+--           }
+--         },
+--         formatFiletypes = {
+--           css = 'prettier',
+--           javascript = 'prettier',
+--           javascriptreact = 'prettier',
+--           json = 'prettier',
+--           scss = 'prettier',
+--           typescript = 'prettier',
+--           typescriptreact = 'prettier'
+--         }
+--       }
+--     }
+--   else
+--     lspConfig[server].setup {
+--       capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+--       on_attach = on_attach,
+--     }
+--   end
+-- end
 

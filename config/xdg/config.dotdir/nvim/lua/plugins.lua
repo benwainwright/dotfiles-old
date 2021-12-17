@@ -284,7 +284,8 @@ return require('packer').startup({ function(use)
     requires = 'RishabhRD/popfix'
   }
 
-  use 'kabouzeid/nvim-lspinstall'
+  use 'williamboman/nvim-lsp-installer'
+
   use 'neovim/nvim-lspconfig'
 
   use {
