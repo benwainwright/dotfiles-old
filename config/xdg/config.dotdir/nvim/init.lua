@@ -5,6 +5,6 @@ require("plugins")
 require("core-settings")
 require("keys")
 require("load-vim-config")
-require("lsp")
+require("lsp.init")
 require("custom-highlights")
 
