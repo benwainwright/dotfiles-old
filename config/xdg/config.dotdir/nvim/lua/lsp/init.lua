@@ -1,6 +1,21 @@
 local lsp_configure = require("lsp.lsp_configure")
 local lsp_on_attach = require('lsp.lsp_on_attach')
 
+lsp_configure.server("bashls")
+lsp_configure.server("jedi_language_server")
+lsp_configure.server("vimls")
+lsp_configure.server("spectral")
+lsp_configure.server("ccls")
+lsp_configure.server("cssls")
+lsp_configure.server("dockerls")
+lsp_configure.server("gopls")
+lsp_configure.server("html")
+lsp_configure.server("jsonls")
+lsp_configure.server("jdtls")
+lsp_configure.server("sqls")
+lsp_configure.server("tailwindcss")
+lsp_configure.server("yamlls")
+
 lsp_configure.server("sumneko_lua", {
   on_attach = lsp_on_attach.global_lsp_config,
   settings = {

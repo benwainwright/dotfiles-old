@@ -4,6 +4,7 @@ local M = {}
 
 function M.server(server_name, opts)
   local server_available, requested_server = lsp_installer_servers.get_server(server_name)
+  local opts = opts or {}
   if server_available then
     requested_server:on_ready(function ()
         requested_server:setup(opts)
