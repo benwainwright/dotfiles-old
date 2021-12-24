@@ -86,6 +86,12 @@ source_shellfiles() {
     source "$shell_file"
   done
 
+  readonly bin_dirs=($DOTFILES_DIR/config/*/bin)
+
+  for dir in $bin_dirs; do
+    PATH=$PATH:$dir
+  done
+
   setopt -o nomatch
   unsetopt null_glob
 }

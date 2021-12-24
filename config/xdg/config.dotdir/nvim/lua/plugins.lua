@@ -1,6 +1,10 @@
 return require('packer').startup({ function(use)
 
   use {
+    "christoomey/vim-tmux-navigator"
+  }
+
+  use {
     'David-Kunz/jester'
   }
 
@@ -296,10 +300,10 @@ return require('packer').startup({ function(use)
     }
   }
 
-  use 'kyazdani42/nvim-web-devicons'
-  use 'onsails/lspkind-nvim'
-  use 'ynkdir/vim-vimlparser'
-  use "knubie/vim-kitty-navigator"
+  -- use 'kyazdani42/nvim-web-devicons'
+  -- use 'onsails/lspkind-nvim'
+  -- use 'ynkdir/vim-vimlparser'
+  -- use "knubie/vim-kitty-navigator"
   use "junegunn/fzf.vim"
   use "junegunn/fzf"
   use 'gfanto/fzf-lsp.nvim'
