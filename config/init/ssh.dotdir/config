@@ -4,21 +4,4 @@ Include ~/.ssh/config.reith.socks
 Host github.com
   AddKeysToAgent yes
   UseKeychain yes
-  Identityfile ~/.ssh/id_rsa.github
-
-Host gitlab.com
-  Preferredauthentications publickey
-  IdentityFile ~/.ssh/id_rsa.gitlab
-
-Host ?.access.*.cloud.bbc.co.uk
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_rsa.bbc
-
-Host *,??-*-?
-  AddKeysToAgent yes
-  User ben_wainwright
-  IdentityFile ~/.ssh/id_rsa.bbc
-  ProxyCommand >&1; h="%h"; r=${h##*,}; i=${h%%,*}; v=$(($(cut -d. -f2 <<<$i) / 32)); exec ssh -q -p 22000 bastion-tunnel@$v.access.$r.cloud.bbc.co.uk nc $i %p
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
-
+  Identityfile ~/.ssh/id_ed25519.github
