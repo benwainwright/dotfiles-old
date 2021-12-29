@@ -61,9 +61,6 @@ let g:fzf_layout = { 'down': '~40%' }
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-" nnoremap <C-e> :NvimTreeToggle<CR>
-" nnoremap <C-j> :m .+1<CR>==
-" nnoremap <C-k> :m .-2<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <CR> :noh<CR><CR>
@@ -115,7 +112,6 @@ onoremap al :normal val<CR>
 augroup vimrc
  autocmd!
 
- autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
  autocmd FileType fzf setlocal nonumber norelativenumber 
  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
  autocmd! FileType json set filetype=jsonc
