@@ -211,7 +211,8 @@ return require('packer').startup({ function(use)
       'quangnguyen30192/cmp-nvim-ultisnips',
       { 'tzachar/cmp-tabnine', run='./install.sh' },
       'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lsp'
+      'hrsh7th/cmp-nvim-lsp',
+      'onsails/lspkind-nvim'
     },
     config = function()
       local lspkind = require'lspkind'

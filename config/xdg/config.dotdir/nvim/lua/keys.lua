@@ -2,9 +2,48 @@ local vim = require("nvim-api")
 
 vim.exec("let mapleader = \"\\<Space>\"")
 vim.exec("let maplocalleader = \"\\\\\"")
-vim.map("n", "<C-e>", "<cmd>NvimTreeToggle<CR>")
-vim.map("n", "<leader>G", "<cmd>Ag<CR>")
-vim.map("n", "<C-b>", "<cmd>Buffers<CR>")
-vim.map("n", "<leader>cp", "<cmd>vs ~/.config/nvim/lua/plugins.lua<CR>")
-vim.map("n", "<leader>cm", "<cmd>vs ~/.config/nvim/lua/keys.lua<CR>")
-vim.map("n", "<leader>cl", "<cmd>vs ~/.config/nvim/lua/lsp.lua<CR>")
+
+vim.maps {
+  n = {
+    {
+      key = "<C-e>",
+      command = "NvimTreeToggle"
+    },
+    {
+      key = "<leader>G",
+      command = "Ag"
+    },
+    {
+      key = "<C-b>",
+      command = "Buffers"
+    },
+    {
+      key = "<leader>cp",
+      command = "vs ~/.config/nvim/lua/plugins.lua"
+    },
+    {
+      key = "<leader>cp",
+      command = "vs ~/.config/nvim/lua/keys.lua"
+    },
+    {
+      key = "<leader>cp",
+      command = "vs ~/.config/nvim/lua/lsp.lua"
+    },
+    {
+      key = "<C-l>",
+      command = "TmuxNavigateRight",
+    },
+    {
+      key = "<C-h>",
+      command = "TmuxNavigateLeft"
+    },
+    {
+      key = "<C-k>",
+      command = "TmuxNavigateUp"
+    },
+    {
+      key = "<C-j>",
+      command = "TmuxNavigateDown"
+    }
+  }
+}

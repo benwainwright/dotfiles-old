@@ -25,4 +25,12 @@ function M.map(mode, keys, command, opts)
   vim.api.nvim_set_keymap(mode, keys, command, options)
 end
 
+function M.maps(maps)
+  for mode, modeMaps in pairs(maps) do
+    for _, map in ipairs(modeMaps) do
+      M.map(mode, map.key, "<cmd>" .. map.command .. "<CR>")
+    end
+  end
+end
+
 return M
