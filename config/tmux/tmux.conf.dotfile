@@ -19,7 +19,7 @@ bind-key C-a send-prefix
 # smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 
-is_vim="is_vim.sh '#{pane_tty}"
+is_vim="is_vim.sh '#{pane_tty}'"
 
 bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
 bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
