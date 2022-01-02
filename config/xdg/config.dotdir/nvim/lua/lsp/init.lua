@@ -1,5 +1,4 @@
 local lsp_configure = require("lsp.lsp_configure")
-local lsp_on_attach = require('lsp.lsp_on_attach')
 
 lsp_configure.server("bashls")
 lsp_configure.server("jedi_language_server")
@@ -17,7 +16,6 @@ lsp_configure.server("tailwindcss")
 lsp_configure.server("yamlls")
 
 lsp_configure.server("sumneko_lua", {
-  on_attach = lsp_on_attach.global_lsp_config,
   settings = {
     Lua = {
       diagnostics = {
@@ -34,6 +32,7 @@ lsp_configure.server("tsserver", {
     ts_utils.setup {
       eslint_enable_diagnostics = false,
       disable_commands = false,
+      -- eslint_enable_disable_comments = true,
       enable_formatting = false,
       update_imports_on_move = true,
       require_confirmation_on_move = false,
@@ -41,13 +40,11 @@ lsp_configure.server("tsserver", {
     }
 
     client.resolved_capabilities.document_formatting = false
-    lsp_on_attach.global_lsp_config(client, bufnr)
     ts_utils.setup_client(client)
   end
 })
 
 lsp_configure.server("diagnosticls", {
-  on_attach = lsp_on_attach.configure_lsp,
   filetypes = {"typescript", "typescriptreact"},
   flags = {
     debounce_text_changes = 150,

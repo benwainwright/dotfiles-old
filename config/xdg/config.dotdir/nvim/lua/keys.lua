@@ -2,6 +2,7 @@ local vim = require("nvim-api")
 
 vim.exec("let mapleader = \"\\<Space>\"")
 vim.exec("let maplocalleader = \"\\\\\"")
+vim.exec("let g:tmux_navigator_no_mappings = 1")
 
 vim.maps {
   n = {

@@ -1,16 +1,91 @@
 return require('packer').startup({ function(use)
 
+  use "kyazdani42/nvim-web-devicons"
+  use "onsails/lspkind-nvim"
+  use "ynkdir/vim-vimlparser"
+  use "knubie/vim-kitty-navigator"
+  use "junegunn/fzf.vim"
+  use "junegunn/fzf"
+  use "gfanto/fzf-lsp.nvim"
+  use "tpope/vim-rhubarb"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-surround"
+  use "tpope/vim-dispatch"
+  use "tpope/vim-eunuch"
+  use "tpope/vim-commentary"
+  use "fladson/vim-kitty"
+  use "peitalin/vim-jsx-typescript"
+  use "mlaursen/vim-react-snippets"
+  use "christoomey/vim-tmux-navigator"
+  use "David-Kunz/jester"
+  use "Pocco81/DAPInstall.nvim"
+  use "jparise/vim-graphql"
+  use "mbbill/undotree"
+  use "RishabhRD/popfix"
+  use "nvim-lua/plenary.nvim"
+  use "kshenoy/vim-signature"
+  use "wellle/targets.vim"
+  use "gioele/vim-autoswap"
+  use "ryanoasis/vim-devicons"
+  use "chrisbra/unicode.vim"
+  use "bkad/CamelCaseMotion"
+  use "PeterRincker/vim-argumentative"
+  use "michaeljsmith/vim-indent-object"
+
   use {
-    "christoomey/vim-tmux-navigator"
+    'CosmicNvim/cosmic-ui',
+    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('cosmic-ui').setup {}
+    end,
   }
 
   use {
-    'David-Kunz/jester'
+    'ray-x/navigator.lua',
+    config = function()
+      require'navigator'.setup {
+        keymaps = {
+          { key = 'gr', func = "require('navigator.reference').reference()" },
+          { key = 'Gr', func = "require('navigator.reference').async_ref()" },
+          { mode = 'i', key = '<M-k>', func = 'signature_help()' },
+          { key = '<c-k>', func = 'signature_help()' },
+          { key = 'g0', func = "require('navigator.symbols').document_symbols()" },
+          { key = 'gW', func = "require('navigator.workspace').workspace_symbol()" },
+          { key = '<Leader>jd', func = "require('navigator.definition').definition()" },
+          { key = '<Leader>jD', func = "declaration({ border = 'rounded', max_width = 80 })" },
+          { key = 'gp', func = "require('navigator.definition').definition_preview()" },
+          { key = 'gT', func = "require('navigator.treesitter').buf_ts()" },
+          { key = '<Leader>gT', func = "require('navigator.treesitter').bufs_ts()" },
+          { key = 'K', func = 'hover({ popup_opts = { border = single, max_width = 80 }})' },
+          { key = '<Space>a', mode = 'n', func = "require('navigator.codeAction').code_action()" },
+          { key = '<Space>a', mode = 'v', func = 'range_code_action()' },
+          { key = '<Space>r', func = "require('navigator.rename').rename()" },
+          { key = '<Leader>ji', func = 'implementation()' },
+          { key = '<Space>D', func = 'type_definition()' },
+          { key = 'gL', func = "require('navigator.diagnostics').show_diagnostics()" },
+          { key = 'gG', func = "require('navigator.diagnostics').show_buf_diagnostics()" },
+          { key = '<Leader>dt', func = "require('navigator.diagnostics').toggle_diagnostics()" },
+          { key = ']d', func = "diagnostic.goto_next({ border = 'rounded', max_width = 80})" },
+          { key = '[d', func = "diagnostic.goto_prev({ border = 'rounded', max_width = 80})" },
+          { key = ']r', func = "require('navigator.treesitter').goto_next_usage()" },
+          { key = '[r', func = "require('navigator.treesitter').goto_previous_usage()" },
+          { key = '<C-LeftMouse>', func = 'definition()' },
+          { key = 'g<LeftMouse>', func = 'implementation()' },
+          { key = '<Leader>k', func = "require('navigator.dochighlight').hi_symbol()" },
+          { key = '<Space>wa', func = "require('navigator.workspace').add_workspace_folder()" },
+          { key = '<Space>wr', func = "require('navigator.workspace').remove_workspace_folder()" },
+          { key = '<Space>ff', func = 'formatting()', mode = 'n' },
+          { key = '<Space>ff', func = 'range_formatting()', mode = 'v' },
+          { key = '<Space>wl', func = "require('navigator.workspace').list_workspace_folders()" },
+          { key = '<Space>la', mode = 'n', func = "require('navigator.codelens').run_action()" },
+        }
+      }
+    end,
+    requires = {
+      'ray-x/guihua.lua', run = 'cd lua/fzy && make'
+    }
   }
 
-  use { 
-    "Pocco81/DAPInstall.nvim"
-  }
 
   use {
     'mg979/vim-visual-multi',
@@ -18,20 +93,8 @@ return require('packer').startup({ function(use)
   }
 
   use {
-    'jparise/vim-graphql'
-  }
-
-  use {
-    'mbbill/undotree'
-  }
-
-  use{
       "vuki656/package-info.nvim",
       requires = "MunifTanjim/nui.nvim",
-  }
-
-  use {
-    'RishabhRD/popfix'
   }
 
   use {
@@ -48,6 +111,12 @@ return require('packer').startup({ function(use)
 
   use {
     "ray-x/lsp_signature.nvim",
+
+    config = function()
+      require("lsp_signature").setup {
+        floating_window = true
+      }
+    end
   }
 
   use {
@@ -59,15 +128,6 @@ return require('packer').startup({ function(use)
     'glepnir/dashboard-nvim',
     requires="liuchengxu/vim-clap"
   }
-
-  -- Common functions for LUA plugins
-  use 'nvim-lua/plenary.nvim'
-
-  -- Add marks to sign column
-  use 'kshenoy/vim-signature'
-
-  -- Add extra text objects
-  use 'wellle/targets.vim'
 
   use {
     "p00f/nvim-ts-rainbow",
@@ -140,17 +200,6 @@ return require('packer').startup({ function(use)
     rtp = '.'
   }
 
-  use {
-    'peitalin/vim-jsx-typescript'
-  }
-
-  use 'mlaursen/vim-react-snippets'
-
-  -- Behave sensibly with swap files
-  use 'gioele/vim-autoswap'
-  use 'ryanoasis/vim-devicons'
-  use 'chrisbra/unicode.vim'
-
   use { 
     'sindrets/diffview.nvim',
     cmd = "DiffviewOpen"
@@ -160,10 +209,6 @@ return require('packer').startup({ function(use)
      'windwp/nvim-autopairs',
      config = function() require('nvim-autopairs').setup() end
   }
-
-  use 'bkad/CamelCaseMotion'
-  use 'PeterRincker/vim-argumentative'
-  use 'michaeljsmith/vim-indent-object'
 
   use {
     'vim-test/vim-test',
@@ -196,7 +241,11 @@ return require('packer').startup({ function(use)
     'kyazdani42/nvim-tree.lua',
     cmd = "NvimTreeToggle",
     config = function()
-      require'nvim-tree'.setup()
+      require'nvim-tree'.setup {
+        update_to_buf_dir = {
+          enable = true
+        }
+      }
       vim.api.nvim_set_var("nvim_tree_highlight_opened_files", 1)
       vim.api.nvim_set_var("nvim_tree_git_hl", 1)
       vim.api.nvim_set_var("nvim_tree_lsp_diagnostics", 1)
@@ -212,7 +261,10 @@ return require('packer').startup({ function(use)
       { 'tzachar/cmp-tabnine', run='./install.sh' },
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-nvim-lsp',
-      'onsails/lspkind-nvim'
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'onsails/lspkind-nvim',
+      { 'David-Kunz/cmp-npm', requires = 'nvim-lua/plenary.nvim' }
     },
     config = function()
       local lspkind = require'lspkind'
@@ -269,7 +321,10 @@ return require('packer').startup({ function(use)
         sources = {
           { name = 'nvim_lsp' },
           { name = 'cmp_tabnine'},
+          { name = 'nvim_lua' },
           { name = 'buffer' },
+          { name = 'path'},
+          { name = 'npm', keyword_length = 4 },
           { name = 'ultisnips' }
         },
         documentation = {
@@ -282,16 +337,16 @@ return require('packer').startup({ function(use)
   }
 
   use "glepnir/lspsaga.nvim"
-  use 'kosayoda/nvim-lightbulb'
+  use "kosayoda/nvim-lightbulb"
 
   use {
     'RishabhRD/nvim-lsputils',
     requires = 'RishabhRD/popfix'
   }
 
-  use 'williamboman/nvim-lsp-installer'
+  use "williamboman/nvim-lsp-installer"
 
-  use 'neovim/nvim-lspconfig'
+  use "neovim/nvim-lspconfig"
 
   use {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
@@ -300,21 +355,6 @@ return require('packer').startup({ function(use)
       config = function() require("null-ls").setup() end
     }
   }
-
-  -- use 'kyazdani42/nvim-web-devicons'
-  -- use 'onsails/lspkind-nvim'
-  -- use 'ynkdir/vim-vimlparser'
-  -- use "knubie/vim-kitty-navigator"
-  use "junegunn/fzf.vim"
-  use "junegunn/fzf"
-  use 'gfanto/fzf-lsp.nvim'
-  use 'tpope/vim-rhubarb'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-dispatch'
-  use 'tpope/vim-eunuch'
-  use 'tpope/vim-commentary'
-  use "fladson/vim-kitty"
 
   use {
     "SirVer/ultisnips",
@@ -356,8 +396,8 @@ return require('packer').startup({ function(use)
   }
 
   use {
-    'benwainwright/fzf-project',
-    cmd = { "FzfSwitchProject", "FzfChooseProjectFile" }
+    -- 'benwainwright/fzf-project',
+    '~/repos/fzf-project'
   }
 
   -- use {
@@ -372,7 +412,9 @@ return require('packer').startup({ function(use)
     'projekt0n/github-nvim-theme',
     after = "lualine.nvim",
     config = function()
-      require("github-theme").setup()
+      require("github-theme").setup {
+        theme_style = 'dark_default'
+      }
     end
   }
 
