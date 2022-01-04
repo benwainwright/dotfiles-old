@@ -202,13 +202,11 @@ return require('packer').startup({ function(use)
 
   use {
     'kyazdani42/nvim-tree.lua',
-    cmd = "NvimTreeToggle",
     config = function()
       require'nvim-tree'.setup {
         open_on_setup = true,
         auto_close = true,
         hijack_cursor = true,
-        update_cwd = true,
         update_focused_file = {
           enable = true
         },
@@ -228,8 +226,6 @@ return require('packer').startup({ function(use)
       vim.api.nvim_set_var("nvim_tree_highlight_opened_files", 1)
       vim.api.nvim_set_var("nvim_tree_git_hl", 1)
       vim.api.nvim_set_var("nvim_tree_lsp_diagnostics", 1)
-      vim.api.nvim_set_var("nvim_tree_update_cwd", 1)
-      vim.api.nvim_set_var("nvim_tree_follow", 1)
       vim.api.nvim_set_var("nvim_tree_showicons.git", 1)
     end
   }
