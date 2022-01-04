@@ -59,15 +59,15 @@ function M.init()
       },
       {
         key = "<space>e",
-        lua = "vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })"
+        lua = "vim.diagnostic.open_float(nil, { border = 'single' })"
       },
       {
         key = "[d",
-        lua = "vim.lsp.diagnostic.goto_prev({ popup_opts = { border = 'single' }})"
+        lua = "vim.diagnostic.goto_prev({ float = { border = 'single' } })"
       },
       {
         key = "]d",
-        lua = "vim.lsp.diagnostic.goto_next({ popup_upts = { border = 'single' }})"
+        lua = "vim.diagnostic.goto_next({ float = { border = 'single' } })"
       },
       {
         key = "<space>q",

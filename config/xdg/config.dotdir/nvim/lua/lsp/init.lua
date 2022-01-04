@@ -17,7 +17,7 @@ servers.configure {
     name = "tsserver",
     options = {
       debounce_text_changes = 150,
-      on_attach = function(client, bufnr)
+      on_attach = function(client)
         local ts_utils = require("nvim-lsp-ts-utils")
         ts_utils.setup {
           eslint_enable_diagnostics = false,
