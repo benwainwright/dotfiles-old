@@ -2,7 +2,6 @@ local vim = require("nvim-api")
 
 vim.exec("let mapleader = \"\\<Space>\"")
 vim.exec("let maplocalleader = \"\\\\\"")
-vim.exec("let g:tmux_navigator_no_mappings = 1")
 
 vim.maps {
   n = {
@@ -29,22 +28,6 @@ vim.maps {
     {
       key = "<leader>cp",
       command = "vs ~/.config/nvim/lua/lsp.lua"
-    },
-    {
-      key = "<C-l>",
-      command = "TmuxNavigateRight",
-    },
-    {
-      key = "<C-h>",
-      command = "TmuxNavigateLeft"
-    },
-    {
-      key = "<C-k>",
-      command = "TmuxNavigateUp"
-    },
-    {
-      key = "<C-j>",
-      command = "TmuxNavigateDown"
     }
   }
 }

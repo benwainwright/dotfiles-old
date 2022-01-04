@@ -3,7 +3,6 @@ return require('packer').startup({ function(use)
   use "kyazdani42/nvim-web-devicons"
   use "onsails/lspkind-nvim"
   use "ynkdir/vim-vimlparser"
-  use "knubie/vim-kitty-navigator"
   use "junegunn/fzf.vim"
   use "junegunn/fzf"
   use "gfanto/fzf-lsp.nvim"
@@ -40,46 +39,21 @@ return require('packer').startup({ function(use)
     end,
   }
 
+
+  use { 
+    "williamboman/nvim-lsp-installer",
+    requires = {
+      "neovim/nvim-lspconfig",
+    },
+    config = function ()
+      require("lsp.init")
+    end
+  }
+
   use {
     'ray-x/navigator.lua',
     config = function()
-      require'navigator'.setup {
-        keymaps = {
-          { key = 'gr', func = "require('navigator.reference').reference()" },
-          { key = 'Gr', func = "require('navigator.reference').async_ref()" },
-          { mode = 'i', key = '<M-k>', func = 'signature_help()' },
-          { key = '<c-k>', func = 'signature_help()' },
-          { key = 'g0', func = "require('navigator.symbols').document_symbols()" },
-          { key = 'gW', func = "require('navigator.workspace').workspace_symbol()" },
-          { key = '<Leader>jd', func = "require('navigator.definition').definition()" },
-          { key = '<Leader>jD', func = "declaration({ border = 'rounded', max_width = 80 })" },
-          { key = 'gp', func = "require('navigator.definition').definition_preview()" },
-          { key = 'gT', func = "require('navigator.treesitter').buf_ts()" },
-          { key = '<Leader>gT', func = "require('navigator.treesitter').bufs_ts()" },
-          { key = 'K', func = 'hover({ popup_opts = { border = single, max_width = 80 }})' },
-          { key = '<Space>a', mode = 'n', func = "require('navigator.codeAction').code_action()" },
-          { key = '<Space>a', mode = 'v', func = 'range_code_action()' },
-          { key = '<Space>r', func = "require('navigator.rename').rename()" },
-          { key = '<Leader>ji', func = 'implementation()' },
-          { key = '<Space>D', func = 'type_definition()' },
-          { key = 'gL', func = "require('navigator.diagnostics').show_diagnostics()" },
-          { key = 'gG', func = "require('navigator.diagnostics').show_buf_diagnostics()" },
-          { key = '<Leader>dt', func = "require('navigator.diagnostics').toggle_diagnostics()" },
-          { key = ']d', func = "diagnostic.goto_next({ border = 'rounded', max_width = 80})" },
-          { key = '[d', func = "diagnostic.goto_prev({ border = 'rounded', max_width = 80})" },
-          { key = ']r', func = "require('navigator.treesitter').goto_next_usage()" },
-          { key = '[r', func = "require('navigator.treesitter').goto_previous_usage()" },
-          { key = '<C-LeftMouse>', func = 'definition()' },
-          { key = 'g<LeftMouse>', func = 'implementation()' },
-          { key = '<Leader>k', func = "require('navigator.dochighlight').hi_symbol()" },
-          { key = '<Space>wa', func = "require('navigator.workspace').add_workspace_folder()" },
-          { key = '<Space>wr', func = "require('navigator.workspace').remove_workspace_folder()" },
-          { key = '<Space>ff', func = 'formatting()', mode = 'n' },
-          { key = '<Space>ff', func = 'range_formatting()', mode = 'v' },
-          { key = '<Space>wl', func = "require('navigator.workspace').list_workspace_folders()" },
-          { key = '<Space>la', mode = 'n', func = "require('navigator.codelens').run_action()" },
-        }
-      }
+      require'navigator'.setup()
     end,
     requires = {
       'ray-x/guihua.lua', run = 'cd lua/fzy && make'
@@ -109,15 +83,15 @@ return require('packer').startup({ function(use)
     end
   }
 
-  use {
-    "ray-x/lsp_signature.nvim",
+  -- use {
+  --   "ray-x/lsp_signature.nvim",
 
-    config = function()
-      require("lsp_signature").setup {
-        floating_window = true
-      }
-    end
-  }
+  --   config = function()
+  --     require("lsp_signature").setup {
+  --       floating_window = true
+  --     }
+  --   end
+  -- }
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -344,8 +318,6 @@ return require('packer').startup({ function(use)
     requires = 'RishabhRD/popfix'
   }
 
-  use "williamboman/nvim-lsp-installer"
-
   use "neovim/nvim-lspconfig"
 
   use {
@@ -396,8 +368,8 @@ return require('packer').startup({ function(use)
   }
 
   use {
-    -- 'benwainwright/fzf-project',
-    '~/repos/fzf-project'
+    'benwainwright/fzf-project',
+    -- '~/repos/fzf-project'
   }
 
   -- use {

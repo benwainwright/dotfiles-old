@@ -8,7 +8,6 @@ function M.server(server_name, opts)
   if server_available then
     requested_server:on_ready(function ()
         requested_server:setup(opts)
-
     end)
   end
   if not requested_server:is_installed() then
