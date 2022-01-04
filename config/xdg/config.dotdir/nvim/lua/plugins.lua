@@ -205,15 +205,32 @@ return require('packer').startup({ function(use)
     cmd = "NvimTreeToggle",
     config = function()
       require'nvim-tree'.setup {
-        update_to_buf_dir = {
+        open_on_setup = true,
+        auto_close = true,
+        hijack_cursor = true,
+        update_cwd = true,
+        update_focused_file = {
           enable = true
-        }
+        },
+        diagnostics = {
+          enable = true,
+          show_on_dirs = true
+        },
+        git = {
+          enable = true,
+        },
+        view = {
+          width = 50,
+          auto_resize = true
+        },
       }
+      
       vim.api.nvim_set_var("nvim_tree_highlight_opened_files", 1)
       vim.api.nvim_set_var("nvim_tree_git_hl", 1)
       vim.api.nvim_set_var("nvim_tree_lsp_diagnostics", 1)
       vim.api.nvim_set_var("nvim_tree_update_cwd", 1)
       vim.api.nvim_set_var("nvim_tree_follow", 1)
+      vim.api.nvim_set_var("nvim_tree_showicons.git", 1)
     end
   }
 
