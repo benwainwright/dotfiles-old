@@ -28,9 +28,31 @@ end
 function M.maps(maps)
   for mode, modeMaps in pairs(maps) do
     for _, map in ipairs(modeMaps) do
-      M.map(mode, map.key, "<cmd>" .. map.command .. "<CR>")
+      if map.lua ~= nil then
+        M.map(mode, map.key, "<cmd>lua " .. map.lua .. "<CR>")
+      else
+        M.map(mode, map.key, "<cmd>" .. map.command .. "<CR>")
+      end
     end
   end
+end
+
+--- Define autocommands
+-- @param definitions a table mapping autogroup names to
+--        a list of individual autocommands
+function M.define_autocommands(definitions)
+	for group_name, definition in pairs(definitions) do
+		vim.api.nvim_command('augroup '..group_name)
+		vim.api.nvim_command('autocmd!')
+		for _, def in ipairs(definition) do
+			-- if type(def) == 'table' and type(def[#def]) == 'function' then
+			-- 	def[#def] = lua_callback(def[#def])
+			-- end
+			local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+			vim.api.nvim_command(command)
+		end
+		vim.api.nvim_command('augroup END')
+	end
 end
 
 return M

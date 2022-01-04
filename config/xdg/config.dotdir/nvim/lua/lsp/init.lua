@@ -1,6 +1,6 @@
-local lsp_configure = require("lsp.lsp_configure")
+local servers = require("lsp.servers")
 
-lsp_configure.configure_servers {
+servers.configure {
   {
     name = "sumneko_lua",
     options = {

@@ -1,5 +1,9 @@
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
-local lsp_on_attach = require("lsp.lsp_on_attach")
+
+local lsp_keymaps = require('lsp.keymaps')
+local lsp_autocommands = require('lsp.autocommands')
+local lsp_signs = require('lsp.signs')
+local lsp_handlers = require('lsp.handlers')
 
 local M = {}
 
@@ -12,7 +16,10 @@ local configure_server = function(server_name, opts)
     if type(passed_in_on_attach) == 'function' then
       passed_in_on_attach(client, bufnr)
     end
-    lsp_on_attach.global_lsp_config(client, bufnr)
+    lsp_keymaps.init()
+    lsp_autocommands.init()
+    lsp_signs.init()
+    lsp_handlers.init()
   end
 
   opts.on_attach = wrapped_on_attach
@@ -27,12 +34,12 @@ local configure_server = function(server_name, opts)
   end
 end
 
-M.configure_servers = function(servers)
+M.configure = function(servers)
   for _, server in ipairs(servers) do
     if type(server) == 'string' then
       configure_server(server)
     else
-      configure_server(server.name, server.opts)
+      configure_server(server.name, server.options)
     end
   end
 end
