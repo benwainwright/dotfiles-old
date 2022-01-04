@@ -3,7 +3,7 @@ local lsp_on_attach = require("lsp.lsp_on_attach")
 
 local M = {}
 
-function M.server(server_name, opts)
+local configure_server = function(server_name, opts)
   local server_available, requested_server = lsp_installer_servers.get_server(server_name)
   local opts = opts or {}
   local passed_in_on_attach = opts.on_attach
@@ -24,6 +24,16 @@ function M.server(server_name, opts)
   end
   if not requested_server:is_installed() then
       requested_server:install()
+  end
+end
+
+M.configure_servers = function(servers)
+  for _, server in ipairs(servers) do
+    if type(server) == 'string' then
+      configure_server(server)
+    else
+      configure_server(server.name, server.opts)
+    end
   end
 end
 
