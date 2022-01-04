@@ -206,10 +206,11 @@ return require('packer').startup({ function(use)
       require'nvim-tree'.setup {
         open_on_setup = true,
         auto_close = true,
-        hijack_cursor = true,
         update_focused_file = {
-          enable = true
+          enable = true,
+          update_cwd = true
         },
+        update_cwd = true,
         diagnostics = {
           enable = true,
           show_on_dirs = true
