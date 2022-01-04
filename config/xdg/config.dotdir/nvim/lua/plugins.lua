@@ -225,7 +225,6 @@ return require('packer').startup({ function(use)
       
       vim.api.nvim_set_var("nvim_tree_highlight_opened_files", 1)
       vim.api.nvim_set_var("nvim_tree_git_hl", 1)
-      vim.api.nvim_set_var("nvim_tree_lsp_diagnostics", 1)
       vim.api.nvim_set_var("nvim_tree_showicons.git", 1)
     end
   }
