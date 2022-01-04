@@ -1,4 +1,5 @@
 local lsp_configure = require("lsp.lsp_configure")
+local lsp_on_attach = require("lsp.lsp_on_attach")
 
 lsp_configure.server("bashls")
 lsp_configure.server("jedi_language_server")
@@ -41,6 +42,7 @@ lsp_configure.server("tsserver", {
 
     client.resolved_capabilities.document_formatting = false
     ts_utils.setup_client(client)
+    lsp_on_attach.global_lsp_config(client, bufnr)
   end
 })
 

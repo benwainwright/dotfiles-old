@@ -51,17 +51,6 @@ return require('packer').startup({ function(use)
   }
 
   use {
-    'ray-x/navigator.lua',
-    config = function()
-      require'navigator'.setup()
-    end,
-    requires = {
-      'ray-x/guihua.lua', run = 'cd lua/fzy && make'
-    }
-  }
-
-
-  use {
     'mg979/vim-visual-multi',
     branch = "master"
   }
