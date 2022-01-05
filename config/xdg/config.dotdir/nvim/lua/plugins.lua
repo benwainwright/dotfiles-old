@@ -1,5 +1,17 @@
 return require('packer').startup({ function(use)
 
+  use {
+    "gelguy/wilder.nvim",
+    config = function()
+      vim.api.nvim_exec(
+      [[
+        call wilder#setup({'modes': [':', '/', '?']})
+        call wilder#set_option('renderer', wilder#popupmenu_renderer())
+      ]],
+      false
+      )
+    end
+  }
   use "kyazdani42/nvim-web-devicons"
   use "onsails/lspkind-nvim"
   use "ynkdir/vim-vimlparser"
