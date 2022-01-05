@@ -19,10 +19,15 @@ local configure_server = function(server_name, opts)
     if type(passed_in_on_attach) == 'function' then
       passed_in_on_attach(client, bufnr)
     end
-    lsp_keymaps.init(client)
+    lsp_keymaps.init()
     lsp_autocommands.init(client)
     lsp_signs.init()
     lsp_handlers.init()
+  end
+
+  if server_name == "sumneko_lua" then
+    local luadev = require("lua-dev").setup({})
+    for k, v in pairs(luadev) do suppliedOpts[k] = v end
   end
 
   suppliedOpts.on_attach = wrapped_on_attach

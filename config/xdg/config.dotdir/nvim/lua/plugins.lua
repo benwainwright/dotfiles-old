@@ -1,12 +1,8 @@
 return require('packer').startup(
     {
       function(use)
-
+        use "folke/lua-dev.nvim"
         use "euclidianAce/BetterLua.vim"
-        use {
-          "tjdevries/nlua.nvim"
-        }
-
         use "kyazdani42/nvim-web-devicons"
         use "onsails/lspkind-nvim"
         use "ynkdir/vim-vimlparser"
