@@ -1,7 +1,6 @@
 local nvim = require("nvim-api")
 local exec = nvim.exec
 
-
 -- Delete comment characters when joining lines
 vim.o.formatoptions = vim.o.formatoptions .. "j"
 
@@ -146,7 +145,8 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.belloff = vim.o.belloff .. ",ctrlg"
 
 -- How to display hidden characters
-vim.o.listchars = "tab:→ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»"
+vim.o.listchars =
+    "tab:→ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»"
 
 -- Don't display tab line
 vim.o.showtabline = 0

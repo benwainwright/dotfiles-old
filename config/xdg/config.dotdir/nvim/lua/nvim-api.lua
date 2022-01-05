@@ -6,7 +6,7 @@ M.options = {
 }
 
 function M.exec(command)
-	vim.api.nvim_exec(command, false)
+  vim.api.nvim_exec(command, false)
 end
 
 function M.options.append(name, value)
@@ -20,7 +20,9 @@ function M.options.prepend(name, value)
 end
 
 function M.map(mode, keys, command, opts)
-  local options = { noremap = true }
+  local options = {
+    noremap = true
+  }
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.api.nvim_set_keymap(mode, keys, command, options)
 end
@@ -41,15 +43,20 @@ end
 -- @param definitions a table mapping autogroup names to
 --        a list of individual autocommands
 function M.define_autocommands(definitions)
-	for group_name, definition in pairs(definitions) do
-		vim.api.nvim_command('augroup '..group_name)
-		vim.api.nvim_command('autocmd!')
-		for _, def in ipairs(definition) do
-			local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
-			vim.api.nvim_command(command)
-		end
-		vim.api.nvim_command('augroup END')
-	end
+  for group_name, definition in pairs(definitions) do
+    vim.api.nvim_command('augroup ' .. group_name)
+    vim.api.nvim_command('autocmd!')
+    for _, def in ipairs(definition) do
+      local command = table.concat(
+          vim.tbl_flatten {
+            'autocmd',
+            def
+          }, ' '
+      )
+      vim.api.nvim_command(command)
+    end
+    vim.api.nvim_command('augroup END')
+  end
 end
 
 return M

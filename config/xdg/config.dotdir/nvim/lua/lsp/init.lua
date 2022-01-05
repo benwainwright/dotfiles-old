@@ -7,8 +7,8 @@ servers.configure {
       settings = {
         Lua = {
           diagnostics = {
-              globals = {'vim'},
-          },
+            globals = {'vim'}
+          }
         }
       }
     }
@@ -26,7 +26,7 @@ servers.configure {
           enable_formatting = false,
           update_imports_on_move = true,
           require_confirmation_on_move = false,
-          watch_dir = nil,
+          watch_dir = nil
         }
 
         client.resolved_capabilities.document_formatting = false
@@ -38,17 +38,30 @@ servers.configure {
     name = "diagnosticls",
     options = {
 
-      filetypes = {"typescript", "typescriptreact"},
+      filetypes = {
+        "typescript",
+        "typescriptreact"
+      },
       flags = {
-        debounce_text_changes = 150,
+        debounce_text_changes = 150
       },
       init_options = {
         linters = {
           eslint = {
             command = 'eslint_d',
-            rootPatterns = { '.eslintrc.js', '.eslintrc.json', 'package.json' },
+            rootPatterns = {
+              '.eslintrc.js',
+              '.eslintrc.json',
+              'package.json'
+            },
             debounce = 100,
-            args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+            args = {
+              '--stdin',
+              '--stdin-filename',
+              '%filepath',
+              '--format',
+              'json'
+            },
             sourceName = 'eslint',
             parseJson = {
               errorsRoot = '[0].messages',
@@ -66,10 +79,12 @@ servers.configure {
           },
           markdownlint = {
             command = 'markdownlint',
-            rootPatterns = { '.git' },
+            rootPatterns = {
+              '.git'
+            },
             isStderr = true,
             debounce = 100,
-            args = { '--stdin' },
+            args = {'--stdin'},
             offsetLine = 0,
             offsetColumn = 0,
             sourceName = 'markdownlint',
@@ -82,7 +97,7 @@ servers.configure {
               {
                 line = 1,
                 column = -1,
-                message = 2,
+                message = 2
               }
             }
           }
@@ -97,7 +112,11 @@ servers.configure {
         },
         formatters = {
           prettier = {
-            args = { '--stdin', '--stdin-filepath', '%filepath' },
+            args = {
+              '--stdin',
+              '--stdin-filepath',
+              '%filepath'
+            },
 
             rootPatterns = {
               '.prettierrc',
@@ -110,7 +129,7 @@ servers.configure {
               '.prettierrc.js',
               '.prettierrc.cjs',
               'prettier.config.js',
-              'prettier.config.cjs',
+              'prettier.config.cjs'
             },
             command = 'prettier_d_slim'
           }
@@ -127,6 +146,27 @@ servers.configure {
       }
     }
   },
+  {
+    name = "efm",
+    options = {
+      init_options = {
+        documentFormatting = true
+      },
+      settings = {
+        rootMarkers = {
+          ".git/"
+        },
+        languages = {
+          lua = {
+            {
+              formatCommand = "lua-format -i --config=lua-format.config",
+              formatStdin = true
+            }
+          }
+        }
+      }
+    }
+  },
   "bashls",
   "jedi_language_server",
   "vimls",
@@ -139,6 +179,6 @@ servers.configure {
   "jdtls",
   "sqls",
   "tailwindcss",
-  "yamlls",
+  "yamlls"
 }
 

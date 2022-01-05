@@ -10,7 +10,7 @@ local highlight_autocommands = {
 
 local lightbulb_autocommands = {
   'CursorHold <buffer> lua require"nvim-lightbulb".update_lightbulb()',
-  'CursorHoldI <buffer> lua require"nvim-lightbulb".update_lightbulb()',
+  'CursorHoldI <buffer> lua require"nvim-lightbulb".update_lightbulb()'
 }
 
 local formatting_autocommand = {
@@ -18,9 +18,7 @@ local formatting_autocommand = {
 }
 
 local concat = function(t1, t2)
-  for _,v in ipairs(t2) do
-    table.insert(t1, v)
-  end
+  for _, v in ipairs(t2) do table.insert(t1, v) end
 end
 
 M.init = function(client)
@@ -41,7 +39,11 @@ M.init = function(client)
     concat(autocommands, formatting_autocommand)
   end
 
-  api.define_autocommands({['lsp_autocommands' .. name] = autocommands})
+  api.define_autocommands(
+      {
+        ['lsp_autocommands' .. name] = autocommands
+      }
+  )
 end
 
 return M

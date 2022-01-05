@@ -19,11 +19,11 @@ function M.init()
       },
       {
         key = "<space>ji",
-        lua = "vim.lsp.buf.implementation()",
+        lua = "vim.lsp.buf.implementation()"
       },
       {
         key = "<C-k>",
-        lua = "vim.lsp.buf.signature_help()",
+        lua = "vim.lsp.buf.signature_help()"
       },
       {
         key = "<space>wa",
@@ -51,7 +51,7 @@ function M.init()
       },
       {
         key = "<space>jr",
-        lua = "vim.lsp.buf.references()",
+        lua = "vim.lsp.buf.references()"
       },
       {
         key = "<space>jr",
