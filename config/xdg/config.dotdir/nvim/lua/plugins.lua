@@ -125,7 +125,7 @@ return require('packer').startup(
         use {
           'mfussenegger/nvim-dap',
           config = function()
-            require("configure-dap")
+            require("nvim-dap.init")
           end
         }
 
