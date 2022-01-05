@@ -7,17 +7,6 @@ return require('packer').startup(
           "tjdevries/nlua.nvim"
         }
 
-        use {
-          "gelguy/wilder.nvim",
-          config = function()
-            vim.api.nvim_exec(
-                [[
-        call wilder#setup({'modes': [':', '/', '?']})
-        call wilder#set_option('renderer', wilder#popupmenu_renderer())
-      ]], false
-            )
-          end
-        }
         use "kyazdani42/nvim-web-devicons"
         use "onsails/lspkind-nvim"
         use "ynkdir/vim-vimlparser"
@@ -48,6 +37,18 @@ return require('packer').startup(
         use "bkad/CamelCaseMotion"
         use "PeterRincker/vim-argumentative"
         use "michaeljsmith/vim-indent-object"
+
+        use {
+          "gelguy/wilder.nvim",
+          config = function()
+            vim.api.nvim_exec(
+                [[
+        call wilder#setup({'modes': [':', '/', '?']})
+        call wilder#set_option('renderer', wilder#popupmenu_renderer())
+      ]], false
+            )
+          end
+        }
 
         use {
           'CosmicNvim/cosmic-ui',
@@ -93,16 +94,6 @@ return require('packer').startup(
             )
           end
         }
-
-        -- use {
-        --   "ray-x/lsp_signature.nvim",
-
-        --   config = function()
-        --     require("lsp_signature").setup {
-        --       floating_window = true
-        --     }
-        --   end
-        -- }
 
         use {
           'nvim-telescope/telescope.nvim',
@@ -207,16 +198,6 @@ return require('packer').startup(
         use {
           'vim-test/vim-test',
           config = function()
-            -- vim.api.nvim_exec(
-            -- [=[
-            --   nnoremap <leader>dt :TestNearest -strategy=jest<CR>
-            --   function! JestStrategy(cmd)
-            --     let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
-            --     let fileName = matchlist(a:cmd, '\v'' -- (.*)$')[1]
-            --     call luaeval("require'debug-helper'.debugJest([[" . testName . "]], [[" . fileName . "]])")
-            --   endfunction      
-            --   let g:test#custom_strategies = {'jest': function('JestStrategy')}
-            -- ]=], false)
           end
         }
 
@@ -458,14 +439,6 @@ return require('packer').startup(
           -- '~/repos/fzf-project'
         }
 
-        -- use {
-        --   'marko-cerovac/material.nvim',
-        --   config = function()
-        --     vim.g.material_style = "deep ocean"
-        --     vim.cmd('colorscheme material')
-        --   end
-        -- }
-
         use {
           'projekt0n/github-nvim-theme',
           after = "lualine.nvim",
@@ -557,11 +530,8 @@ return require('packer').startup(
           end
         }
 
-
       end,
 
       config = {max_jobs = 50}
-
     }
-
 )
