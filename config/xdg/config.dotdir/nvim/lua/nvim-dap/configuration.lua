@@ -2,7 +2,7 @@ local dap = require("dap")
 
 local node_dap_path = vim.fn.stdpath('data') .. '/dap/vscode-node-debug2'
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+if vim.fn.empty(vim.fn.glob(node_dap_path)) > 0 then
   print('vscode-node-debug2 not found. Cloning...')
   vim.fn.system(
       {

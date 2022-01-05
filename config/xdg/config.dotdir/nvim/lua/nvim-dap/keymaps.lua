@@ -22,7 +22,7 @@ function M.init()
         lua = "require'dap'.step_into()"
       },
       {
-        key = "<leader>da",
+        key = "<space>da",
         lua = "require'debug-helper'.attach()"
       }
     }
