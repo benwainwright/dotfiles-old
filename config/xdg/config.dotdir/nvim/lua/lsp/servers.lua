@@ -25,7 +25,7 @@ local configure_server = function(server_name, opts)
     lsp_handlers.init()
   end
 
-  opts.on_attach = wrapped_on_attach
+  suppliedOpts.on_attach = wrapped_on_attach
 
   if server_available then
     requested_server:on_ready(
