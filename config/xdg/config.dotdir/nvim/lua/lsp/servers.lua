@@ -12,8 +12,8 @@ local configure_server = function(server_name, opts)
       lsp_installer_servers.get_server(
           server_name
       )
-  local opts = opts or {}
-  local passed_in_on_attach = opts.on_attach
+  local suppliedOpts = opts or {}
+  local passed_in_on_attach = suppliedOpts.on_attach
 
   local wrapped_on_attach = function(client, bufnr)
     if type(passed_in_on_attach) == 'function' then
@@ -21,8 +21,8 @@ local configure_server = function(server_name, opts)
     end
     lsp_keymaps.init(client)
     lsp_autocommands.init(client)
-    lsp_signs.init(client)
-    lsp_handlers.init(client)
+    lsp_signs.init()
+    lsp_handlers.init()
   end
 
   opts.on_attach = wrapped_on_attach
@@ -30,7 +30,7 @@ local configure_server = function(server_name, opts)
   if server_available then
     requested_server:on_ready(
         function()
-          requested_server:setup(opts)
+          requested_server:setup(suppliedOpts)
         end
     )
   end
