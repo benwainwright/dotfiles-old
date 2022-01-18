@@ -43,7 +43,7 @@ function M.init()
       },
       {
         key = "<space>r",
-        lua = "require('cosmic-ui').rename()"
+        lua = "vim.lsp.buf.rename()"
       },
       {
         key = "<space>a",
