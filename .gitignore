@@ -6,3 +6,4 @@
 TAGS.tmp
 config/emacs/emacs.d.dotdir/straight
 .DS_Store
+config/xdg/config.dotdir/znt/privhist.db
