@@ -152,6 +152,7 @@ servers.configure {
       init_options = {
         documentFormatting = true
       },
+      filetypes = {'lua'},
       settings = {
         rootMarkers = {
           ".git/"
