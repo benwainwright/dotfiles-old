@@ -1,4 +1,5 @@
 local servers = require("lsp.servers")
+local react_filter = require("lsp.react-filter")
 
 servers.configure {
   {
@@ -16,6 +17,9 @@ servers.configure {
   {
     name = "tsserver",
     options = {
+      handlers = {
+        ['textDocument/definition'] = react_filter
+      },
       debounce_text_changes = 150,
       on_attach = function(client)
         local ts_utils = require("nvim-lsp-ts-utils")
@@ -39,6 +43,7 @@ servers.configure {
     options = {
 
       filetypes = {
+        "json",
         "typescript",
         "typescriptreact"
       },
@@ -171,12 +176,11 @@ servers.configure {
   "bashls",
   "jedi_language_server",
   "vimls",
-  "spectral",
   "ccls",
   "dockerls",
   "gopls",
   "html",
-  "jsonls",
+  -- "jsonls",
   "jdtls",
   "sqls",
   "tailwindcss",
