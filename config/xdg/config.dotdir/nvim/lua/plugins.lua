@@ -257,7 +257,7 @@ return require('packer').startup(
 
             lspkind.init(
                 {
-                  with_text = false,
+                  mode = 'symbol',
                   preset = 'codicons',
                   symbol_map = {
                     Text = '',
