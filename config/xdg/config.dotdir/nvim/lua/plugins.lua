@@ -1,6 +1,7 @@
 return require('packer').startup(
     {
       function(use)
+        use "rcarriga/nvim-notify"
         use "folke/lua-dev.nvim"
         use "euclidianAce/BetterLua.vim"
         use "kyazdani42/nvim-web-devicons"
