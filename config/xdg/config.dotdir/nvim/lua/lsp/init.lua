@@ -182,6 +182,7 @@ servers.configure {
   "html",
   -- "jsonls",
   "jdtls",
+  "rust_analyzer",
   "sqls",
   "tailwindcss",
   "yamlls"

@@ -1,4 +1,5 @@
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
+local notify = require('notify')
 
 local lsp_keymaps = require('lsp.keymaps')
 local lsp_autocommands = require('lsp.autocommands')
