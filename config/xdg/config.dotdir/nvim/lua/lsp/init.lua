@@ -1,5 +1,6 @@
 local servers = require("lsp.servers")
 local react_filter = require("lsp.react-filter")
+local fs = require("lsp.fs")
 
 servers.configure {
   {
@@ -64,7 +65,6 @@ servers.configure {
               '--stdin',
               '--stdin-filename',
               '%filepath',
-              '--format',
               'json'
             },
             sourceName = 'eslint',
@@ -117,12 +117,8 @@ servers.configure {
         },
         formatters = {
           prettier = {
-            args = {
-              '--stdin',
-              '--stdin-filepath',
-              '%filepath'
-            },
-
+            command = fs.executable('prettier', fs.Scope.NODE),
+            args = { '--stdin', '--stdin-filepath', '%filepath' },
             rootPatterns = {
               '.prettierrc',
               '.prettierrc.json',
@@ -136,7 +132,6 @@ servers.configure {
               'prettier.config.js',
               'prettier.config.cjs'
             },
-            command = 'prettier_d_slim'
           }
         },
         formatFiletypes = {
