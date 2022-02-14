@@ -1,7 +1,12 @@
 return require('packer').startup(
     {
       function(use)
-        use "rcarriga/nvim-notify"
+        use {
+          "rcarriga/nvim-notify",
+          config = function()
+            vim.notify = require('notify')
+          end
+        }
         use "folke/lua-dev.nvim"
         use "euclidianAce/BetterLua.vim"
         use "kyazdani42/nvim-web-devicons"
@@ -252,7 +257,7 @@ return require('packer').startup(
 
             lspkind.init(
                 {
-                  with_text = false,
+                  mode = 'symbol',
                   preset = 'codicons',
                   symbol_map = {
                     Text = '',
