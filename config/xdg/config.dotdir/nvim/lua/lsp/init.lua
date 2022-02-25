@@ -1,6 +1,7 @@
 local servers = require("lsp.servers")
 local react_filter = require("lsp.react-filter")
 local fs = require("lsp.fs")
+local Delay = require("Delay")
 
 servers.configure {
   {
@@ -117,8 +118,12 @@ servers.configure {
         },
         formatters = {
           prettier = {
-            command = fs.executable('prettier', fs.Scope.NODE),
-            args = { '--stdin', '--stdin-filepath', '%filepath' },
+            command = 'node_modules/.bin/prettier',
+            args = {
+              '--stdin',
+              '--stdin-filepath',
+              '%filepath'
+            },
             rootPatterns = {
               '.prettierrc',
               '.prettierrc.json',

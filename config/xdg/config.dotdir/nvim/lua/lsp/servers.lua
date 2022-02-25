@@ -5,8 +5,26 @@ local lsp_keymaps = require('lsp.keymaps')
 local lsp_autocommands = require('lsp.autocommands')
 local lsp_signs = require('lsp.signs')
 local lsp_handlers = require('lsp.handlers')
+local Delay = require('delay')
 
 local M = {}
+
+local execute_delays
+execute_delays = function(opts)
+  local newOpts = {}
+
+  for k, v in pairs(opts) do
+    if Delay.isDelay(v) then
+      newOpts[k] = v.execute()
+    elseif type(v) == 'table' then
+      newOpts[k] = execute_delays(v)
+    else
+      newOpts[k] = v
+    end
+  end
+
+  return newOpts
+end
 
 local configure_server = function(server_name, opts)
   local server_available, requested_server =
@@ -14,6 +32,7 @@ local configure_server = function(server_name, opts)
           server_name
       )
   local suppliedOpts = opts or {}
+
   local passed_in_on_attach = suppliedOpts.on_attach
 
   local wrapped_on_attach = function(client, bufnr)
@@ -36,6 +55,7 @@ local configure_server = function(server_name, opts)
   if server_available then
     requested_server:on_ready(
         function()
+          -- local finalOpts = execute_delays(suppliedOpts)
           requested_server:setup(suppliedOpts)
         end
     )
