@@ -44,7 +44,8 @@ end
 --        a list of individual autocommands
 function M.define_autocommands(definitions)
   for group_name, definition in pairs(definitions) do
-    vim.api.nvim_command('augroup ' .. group_name)
+    local group_name_for_buffer = group_name .. '_' .. vim.fn.bufnr("%")
+    vim.api.nvim_command('augroup ' .. group_name_for_buffer)
     vim.api.nvim_command('autocmd!')
     for _, def in ipairs(definition) do
       local command = table.concat(
