@@ -1,7 +1,7 @@
 -- Borrowed from https://github.com/typescript-language-server/typescript-language-server/issues/216#issuecomment-1001585748
 local react_filter = function(_, result, params)
   if result == nil or vim.tbl_isempty(result) then
-    local _ = vim.lsp.log.info() and
+    local _ = vim.lsp.log and vim.lsp.log.info and
                   vim.lsp.log.info(params.method, 'No location found')
     return nil
   end

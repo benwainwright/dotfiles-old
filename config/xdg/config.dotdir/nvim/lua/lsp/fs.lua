@@ -29,13 +29,32 @@ M.Scope = {
   BUNDLE = 'BUNDLE'
 }
 
+local function ends_with(str, ending)
+  return ending == "" or str:sub(-#ending) == ending
+end
+
+local function get_path(str)
+  return str:match("(.*[/\\])")
+end
+
+local function remove_bin_path_from_cwd()
+  local current_working_dir = vim.loop.cwd()
+  if ends_with(current_working_dir, 'node_modules/.bin') then
+    return get_path(get_path(current_working_dir))
+  end
+
+  return current_working_dir
+end
+
 ---Get the full path to project local executable
 ---@param name string
 ---@param context ScopeType
 ---@return string
 local get_local_exec = function(name, context)
   local local_bin_path = FilepathByScope[context]
+
   local current_working_dir = vim.loop.cwd()
+
   local binpath = string.format(
       '%s/%s/%s', current_working_dir, local_bin_path, name
   )

@@ -27,11 +27,17 @@ execute_delays = function(opts)
 end
 
 local configure_server = function(server_name, opts)
+
   local server_available, requested_server =
       lsp_installer_servers.get_server(
           server_name
       )
+
   local suppliedOpts = opts or {}
+
+  if type(suppliedOpts) == 'function' then
+    suppliedOpts = suppliedOpts()
+  end
 
   local passed_in_on_attach = suppliedOpts.on_attach
 

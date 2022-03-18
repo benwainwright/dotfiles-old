@@ -516,12 +516,36 @@ return require('packer').startup(
         use "neovim/nvim-lspconfig"
 
         use {
+          "jose-elias-alvarez/null-ls.nvim",
+          config = function()
+            require("null-ls").setup(
+                {
+                  on_attach = function(client)
+                    if client.resolved_capabilities.document_formatting then
+                      vim.cmd(
+                          [[
+                          augroup LspFormatting
+                              autocmd! * <buffer>
+                              autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({}, 10000)
+                          augroup END
+                        ]]
+                      )
+                    end
+                  end,
+                  sources = {
+                    require("null-ls").builtins.diagnostics.eslint,
+                    require("null-ls").builtins.formatting.prettierd
+                  }
+                }
+            )
+          end
+
+        }
+
+        use {
           'jose-elias-alvarez/nvim-lsp-ts-utils',
           requires = {
-            "jose-elias-alvarez/null-ls.nvim",
-            config = function()
-              require("null-ls").setup()
-            end
+            "jose-elias-alvarez/null-ls.nvim"
           }
         }
 
@@ -649,7 +673,6 @@ return require('packer').startup(
           config = function()
             require("lualine").setup {
               options = {
-                theme = "github",
                 section_separators = {
                   "",
                   ""

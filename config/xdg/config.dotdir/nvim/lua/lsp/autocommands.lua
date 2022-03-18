@@ -14,7 +14,7 @@ local lightbulb_autocommands = {
 }
 
 local formatting_autocommand = {
-  'BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
+  'BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({}, 10000)'
 }
 
 local concat = function(t1, t2)
