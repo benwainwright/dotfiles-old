@@ -516,7 +516,8 @@ return require('packer').startup(
         use "neovim/nvim-lspconfig"
 
         use {
-          "jose-elias-alvarez/null-ls.nvim",
+          'benwainwright/null-ls.nvim',
+          -- "jose-elias-alvarez/null-ls.nvim",
           config = function()
             require("null-ls").setup(
                 {
