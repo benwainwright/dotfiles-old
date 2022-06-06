@@ -518,7 +518,7 @@ return require('packer').startup(
         use "neovim/nvim-lspconfig"
 
         use {
-          "benwainwright/null-ls.nvim",
+          'benwainwright/null-ls.nvim',
           config = function()
             require("null-ls").setup(
                 {
@@ -536,12 +536,12 @@ return require('packer').startup(
                   end,
                   sources = {
                     require("null-ls").builtins.diagnostics.eslint,
-                    require("null-ls").builtins.formatting.prettierd
+                    require("null-ls").builtins.formatting.prettierd,
+                    require("null-ls").builtins.code_actions.eslint
                   }
                 }
             )
           end
-
         }
 
         use {
