@@ -1,4 +1,5 @@
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
+local lsp_signature = require('lsp_signature')
 local notify = require('notify')
 -- local lsp_format = require('lsp-format')
 
@@ -74,6 +75,14 @@ local configure_server = function(server_name, opts)
     -- lsp_format.on_attach(client)
     lsp_spinner.on_attach(client, bufnr)
     lsp_keymaps.init()
+    lsp_signature.on_attach(
+        {
+          bind = true,
+          handler_opts = {
+            border = "rounded"
+          }
+        }, bufnr
+    )
     lsp_autocommands.init(client)
     lsp_signs.init()
     lsp_handlers.init()

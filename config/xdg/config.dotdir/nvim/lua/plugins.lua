@@ -8,6 +8,18 @@ return require('packer').startup(
           end
         }
 
+        -- use {
+        --   'Equilibris/nx.nvim',
+        --   requires = {
+        --     'nvim-telescope/telescope.nvim'
+        --   },
+        --   config = function()
+        --     require("nx").setup {
+        --       nx_cmd_root = 'yarn nx'
+        --     }
+        --   end
+        -- }
+
         use {
           "knubie/vim-kitty-navigator",
           run = "cp ./*.py ~/.config/kitty/"
@@ -93,6 +105,9 @@ return require('packer').startup(
         -- use "bkad/CamelCaseMotion"
         -- use "PeterRincker/vim-argumentative"
         -- use "michaeljsmith/vim-indent-object"
+        use {
+          "ray-x/lsp_signature.nvim"
+        }
 
         use {
           "gelguy/wilder.nvim",
@@ -548,6 +563,8 @@ return require('packer').startup(
         }
 
         use "kosayoda/nvim-lightbulb"
+
+        use 'nvim-lua/lsp_extensions.nvim'
 
         use {
           'RishabhRD/nvim-lsputils',
