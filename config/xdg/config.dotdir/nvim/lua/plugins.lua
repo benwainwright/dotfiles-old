@@ -14,6 +14,32 @@ return require('packer').startup(
         }
 
         use {
+          'rcarriga/neotest',
+          requires = {
+            'haydenmeade/neotest-jest'
+          },
+          config = function()
+            require('neotest').setup(
+                {
+                  adapters = {
+                    require('neotest-jest')(
+                        {
+                          jestCommand = "yarn jest",
+                          env = {
+                            CI = true
+                          },
+                          cwd = function(path)
+                            return vim.fn.getcwd()
+                          end
+                        }
+                    )
+                  }
+                }
+            )
+          end
+        }
+
+        use {
           "EdenEast/nightfox.nvim",
           config = function()
             vim.cmd("colorscheme nightfox")
@@ -24,6 +50,19 @@ return require('packer').startup(
           config = function()
             require"fidget".setup()
           end
+        }
+
+        use {
+          'filipdutescu/renamer.nvim',
+          branch = 'master',
+          config = function()
+            require('renamer').setup()
+          end,
+          requires = {
+            {
+              'nvim-lua/plenary.nvim'
+            }
+          }
         }
 
         use 'doums/lsp_spinner.nvim'
@@ -72,6 +111,10 @@ return require('packer').startup(
           requires = {
             "neovim/nvim-lspconfig"
           }
+        }
+        use {
+          "weilbith/nvim-code-action-menu",
+          cmd = 'CodeActionMenu'
         }
 
         -- use {
@@ -207,6 +250,10 @@ return require('packer').startup(
                   update_focused_file = {
                     enable = true,
                     update_root = true
+                  },
+                  diagnostics = {
+                    enable = true,
+                    show_on_dirs = true
                   },
                   view = {
                     adaptive_size = true

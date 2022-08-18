@@ -43,11 +43,11 @@ function M.init()
       },
       {
         key = "<space>r",
-        lua = "vim.lsp.buf.rename()"
+        lua = "require('renamer').rename()"
       },
       {
         key = "<space>a",
-        lua = "vim.lsp.buf.code_action()"
+        command = "CodeActionMenu"
       },
       {
         key = "<space>jr",
