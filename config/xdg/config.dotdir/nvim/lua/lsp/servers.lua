@@ -35,9 +35,7 @@ local configure_server = function(server_name, opts)
 
   local suppliedOpts = opts or {}
 
-  if type(suppliedOpts) == 'function' then
-    suppliedOpts = suppliedOpts()
-  end
+  if type(suppliedOpts) == 'function' then suppliedOpts = suppliedOpts() end
 
   local passed_in_on_attach = suppliedOpts.on_attach
 

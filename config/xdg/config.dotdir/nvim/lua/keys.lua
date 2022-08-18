@@ -7,7 +7,7 @@ vim.maps {
   n = {
     {
       key = "<C-e>",
-      command = "NeoTreeRevealToggle"
+      command = "NvimTreeFindFileToggle"
     },
     {
       key = "<leader>G",
