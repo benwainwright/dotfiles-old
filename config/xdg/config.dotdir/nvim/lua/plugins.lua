@@ -9,12 +9,18 @@ return require('packer').startup(
         }
 
         use {
+          "knubie/vim-kitty-navigator",
+          run = "cp ./*.py ~/.config/kitty/"
+        }
+
+        use {
           "EdenEast/nightfox.nvim",
           config = function()
             vim.cmd("colorscheme nightfox")
           end
         }
 
+        use 'doums/lsp_spinner.nvim'
         use "folke/lua-dev.nvim"
         use "euclidianAce/BetterLua.vim"
         use "kyazdani42/nvim-web-devicons"

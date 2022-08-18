@@ -7,6 +7,33 @@ local lsp_signs = require('lsp.signs')
 local lsp_handlers = require('lsp.handlers')
 local Delay = require('delay')
 
+local lsp_spinner = require('lsp_spinner')
+
+lsp_spinner.setup(
+    {
+      spinner = {
+        '⠋',
+        '⠙',
+        '⠹',
+        '⠸',
+        '⠼',
+        '⠴',
+        '⠦',
+        '⠧',
+        '⠇',
+        '⠏'
+      },
+      interval = 80, -- spinner frame rate in ms
+      redraw_rate = 100, -- max refresh rate of statusline in ms
+      placeholder = '  ' -- it will be displayed when there is no activity
+    }
+)
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- turn on `window/workDoneProgress` capability
+lsp_spinner.init_capabilities(capabilities)
+
 local M = {}
 
 local execute_delays
@@ -43,6 +70,7 @@ local configure_server = function(server_name, opts)
     if type(passed_in_on_attach) == 'function' then
       passed_in_on_attach(client, bufnr)
     end
+    lsp_spinner.on_attach(client, bufnr)
     lsp_keymaps.init()
     lsp_autocommands.init(client)
     lsp_signs.init()
