@@ -19,6 +19,12 @@ return require('packer').startup(
             vim.cmd("colorscheme nightfox")
           end
         }
+        use {
+          'j-hui/fidget.nvim',
+          config = function()
+            require"fidget".setup()
+          end
+        }
 
         use 'doums/lsp_spinner.nvim'
         use "folke/lua-dev.nvim"
@@ -513,7 +519,10 @@ return require('packer').startup(
                     require("null-ls").builtins.diagnostics.eslint,
                     require("null-ls").builtins.formatting.prettierd,
                     require("null-ls").builtins.code_actions.eslint
-                  }
+                  },
+                  on_attach = function(client)
+                    require"lsp-format".on_attach(client)
+                  end
                 }
             )
           end
