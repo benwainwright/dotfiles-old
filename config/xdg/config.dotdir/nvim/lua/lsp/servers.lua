@@ -1,5 +1,6 @@
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
 local notify = require('notify')
+-- local lsp_format = require('lsp-format')
 
 local lsp_keymaps = require('lsp.keymaps')
 local lsp_autocommands = require('lsp.autocommands')
@@ -70,6 +71,7 @@ local configure_server = function(server_name, opts)
     if type(passed_in_on_attach) == 'function' then
       passed_in_on_attach(client, bufnr)
     end
+    -- lsp_format.on_attach(client)
     lsp_spinner.on_attach(client, bufnr)
     lsp_keymaps.init()
     lsp_autocommands.init(client)

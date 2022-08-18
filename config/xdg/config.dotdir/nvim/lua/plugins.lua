@@ -159,6 +159,13 @@ return require('packer').startup(
           command = "StartupTime"
         }
 
+        use {
+          "lukas-reineke/lsp-format.nvim",
+          config = function()
+            require('lsp-format').setup {}
+          end
+        }
+
         -- use {
         --   'honza/vim-snippets',
         --   rtp = '.'
@@ -496,33 +503,21 @@ return require('packer').startup(
 
         use "neovim/nvim-lspconfig"
 
-        -- use {
-        --   'benwainwright/null-ls.nvim',
-        --   -- "jose-elias-alvarez/null-ls.nvim",
-        --   config = function()
-        --     require("null-ls").setup(
-        --         {
-        --           on_attach = function(client)
-        --             if client.resolved_capabilities.document_formatting then
-        --               vim.cmd(
-        --                   [[
-        --                   augroup LspFormatting
-        --                       autocmd! * <buffer>
-        --                       autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({}, 10000)
-        --                   augroup END
-        --                 ]]
-        --               )
-        --             end
-        --           end,
-        --           sources = {
-        --             require("null-ls").builtins.diagnostics.eslint,
-        --             require("null-ls").builtins.formatting.prettierd,
-        --             require("null-ls").builtins.code_actions.eslint
-        --           }
-        --         }
-        --     )
-        --   end
-        -- }
+        use {
+          'benwainwright/null-ls.nvim',
+          -- "jose-elias-alvarez/null-ls.nvim",
+          config = function()
+            require("null-ls").setup(
+                {
+                  sources = {
+                    require("null-ls").builtins.diagnostics.eslint,
+                    require("null-ls").builtins.formatting.prettierd,
+                    require("null-ls").builtins.code_actions.eslint
+                  }
+                }
+            )
+          end
+        }
 
         use {
           'jose-elias-alvarez/nvim-lsp-ts-utils',
