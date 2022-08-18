@@ -148,10 +148,10 @@ return require('packer').startup(
         -- }
 
         -- -- Profile startuptime
-        -- use {
-        --   'tweekmonster/startuptime.vim',
-        --   command = "StartupTime"
-        -- }
+        use {
+          'tweekmonster/startuptime.vim',
+          command = "StartupTime"
+        }
 
         -- use {
         --   'honza/vim-snippets',
@@ -198,15 +198,15 @@ return require('packer').startup(
           tag = 'nightly' -- optional, updated every week. (see issue #1193)
         }
 
-        -- use {
-        --   "nvim-neotest/neotest",
-        --   requires = {
-        --     "nvim-lua/plenary.nvim",
-        --     "nvim-treesitter/nvim-treesitter",
-        --     "antoinemadec/FixCursorHold.nvim"
-        --
-        --   }
-        -- }
+        use {
+          "nvim-neotest/neotest",
+          requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim"
+
+          }
+        }
 
         -- use {
         --   "nvim-neo-tree/neo-tree.nvim",
@@ -483,10 +483,10 @@ return require('packer').startup(
 
         use "kosayoda/nvim-lightbulb"
 
-        -- use {
-        --   'RishabhRD/nvim-lsputils',
-        --   requires = 'RishabhRD/popfix'
-        -- }
+        use {
+          'RishabhRD/nvim-lsputils',
+          requires = 'RishabhRD/popfix'
+        }
 
         use "neovim/nvim-lspconfig"
 

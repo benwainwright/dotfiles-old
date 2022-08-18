@@ -11,7 +11,8 @@ servers.configure {
         Lua = {
           diagnostics = {
             globals = {'vim'}
-          } }
+          }
+        }
       }
     }
   },

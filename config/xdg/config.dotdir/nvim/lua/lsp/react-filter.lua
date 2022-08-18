@@ -7,7 +7,7 @@ local react_filter = function(_, result, params)
   end
 
   if vim.tbl_islist(result) then
-    vim.lsp.util.jump_to_location(result[1])
+    vim.lsp.util.jump_to_location(result[1], 'utf-8')
     if #result > 1 then
       local isReactDTs = false
       for _, value in pairs(result) do
@@ -22,7 +22,7 @@ local react_filter = function(_, result, params)
       end
     end
   else
-    vim.lsp.util.jump_to_location(result)
+    vim.lsp.util.jump_to_location(result, 'utf-8')
   end
 end
 
