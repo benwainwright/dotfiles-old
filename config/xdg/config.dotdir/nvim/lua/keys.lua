@@ -6,6 +6,10 @@ vim.exec("let maplocalleader = \"\\\\\"")
 vim.maps {
   n = {
     {
+      key = "<leader>o",
+      command = "Other"
+    },
+    {
       key = "<C-e>",
       command = "NvimTreeFindFileToggle"
     },
