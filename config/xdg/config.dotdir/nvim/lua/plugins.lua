@@ -7,6 +7,17 @@ return require('packer').startup(
             vim.notify = require('notify')
           end
         }
+        use {
+          "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+          config = function()
+            require("lsp_lines").setup()
+            vim.diagnostic.config(
+                {
+                  virtual_text = false
+                }
+            )
+          end
+        }
 
         -- use {
         --   'Equilibris/nx.nvim',
@@ -277,16 +288,6 @@ return require('packer').startup(
             )
           end,
           tag = 'nightly' -- optional, updated every week. (see issue #1193)
-        }
-
-        use {
-          "nvim-neotest/neotest",
-          requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim"
-
-          }
         }
 
         -- use {
@@ -577,12 +578,13 @@ return require('packer').startup(
           'benwainwright/null-ls.nvim',
           -- "jose-elias-alvarez/null-ls.nvim",
           config = function()
-            require("null-ls").setup(
+            local nullLs = require("null-ls")
+            nullLs.setup(
                 {
                   sources = {
-                    require("null-ls").builtins.diagnostics.eslint,
-                    require("null-ls").builtins.formatting.prettierd,
-                    require("null-ls").builtins.code_actions.eslint
+                    nullLs.builtins.diagnostics.eslint_d,
+                    nullLs.builtins.formatting.prettierd,
+                    nullLs.builtins.code_actions.eslint_d
                   },
                   on_attach = function(client)
                     require"lsp-format".on_attach(client)
