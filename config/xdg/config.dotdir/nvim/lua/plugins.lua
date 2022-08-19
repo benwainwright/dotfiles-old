@@ -489,7 +489,7 @@ return require('packer').startup(
       use {
         'hrsh7th/nvim-cmp',
         requires = {
-          'quangnguyen30192/cmp-nvim-ultisnips',
+          -- 'quangnguyen30192/cmp-nvim-ultisnips',
           -- {
           --   'tzachar/cmp-tabnine',
           --   run = './install.sh'
@@ -546,11 +546,11 @@ return require('packer').startup(
                   return vim_item
                 end
               },
-              snippet = {
-                expand = function(args)
-                  vim.fn["UltiSnips#Anon"](args.body)
-                end
-              },
+              -- snippet = {
+              --   expand = function(args)
+              --     vim.fn["UltiSnips#Anon"](args.body)
+              --   end
+              -- },
               mapping = {
                 ['<Tab>'] = cmp.mapping(
                   cmp.mapping.select_next_item(), {
@@ -640,15 +640,12 @@ return require('packer').startup(
                 null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.formatting.prettierd,
                 null_ls.builtins.code_actions.eslint,
-                null_ls.builtins.code_actions.shellcheck,
-                null_ls.builtins.completion.luasnip,
-                null_ls.builtins.diagnostics.actionlint,
-                null_ls.builtins.diagnostics.alex,
-                null_ls.builtins.diagnostics.jsonlint,
-                null_ls.builtins.diagnostics.markdownlint,
-                null_ls.builtins.diagnostics.mdl,
-                null_ls.builtins.diagnostics.semgrep
-
+                -- null_ls.builtins.code_actions.shellcheck,
+                -- null_ls.builtins.completion.luasnip,
+                -- null_ls.builtins.diagnostics.actionlint,
+                -- null_ls.builtins.diagnostics.alex,
+                -- null_ls.builtins.diagnostics.jsonlint,
+                -- null_ls.builtins.diagnostics.markdownlint
               },
               on_attach = function(client)
                 require "lsp-format".on_attach(client)
