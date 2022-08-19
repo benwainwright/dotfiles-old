@@ -12,23 +12,23 @@ local Delay = require('delay')
 local lsp_spinner = require('lsp_spinner')
 
 lsp_spinner.setup(
-    {
-      spinner = {
-        '⠋',
-        '⠙',
-        '⠹',
-        '⠸',
-        '⠼',
-        '⠴',
-        '⠦',
-        '⠧',
-        '⠇',
-        '⠏'
-      },
-      interval = 80, -- spinner frame rate in ms
-      redraw_rate = 100, -- max refresh rate of statusline in ms
-      placeholder = '  ' -- it will be displayed when there is no activity
-    }
+  {
+    spinner = {
+      '⠋',
+      '⠙',
+      '⠹',
+      '⠸',
+      '⠼',
+      '⠴',
+      '⠦',
+      '⠧',
+      '⠇',
+      '⠏'
+    },
+    interval = 80, -- spinner frame rate in ms
+    redraw_rate = 100, -- max refresh rate of statusline in ms
+    placeholder = '  ' -- it will be displayed when there is no activity
+  }
 )
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -58,9 +58,9 @@ end
 local configure_server = function(server_name, opts)
 
   local server_available, requested_server =
-      lsp_installer_servers.get_server(
-          server_name
-      )
+  lsp_installer_servers.get_server(
+    server_name
+  )
 
   local suppliedOpts = opts or {}
 
@@ -76,12 +76,12 @@ local configure_server = function(server_name, opts)
     lsp_spinner.on_attach(client, bufnr)
     lsp_keymaps.init()
     lsp_signature.on_attach(
-        {
-          bind = true,
-          handler_opts = {
-            border = "rounded"
-          }
-        }, bufnr
+      {
+        bind = true,
+        handler_opts = {
+          border = "rounded"
+        }
+      }, bufnr
     )
     lsp_autocommands.init(client)
     lsp_signs.init()
@@ -97,10 +97,10 @@ local configure_server = function(server_name, opts)
 
   if server_available then
     requested_server:on_ready(
-        function()
-          -- local finalOpts = execute_delays(suppliedOpts)
-          requested_server:setup(suppliedOpts)
-        end
+      function()
+        -- local finalOpts = execute_delays(suppliedOpts)
+        requested_server:setup(suppliedOpts)
+      end
     )
   end
   if not requested_server:is_installed() then requested_server:install() end

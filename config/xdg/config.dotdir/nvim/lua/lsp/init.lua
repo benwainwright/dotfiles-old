@@ -1,5 +1,6 @@
 local servers = require("lsp.servers")
 local react_filter = require("lsp.react-filter")
+-- local eslint = require("diagnosticls-configs.linters.eslint")
 local fs = require("lsp.fs")
 local Delay = require("Delay")
 
@@ -16,6 +17,26 @@ servers.configure {
       }
     }
   },
+  -- {
+  --   name = "diagnosticls",
+  --   options = {
+  --     filetypes = {
+  --       "typescript", "typescriptreact", "javascript", "javascriptreact"
+  --     },
+  --     typescript = {
+  --       linter = eslint
+  --     },
+  --     typescriptreact = {
+  --       linter = eslint
+  --     },
+  --     javascript = {
+  --       linter = eslint
+  --     },
+  --     javascriptreact = {
+  --       linter = eslint
+  --     }
+  --   }
+  -- },
   {
     name = "tsserver",
     options = {
@@ -40,28 +61,28 @@ servers.configure {
       end
     }
   },
-  {
-    name = "efm",
-    options = {
-      init_options = {
-        documentFormatting = true
-      },
-      filetypes = {'lua'},
-      settings = {
-        rootMarkers = {
-          ".git/"
-        },
-        languages = {
-          lua = {
-            {
-              formatCommand = "lua-format -i --config=lua-format.config",
-              formatStdin = true
-            }
-          }
-        }
-      }
-    }
-  },
+  -- {
+  --   name = "efm",
+  --   options = {
+  --     init_options = {
+  --       documentFormatting = true
+  --     },
+  --     filetypes = { 'lua' },
+  --     settings = {
+  --       rootMarkers = {
+  --         ".git/"
+  --       },
+  --       languages = {
+  --         lua = {
+  --           {
+  --             formatCommand = "lua-format -i --config=lua-format.config",
+  --             formatStdin = true
+  --           }
+  --         }
+  --       }
+  --     }
+  --   }
+  -- },
   "bashls",
   "jedi_language_server",
   "vimls",
@@ -76,4 +97,3 @@ servers.configure {
   "tailwindcss",
   "yamlls"
 }
-

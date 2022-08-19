@@ -37,6 +37,13 @@ return require('packer').startup(
         }
 
         use {
+          'creativenull/diagnosticls-configs-nvim',
+          requires = {
+            'neovim/nvim-lspconfig'
+          }
+        }
+
+        use {
           'rcarriga/neotest',
           requires = {
             'haydenmeade/neotest-jest'
@@ -104,8 +111,6 @@ return require('packer').startup(
         use "tpope/vim-commentary"
         -- use "peitalin/vim-jsx-typescript"
         -- use "mlaursen/vim-react-snippets"
-        -- use "christoomey/vim-tmux-navigator"
-        -- use "David-Kunz/jester"
         -- use "Pocco81/DAPInstall.nvim"
         -- use "jparise/vim-graphql"
         use "kshenoy/vim-signature"
@@ -582,9 +587,9 @@ return require('packer').startup(
             nullLs.setup(
                 {
                   sources = {
-                    nullLs.builtins.diagnostics.eslint_d,
+                    nullLs.builtins.diagnostics.eslint,
                     nullLs.builtins.formatting.prettierd,
-                    nullLs.builtins.code_actions.eslint_d
+                    nullLs.builtins.code_actions.eslint
                   },
                   on_attach = function(client)
                     require"lsp-format".on_attach(client)
