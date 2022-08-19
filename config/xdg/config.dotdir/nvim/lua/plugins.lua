@@ -632,13 +632,23 @@ return require('packer').startup(
         'benwainwright/null-ls.nvim',
         -- "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          local nullLs = require("null-ls")
-          nullLs.setup(
+          local null_ls = require("null-ls")
+          null_ls.setup(
             {
               sources = {
-                nullLs.builtins.diagnostics.eslint,
-                nullLs.builtins.formatting.prettierd,
-                nullLs.builtins.code_actions.eslint
+                null_ls.builtins.diagnostics.eslint,
+                null_ls.builtins.code_actions.refactoring,
+                null_ls.builtins.formatting.prettierd,
+                null_ls.builtins.code_actions.eslint,
+                null_ls.builtins.code_actions.shellcheck,
+                null_ls.builtins.completion.luasnip,
+                null_ls.builtins.diagnostics.actionlint,
+                null_ls.builtins.diagnostics.alex,
+                null_ls.builtins.diagnostics.jsonlint,
+                null_ls.builtins.diagnostics.markdownlint,
+                null_ls.builtins.diagnostics.mdl,
+                null_ls.builtins.diagnostics.semgrep
+
               },
               on_attach = function(client)
                 require "lsp-format".on_attach(client)
