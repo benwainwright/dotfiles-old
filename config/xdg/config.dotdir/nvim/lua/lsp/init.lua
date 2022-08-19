@@ -105,7 +105,6 @@ servers.configure {
   "angularls",
   "cssls",
   "cssmodules_ls",
-  "stylelint_lsp",
   "emmet_ls",
   "jsonls",
   "jdtls",

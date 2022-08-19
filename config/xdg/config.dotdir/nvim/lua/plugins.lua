@@ -637,14 +637,14 @@ return require('packer').startup(
           null_ls.setup(
             {
               sources = {
-                null_ls.builtins.code_actions.refactoring,
+                -- null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.formatting.prettierd,
-                null_ls.builtins.code_actions.shellcheck,
-                null_ls.builtins.completion.luasnip,
-                null_ls.builtins.diagnostics.actionlint,
-                null_ls.builtins.diagnostics.alex,
-                null_ls.builtins.diagnostics.jsonlint,
-                null_ls.builtins.diagnostics.markdownlint
+                -- null_ls.builtins.code_actions.shellcheck,
+                -- null_ls.builtins.completion.luasnip,
+                -- null_ls.builtins.diagnostics.actionlint,
+                -- null_ls.builtins.diagnostics.alex,
+                -- null_ls.builtins.diagnostics.jsonlint,
+                -- null_ls.builtins.diagnostics.markdownlint
               },
               on_attach = function(client)
                 require "lsp-format".on_attach(client)
