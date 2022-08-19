@@ -1,6 +1,6 @@
 local servers = require("lsp.servers")
 local react_filter = require("lsp.react-filter")
--- local eslint = require("diagnosticls-configs.linters.eslint")
+local eslint = require("diagnosticls-configs.linters.eslint")
 local fs = require("lsp.fs")
 local Delay = require("Delay")
 
@@ -64,15 +64,26 @@ servers.configure {
   -- {
   --   name = "efm",
   --   options = {
-  --     init_options = {
-  --       documentFormatting = true
+  --     init_options = { 
+  --       documentFormatting = false,
+  --       codeAction = true
   --     },
-  --     filetypes = { 'lua' },
+  --     filetypes = { 'lua', 'typescript' },
   --     settings = {
   --       rootMarkers = {
   --         ".git/"
   --       },
   --       languages = {
+  --         typescript = {
+  --           {
+  --             lintCommand = 'yarn eslint --format visualstudio --stdin --stdin-filename ${INPUT}',
+  --             lintIgnoreExitCode = true,
+  --             lintStdin = true,
+  --             lintFormats = {
+  --               "%f(%l,%c): %tarning %m", "%f(%l,%c): %rror %m"
+  --             }
+  --           }
+  --         },
   --         lua = {
   --           {
   --             formatCommand = "lua-format -i --config=lua-format.config",
@@ -89,6 +100,7 @@ servers.configure {
   "ccls",
   "dockerls",
   "gopls",
+  "eslint",
   "html",
   -- "jsonls",
   "jdtls",

@@ -50,6 +50,7 @@ return require('packer').startup(
           })
         end
       }
+      -- use "creativenull/efmls-configs-nvim"
       use {
         "rcarriga/nvim-notify",
         config = function()
@@ -629,17 +630,21 @@ return require('packer').startup(
       use "neovim/nvim-lspconfig"
 
       use {
-        'benwainwright/null-ls.nvim',
+        "~/repos/null-ls.nvim",
+        -- 'benwainwright/null-ls.nvim',
         -- "jose-elias-alvarez/null-ls.nvim",
         config = function()
           local null_ls = require("null-ls")
+
+          local eslint = require("lsp.null-ls-eslint")
+          
           null_ls.setup(
             {
               sources = {
-                null_ls.builtins.diagnostics.eslint,
+                -- null_ls.builtins.diagnostics.eslint,
                 null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.formatting.prettierd,
-                null_ls.builtins.code_actions.eslint,
+                -- null_ls.builtins.code_actions.eslint,
                 -- null_ls.builtins.code_actions.shellcheck,
                 -- null_ls.builtins.completion.luasnip,
                 -- null_ls.builtins.diagnostics.actionlint,
