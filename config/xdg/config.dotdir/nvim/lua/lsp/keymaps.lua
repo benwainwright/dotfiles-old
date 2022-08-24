@@ -10,6 +10,10 @@ function M.init()
         lua = "vim.lsp.buf.declaration()"
       },
       {
+        key = "<space>js",
+        lua = "vim.lsp.buf.workspace_symbol()"
+      },
+      {
         key = "<space>jd",
         lua = "vim.lsp.buf.definition()"
       },
