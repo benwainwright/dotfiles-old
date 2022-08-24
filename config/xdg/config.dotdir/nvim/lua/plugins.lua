@@ -51,6 +51,58 @@ return require('packer').startup(
         end
       }
       use {
+        "ziontee113/syntax-tree-surfer",
+        config = function()
+
+          ---- Syntax Tree Surfer
+          --local opts = {noremap = true, silent = true}
+
+          ---- Normal Mode Swapping:
+          ---- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
+          --vim.keymap.set("n", "vU", function()
+          --  vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
+          --  return "g@l"
+          --end, { silent = true, expr = true })
+          --vim.keymap.set("n", "vD", function()
+          --  vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
+          --  return "g@l"
+          --end, { silent = true, expr = true })
+
+          ---- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
+          --vim.keymap.set("n", "vd", function()
+          --  vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
+          --  return "g@l"
+          --end, { silent = true, expr = true })
+          --vim.keymap.set("n", "vu", function()
+          --  vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
+          --  return "g@l"
+          --end, { silent = true, expr = true })
+
+          ----> If the mappings above don't work, use these instead (no dot repeatable)
+          ---- vim.keymap.set("n", "vd", '<cmd>STSSwapCurrentNodeNextNormal<cr>', opts)
+          ---- vim.keymap.set("n", "vu", '<cmd>STSSwapCurrentNodePrevNormal<cr>', opts)
+          ---- vim.keymap.set("n", "vD", '<cmd>STSSwapDownNormal<cr>', opts)
+          ---- vim.keymap.set("n", "vU", '<cmd>STSSwapUpNormal<cr>', opts)
+
+          ---- Visual Selection from Normal Mode
+          --vim.keymap.set("n", "vx", '<cmd>STSSelectMasterNode<cr>', opts)
+          --vim.keymap.set("n", "vn", '<cmd>STSSelectCurrentNode<cr>', opts)
+
+          ---- Select Nodes in Visual Mode
+          --vim.keymap.set("x", "J", '<cmd>STSSelectNextSiblingNode<cr>', opts)
+          --vim.keymap.set("x", "K", '<cmd>STSSelectPrevSiblingNode<cr>', opts)
+          --vim.keymap.set("x", "H", '<cmd>STSSelectParentNode<cr>', opts)
+          --vim.keymap.set("x", "L", '<cmd>STSSelectChildNode<cr>', opts)
+
+          ---- Swapping Nodes in Visual Mode
+          --vim.keymap.set("x", "<A-j>", '<cmd>STSSwapNextVisual<cr>', opts)
+          --vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
+        end
+
+
+      }
+      -- use "creativenull/efmls-configs-nvim"
+      use {
         "rcarriga/nvim-notify",
         config = function()
           vim.notify = require('notify')
@@ -333,12 +385,12 @@ return require('packer').startup(
       --   cmd = "DiffviewOpen"
       -- }
 
-      -- use {
-      --   'windwp/nvim-autopairs',
-      --   config = function()
-      --     require('nvim-autopairs').setup()
-      --   end
-      -- }
+      use {
+        'windwp/nvim-autopairs',
+        config = function()
+          require('nvim-autopairs').setup()
+        end
+      }
 
       -- use {
       --   'vim-test/vim-test',
@@ -364,6 +416,13 @@ return require('packer').startup(
                 show_on_dirs = true
               },
               view = {
+                mappings = {
+                  list = {
+                    {
+                      key = "<C-e>", action = ""
+                    }
+                  }
+                },
                 adaptive_size = true
               }
             }
@@ -517,7 +576,7 @@ return require('packer').startup(
       use {
         'hrsh7th/nvim-cmp',
         requires = {
-          -- 'quangnguyen30192/cmp-nvim-ultisnips',
+          'quangnguyen30192/cmp-nvim-ultisnips',
           -- {
           --   'tzachar/cmp-tabnine',
           --   run = './install.sh'
@@ -574,11 +633,12 @@ return require('packer').startup(
                   return vim_item
                 end
               },
-              -- snippet = {
-              --   expand = function(args)
-              --     vim.fn["UltiSnips#Anon"](args.body)
-              --   end
-              -- },
+
+              snippet = {
+                expand = function(args)
+                  vim.fn["UltiSnips#Anon"](args.body)
+                end
+              },
               mapping = {
                 ['<Tab>'] = cmp.mapping(
                   cmp.mapping.select_next_item(), {
@@ -606,6 +666,9 @@ return require('packer').startup(
                 {
                   name = 'nvim_lsp'
                 },
+                {
+                  name = 'ultisnips'
+                },
                 -- {
                 --   name = 'cmp_tabnine'
                 -- },
@@ -622,9 +685,6 @@ return require('packer').startup(
                   name = 'npm',
                   keyword_length = 4
                 },
-                {
-                  name = 'ultisnips'
-                }
               },
               window = {
                 documentation = {
@@ -646,6 +706,12 @@ return require('packer').startup(
       }
 
       use "kosayoda/nvim-lightbulb"
+      use {
+        "williamboman/mason.nvim",
+        config = function()
+          require("mason").setup()
+        end
+      }
 
       use 'nvim-lua/lsp_extensions.nvim'
 
@@ -657,17 +723,15 @@ return require('packer').startup(
       use "neovim/nvim-lspconfig"
 
       use {
-        'benwainwright/null-ls.nvim',
-        -- "jose-elias-alvarez/null-ls.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
         config = function()
           local null_ls = require("null-ls")
+
           null_ls.setup(
             {
               sources = {
-                null_ls.builtins.diagnostics.eslint,
-                null_ls.builtins.code_actions.refactoring,
+                -- null_ls.builtins.code_actions.refactoring,
                 null_ls.builtins.formatting.prettierd,
-                null_ls.builtins.code_actions.eslint,
                 -- null_ls.builtins.code_actions.shellcheck,
                 -- null_ls.builtins.completion.luasnip,
                 -- null_ls.builtins.diagnostics.actionlint,
@@ -690,12 +754,12 @@ return require('packer').startup(
         }
       }
 
-      -- use {
-      --   "SirVer/ultisnips",
-      --   config = function()
-      --     vim.api.nvim_set_var("UltiSnipsExpandTrigger", "<NUL>")
-      --   end
-      -- }
+      use {
+        "SirVer/ultisnips",
+        config = function()
+          vim.api.nvim_set_var("UltiSnipsExpandTrigger", "<NUL>")
+        end
+      }
 
       -- use {
       --   "folke/trouble.nvim",
