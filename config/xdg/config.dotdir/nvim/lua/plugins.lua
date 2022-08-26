@@ -713,7 +713,7 @@ return require('packer').startup(
         end
       }
 
-      use 'nvim-lua/lsp_extensions.nvim'
+      -- use 'nvim-lua/lsp_extensions.nvim'
 
       use {
         'RishabhRD/nvim-lsputils',
