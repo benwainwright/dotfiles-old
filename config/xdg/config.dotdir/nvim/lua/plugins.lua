@@ -694,7 +694,7 @@ return require('packer').startup({
                                     watch_dir = nil
                                 }
 
-                                client.resolved_capabilities.document_formatting =
+                                client.server_capabilities.document_formatting =
                                     false
                                 ts_utils.setup_client(client)
                                 on_attach(client, bufnr)
