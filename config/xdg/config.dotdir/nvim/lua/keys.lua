@@ -6,6 +6,14 @@ vim.exec("let maplocalleader = \"\\\\\"")
 vim.maps {
   n = {
     {
+      key = "nd",
+      lua = "require('notify').dismiss()"
+    },
+    {
+      key = "nh",
+      lua = "require('notify').history()"
+    },
+    {
       key = "<leader>o",
       command = "Other"
     },

@@ -11,7 +11,7 @@ servers.configure {
       settings = {
         Lua = {
           diagnostics = {
-            globals = {'vim'}
+            globals = { 'vim' }
           }
         }
       }
@@ -64,7 +64,7 @@ servers.configure {
   -- {
   --   name = "efm",
   --   options = {
-  --     init_options = { 
+  --     init_options = {
   --       documentFormatting = false,
   --       codeAction = true
   --     },
@@ -106,7 +106,18 @@ servers.configure {
   "cssls",
   "cssmodules_ls",
   "emmet_ls",
-  "jsonls",
+  {
+    name = "jsonls",
+    options = {
+      init_options = {
+        provideFormatter = false
+      },
+      json = {
+        schemas = require('schemastore').json.schemas(),
+        validate = { enable = true },
+      }
+    }
+  },
   "jdtls",
   "rust_analyzer",
   "sqls",

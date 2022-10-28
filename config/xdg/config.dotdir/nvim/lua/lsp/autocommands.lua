@@ -13,16 +13,16 @@ local lightbulb_autocommands = {
   'CursorHoldI <buffer> lua require"nvim-lightbulb".update_lightbulb()'
 }
 
-local formatting_autocommand = {
-  'BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({}, 10000)'
-}
+-- local formatting_autocommand = {
+--   'BufWritePre <buffer> lua vim.lsp.buf.format()'
+-- }
 
 local concat = function(t1, t2)
   for _, v in ipairs(t2) do table.insert(t1, v) end
 end
 
 M.init = function(client)
-  local caps = client.resolved_capabilities
+  local caps = client.server_capabilities
   local name = client.name
 
   local autocommands = {}
@@ -35,14 +35,14 @@ M.init = function(client)
     concat(autocommands, lightbulb_autocommands)
   end
 
-  if caps.document_formatting == true then
-    concat(autocommands, formatting_autocommand)
-  end
+  -- if caps.document_formatting == true then
+  --   concat(autocommands, formatting_autocommand)
+  -- end
 
   api.define_autocommands(
-      {
-        ['lsp_autocommands' .. name] = autocommands
-      }
+    {
+      ['lsp_autocommands' .. name] = autocommands
+    }
   )
 end
 
