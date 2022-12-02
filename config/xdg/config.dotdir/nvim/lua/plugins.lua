@@ -58,12 +58,12 @@ return require('packer').startup({
 
                 -- Normal Mode Swapping:
                 -- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
-                vim.keymap.set("n", "<A-]>", function()
+                vim.keymap.set("n", "<C-q>", function()
                     vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
                     return "g@l"
                 end, {silent = true, expr = true})
 
-                vim.keymap.set("n", "<A-[>", function()
+                vim.keymap.set("n", "<C-w>", function()
                     vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
                     return "g@l"
                 end, {silent = true, expr = true})
@@ -189,14 +189,6 @@ return require('packer').startup({
         use {
             'j-hui/fidget.nvim',
             config = function() require"fidget".setup() end
-        }
-
-        use {
-            'filipdutescu/renamer.nvim',
-            branch = 'master',
-            config = function() require('renamer').setup() end,
-            requires = {{'nvim-lua/plenary.nvim'}},
-            keys = "<space>r"
         }
 
         use 'doums/lsp_spinner.nvim'
@@ -606,6 +598,11 @@ return require('packer').startup({
         use "kosayoda/nvim-lightbulb"
 
         use {
+            "smjonas/inc-rename.nvim",
+            config = function() require("inc_rename").setup() end
+        }
+
+        use {
             "williamboman/mason-lspconfig.nvim",
             requires = {"williamboman/mason.nvim", "hrsh7th/cmp-nvim-lsp"},
             config = function()
@@ -663,7 +660,7 @@ return require('packer').startup({
                     end,
 
                     ['jsonls'] = function()
-                        require("lspconfig")['tsserver'].setup {
+                        require("lspconfig")['jsonls'].setup {
                             on_attach = on_attach,
                             capabilities = capabilities,
                             init_options = {provideFormatter = false},
@@ -676,8 +673,12 @@ return require('packer').startup({
 
                     ["tsserver"] = function()
                         local react_filter = require("lsp.react-filter")
+                        local util = require 'lspconfig.util'
                         require("lspconfig")['tsserver'].setup {
                             capabilities = capabilities,
+                            root_dir = function(fname)
+                                return util.root_pattern('.git')(fname)
+                            end,
                             handlers = {
                                 ['textDocument/definition'] = react_filter
                             },
@@ -764,6 +765,7 @@ return require('packer').startup({
         --     "aklt/plantuml-syntax"
         --   }
         -- }
+        --
 
         use {
             'nvim-treesitter/nvim-treesitter',
