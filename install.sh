@@ -1,7 +1,8 @@
-#! /usr/bin/env zsh
+#!/usr/bin/env zsh
 
 DOTFILES=~/dotfiles
 SCRIPTS=$DOTFILES/install/scripts
+
 
 source $SCRIPTS/index.sh
 

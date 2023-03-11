@@ -1,3 +1,10 @@
+#!/usr/bin/env zsh
+
+SCRIPTS=$DOTFILES/install/scripts
+DOTFILES=~/dotfiles
+
+source $SCRIPTS/index.sh
+
 setopt extended_glob
 setopt +o nullglob
 
