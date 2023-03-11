@@ -1,3 +1,9 @@
 install_debian_deps() {
-  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
+  sudo apt-get update
+
+  sudo apt-get install \
+    vim \
+    zsh
+
+  sudo chsh -s "$(which zsh)"
 }
