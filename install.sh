@@ -31,3 +31,5 @@ symlink_dotfiles
 if [ $python ] || [ $all ]; then
     install_python_3
 fi
+
+source ~/.zshrc
