@@ -6,6 +6,8 @@ install_debian_deps() {
     zsh \
     exa \
     fasd \
+    neovim \
+    python3-neovim \
     fzf \
     htop \
     jq \
