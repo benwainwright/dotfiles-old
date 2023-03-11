@@ -5,12 +5,10 @@ install_debian_deps() {
     vim \
     zsh \
     exa \
-    bat \
     fasd \
     fzf \
     htop \
     jq \
-    nvm \
     pyenv \
     ripgrep \
     thefuck \
