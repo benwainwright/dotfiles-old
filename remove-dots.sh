@@ -6,7 +6,7 @@ DOTFILES=~/dotfiles
 source $SCRIPTS/index.sh
 
 setopt extended_glob
-setopt +o nullglob
+setopt NULL_GLOB
 
 printf "\n\nRemoving dotfiles\n***"
 
