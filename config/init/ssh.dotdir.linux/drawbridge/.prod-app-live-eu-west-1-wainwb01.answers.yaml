@@ -1,0 +1,18 @@
+active_config_template: default
+active_custom_templates: []
+config:
+  filepath: /Users/wainwb01/.ssh/drawbridge/prod-app-live-eu-west-1-wainwb01
+  pem_filepath: /Users/wainwb01/.ssh/drawbridge/pem/prod/wainwb01-prod.pem
+config_dir: ~/.ssh/drawbridge
+custom: []
+environment: prod
+pem_dir: ~/.ssh/drawbridge/pem
+shard: eu-west-1
+shard_type: live
+stack_name: app
+ui_group_priority:
+- environment
+- shard
+- username
+ui_question_hidden: []
+username: wainwb01
