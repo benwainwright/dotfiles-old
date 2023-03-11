@@ -34,4 +34,4 @@ fi
 
 generate_ssh
 
-source ~/.zshrc
+yes | source ~/.zshrc

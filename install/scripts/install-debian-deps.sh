@@ -2,6 +2,7 @@ install_debian_deps() {
   sudo apt-get update
 
   sudo apt-get install -y \
+    yes \
     vim \
     zsh \
     exa \
