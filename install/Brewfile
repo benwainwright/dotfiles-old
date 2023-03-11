@@ -51,7 +51,7 @@ brew "the_silver_searcher"
 brew "thefuck"
 brew "tmux", args: ["HEAD"]
 brew "tree"
-brew "ttyrec"
+brew "ttyrec"
 brew "ttygif"
 brew "vim"
 brew "watch"
