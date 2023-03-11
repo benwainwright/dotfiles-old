@@ -1,9 +1,9 @@
 source "$SCRIPTS/symlink.sh"
 symlink_dotfiles() {
   setopt extended_glob
-  setopt +o nullglob
+  setopt NULL_GLOB
 
-  printf "\n\nSymlinking dotfiles\n***"
+  printf "\n\nSymlinking dotfiles\n***\n\n"
 
   readonly dots=($DOTFILES/config/**/*.{dotfile,dotdir})
   for dot in "${dots[@]/.\//}"; do
@@ -12,7 +12,7 @@ symlink_dotfiles() {
   done
 
   if [[ $(uname) == "Darwin" ]]; then
-    printf "\n\nSymlinking mac specific dotfiles\n***"
+    printf "\n\nSymlinking mac specific dotfiles\n***\n\n"
     readonly dots=($DOTFILES/config/**/*.{dotfile.mac,dotdir.mac})
     for dot in "${dots[@]/.\//}"; do
       link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
@@ -21,7 +21,7 @@ symlink_dotfiles() {
   fi
 
   if command -v apt > /dev/null || command -v freebsd-version > /dev/null; then
-    printf "\n\nSymlinking linux specific dotfiles\n***"
+    printf "\n\nSymlinking linux specific dotfiles\n***\n\n"
     readonly dots=($DOTFILES/config/**/*.{dotfile.linux,dotdir.linux})
     for dot in "${dots[@]/.\//}"; do
       link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
@@ -30,7 +30,7 @@ symlink_dotfiles() {
   fi
 
   if command -v apt > /dev/null; then
-    printf "\n\nSymlinking debian specific dotfiles\n***"
+    printf "\n\nSymlinking debian specific dotfiles\n***\n\n"
     readonly dots=($DOTFILES/config/**/*.{dotfile.deb,dotdir.deb})
     for dot in "${dots[@]/.\//}"; do
       link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
