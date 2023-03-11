@@ -35,19 +35,6 @@ add_completion_dirs_to_fpath
 #######################################################
 
 
-#######################################################
-# Load plugins                                        #
-#######################################################
-
-if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
-  echo "load-plugins.sh not found. Installing with antibody"
-  antibody bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
-fi
-
-autoload -Uz compinit
-compinit
-
-source "$ZSH_DIR/load-plugins.sh"
 
 #######################################################
 # Auto-sourcing                                       #
@@ -96,6 +83,20 @@ source_shellfiles() {
   unsetopt null_glob
 }
 source_shellfiles
+
+#######################################################
+# Load plugins                                        #
+#######################################################
+
+if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
+  echo "load-plugins.sh not found. Installing with antibody"
+  antibody bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
+fi
+
+autoload -Uz compinit
+compinit
+
+source "$ZSH_DIR/load-plugins.sh"
 
 #####################################################
 # Configure shell integrations                      #
