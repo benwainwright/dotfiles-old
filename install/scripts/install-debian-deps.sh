@@ -9,7 +9,6 @@ install_debian_deps() {
     fzf \
     htop \
     jq \
-    pyenv \
     ripgrep \
     thefuck \
     silversearcher-ag \

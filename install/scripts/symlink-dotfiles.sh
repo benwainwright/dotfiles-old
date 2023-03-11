@@ -1,5 +1,8 @@
 source "$SCRIPTS/symlink.sh"
 symlink_dotfiles() {
+  setopt extended_glob
+  setopt +o nullglob
+
   printf "\n\nSymlinking dotfiles\n***"
 
   readonly dots=($DOTFILES/config/**/*.{dotfile,dotdir})
