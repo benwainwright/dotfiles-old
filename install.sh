@@ -6,31 +6,18 @@ SCRIPTS=$DOTFILES/install/scripts
 source $SCRIPTS/index.sh
 
 parse_args "$@"
+symlink_dotfiles
 
-if [ $symlink ] || [ $all ]; then
-  symlink_dotfiles
+if [[ $(uname) == "Darwin" ]]; then
+    copy_fonts
+    install_brew_dependencies
+    set_macos_defaults
+    set_iterm_preferences_location
+elif command -v apt > /dev/null; then
+    install_debian_deps
 fi
 
-if [ $fonts ] || [ $all ]; then
-  copy_fonts
-fi
-
-if [ $brew ] || [ $all ]; then
-  install_brew_dependencies
-fi
-
-if [ $defaults ] || [ $all ]; then
-  set_macos_defaults
-fi
 
 if [ $python ] || [ $all ]; then
   install_python_3
-fi
-
-if [ $iterm ] || [ $all ]; then
-  set_iterm_preferences_location
-fi
-
-if [ $npmGlobals ] || [ $all ]; then
-  install_npm_globals
 fi

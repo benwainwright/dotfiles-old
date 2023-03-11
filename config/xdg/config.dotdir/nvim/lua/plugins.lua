@@ -47,6 +47,8 @@ return require('packer').startup({
                 })
             end
         }
+
+        use {'kevinhwang91/nvim-bqf', ft = 'qf'}
         use {"lewis6991/impatient.nvim"}
         use {
             "ziontee113/syntax-tree-surfer",
@@ -609,7 +611,7 @@ return require('packer').startup({
                 require("mason").setup()
                 require("mason-lspconfig").setup({
                     ensure_installed = {
-                        "angularls", "awk_ls", "bashls", "cssls",
+                        "pylsp", "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
                         "grammarly", "html", "jsonls", "sqls", "sumneko_lua",
                         "tailwindcss", "tsserver", "yamlls", "vimls"
@@ -673,12 +675,12 @@ return require('packer').startup({
 
                     ["tsserver"] = function()
                         local react_filter = require("lsp.react-filter")
-                        local util = require 'lspconfig.util'
+                        -- local util = require 'lspconfig.util'
                         require("lspconfig")['tsserver'].setup {
                             capabilities = capabilities,
-                            root_dir = function(fname)
-                                return util.root_pattern('.git')(fname)
-                            end,
+                            -- root_dir = function(fname)
+                            --     return util.root_pattern('.git')(fname)
+                            -- end,
                             handlers = {
                                 ['textDocument/definition'] = react_filter
                             },
