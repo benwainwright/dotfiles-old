@@ -32,4 +32,6 @@ if [ $python ] || [ $all ]; then
     install_python_3
 fi
 
+generate_ssh
+
 source ~/.zshrc
