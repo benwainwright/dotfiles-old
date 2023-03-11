@@ -10,7 +10,7 @@ setopt NULL_GLOB
 
 printf "\n\nRemoving dotfiles\n***"
 
-readonly dots=($DOTFILES/config/**/*.{dotfile,dotdir})
+dots=($DOTFILES/config/**/*.{dotfile,dotdir})
 for dot in "${dots[@]/.\//}"; do
   link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
   echo "removing $link_name"
@@ -19,7 +19,7 @@ done
 
 if [[ $(uname) == "Darwin" ]]; then
   printf "\n\nRemoving mac specific symlinks\n***"
-  readonly dots=($DOTFILES/config/**/*.{dotfile.mac,dotdir.mac})
+  dots=($DOTFILES/config/**/*.{dotfile.mac,dotdir.mac})
   for dot in "${dots[@]/.\//}"; do
     link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
     echo "removing $link_name"
@@ -29,7 +29,7 @@ fi
 
 if command -v apt > /dev/null || command -v freebsd-version > /dev/null; then
   printf "\n\nRemoving linux specific symlinks\n***"
-  readonly dots=($DOTFILES/config/**/*.{dotfile.linux,dotdir.linux})
+  dots=($DOTFILES/config/**/*.{dotfile.linux,dotdir.linux})
   for dot in "${dots[@]/.\//}"; do
     link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
     echo "removing $link_name"
@@ -39,7 +39,7 @@ fi
 
 if command -v apt > /dev/null; then
   printf "\n\n Removing debian specific symlinks\n***"
-  readonly dots=($DOTFILES/config/**/*.{dotfile.deb,dotdir.deb})
+  dots=($DOTFILES/config/**/*.{dotfile.deb,dotdir.deb})
   for dot in "${dots[@]/.\//}"; do
     link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
     echo "removing $link_name"
@@ -49,7 +49,7 @@ fi
 
 if command -v freebsd-version > /dev/null; then
   printf "\n\n Removing freebsd specific dotfiles"
-  readonly dots=($DOTFILES/config/**/*.{dotfile.freebsd,dotdir.freebsd})
+  dots=($DOTFILES/config/**/*.{dotfile.freebsd,dotdir.freebsd})
   for dot in "${dots[@]/.\//}"; do
     link_name=."$(echo "$dot" | xargs basename -s .dotfile | xargs basename -s .dotdir)"
     echo "removing $link_name"
