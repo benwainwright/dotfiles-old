@@ -613,7 +613,7 @@ return require('packer').startup({
                     ensure_installed = {
                         "pylsp", "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
-                        "grammarly", "html", "jsonls", "sqls", "sumneko_lua",
+                        "grammarly", "html", "jsonls", "sqls", "lua_ls",
                         "tailwindcss", "tsserver", "yamlls", "vimls"
                     }
                 })
@@ -651,8 +651,8 @@ return require('packer').startup({
                             capabilities = capabilities
                         }
                     end,
-                    ['sumneko_lua'] = function()
-                        require("lspconfig")['sumneko_lua'].setup {
+                    ['lua_ls'] = function()
+                        require("lspconfig")['lua_ls'].setup {
                             on_attach = on_attach,
                             capabilities = capabilities,
                             settings = {
@@ -776,7 +776,7 @@ return require('packer').startup({
                 local ts = require 'nvim-treesitter.configs'
                 ts.setup {
                     ensure_installed = {
-                        'javascript', 'typescript', 'bash', 'css', 'help',
+                        'javascript', 'typescript', 'bash', 'css',
                         'html', 'jsdoc', 'json', 'json5', 'jsonc', 'lua',
                         'make', 'python', 'regex', 'scss', 'svelte', 'tsx',
                         'vim', 'yaml'
