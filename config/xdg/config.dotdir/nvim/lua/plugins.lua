@@ -190,7 +190,8 @@ return require('packer').startup({
         }
         use {
             'j-hui/fidget.nvim',
-            config = function() require"fidget".setup() end
+            config = function() require"fidget".setup() end,
+            tag = "legacy"
         }
 
         use 'doums/lsp_spinner.nvim'
@@ -611,9 +612,9 @@ return require('packer').startup({
                 require("mason").setup()
                 require("mason-lspconfig").setup({
                     ensure_installed = {
-                        "pylsp", "angularls", "awk_ls", "bashls", "cssls",
+                        "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
-                        "grammarly", "html", "jsonls", "sqls", "lua_ls",
+                        "grammarly", "html", "jsonls", "sqlls", "lua_ls",
                         "tailwindcss", "tsserver", "yamlls", "vimls"
                     }
                 })

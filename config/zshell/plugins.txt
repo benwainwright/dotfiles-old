@@ -1,6 +1,5 @@
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
-aws/aws-cli
 molovo/tipz
 greymd/docker-zsh-completion
 romkatv/powerlevel10k

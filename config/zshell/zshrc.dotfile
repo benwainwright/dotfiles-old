@@ -1,5 +1,14 @@
+########################################################
+## Bootstrap TMUX                                      #
+########################################################
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 autoload -Uz compinit
 compinit
+
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -8,12 +17,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-########################################################
-## Bootstrap TMUX                                      #
-########################################################
-
-# export ZSH_TMUX_AUTOSTART=true
 
 ########################################################
 ## Load #
@@ -96,8 +99,9 @@ compinit
 eval "$(pt completion)"
 
 if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
-  echo "load-plugins.sh not found. Installing with antibody"
-  antibody bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
+  echo "load-plugins.sh not found. Installing with antidote"
+  source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+  antidote bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
 fi
 
 
