@@ -50,58 +50,58 @@ return require('packer').startup({
 
         use {'kevinhwang91/nvim-bqf', ft = 'qf'}
         use {"lewis6991/impatient.nvim"}
-        use {
-            "ziontee113/syntax-tree-surfer",
-            config = function()
+        --use {
+        --    "ziontee113/syntax-tree-surfer",
+        --    config = function()
 
-                require("syntax-tree-surfer").setup()
-                ---- Syntax Tree Surfer
-                local opts = {noremap = true, silent = true}
+        --        require("syntax-tree-surfer").setup()
+        --        ---- Syntax Tree Surfer
+        --        local opts = {noremap = true, silent = true}
 
-                -- Normal Mode Swapping:
-                -- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
-                vim.keymap.set("n", "<C-q>", function()
-                    vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
-                    return "g@l"
-                end, {silent = true, expr = true})
+        --        -- Normal Mode Swapping:
+        --        -- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
+        --        vim.keymap.set("n", "<C-q>", function()
+        --            vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
+        --            return "g@l"
+        --        end, {silent = true, expr = true})
 
-                vim.keymap.set("n", "<C-w>", function()
-                    vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
-                    return "g@l"
-                end, {silent = true, expr = true})
+        --        vim.keymap.set("n", "<C-w>", function()
+        --            vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
+        --            return "g@l"
+        --        end, {silent = true, expr = true})
 
-                ---- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
-                vim.keymap.set("n", "<C-.>", function()
-                    vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
-                    return "g@l"
-                end, {silent = true, expr = true})
-                vim.keymap.set("n", "<C-,>", function()
-                    vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
-                    return "g@l"
-                end, {silent = true, expr = true})
+        --        ---- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
+        --        vim.keymap.set("n", "<C-.>", function()
+        --            vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
+        --            return "g@l"
+        --        end, {silent = true, expr = true})
+        --        vim.keymap.set("n", "<C-,>", function()
+        --            vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
+        --            return "g@l"
+        --        end, {silent = true, expr = true})
 
-                ----> If the mappings above don't work, use these instead (no dot repeatable)
-                ---- vim.keymap.set("n", "vd", '<cmd>STSSwapCurrentNodeNextNormal<cr>', opts)
-                ---- vim.keymap.set("n", "vu", '<cmd>STSSwapCurrentNodePrevNormal<cr>', opts)
-                ---- vim.keymap.set("n", "vD", '<cmd>STSSwapDownNormal<cr>', opts)
-                ---- vim.keymap.set("n", "vU", '<cmd>STSSwapUpNormal<cr>', opts)
+        --        ----> If the mappings above don't work, use these instead (no dot repeatable)
+        --        ---- vim.keymap.set("n", "vd", '<cmd>STSSwapCurrentNodeNextNormal<cr>', opts)
+        --        ---- vim.keymap.set("n", "vu", '<cmd>STSSwapCurrentNodePrevNormal<cr>', opts)
+        --        ---- vim.keymap.set("n", "vD", '<cmd>STSSwapDownNormal<cr>', opts)
+        --        ---- vim.keymap.set("n", "vU", '<cmd>STSSwapUpNormal<cr>', opts)
 
-                ---- Visual Selection from Normal Mode
-                -- vim.keymap.set("n", "vx", '<cmd>STSSelectMasterNode<cr>', opts)
-                -- vim.keymap.set("n", "vn", '<cmd>STSSelectCurrentNode<cr>', opts)
+        --        ---- Visual Selection from Normal Mode
+        --        -- vim.keymap.set("n", "vx", '<cmd>STSSelectMasterNode<cr>', opts)
+        --        -- vim.keymap.set("n", "vn", '<cmd>STSSelectCurrentNode<cr>', opts)
 
-                ---- Select Nodes in Visual Mode
-                -- vim.keymap.set("x", "J", '<cmd>STSSelectNextSiblingNode<cr>', opts)
-                -- vim.keymap.set("x", "K", '<cmd>STSSelectPrevSiblingNode<cr>', opts)
-                -- vim.keymap.set("x", "H", '<cmd>STSSelectParentNode<cr>', opts)
-                -- vim.keymap.set("x", "L", '<cmd>STSSelectChildNode<cr>', opts)
+        --        ---- Select Nodes in Visual Mode
+        --        -- vim.keymap.set("x", "J", '<cmd>STSSelectNextSiblingNode<cr>', opts)
+        --        -- vim.keymap.set("x", "K", '<cmd>STSSelectPrevSiblingNode<cr>', opts)
+        --        -- vim.keymap.set("x", "H", '<cmd>STSSelectParentNode<cr>', opts)
+        --        -- vim.keymap.set("x", "L", '<cmd>STSSelectChildNode<cr>', opts)
 
-                ---- Swapping Nodes in Visual Mode
-                -- vim.keymap.set("x", "<A-j>", '<cmd>STSSwapNextVisual<cr>', opts)
-                -- vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
-            end
+        --        ---- Swapping Nodes in Visual Mode
+        --        -- vim.keymap.set("x", "<A-j>", '<cmd>STSSwapNextVisual<cr>', opts)
+        --        -- vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
+        --    end
 
-        }
+        --}
         -- use "creativenull/efmls-configs-nvim"
         use {
             "rcarriga/nvim-notify",
@@ -194,7 +194,6 @@ return require('packer').startup({
             tag = "legacy"
         }
 
-        use 'doums/lsp_spinner.nvim'
         use "folke/lua-dev.nvim"
         use "euclidianAce/BetterLua.vim"
         use "kyazdani42/nvim-web-devicons"
@@ -612,26 +611,24 @@ return require('packer').startup({
                 require("mason").setup()
                 require("mason-lspconfig").setup({
                     ensure_installed = {
+                        "terraformls",
                         "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
                         "grammarly", "html", "jsonls", "sqlls", "lua_ls",
-                        "tailwindcss", "tsserver", "yamlls", "vimls"
+                        "tailwindcss", "tsserver", "yamlls", "vimls", "gopls"
                     }
                 })
 
                 local on_attach = function(client, bufnr)
-                    local lsp_spinner = require('lsp_spinner')
                     local capabilities = vim.lsp.protocol
                                              .make_client_capabilities()
 
                     -- turn on `window/workDoneProgress` capability
-                    lsp_spinner.init_capabilities(capabilities)
                     local lsp_signature = require('lsp_signature')
                     local lsp_keymaps = require('lsp.keymaps')
                     local lsp_autocommands = require('lsp.autocommands')
                     local lsp_signs = require('lsp.signs')
                     local lsp_handlers = require('lsp.handlers')
-                    lsp_spinner.on_attach(client, bufnr)
                     lsp_keymaps.init()
                     lsp_signature.on_attach({
                         bind = true,
@@ -676,7 +673,7 @@ return require('packer').startup({
 
                     ["tsserver"] = function()
                         local react_filter = require("lsp.react-filter")
-                        -- local util = require 'lspconfig.util'
+                    --     -- local util = require 'lspconfig.util'
                         require("lspconfig")['tsserver'].setup {
                             capabilities = capabilities,
                             -- root_dir = function(fname)
@@ -780,7 +777,7 @@ return require('packer').startup({
                         'javascript', 'typescript', 'bash', 'css',
                         'html', 'jsdoc', 'json', 'json5', 'jsonc', 'lua',
                         'make', 'python', 'regex', 'scss', 'svelte', 'tsx',
-                        'vim', 'yaml'
+                        'vim', 'yaml', 'go'
                     },
                     highlight = {enable = true}
                 }
