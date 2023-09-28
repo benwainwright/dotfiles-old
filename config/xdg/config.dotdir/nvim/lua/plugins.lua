@@ -659,6 +659,18 @@ return require('packer').startup({
                         }
                     end,
 
+                    ['gopls'] = function()
+                        require("lspconfig")['gopls'].setup {
+                            analyses = {
+                              unusedparams = true,
+                            },
+                            staticcheck = true,
+                            gofumpt = true,
+                            on_attach = on_attach,
+                            capabilities = capabilities,
+                        }
+                    end,
+
                     ['jsonls'] = function()
                         require("lspconfig")['jsonls'].setup {
                             on_attach = on_attach,

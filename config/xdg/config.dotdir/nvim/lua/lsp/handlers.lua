@@ -14,15 +14,15 @@ M.init = function()
   --     require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
   -- end
 
-  vim.lsp.handlers['textDocument/definition'] =
-  function(_, method, result)
-    require('lsputil.locations').definition_handler(
-      nil, result, {
-        bufnr = bufnr,
-        method = method
-      }, nil
-    )
-  end
+  -- vim.lsp.handlers['textDocument/definition'] =
+  -- function(_, method, result)
+  --   require('lsputil.locations').definition_handler(
+  --     nil, result, {
+  --       bufnr = bufnr,
+  --       method = method
+  --     }, nil
+  --   )
+  -- end
 
   vim.lsp.handlers['textDocument/declaration'] =
   function(_, method, result)
