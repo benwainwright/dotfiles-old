@@ -729,9 +729,12 @@ return require('packer').startup({
             config = function()
                 local null_ls = require("null-ls")
 
+
                 null_ls.setup({
                     sources = {
-                        null_ls.builtins.formatting.prettier,
+                        null_ls.builtins.formatting.prettier.with {
+                          filetypes = { "html", "svelte" }
+                        },
                         null_ls.builtins.formatting.lua_format,
                         null_ls.builtins.formatting.mdformat,
                         null_ls.builtins.formatting.gofumpt,
