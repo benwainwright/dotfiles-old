@@ -614,7 +614,7 @@ return require('packer').startup({
                         "terraformls",
                         "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
-                        "grammarly", "html", "jsonls", "sqlls", "lua_ls",
+                        "svelte", "grammarly", "html", "jsonls", "sqlls", "lua_ls",
                         "tailwindcss", "tsserver", "yamlls", "vimls", "gopls"
                     }
                 })
