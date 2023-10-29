@@ -34,8 +34,8 @@ fi
 
 generate_ssh
 
-install_gobrew
-
 yes | source ~/.zshrc
 
 install_go_deps
+
+install_gvm

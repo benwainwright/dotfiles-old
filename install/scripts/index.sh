@@ -11,4 +11,4 @@ source $SCRIPTS/set-iterm-preferences-location.sh
 source $SCRIPTS/install-npm-globals.sh
 source $SCRIPTS/generate-ssh.sh
 source $SCRIPTS/install-go-deps.sh
-source $SCRIPTS/install-gobrew.sh
+source $SCRIPTS/install-gvm.sh

@@ -734,6 +734,7 @@ return require('packer').startup({
                         null_ls.builtins.formatting.prettier,
                         null_ls.builtins.formatting.lua_format,
                         null_ls.builtins.formatting.mdformat,
+                        null_ls.builtins.formatting.gofumpt,
                         null_ls.builtins.formatting.stylelint,
                         null_ls.builtins.formatting.yamlfmt,
                         null_ls.builtins.formatting.fixjson

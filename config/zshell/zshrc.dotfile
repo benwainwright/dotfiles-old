@@ -188,3 +188,5 @@ export REQUESTS_CA_BUNDLE="$HOME/.mac-ca-roots"
 
 # export NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist
 export PATH="/usr/local/opt/curl/bin:$PATH"
+
+[[ -s "/Users/ben.wainwright/.gvm/scripts/gvm" ]] && source "/Users/ben.wainwright/.gvm/scripts/gvm"
