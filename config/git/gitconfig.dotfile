@@ -4,9 +4,21 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
 [user]
+
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZ+/ayfZ11bXeK4Jgjq4KF59tLnGY4TDAywxkJ388ef
 	name = Ben Wainwright
 	email = ben.wainwright@cinch.co.uk
+
 [diff]
 	tool = Kaleidoscope
 

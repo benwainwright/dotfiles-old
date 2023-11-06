@@ -733,7 +733,7 @@ return require('packer').startup({
                 null_ls.setup({
                     sources = {
                         null_ls.builtins.formatting.prettier.with {
-                          filetypes = { "html", "svelte" }
+                          filetypes = { "html", "svelte", "typescript", "javascript", "react" }
                         },
                         null_ls.builtins.formatting.lua_format,
                         null_ls.builtins.formatting.mdformat,
