@@ -9,15 +9,10 @@
 
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = /Users/ben.wainwright/.ssh/allowed_signers
 
 [commit]
   gpgsign = true
-
-[user]
-
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZ+/ayfZ11bXeK4Jgjq4KF59tLnGY4TDAywxkJ388ef
-	name = Ben Wainwright
-	email = ben.wainwright@cinch.co.uk
 
 [diff]
 	tool = Kaleidoscope
@@ -62,8 +57,8 @@
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 
-[github]
-	user = benwainwrightcinch
+[includeIf "hasconfig:remote.*.url:https://github.com/awazevr/**"]
+  path = ~/.gitconfig.awaze
 
 [url "git@github.com:"]
 	insteadOf = “https://github.com/”
@@ -71,5 +66,14 @@
 
 [credential]
 	helper = store
+
 [init]
 	defaultBranch = main
+
+[github]
+  user = benwainwright
+
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDo9UPvV2fm09PV/hNZNUqSEcWIVBLAxzGz/KiSZkWvb
+	name = Ben Wainwright
+	email = bwainwright28@gmail.com
