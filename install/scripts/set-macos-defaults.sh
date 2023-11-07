@@ -28,6 +28,9 @@ set_macos_defaults() {
     # Disable the “Are you sure you want to open this application?” dialog
     defaults write com.apple.LaunchServices LSQuarantine -bool false
 
+    # Allows the VSCode neovim plugin to interpret press and hold as a repeated keypress
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool falsedefaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
     # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
     /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
