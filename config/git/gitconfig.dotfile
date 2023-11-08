@@ -74,6 +74,6 @@
   user = benwainwright
 
 [user]
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDo9UPvV2fm09PV/hNZNUqSEcWIVBLAxzGz/KiSZkWvb
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMfeJ14ZzVtP71uMoW9/xS4e9WBcdR/X6OsJn0I8S8LD
 	name = Ben Wainwright
 	email = bwainwright28@gmail.com

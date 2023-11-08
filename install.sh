@@ -6,6 +6,11 @@ SCRIPTS=$DOTFILES/install/scripts
 
 source $SCRIPTS/index.sh
 
+symlink_dotfiles
+
+if command -v apt > /dev/null; then
+    install_debian_deps
+fi
 
 if [[ $(uname) == "Darwin" ]]; then
     copy_fonts
@@ -18,15 +23,11 @@ if command -v apt > /dev/null || command -v freebsd-version > /dev/null; then
     install_linux_deps
 fi
 
-if command -v apt > /dev/null; then
-    install_debian_deps
-fi
 
 if command -v freebsd-version > /dev/null; then
     install_freebsd_deps
 fi
 
-symlink_dotfiles
 
 if [ $python ] || [ $all ]; then
     install_python_3
