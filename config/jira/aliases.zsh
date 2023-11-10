@@ -14,4 +14,3 @@ alias jrft='jira readyForTest'
 alias jtw='jira testWip'
 alias jrfr='jira readyForRelease'
 alias jd='jira Done'
-

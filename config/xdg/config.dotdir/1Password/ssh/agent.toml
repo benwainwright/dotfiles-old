@@ -9,8 +9,8 @@
 #
 # By default, all keys in your Private vault(s) are enabled:
 #
-#  [[ssh-keys]]
-#  vault = "Private"
+[[ssh-keys]]
+vault = "Private"
 #
 # You can enable more keys by adding more `[[ssh-keys]]` entries.
 # For example, to first enable item "My SSH Key" from "My Custom Vault":

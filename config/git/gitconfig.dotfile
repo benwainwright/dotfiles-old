@@ -57,7 +57,18 @@
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 
+[github]
+  user = benwainwright
+
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMfeJ14ZzVtP71uMoW9/xS4e9WBcdR/X6OsJn0I8S8LD
+	name = Ben Wainwright
+	email = bwainwright28@gmail.com
+
 [includeIf "hasconfig:remote.*.url:https://github.com/awazevr/**"]
+  path = ~/.gitconfig.awaze
+
+[includeIf "hasconfig:remote.*.url:*git@github.com:/awazevr/**"]
   path = ~/.gitconfig.awaze
 
 [url "git@github.com:"]
@@ -70,10 +81,3 @@
 [init]
 	defaultBranch = main
 
-[github]
-  user = benwainwright
-
-[user]
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMfeJ14ZzVtP71uMoW9/xS4e9WBcdR/X6OsJn0I8S8LD
-	name = Ben Wainwright
-	email = bwainwright28@gmail.com
