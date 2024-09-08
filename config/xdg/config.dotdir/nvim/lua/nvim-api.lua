@@ -23,12 +23,30 @@ end
 function M.maps(maps)
     for mode, modeMaps in pairs(maps) do
         for _, map in ipairs(modeMaps) do
-            if type(map.lua) == "function" then
-                M.map(mode, map.key, map.lua, map.opts)
-            elseif map.lua ~= nil then
-                M.map(mode, map.key, "<cmd>lua " .. map.lua .. "<CR>", map.opts)
+            if vim.g.vscode then
+                if map.vscodeCommand ~= nil then
+                    M.map(mode, map.key,
+                          "<cmd>lua require('vscode-neovim').call('" ..
+                              map.vscodeCommand .. "')<CR>", map.opts)
+                elseif map.vscodeSyncNotify ~= nil then
+                    M.map(mode, map.key,
+                          "<cmd>lua require('vscode-neovim').notify('" ..
+                              map.vscodeNotify .. "')<CR>", map.opts)
+                elseif map.vscodeAction ~= nil then
+                    M.map(mode, map.key,
+                          "<cmd>lua require('vscode-neovim').action('" ..
+                              map.vscodeAction .. "')<CR>", map.opts)
+                end
             else
-                M.map(mode, map.key, "<cmd>" .. map.command .. "<CR>", map.opts)
+                if type(map.lua) == "function" then
+                    M.map(mode, map.key, map.lua, map.opts)
+                elseif map.lua ~= nil then
+                    M.map(mode, map.key, "<cmd>lua " .. map.lua .. "<CR>",
+                          map.opts)
+                else
+                    M.map(mode, map.key, "<cmd>" .. map.command .. "<CR>",
+                          map.opts)
+                end
             end
         end
     end

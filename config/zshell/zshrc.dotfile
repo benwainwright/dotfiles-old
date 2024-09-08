@@ -192,3 +192,17 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 [[ -s "/Users/ben.wainwright/.gvm/scripts/gvm" ]] && source "/Users/ben.wainwright/.gvm/scripts/gvm"
 
 eval "$(fnm env --use-on-cd)"
+
+source <(_HASS_CLI_COMPLETE=zsh_source hass-cli) 
+me
+
+# Created by `pipx` on 2024-08-22 16:24:21
+export PATH="$PATH:/Users/benwainwright1/.local/bin"
+
+# pnpm
+export PNPM_HOME="/Users/benwainwright1/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

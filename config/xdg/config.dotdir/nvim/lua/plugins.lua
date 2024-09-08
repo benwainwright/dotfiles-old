@@ -50,7 +50,7 @@ return require('packer').startup({
 
         use {'kevinhwang91/nvim-bqf', ft = 'qf'}
         use {"lewis6991/impatient.nvim"}
-        --use {
+        -- use {
         --    "ziontee113/syntax-tree-surfer",
         --    config = function()
 
@@ -101,7 +101,7 @@ return require('packer').startup({
         --        -- vim.keymap.set("x", "<A-k>", '<cmd>STSSwapPrevVisual<cr>', opts)
         --    end
 
-        --}
+        -- }
         -- use "creativenull/efmls-configs-nvim"
         use {
             "rcarriga/nvim-notify",
@@ -611,11 +611,11 @@ return require('packer').startup({
                 require("mason").setup()
                 require("mason-lspconfig").setup({
                     ensure_installed = {
-                        "terraformls",
-                        "angularls", "awk_ls", "bashls", "cssls",
+                        "terraformls", "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
-                        "svelte", "grammarly", "html", "jsonls", "sqlls", "lua_ls",
-                        "tailwindcss", "tsserver", "yamlls", "vimls", "gopls"
+                        "svelte", "grammarly", "html", "jsonls", "sqlls",
+                        "lua_ls", "rust_analyzer", "rls", "tailwindcss",
+                        "tsserver", "yamlls", "vimls", "gopls"
                     }
                 })
 
@@ -661,13 +661,11 @@ return require('packer').startup({
 
                     ['gopls'] = function()
                         require("lspconfig")['gopls'].setup {
-                            analyses = {
-                              unusedparams = true,
-                            },
+                            analyses = {unusedparams = true},
                             staticcheck = true,
                             gofumpt = true,
                             on_attach = on_attach,
-                            capabilities = capabilities,
+                            capabilities = capabilities
                         }
                     end,
 
@@ -685,7 +683,7 @@ return require('packer').startup({
 
                     ["tsserver"] = function()
                         local react_filter = require("lsp.react-filter")
-                    --     -- local util = require 'lspconfig.util'
+                        --     -- local util = require 'lspconfig.util'
                         require("lspconfig")['tsserver'].setup {
                             capabilities = capabilities,
                             -- root_dir = function(fname)
@@ -729,13 +727,14 @@ return require('packer').startup({
             config = function()
                 local null_ls = require("null-ls")
 
-
                 null_ls.setup({
                     sources = {
                         null_ls.builtins.formatting.prettier.with {
-                          filetypes = { "html", "svelte", "typescript", "javascript", "react" }
-                        },
-                        null_ls.builtins.formatting.lua_format,
+                            filetypes = {
+                                "html", "svelte", "typescript", "javascript",
+                                "react"
+                            }
+                        }, null_ls.builtins.formatting.lua_format,
                         null_ls.builtins.formatting.mdformat,
                         null_ls.builtins.formatting.gofumpt,
                         null_ls.builtins.formatting.stylelint,
@@ -790,10 +789,10 @@ return require('packer').startup({
                 local ts = require 'nvim-treesitter.configs'
                 ts.setup {
                     ensure_installed = {
-                        'javascript', 'typescript', 'bash', 'css',
-                        'html', 'jsdoc', 'json', 'json5', 'jsonc', 'lua',
-                        'make', 'python', 'regex', 'scss', 'svelte', 'tsx',
-                        'vim', 'yaml', 'go'
+                        'javascript', 'typescript', 'bash', 'css', 'html',
+                        'jsdoc', 'json', 'json5', 'jsonc', 'lua', 'make',
+                        'python', 'regex', 'scss', 'svelte', 'tsx', 'vim',
+                        'yaml', 'go'
                     },
                     highlight = {enable = true}
                 }
