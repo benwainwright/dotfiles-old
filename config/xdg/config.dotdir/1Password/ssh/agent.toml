@@ -19,8 +19,8 @@ vault = "Private"
 #  item = "My SSH Key"
 #  vault = "My Custom Vault"
 #
-#  [[ssh-keys]]
-#  vault = "Private"
+[[ssh-keys]]
+vault = "Employee"
 #
 # You can test the result by running:
 #
@@ -28,5 +28,6 @@ vault = "Private"
 #
 # More examples can be found here:
 #  https://developer.1password.com/docs/ssh/agent/config
+
 [[ssh-keys]]
 vault = "Personal"

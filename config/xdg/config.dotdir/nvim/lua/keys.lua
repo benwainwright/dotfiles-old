@@ -6,6 +6,22 @@ vim.exec("let maplocalleader = \"\\\\\"")
 vim.maps {
   n = {
     {
+      key="<C-j>",
+      command="TmuxNavigateDown"
+    },
+    {
+      key="<C-k>",
+      command="TmuxNavigateUp"
+    },
+    {
+      key="<C-h>",
+      command="TmuxNavigateLeft"
+    },
+    {
+      key="<C-l>",
+      command="TmuxNavigateRight"
+    },
+    {
       key = "nd",
       lua = "require('notify').dismiss()"
     },

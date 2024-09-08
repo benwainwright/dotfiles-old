@@ -7,3 +7,6 @@ TAGS.tmp
 config/emacs/emacs.d.dotdir/straight
 .DS_Store
 config/xdg/config.dotdir/znt/privhist.db
+config/xdg/config.dotdir/github-copilot/apps.json
+config/xdg/config.dotdir/op/config
+config/xdg/config.dotdir/op/plugins/used_items/gh.json
