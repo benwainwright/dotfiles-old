@@ -77,3 +77,8 @@ setw -g mode-keys vi
 unbind -T copy-mode-vi Enter
 bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
+run '~/.tmux/plugins/tpm/tpm'
+

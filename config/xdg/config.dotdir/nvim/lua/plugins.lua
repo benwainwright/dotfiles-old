@@ -163,7 +163,8 @@ return require('packer').startup({
 
         use "b0o/SchemaStore.nvim"
 
-        use {"knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/"}
+        use "christoomey/vim-tmux-navigator"
+        -- use {"knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/"}
 
         use {
             'rcarriga/neotest',
@@ -207,6 +208,7 @@ return require('packer').startup({
         use "tpope/vim-dispatch"
         use "tpope/vim-eunuch"
         use "tpope/vim-commentary"
+        use "github/copilot.vim"
         -- use "peitalin/vim-jsx-typescript"
         -- use "mlaursen/vim-react-snippets"
         -- use "Pocco81/DAPInstall.nvim"
@@ -644,6 +646,9 @@ return require('packer').startup({
 
                 require("mason-lspconfig").setup_handlers {
                     function(server_name)
+                        if (server_name == "tsserver") then
+                          server_name = "ts_ls"
+			end
                         require("lspconfig")[server_name].setup {
                             on_attach = on_attach,
                             capabilities = capabilities
@@ -686,7 +691,7 @@ return require('packer').startup({
                     ["tsserver"] = function()
                         local react_filter = require("lsp.react-filter")
                     --     -- local util = require 'lspconfig.util'
-                        require("lspconfig")['tsserver'].setup {
+                        require("lspconfig")['ts_ls'].setup {
                             capabilities = capabilities,
                             -- root_dir = function(fname)
                             --     return util.root_pattern('.git')(fname)

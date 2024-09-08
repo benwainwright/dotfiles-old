@@ -68,7 +68,7 @@
 [includeIf "hasconfig:remote.*.url:https://github.com/awazevr/**"]
   path = ~/.gitconfig.awaze
 
-[includeIf "hasconfig:remote.*.url:*git@github.com:/awazevr/**"]
+[includeIf "hasconfig:remote.*.url:*git@github.com:awazevr/**"]
   path = ~/.gitconfig.awaze
 
 [url "git@github.com:"]
