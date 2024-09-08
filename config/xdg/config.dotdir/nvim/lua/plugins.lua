@@ -118,7 +118,6 @@ return require('packer').startup({
             },
 
             config = function()
-
                 require('lspfuzzy').setup {
                     methods = 'all', -- either 'all' or a list of LSP methods (see below)
                     jump_one = true, -- jump immediately if there is only one location
@@ -365,8 +364,7 @@ return require('packer').startup({
                         adaptive_size = true
                     }
                 })
-            end,
-            tag = 'nightly' -- optional, updated every week. (see issue #1193)
+            end
         }
 
         -- use {

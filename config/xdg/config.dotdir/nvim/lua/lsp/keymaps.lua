@@ -18,7 +18,7 @@ function M.init()
                 lua = "print(vim.inspect(vim.lsp.buf.list_workspace_folders()))"
             }, {key = "<space>D", lua = "vim.lsp.buf.type_definition()"},
             {key = "<space>r", lua = "vim.lsp.buf.rename()"},
-            {key = "<space>a", command = "CodeActionMenu"},
+            {key = "<space>a", command = "CodeActions"},
             {key = "<space>jr", lua = "vim.lsp.buf.references()"},
             {key = "<space>jr", lua = "vim.lsp.buf.references()"}, {
                 key = "<space>e",
