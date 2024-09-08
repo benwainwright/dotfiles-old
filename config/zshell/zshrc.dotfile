@@ -92,7 +92,7 @@ eval "$(pt completion)"
 
 if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
   echo "load-plugins.sh not found. Installing with antidote"
-  source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+  source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
   antidote bundle < "$ZSH_DIR/plugins.txt" > "$ZSH_DIR/load-plugins.sh"
 fi
 
@@ -182,7 +182,6 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 eval "$(fnm env --use-on-cd)"
 
 source <(_HASS_CLI_COMPLETE=zsh_source hass-cli) 
-me
 
 # Created by `pipx` on 2024-08-22 16:24:21
 export PATH="$PATH:/Users/benwainwright1/.local/bin"

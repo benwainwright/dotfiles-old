@@ -616,8 +616,8 @@ return require('packer').startup({
                         "terraformls", "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
                         "svelte", "grammarly", "html", "jsonls", "sqlls",
-                        "lua_ls", "rust_analyzer", "rls", "tailwindcss",
-                        "tsserver", "yamlls", "vimls", "gopls"
+                        "lua_ls", "rust_analyzer", "tailwindcss", "tsserver",
+                        "yamlls", "vimls", "gopls"
                     }
                 })
 
@@ -647,8 +647,8 @@ return require('packer').startup({
                 require("mason-lspconfig").setup_handlers {
                     function(server_name)
                         if (server_name == "tsserver") then
-                          server_name = "ts_ls"
-			end
+                            server_name = "ts_ls"
+                        end
                         require("lspconfig")[server_name].setup {
                             on_attach = on_attach,
                             capabilities = capabilities
@@ -688,7 +688,7 @@ return require('packer').startup({
 
                     ["tsserver"] = function()
                         local react_filter = require("lsp.react-filter")
-                    --     -- local util = require 'lspconfig.util'
+                        --     -- local util = require 'lspconfig.util'
                         require("lspconfig")['ts_ls'].setup {
                             capabilities = capabilities,
                             -- root_dir = function(fname)
