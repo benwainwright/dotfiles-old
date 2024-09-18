@@ -181,7 +181,9 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 [[ -s "/Users/ben.wainwright/.gvm/scripts/gvm" ]] && source "/Users/ben.wainwright/.gvm/scripts/gvm"
 eval "$(fnm env --use-on-cd)"
 
-source <(_HASS_CLI_COMPLETE=zsh_source hass-cli) 
+if which hass-cli &> /dev/null; then
+  source <(_HASS_CLI_COMPLETE=zsh_source hass-cli) 
+fi
 
 # Created by `pipx` on 2024-08-22 16:24:21
 export PATH="$PATH:/Users/benwainwright1/.local/bin"
