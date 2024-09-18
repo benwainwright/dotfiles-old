@@ -3,4 +3,6 @@ export DOTFILES_DIR=$(echo ${(%):-%N} | xargs readlink | xargs dirname | xargs d
 export ZSH_DIR="$DOTFILES_DIR/config/zshell"
 export PROMPT_LEAN_TMUX=""
 export EDITOR='vim'
-. "$HOME/.cargo/env"
+if [ -d "$HOME/.cargo/bin" ]; then
+  . "$HOME/.cargo/env"
+fi
