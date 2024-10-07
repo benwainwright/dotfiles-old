@@ -88,8 +88,6 @@ source_shellfiles
 autoload -Uz compinit
 compinit
 
-eval "$(pt completion)"
-
 if [ ! -f "$ZSH_DIR/load-plugins.sh" ]; then
   echo "load-plugins.sh not found. Installing with antidote"
   source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
@@ -164,7 +162,6 @@ colors
 # Evaluate colors in prompt skin
 setopt PROMPT_SUBST
 export PATH="/usr/local/sbin:$PATH"
-
 
 ########################################################
 ## Misc setup                                          #

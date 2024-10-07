@@ -1,4 +1,3 @@
-alias ls='exa --color=always'
 alias l='ls -lFh'     #size,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
 alias ldot='ls -ld .*'

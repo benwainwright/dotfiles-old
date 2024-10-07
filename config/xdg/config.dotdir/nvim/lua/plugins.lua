@@ -159,30 +159,15 @@ return require('packer').startup({
         --     }
         --   end
         -- }
+        use {
+            'numToStr/Navigator.nvim',
+            config = function() require('Navigator').setup() end
+        }
 
         use "b0o/SchemaStore.nvim"
 
-        use "christoomey/vim-tmux-navigator"
+        -- use "christoomey/vim-tmux-navigator"
         -- use {"knubie/vim-kitty-navigator", run = "cp ./*.py ~/.config/kitty/"}
-
-        use {
-            'rcarriga/neotest',
-            requires = {'haydenmeade/neotest-jest'},
-            module = "neotest",
-            config = function()
-                require('neotest').setup({
-                    adapters = {
-                        require('neotest-jest')({
-                            jestCommand = "yarn jest",
-                            env = {CI = true},
-                            cwd = function(path)
-                                return vim.fn.getcwd()
-                            end
-                        })
-                    }
-                })
-            end
-        }
 
         use {
             "EdenEast/nightfox.nvim",
@@ -207,11 +192,7 @@ return require('packer').startup({
         use "tpope/vim-dispatch"
         use "tpope/vim-eunuch"
         use "tpope/vim-commentary"
-        use "github/copilot.vim"
-        -- use "peitalin/vim-jsx-typescript"
-        -- use "mlaursen/vim-react-snippets"
-        -- use "Pocco81/DAPInstall.nvim"
-        -- use "jparise/vim-graphql"
+        use "github/opilot.vim"
         use "kshenoy/vim-signature"
         -- use "wellle/targets.vim"
         use "gioele/vim-autoswap"
@@ -349,20 +330,16 @@ return require('packer').startup({
         -- }
 
         use {
-            'kyazdani42/nvim-tree.lua',
+            'nvim-tree/nvim-tree.lua',
             requires = {
                 'kyazdani42/nvim-web-devicons' -- optional, for file icons
             },
-            cmd = "NvimTreeFindFileToggle",
             config = function()
                 require('nvim-tree').setup({
                     sync_root_with_cwd = true,
                     update_focused_file = {enable = true, update_root = true},
                     diagnostics = {enable = true, show_on_dirs = true},
-                    view = {
-                        mappings = {list = {{key = "<C-e>", action = ""}}},
-                        adaptive_size = true
-                    }
+                    view = {adaptive_size = true}
                 })
             end
         }
@@ -614,7 +591,7 @@ return require('packer').startup({
                         "terraformls", "angularls", "awk_ls", "bashls", "cssls",
                         "cssmodules_ls", "dockerls", "emmet_ls", "eslint",
                         "svelte", "grammarly", "html", "jsonls", "sqlls",
-                        "lua_ls", "rust_analyzer", "tailwindcss", "tsserver",
+                        "lua_ls", "rust_analyzer", "tailwindcss", "ts_ls",
                         "yamlls", "vimls", "gopls"
                     }
                 })
@@ -644,9 +621,6 @@ return require('packer').startup({
 
                 require("mason-lspconfig").setup_handlers {
                     function(server_name)
-                        if (server_name == "tsserver") then
-                            server_name = "ts_ls"
-                        end
                         require("lspconfig")[server_name].setup {
                             on_attach = on_attach,
                             capabilities = capabilities
@@ -684,7 +658,7 @@ return require('packer').startup({
                         }
                     end,
 
-                    ["tsserver"] = function()
+                    ["ts_ls"] = function()
                         local react_filter = require("lsp.react-filter")
                         --     -- local util = require 'lspconfig.util'
                         require("lspconfig")['ts_ls'].setup {
@@ -784,6 +758,22 @@ return require('packer').startup({
         --   }
         -- }
         --
+        --
+        use {
+            "nvim-neotest/neotest",
+            requires = {
+
+                "marilari88/neotest-vitest", "nvim-neotest/nvim-nio",
+                "nvim-lua/plenary.nvim", "antoinemadec/FixCursorHold.nvim",
+                "nvim-treesitter/nvim-treesitter"
+            },
+
+            config = function()
+                require("neotest").setup({
+                    adapters = {require("neotest-vitest")}
+                })
+            end
+        }
 
         use {
             'nvim-treesitter/nvim-treesitter',
@@ -802,10 +792,7 @@ return require('packer').startup({
             end
         }
 
-        use {
-            'benwainwright/fzf-project'
-            -- '~/repos/fzf-project'
-        }
+        use {'benwainwright/fzf-project'}
 
         -- use {
         --   'TimUntersberger/neogit',
@@ -889,5 +876,5 @@ return require('packer').startup({
 
     end,
 
-    config = {max_jobs = 50}
+    config = {max_jobs = 50, ensure_dependencies = true}
 })
