@@ -10,6 +10,8 @@ vim.maps {
         {key = "<C-h>", command = "NavigatorLeft"},
         {key = "<C-l>", command = "NavigatorRight"},
         {key = "<leader>tr", lua = "require('neotest').run.run()"},
+        {key = "<leader>tw", lua = "require('neotest').watch.toggle()"},
+        {key = "<leader>to", lua = "require('neotest').output_panel.toggle()"},
         {key = "nd", lua = "require('notify').dismiss()"},
         {key = "nh", lua = "require('notify').history()"},
         {key = "<leader>o", command = "Other"},

@@ -173,11 +173,8 @@ return require('packer').startup({
             "EdenEast/nightfox.nvim",
             config = function() vim.cmd("colorscheme nightfox") end
         }
-        use {
-            'j-hui/fidget.nvim',
-            config = function() require"fidget".setup() end,
-            tag = "legacy"
-        }
+
+        use {"scottmckendry/cyberdream.nvim"}
 
         use "folke/lua-dev.nvim"
         use "euclidianAce/BetterLua.vim"
@@ -192,7 +189,16 @@ return require('packer').startup({
         use "tpope/vim-dispatch"
         use "tpope/vim-eunuch"
         use "tpope/vim-commentary"
-        use "github/opilot.vim"
+
+        use {
+            "github/copilot.vim",
+            config = function()
+                require("copilot").setup({
+                    suggestion = {enabled = false},
+                    panel = {enabled = false}
+                })
+            end
+        }
         use "kshenoy/vim-signature"
         -- use "wellle/targets.vim"
         use "gioele/vim-autoswap"
@@ -572,6 +578,12 @@ return require('packer').startup({
                     }
                 })
             end
+        }
+
+        use {
+            "zbirenbaum/copilot-cmp",
+            after = {"copilot.lua"},
+            config = function() require("copilot_cmp").setup() end
         }
 
         use "kosayoda/nvim-lightbulb"
