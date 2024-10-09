@@ -85,5 +85,14 @@ return {
             mods = 'LEADER',
             action = wezterm.action.TogglePaneZoomState
         }
+    },
+    ssh_domains = {
+        {
+            remote_wezterm_path = "/root/config/wezterm/target/release/wezterm",
+            name = 'homeassistant',
+            remote_address = 'homeassistant.local',
+            username = 'root'
+        }
     }
+
 }
