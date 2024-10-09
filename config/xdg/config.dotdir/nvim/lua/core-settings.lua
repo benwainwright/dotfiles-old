@@ -55,10 +55,6 @@ vim.o.fileencodings = "ucs-bom,utf-8,latin1"
 -- simply becomes 'hidden'
 vim.o.hidden = true
 
--- Don't redraw the screen while executing macros, registers and other
--- untyped commands
-vim.o.lazyredraw = true
-
 -- All horizontal splits go to the bottom half
 vim.o.splitbelow = true
 

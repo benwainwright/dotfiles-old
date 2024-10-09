@@ -2,8 +2,8 @@ return {
     event = "VeryLazy",
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
-        "ray-x/lsp_signature.nvim", "williamboman/mason.nvim",
-        "hrsh7th/cmp-nvim-lsp", "neovim/nvim-lspconfig", "b0o/schemastore.nvim",
+        "williamboman/mason.nvim", "hrsh7th/cmp-nvim-lsp",
+        "neovim/nvim-lspconfig", "b0o/schemastore.nvim",
         "jose-elias-alvarez/nvim-lsp-ts-utils"
     },
     config = function()
@@ -22,16 +22,11 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
             -- turn on `window/workDoneProgress` capability
-            local lsp_signature = require('lsp_signature')
             local lsp_keymaps = require('lsp.keymaps')
             local lsp_autocommands = require('lsp.autocommands')
             local lsp_signs = require('lsp.signs')
             local lsp_handlers = require('lsp.handlers')
             lsp_keymaps.init()
-            lsp_signature.on_attach({
-                bind = true,
-                handler_opts = {border = "rounded"}
-            }, bufnr)
             lsp_autocommands.init(client)
             lsp_signs.init()
             lsp_handlers.init()

@@ -10,10 +10,6 @@ return {
             }
         }
     }, "kshenoy/vim-signature", "ryanoasis/vim-devicons", {
-        "rcarriga/nvim-notify",
-        opts = {renderer = "simple"},
-        config = function() vim.notify = require('notify') end
-    }, {
         "gelguy/wilder.nvim",
         event = 'VeryLazy',
         dependencies = {'ryanoasis/vim-devicons'},
