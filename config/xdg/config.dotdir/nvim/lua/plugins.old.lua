@@ -38,22 +38,14 @@ return require('packer').startup({
         --   end
         -- }
 
-        -- use "wellle/targets.vim"
         -- use "chrisbra/unicode.vim"
-        -- use "bkad/CamelCaseMotion"
         -- use "PeterRincker/vim-argumentative"
-        -- use "michaeljsmith/vim-indent-object"
 
         use {"weilbith/nvim-code-action-menu", cmd = 'CodeActionMenu'}
 
         -- use {
         --   'mg979/vim-visual-multi',
         --   branch = "master"
-        -- }
-
-        -- use {
-        --   "vuki656/package-info.nvim",
-        --   requires = "MunifTanjim/nui.nvim"
         -- }
 
         -- use {
@@ -108,7 +100,6 @@ return require('packer').startup({
         --   cmd = "DiffviewOpen"
         -- }
 
-
         use {
             "smjonas/inc-rename.nvim",
             config = function() require("inc_rename").setup() end
@@ -143,14 +134,6 @@ return require('packer').startup({
         -- }
         --
         --
-
-        -- use {
-        --   "lewis6991/gitsigns.nvim",
-        --   config = function()
-        --     require("gitsigns").setup()
-        --   end
-        -- }
-
         -- use {
         --   "lbrayner/vim-rzip",
         --   config = function()

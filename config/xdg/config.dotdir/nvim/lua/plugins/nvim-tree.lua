@@ -30,6 +30,7 @@ end
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = {'kyazdani42/nvim-web-devicons'},
+    lazy = false,
     keys = {'<C-e>', '<cmd>NvimTreeFindFileToggle<CR>', 'Toggle NvimTree'},
     config = function()
         -- vim.keymap.set('n', '<C-e>', '<cmd>NvimTreeFindFileToggle<CR>',

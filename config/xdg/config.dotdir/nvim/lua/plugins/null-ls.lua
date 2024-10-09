@@ -19,7 +19,7 @@ return {
                 null_ls.builtins.formatting.fixjson
             },
             on_attach = function(client)
-                require"lsp-format".on_attach(client)
+                require("lsp-format").on_attach(client)
             end
         })
     end

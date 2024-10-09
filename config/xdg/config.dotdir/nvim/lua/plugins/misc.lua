@@ -1,6 +1,5 @@
 return {
-    "folke/lua-dev.nvim", "euclidianAce/BetterLua.vim",
-    "kyazdani42/nvim-web-devicons", "gioele/vim-autoswap",
-    "windwp/nvim-autopairs"
-
+    {"gioele/vim-autoswap", event = "VeryLazy"},
+    {"windwp/nvim-autopairs", event = "VeryLazy"},
+    {"vuki656/package-info.nvim", event = "VeryLazy"}
 }
