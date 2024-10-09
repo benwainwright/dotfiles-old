@@ -43,6 +43,7 @@ return {
     initial_cols = 120,
     initial_rows = 100,
     leader = {key = 'a', mods = 'CTRL'},
+    color_scheme = 'Monokai Pro (Gogh)',
     keys = {
 
         {
