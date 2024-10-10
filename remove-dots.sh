@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+#test
 
 SCRIPTS=$DOTFILES/install/scripts
 DOTFILES=~/dotfiles
